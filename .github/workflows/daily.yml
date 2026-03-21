@@ -42,12 +42,12 @@ jobs:
           SUBSTACK_EMAIL:    ${{ secrets.SUBSTACK_EMAIL }}
           SUBSTACK_PASSWORD: ${{ secrets.SUBSTACK_PASSWORD }}
           SUBSTACK_PUB_URL:  "https://worldsfrontpage.substack.com"
+          PYTHONPATH: src
         run: |
-          cd src
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
-            python ../main.py --dry-run
+            python main.py --dry-run
           else
-            python ../main.py
+            python main.py
           fi
 
       - name: Upload logs on failure
