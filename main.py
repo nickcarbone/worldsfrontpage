@@ -43,7 +43,7 @@ def main(dry_run: bool = False):
     # ── 2. Scrape all 84 source homepages ─────────────────────────────────────
     logger.info("Step 2/5: Scraping all sources...")
     sources = get_sources(exclude_baseline=True)
-    stories = scrape_all(sources, use_playwright=not dry_run)
+    stories = scrape_all(sources, use_playwright=True)
     successful = sum(1 for s in stories if s.headline and not s.scrape_error)
     failed     = sum(1 for s in stories if s.scrape_error)
     logger.info(f"  Scraped: {successful} success, {failed} failed out of {len(stories)} sources")
