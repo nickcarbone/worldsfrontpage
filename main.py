@@ -10,6 +10,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+# Create logs directory before logging setup
+Path("logs").mkdir(exist_ok=True)
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
