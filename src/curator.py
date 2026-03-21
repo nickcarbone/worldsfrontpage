@@ -17,7 +17,7 @@ from sources import STATUS_LABELS
 
 logger = logging.getLogger(__name__)
 client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-MODEL = "claude-opus-4-5"
+MODEL = "claude-haiku-4-5-20251001"
 MAX_STORIES = 15
 MIN_STORIES = 8
 
@@ -27,30 +27,21 @@ def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory]) -> list[d
     Full curation pipeline.
     Returns list of ready-to-publish story dicts.
     """
-    # Filter out failed scrapes
     valid = [s for s in stories if s.headline and not s.scrape_error]
     logger.info(f"Valid stories to curate: {len(valid)} / {len(stories)}")
 
     if not valid:
         raise ValueError("No valid stories scraped — aborting.")
 
-    # Build baseline context
     baseline_text = _build_baseline_context(baselines)
-
-    # Step 1: Translate non-English headlines/decklines
     valid = _translate_batch(valid)
-
-    # Step 2: Score and select
     selected = _select_stories(valid, baseline_text)
-
-    # Step 3: Write briefs
     briefed = _write_briefs(selected, baseline_text)
 
     return briefed
 
 
 def _build_baseline_context(baselines: list[ScrapedStory]) -> str:
-    """Summarize baseline headlines into a global news context string."""
     lines = []
     for b in baselines:
         if b.headline:
@@ -59,7 +50,6 @@ def _build_baseline_context(baselines: list[ScrapedStory]) -> str:
 
 
 def _translate_batch(stories: list[ScrapedStory]) -> list[ScrapedStory]:
-    """Translate non-English stories in a single batched API call."""
     to_translate = [s for s in stories if s.language_hint not in ("en",)]
     if not to_translate:
         return stories
@@ -106,10 +96,6 @@ Items to translate:
 
 
 def _select_stories(stories: list[ScrapedStory], baseline_text: str) -> list[ScrapedStory]:
-    """
-    Ask Claude to select the 10-15 most unique, globally underreported stories.
-    Returns selected stories in priority order.
-    """
     story_list = []
     for i, s in enumerate(stories):
         story_list.append({
@@ -138,7 +124,7 @@ Select {MIN_STORIES}–{MAX_STORIES} stories that best meet ALL of these criteri
 
 ALSO: If the front page of a state media organ (like People's Daily, Granma, Global Times) leads with something unusual or telling about that government's current priorities or anxieties, that itself IS the story — select it.
 
-Return ONLY a JSON array of selected story indices in priority order (most important first):
+Return ONLY a JSON object in this exact format:
 {{"selected": [3, 12, 7, ...]}}
 
 Stories to evaluate:
@@ -165,7 +151,6 @@ Stories to evaluate:
 
 
 def _write_briefs(stories: list[ScrapedStory], baseline_text: str) -> list[dict]:
-    """Write a punchy brief for each selected story."""
     results = []
     for s in stories:
         brief = _write_single_brief(s)
@@ -174,7 +159,6 @@ def _write_briefs(stories: list[ScrapedStory], baseline_text: str) -> list[dict]
 
 
 def _write_single_brief(s: ScrapedStory) -> dict:
-    """Write a 3-sentence brief + why-it-matters for a single story."""
     prompt = f"""You are writing for "World's Front Page," a daily newsletter for smart, globally curious American readers who want to know what's front-page news in other countries — stories they probably haven't seen yet.
 
 STORY SOURCE:
@@ -213,14 +197,6 @@ Return ONLY JSON:
             "why_it_matters": "",
         }
 
-    # Add status label if applicable
-    status_label = STATUS_LABELS.get(
-        # We need to look this up from sources — passed in via source dict later
-        # For now, placeholder — resolved in publisher
-        "",
-        "",
-    )
-
     return {
         "source_id": s.source_id,
         "country": s.country,
@@ -229,5 +205,5 @@ Return ONLY JSON:
         "original_headline": s.headline,
         "brief": result.get("brief", ""),
         "why_it_matters": result.get("why_it_matters", ""),
-        "status_label": status_label,
+        "status_label": "",
     }
