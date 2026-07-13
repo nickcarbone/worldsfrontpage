@@ -2,66 +2,100 @@ name: World's Front Page — Daily Pipeline
 
 on:
   schedule:
-    # 4:00 AM Eastern = 9:00 AM UTC
-    - cron: "0 9 * * *"
+    # 4:00 AM ET = 08:00 UTC during Eastern Daylight Time (roughly Mar–Nov).
+    # Switch to '0 9 * * *' when US clocks fall back to Eastern Standard Time
+    # in November — GitHub Actions cron does not adjust for DST automatically.
+    - cron: '0 8 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Dry run (no Substack post)"
+        description: 'Run without posting to Substack'
         required: false
-        default: "false"
+        default: 'false'
         type: choice
-        options: ["true", "false"]
+        options: ['true', 'false']
+
+permissions:
+  contents: write   # commit history.json (7-day coverage memory) back to the repo
+  issues: write     # open an issue when the pipeline fails
 
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
+    env:
+      # main.py imports from sources.py / scraper.py / curator.py / publisher.py
+      # as top-level modules, so src/ must be on the path.
+      PYTHONPATH: ${{ github.workspace }}/src
 
     steps:
-      - name: Checkout
+      - name: Check out repo
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-          cache: "pip"
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          playwright install chromium --with-deps
-
-      - name: Create logs directory
-        run: mkdir -p logs
+          playwright install --with-deps chromium
 
       - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          SUBSTACK_EMAIL:    ${{ secrets.SUBSTACK_EMAIL }}
-          SUBSTACK_PASSWORD: ${{ secrets.SUBSTACK_PASSWORD }}
-          SUBSTACK_PUB_URL:  "https://worldsfrontpage.substack.com"
-          PYTHONPATH: src
+          SUBSTACK_COOKIE: ${{ secrets.SUBSTACK_COOKIE }}
         run: |
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+          if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
             python main.py --dry-run
           else
             python main.py
           fi
 
-      - name: Upload logs on failure
-        if: failure()
+      # history.json is the curator's 7-day "recently covered" memory.
+      # Actions checkouts are ephemeral, so it must be committed back to the
+      # repo to survive between runs. Only updated on real (non-dry-run)
+      # publishes — main.py doesn't write it otherwise.
+      - name: Persist coverage history
+        if: success() && github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name "wfp-pipeline"
+          git config user.email "actions@users.noreply.github.com"
+          git pull --rebase --autostash origin ${{ github.ref_name }}
+          git add history.json
+          git diff --cached --quiet || (git commit -m "chore: coverage history $(date -u +%F)" && git push)
+
+      - name: Upload logs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pipeline-logs-${{ github.run_id }}
           path: logs/
-          retention-days: 7
+          retention-days: 14
 
-      - name: Upload daily log
-        if: always()
-        uses: actions/upload-artifact@v4
+      # If the 4am run dies, don't find out by absence — open an issue.
+      # The assembled HTML (if the run got that far) is in the logs artifact,
+      # so a Substack API failure costs a copy-paste, not the edition.
+      - name: Open issue on failure
+        if: failure()
+        uses: actions/github-script@v7
         with:
-          name: daily-log-${{ github.run_id }}
-          path: logs/*.json
-          retention-days: 30
+          script: |
+            const date = new Date().toISOString().slice(0, 10);
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Pipeline failure — ${date}`,
+              body: [
+                `The daily World's Front Page pipeline failed on ${date}.`,
+                ``,
+                `**Run:** ${runUrl}`,
+                ``,
+                `If the run reached step 4, the assembled edition (JSON + paste-ready HTML) is in the \`pipeline-logs-${context.runId}\` artifact — the issue is recoverable manually.`,
+                ``,
+                `If this failed at the Substack post step, check the logs for which of two messages it logged: an expired/invalid cookie (refresh SUBSTACK_COOKIE) vs. a Cloudflare-looking block (the runner's IP is being blocked outright, and the cookie fix alone won't clear that).`,
+              ].join('\n'),
+              labels: ['pipeline-failure'],
+            });
