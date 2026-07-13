@@ -46,7 +46,17 @@ logger = logging.getLogger("main")
 # The uniqueness filter is the product. Below this many working baselines,
 # "not already globally known" is being judged against a hollowed-out
 # reference set — better to fail loudly than publish a miscalibrated issue.
-MIN_BASELINES = 3
+#
+# Set to 2 (not the original 3) as of 2026-07-13: three consecutive runs
+# showed NYT and WSJ consistently returning zero headlines from GitHub's
+# runners — 200 OK, real HTML, but no usable content — while FT and
+# Guardian were reliably strong (23 and 5 headlines respectively) every
+# time. That pattern (successful fetch, empty content) looks like NYT/WSJ's
+# own bot-management soft-blocking automated/datacenter traffic, not
+# transient flakiness. FT + Guardian alone are still a reasonable baseline;
+# revisit if NYT/WSJ scraping ever gets a dedicated fix (lower priority
+# than the Substack posting fix, since this fails safe rather than silently).
+MIN_BASELINES = 2
 
 PENDING_POST_PATH = Path("logs") / "pending_post.json"
 
