@@ -74,13 +74,14 @@ jobs:
   # session — see publish_to_substack.py. Must run from this self-hosted
   # runner (residential IP + genuine browser fingerprint); GitHub-hosted
   # runners get blocked by Cloudflare regardless of cookie validity
-  # (confirmed 2026-07-13). Requires SUBSTACK_PUBLISHER label to be set on
-  # the runner when registering it, so this job can never accidentally land
-  # on a stranger's runner.
+  # (confirmed 2026-07-13). Targets [self-hosted, macOS, ARM64] — the
+  # runner's actual auto-assigned labels (no custom label was set at
+  # registration; add one later via config.sh if you ever run more than
+  # one self-hosted runner and need to target a specific machine).
   publish:
     needs: build
     if: needs.build.outputs.dry_run != 'true'
-    runs-on: [self-hosted, macOS, wfp-publisher]
+    runs-on: [self-hosted, macOS, ARM64]
     timeout-minutes: 10
     env:
       PYTHONPATH: ${{ github.workspace }}/src
