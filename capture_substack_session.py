@@ -35,12 +35,14 @@ def main():
         browser = p.chromium.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
-        page.goto(f"{SUBSTACK_PUB_URL}/publish/login")
+        page.goto(f"{SUBSTACK_PUB_URL}/publish/posts")
 
         print("\nA Chrome window just opened.")
-        print("Log into Substack normally in that window — handle 2FA or any")
-        print("Cloudflare check exactly as you would in your everyday browser.")
-        print("Once you can see your publish dashboard, come back here and press Enter.")
+        print("If it doesn't already show a sign-in form, click 'Sign in' and log")
+        print("into Substack normally — handle 2FA or any Cloudflare check exactly")
+        print("as you would in your everyday browser.")
+        print("Once the window shows your publish dashboard (your list of posts/")
+        print("drafts, not a 'Page not found' screen), come back here and press Enter.")
         input()
 
         context.storage_state(path=str(SUBSTACK_STATE_PATH))
