@@ -2,12 +2,22 @@
 World's Front Page — Substack Publisher
 Assembles the curated stories into a formatted Substack draft
 and posts it via the Substack API for editor review before publish.
+
+v2 additions:
+  - Coverage history: history.json (repo root, committed back by the
+    Actions workflow) holds the last 7 days of published stories so the
+    curator doesn't rerun the same slow-burn story on consecutive days.
+  - HTML fallback: save_local now writes the fully assembled HTML next to
+    the JSON log, so if Substack's unofficial API breaks, the edition is
+    inconvenienced, not lost — grab the HTML from the run artifact and
+    paste it into a draft manually.
 """
 
 import os
 import json
 import logging
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+from pathlib import Path
 import requests
 from sources import SOURCES, STATUS_LABELS, BASELINE_SOURCES
 
@@ -16,6 +26,9 @@ logger = logging.getLogger(__name__)
 SUBSTACK_EMAIL    = os.environ.get("SUBSTACK_EMAIL", "")
 SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
 SUBSTACK_PUB_URL  = os.environ.get("SUBSTACK_PUB_URL", "https://worldsfrontpage.substack.com")
+
+HISTORY_PATH = Path("history.json")   # repo root — committed back by daily.yml
+HISTORY_DAYS = 7
 
 # Country flag emoji lookup
 COUNTRY_FLAGS = {
@@ -55,6 +68,49 @@ def _source_stats() -> dict:
     icij = sum(1 for s in SOURCES if s.get("icij"))
     return {"total": total, "countries": countries, "icij": icij}
 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Coverage history (7-day memory for the curator)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def load_history() -> list[dict]:
+    """Load the rolling record of recently published stories.
+    Returns [] if no history exists or the file is unreadable."""
+    if not HISTORY_PATH.exists():
+        return []
+    try:
+        return json.loads(HISTORY_PATH.read_text(encoding="utf-8"))
+    except Exception as e:
+        logger.warning(f"Could not read {HISTORY_PATH}: {e} — starting fresh")
+        return []
+
+
+def update_history(stories: list[dict], run_date: datetime = None) -> None:
+    """Append today's published stories and prune entries older than
+    HISTORY_DAYS. Call this only after a real (non-dry-run) publish."""
+    if run_date is None:
+        run_date = datetime.now(timezone.utc)
+    cutoff = (run_date - timedelta(days=HISTORY_DAYS)).strftime("%Y-%m-%d")
+    today = run_date.strftime("%Y-%m-%d")
+
+    history = [h for h in load_history() if h.get("date", "") >= cutoff]
+    for s in stories:
+        history.append({
+            "date": today,
+            "country": s["country"],
+            "publication": s["publication"],
+            "headline": s["original_headline"][:200],
+        })
+    HISTORY_PATH.write_text(
+        json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    logger.info(f"Coverage history updated: {len(history)} entries "
+                f"across last {HISTORY_DAYS} days")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Post assembly
+# ─────────────────────────────────────────────────────────────────────────────
 
 def build_post(stories: list[dict], date: datetime = None) -> dict:
     """
@@ -127,7 +183,8 @@ def post_draft(post: dict) -> bool:
     """
     Post the assembled content as a Substack draft.
     Uses Substack's internal API (unofficial but stable).
-    Returns True on success.
+    Returns True on success. If this fails, the assembled HTML is already
+    saved by save_local() — the edition is recoverable from the run artifact.
     """
     if not SUBSTACK_EMAIL or not SUBSTACK_PASSWORD:
         logger.error("SUBSTACK_EMAIL and SUBSTACK_PASSWORD must be set.")
@@ -173,12 +230,10 @@ def post_draft(post: dict) -> bool:
 
 def save_local(post: dict, stories: list[dict], run_date: datetime = None) -> str:
     """
-    Save post and raw stories to local JSON for debugging/review.
-    Returns the filepath.
+    Save post and raw stories to local JSON — and the assembled HTML — for
+    debugging, review, and manual recovery if the Substack post fails.
+    Returns the JSON filepath.
     """
-    import os
-    from pathlib import Path
-
     if run_date is None:
         run_date = datetime.now(timezone.utc)
 
@@ -196,5 +251,12 @@ def save_local(post: dict, stories: list[dict], run_date: datetime = None) -> st
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
-    logger.info(f"Saved local log: {filepath}")
+    # HTML fallback — paste-ready if the unofficial Substack API breaks
+    html_path = log_dir / f"{date_slug}.html"
+    with open(html_path, "w", encoding="utf-8") as f:
+        f.write(
+            f"<h1>{post['title']}</h1>\n<h2>{post['subtitle']}</h2>\n{post['body_html']}"
+        )
+
+    logger.info(f"Saved local log: {filepath} (+ {html_path})")
     return str(filepath)
