@@ -20,6 +20,8 @@ disposable runners. Splitting the run in two lets each half live on the
 infrastructure suited to it.
 """
 
+from __future__ import annotations  # lets `str | None` etc. run on Python < 3.10
+
 import argparse
 import json
 import logging
