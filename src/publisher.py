@@ -34,6 +34,21 @@ v3 — Substack auth (Cloudflare fix):
     failed run tells you which one to chase.
   - Requires the SUBSTACK_COOKIE secret (see repo README / instructions
     for how to extract `substack.sid` from a browser — no terminal needed).
+
+v4 — Structured content for the real Substack API:
+  - Confirmed via DevTools (2026-07-13) that Substack's draft_body is NOT
+    HTML — it's a JSON string of a ProseMirror-style node tree
+    ({"type":"doc","content":[...]}), and draft_bylines must be
+    [{"id": <user_id>, "is_guest": false}]. build_post() now also returns
+    "content_doc": a list of node dicts built directly from story data,
+    alongside the existing body_html (which stays as-is for the local HTML
+    fallback file — that one's still plain HTML, unaffected by this).
+    publish_to_substack.py wraps content_doc as the doc's "content" and
+    posts that as draft_body; save_local()'s HTML output is untouched.
+    NOTE: a true "heading" node type was not confirmed via DevTools (the
+    test draft didn't clearly show one), so the country/publication line
+    uses bold text in its own paragraph instead — confirmed-safe over a
+    guessed node name. Worth revisiting once this is live and low-stakes.
 """
 
 import os
@@ -151,6 +166,93 @@ def update_history(stories: list[dict], run_date: datetime = None) -> None:
 # Post assembly
 # ─────────────────────────────────────────────────────────────────────────────
 
+# ─────────────────────────────────────────────────────────────────────────────
+# ProseMirror node builders (Substack's real draft_body format — confirmed
+# via DevTools 2026-07-13, see v4 docstring note above)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _text_node(text: str, marks: list = None) -> dict:
+    node = {"type": "text", "text": text}
+    if marks:
+        node["marks"] = marks
+    return node
+
+
+def _para_node(runs: list = None) -> dict:
+    """A paragraph node. Pass no runs for a blank spacer line (confirmed
+    shape: a paragraph with no "content" key at all, not an empty list)."""
+    node = {"type": "paragraph", "attrs": {"textAlign": None}}
+    if runs:
+        node["content"] = runs
+    return node
+
+
+def _link_mark(href: str) -> dict:
+    return {
+        "type": "link",
+        "attrs": {"href": href, "target": "_blank", "rel": "noopener noreferrer nofollow", "class": None},
+    }
+
+
+_HR_NODE = {"type": "horizontal_rule"}
+
+
+def _build_content_doc(stories: list[dict], stats: dict, story_count: int) -> list:
+    """
+    Build the ProseMirror node list for draft_body, straight from story
+    data — not by parsing body_html — so this can't drift out of sync with
+    whatever body_html's HTML structure happens to be.
+    """
+    content = [
+        _para_node([_text_node(
+            f"Today we monitored front pages from {stats['total']} publications across "
+            f"{stats['countries']} countries. Here are the {story_count} stories that made "
+            f"the front page somewhere in the world and probably didn't make yours.",
+            marks=[{"type": "em"}],
+        )]),
+        _HR_NODE,
+    ]
+
+    for story in stories:
+        flag = COUNTRY_FLAGS.get(story["country"], "🌐")
+        # Bold text in its own paragraph, not a heading node — see v4 note:
+        # a heading shape wasn't confirmed via DevTools, bold was.
+        content.append(_para_node([_text_node(
+            f"{flag} {story['country']} — {story['publication']}",
+            marks=[{"type": "strong"}],
+        )]))
+
+        status_key = SOURCE_STATUS.get(story["source_id"], "")
+        status_label = STATUS_LABELS.get(status_key, "")
+        if status_label:
+            content.append(_para_node([_text_node(status_label, marks=[{"type": "em"}])]))
+
+        content.append(_para_node([_text_node(story["brief"])]))
+
+        if story.get("why_it_matters"):
+            content.append(_para_node([
+                _text_node("Why it matters: ", marks=[{"type": "strong"}]),
+                _text_node(story["why_it_matters"]),
+            ]))
+
+        if story.get("article_url"):
+            content.append(_para_node([
+                _text_node(f"→ Read more at {story['publication']}", marks=[_link_mark(story["article_url"])]),
+            ]))
+
+        content.append(_HR_NODE)
+
+    content.append(_para_node([_text_node(
+        f"World's Front Page monitors {stats['total']} publications across "
+        f"{stats['countries']} countries daily, including {stats['icij']} ICIJ media partners. "
+        f"Stories are selected for national significance and global underreporting. "
+        f"State-affiliated sources are labeled. All stories translated to English.",
+        marks=[{"type": "em"}],
+    )]))
+
+    return content
+
+
 def build_post(stories: list[dict], date: datetime = None) -> dict:
     """
     Assemble the full Substack post from curated stories.
@@ -211,10 +313,13 @@ def build_post(stories: list[dict], date: datetime = None) -> dict:
         f'State-affiliated sources are labeled. All stories translated to English.</em></p>'
     )
 
+    content_doc = _build_content_doc(stories, stats, story_count)
+
     return {
-        "title":     title,
-        "subtitle":  subtitle,
-        "body_html": "\n".join(html_parts),
+        "title":       title,
+        "subtitle":    subtitle,
+        "body_html":   "\n".join(html_parts),
+        "content_doc": content_doc,
     }
 
 
