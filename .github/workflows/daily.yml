@@ -91,8 +91,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          playwright install chromium
+          python3 -m pip install -r requirements.txt
+          python3 -m playwright install chromium
 
       - name: Download pending post
         uses: actions/download-artifact@v4
@@ -102,7 +102,7 @@ jobs:
 
       - name: Post to Substack via browser session
         run: |
-          python main.py --publish logs/pending_post.json
+          python3 main.py --publish logs/pending_post.json
 
       # history.json is the curator's 7-day "recently covered" memory.
       # Only updated here, after a real successful post — main.py --publish
