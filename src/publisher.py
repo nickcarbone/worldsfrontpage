@@ -11,6 +11,29 @@ v2 additions:
     the JSON log, so if Substack's unofficial API breaks, the edition is
     inconvenienced, not lost — grab the HTML from the run artifact and
     paste it into a draft manually.
+
+v3 — Substack auth (Cloudflare fix):
+  - post_draft() no longer logs in with email/password. That flow
+    re-triggered a fresh login (and any 2FA/Cloudflare challenge) from a
+    GitHub Actions IP on every single run — exactly the kind of request
+    Cloudflare's bot management is tuned to flag.
+  - Instead, it reuses a session cookie (`substack.sid`) captured from a
+    real, already-authenticated browser login. There's no login step left
+    for a run to fail at, and the cookie survives 2FA since it represents
+    a session where 2FA was already satisfied by a human.
+  - CAVEAT (confirmed via DevTools, see repo notes): Substack sits behind
+    Cloudflare Bot Management with active device verification — cf_clearance,
+    __cf_bm, and a CF_VERIFIED_DEVICE_* cookie are present alongside
+    substack.sid. Those are short-lived (~30 min–few hrs) and bound to the
+    browser's IP/TLS fingerprint, so they can't be captured once and reused
+    in a daily cron job. substack.sid alone may still get intercepted by a
+    Cloudflare challenge before Substack's app ever checks it. If so, the
+    real fix is a self-hosted runner or residential proxy, not a better cookie.
+  - post_draft() distinguishes the two failure modes in its logging
+    (expired/invalid cookie vs. likely IP/Cloudflare-level block) so a
+    failed run tells you which one to chase.
+  - Requires the SUBSTACK_COOKIE secret (see repo README / instructions
+    for how to extract `substack.sid` from a browser — no terminal needed).
 """
 
 import os
@@ -23,9 +46,25 @@ from sources import SOURCES, STATUS_LABELS, BASELINE_SOURCES
 
 logger = logging.getLogger(__name__)
 
-SUBSTACK_EMAIL    = os.environ.get("SUBSTACK_EMAIL", "")
-SUBSTACK_PASSWORD = os.environ.get("SUBSTACK_PASSWORD", "")
-SUBSTACK_PUB_URL  = os.environ.get("SUBSTACK_PUB_URL", "https://worldsfrontpage.substack.com")
+SUBSTACK_COOKIE  = os.environ.get("SUBSTACK_COOKIE", "")  # value of the `substack.sid` cookie
+SUBSTACK_PUB_URL = os.environ.get("SUBSTACK_PUB_URL", "https://worldsfrontpage.substack.com")
+
+# A realistic desktop Chrome fingerprint for the draft-creation request.
+# This does not defeat IP-based blocking on its own (see post_draft()'s
+# failure-mode logging) — it just avoids being an obviously bare `requests`
+# call on top of an otherwise-valid authenticated session.
+_BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+    ),
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Content-Type": "application/json",
+    "Sec-Fetch-Site": "same-origin",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Dest": "empty",
+}
 
 HISTORY_PATH = Path("history.json")   # repo root — committed back by daily.yml
 HISTORY_DAYS = 7
@@ -181,30 +220,37 @@ def build_post(stories: list[dict], date: datetime = None) -> dict:
 
 def post_draft(post: dict) -> bool:
     """
-    Post the assembled content as a Substack draft.
-    Uses Substack's internal API (unofficial but stable).
+    Post the assembled content as a Substack draft, authenticating with a
+    saved browser session cookie instead of email/password.
+
+    Why cookie auth instead of login: the old flow called
+    /api/v1/email-login from the GitHub Actions runner on every run, which
+    re-triggers Cloudflare's bot check (and can't clear an interactive
+    2FA/Turnstile challenge headlessly regardless). A cookie captured from
+    an already-authenticated real-browser session skips that step entirely
+    — there's no login request left for a run to fail at, and the cookie
+    is valid whether or not 2FA is enabled on the account, since 2FA was
+    already satisfied by the human who logged in.
+
     Returns True on success. If this fails, the assembled HTML is already
-    saved by save_local() — the edition is recoverable from the run artifact.
+    saved by save_local() — the edition is recoverable from the run artifact
+    regardless of why the post failed.
     """
-    if not SUBSTACK_EMAIL or not SUBSTACK_PASSWORD:
-        logger.error("SUBSTACK_EMAIL and SUBSTACK_PASSWORD must be set.")
+    if not SUBSTACK_COOKIE:
+        logger.error(
+            "SUBSTACK_COOKIE is not set — cannot authenticate to Substack. "
+            "See setup instructions for how to extract `substack.sid` from a "
+            "logged-in browser session."
+        )
         return False
 
     session = requests.Session()
+    session.cookies.set("substack.sid", SUBSTACK_COOKIE, domain=".substack.com")
 
-    # Authenticate
-    auth_resp = session.post(
-        f"{SUBSTACK_PUB_URL}/api/v1/email-login",
-        json={"email": SUBSTACK_EMAIL, "password": SUBSTACK_PASSWORD},
-        headers={"Content-Type": "application/json"},
-        timeout=15,
-    )
+    headers = dict(_BROWSER_HEADERS)
+    headers["Origin"] = SUBSTACK_PUB_URL
+    headers["Referer"] = f"{SUBSTACK_PUB_URL}/publish/post"
 
-    if auth_resp.status_code != 200:
-        logger.error(f"Substack auth failed: {auth_resp.status_code} {auth_resp.text[:200]}")
-        return False
-
-    # Create draft
     draft_resp = session.post(
         f"{SUBSTACK_PUB_URL}/api/v1/drafts",
         json={
@@ -214,7 +260,7 @@ def post_draft(post: dict) -> bool:
             "draft_body":    post["body_html"],
             "audience":      "everyone",
         },
-        headers={"Content-Type": "application/json"},
+        headers=headers,
         timeout=15,
     )
 
@@ -223,9 +269,32 @@ def post_draft(post: dict) -> bool:
         draft_id   = draft_data.get("id", "unknown")
         logger.info(f"Draft created: {draft_id}")
         return True
-    else:
-        logger.error(f"Draft creation failed: {draft_resp.status_code} {draft_resp.text[:200]}")
+
+    if draft_resp.status_code in (401, 403):
+        body_lower = draft_resp.text[:800].lower()
+        looks_like_cloudflare = any(
+            sig in body_lower for sig in
+            ("cloudflare", "cf-ray", "attention required", "checking your browser")
+        )
+        if looks_like_cloudflare:
+            logger.error(
+                f"Draft creation blocked at the network level (status {draft_resp.status_code}, "
+                "response looks like a Cloudflare challenge page, not a Substack API error). "
+                "This means the cookie is fine but the runner's IP itself is being blocked — "
+                "the cookie fix can't clear this on its own. Next step would be a self-hosted "
+                "runner or a residential proxy for this request."
+            )
+        else:
+            logger.error(
+                f"Draft creation rejected by Substack (status {draft_resp.status_code}, "
+                "response looks like an auth error, not a network block). This means "
+                "SUBSTACK_COOKIE is likely missing, expired, or invalid — log into Substack "
+                "in a browser, re-extract `substack.sid`, and update the repo secret."
+            )
         return False
+
+    logger.error(f"Draft creation failed: {draft_resp.status_code} {draft_resp.text[:200]}")
+    return False
 
 
 def save_local(post: dict, stories: list[dict], run_date: datetime = None) -> str:
