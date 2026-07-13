@@ -27,6 +27,12 @@ commit it, never copy it off this machine, never paste it anywhere.
 
 If posting starts failing again, the most likely cause is a stale session
 (cookies rotate / expire) — re-run capture_substack_session.py to refresh it.
+
+v2 — structured content (2026-07-13): Substack's real drafts endpoint
+rejected an HTML string with "draft_bylines: Invalid value" — its actual
+format is a JSON node tree (draft_body) plus a draft_bylines array
+identifying the author by user ID. Confirmed via DevTools against a real
+draft; see publisher.py's build_post() for how content_doc is constructed.
 """
 
 import os
@@ -41,6 +47,14 @@ SUBSTACK_STATE_PATH = Path(
     os.environ.get("SUBSTACK_STATE_PATH", str(Path.home() / "wfp-runner" / "substack_state.json"))
 )
 SUBSTACK_PUB_URL = os.environ.get("SUBSTACK_PUB_URL", "https://worldsfrontpage.substack.com")
+
+# Your Substack account's numeric user ID — confirmed via DevTools
+# (Network tab, a draft's draftBylines[0].id / postBylines[0].user_id).
+# This is not a secret (it's not a login credential), just an account
+# identifier, so it's fine as a plain constant rather than piped through
+# a GitHub secret. If you ever need to reconfirm it: open any existing
+# draft's GET .../api/v1/drafts/<id> response and look at postBylines[0].user_id.
+SUBSTACK_USER_ID = int(os.environ.get("SUBSTACK_USER_ID", "1093738"))
 
 _DRAFT_FETCH_JS = """async (payload) => {
     const resp = await fetch(payload.url, {
@@ -88,16 +102,27 @@ def post_draft_via_browser(post: dict) -> bool:
             page.goto(f"{SUBSTACK_PUB_URL}/publish/posts", wait_until="domcontentloaded", timeout=30000)
             page.wait_for_timeout(2000)
 
+            draft_body_json = json.dumps(
+                {"type": "doc", "content": post["content_doc"]}, ensure_ascii=False
+            )
+
             result = page.evaluate(
                 _DRAFT_FETCH_JS,
                 {
                     "url": f"{SUBSTACK_PUB_URL}/api/v1/drafts",
                     "body": {
-                        "type":           "newsletter",
-                        "draft_title":    post["title"],
-                        "draft_subtitle": post["subtitle"],
-                        "draft_body":     post["body_html"],
-                        "audience":       "everyone",
+                        "type":                 "newsletter",
+                        "audience":             "everyone",
+                        "draft_title":          post["title"],
+                        "draft_subtitle":       post["subtitle"],
+                        "draft_body":           draft_body_json,
+                        "draft_bylines":        [{"id": SUBSTACK_USER_ID, "is_guest": False}],
+                        "draft_podcast_url":    None,
+                        "draft_podcast_duration": None,
+                        "draft_section_id":     None,
+                        "section_chosen":       False,
+                        "detect_language":      False,
+                        "translations":         [],
                     },
                 },
             )
