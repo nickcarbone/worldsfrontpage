@@ -35,6 +35,23 @@ TEST_POST = {
         "the Playwright-based Substack publisher works end to end. It was never "
         "published or emailed to anyone — delete it whenever.</em></p>"
     ),
+    "content_doc": [
+        {
+            "type": "paragraph",
+            "attrs": {"textAlign": None},
+            "content": [
+                {
+                    "type": "text",
+                    "marks": [{"type": "em"}],
+                    "text": (
+                        "This is a test draft created by test_publish_local.py to verify "
+                        "the Playwright-based Substack publisher works end to end. It was "
+                        "never published or emailed to anyone — delete it whenever."
+                    ),
+                }
+            ],
+        },
+    ],
 }
 
 if __name__ == "__main__":
