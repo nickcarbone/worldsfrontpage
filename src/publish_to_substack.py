@@ -132,8 +132,8 @@ def post_draft_via_browser(post: dict) -> bool:
         )
     else:
         logger.error(
-            f"Substack rejected the request (status {status}, response looks like an app-level "
-            "error, not a network block). The saved session is likely stale or invalid — "
-            "re-run capture_substack_session.py on this machine to log in fresh."
+            f"Substack rejected the request (status {status}) — this does NOT look like a "
+            "Cloudflare/network block, so treat it as a request-format problem first, not an "
+            f"auth problem. Response body:\n{result['text'][:2000]}"
         )
     return False
