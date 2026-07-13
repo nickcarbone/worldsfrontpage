@@ -1,7 +1,24 @@
 """
 World's Front Page — Homepage Scraper
-Extracts the top story headline + summary from each source homepage.
-Strategy: find the first real article link, not the site's OG meta tags.
+Extracts headline + deckline + visible lede grafs from each source homepage.
+Uses requests+BeautifulSoup for static sites, Playwright for JS-heavy ones.
+
+Extraction strategy, in priority order:
+  1. Known "lead story" container selectors
+  2. First <h1> and its parent container
+  3. First <article> tag that contains a heading
+  4. First h1/h2 that sits inside a linked <a> tag (card-style homepages
+     that don't wrap headlines in <article>/<h1> containers)
+  5. First substantial <h2>/<h3> anywhere on the page
+  6. Broadest: first substantial linked headline anywhere on the page,
+     skipping obvious nav/tag/category/author links
+  7. LAST RESORT: og:title / og:description — on a homepage these are
+     usually the SITE's title, not the top article's headline, so this
+     only fires when nothing else was found, and it's logged as such.
+
+At every tier, candidate headlines are checked against _is_site_name() to
+reject generic nav/masthead text ("Latest News", "Breaking News", the
+publication's own name, etc.) rather than accepting the first tag found.
 """
 
 import time
@@ -15,7 +32,7 @@ from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 
-# Sites that require a headless browser
+# Sites that require a headless browser (JS-rendered content)
 PLAYWRIGHT_SITES = {
     "wsj", "nyt", "ft", "le_monde", "le_figaro", "faz", "sz",
     "nzz", "nrc", "volkskrant", "el_pais", "corriere", "repubblica",
@@ -33,14 +50,32 @@ HEADERS = {
 }
 
 REQUEST_TIMEOUT = 20
-RATE_LIMIT_DELAY = (1.5, 3.0)
+RATE_LIMIT_DELAY = (1.5, 3.0)  # Random seconds between requests
 
+LEAD_SELECTORS = [
+    "article.lead", "article.featured", "article.top-story",
+    "[class*='lead-story']", "[class*='top-story']",
+    "[class*='featured-story']", "[class*='headline--primary']",
+    "[data-testid='lead']", "[data-testid='top-story']",
+    ".story--featured", ".article--lead", ".main-story",
+]
+
+DECKLINE_SELECTORS = [
+    "p.summary", "p.deck", ".standfirst", ".summary",
+    ".description", "p.lead", "[class*='summary']",
+    "[class*='standfirst']", "[class*='deck']",
+]
+
+# Generic nav/masthead phrases that show up where a real headline should be
 SITE_NAME_SIGNALS = [
     "latest news", "breaking news", "top headlines", "news from",
     "world news", "national news", "news today", "newspaper",
     "official website", "home page", "homepage", "front page",
     "all the news", "your source for", "stay informed",
 ]
+
+# Link patterns that indicate navigation, not an article
+NAV_HREF_SIGNALS = ["#", "mailto:", "javascript:", "/tag/", "/category/", "/author/"]
 
 
 @dataclass
@@ -57,7 +92,20 @@ class ScrapedStory:
     scrape_error: Optional[str] = None
 
 
+def _is_site_name(text: str, publication_name: str) -> bool:
+    """Reject candidate headlines that are actually masthead/nav text."""
+    if not text:
+        return True
+    t = text.lower().strip()
+    if len(t) < 15:
+        return True
+    if publication_name and publication_name.lower().split()[0] in t[:50]:
+        return True
+    return any(signal in t for signal in SITE_NAME_SIGNALS)
+
+
 def scrape_all(sources: list[dict], use_playwright: bool = True) -> list[ScrapedStory]:
+    """Scrape all sources, return list of ScrapedStory objects."""
     results = []
     for source in sources:
         logger.info(f"Scraping {source['name']} ({source['country']})")
@@ -68,7 +116,7 @@ def scrape_all(sources: list[dict], use_playwright: bool = True) -> list[Scraped
                 story = _scrape_requests(source)
             logger.info(f"  → '{story.headline[:70]}'" if story.headline else "  → (no headline)")
         except Exception as e:
-            logger.warning(f"  Failed: {e}")
+            logger.warning(f"Failed to scrape {source['name']}: {e}")
             story = ScrapedStory(
                 source_id=source["id"],
                 country=source["country"],
@@ -83,6 +131,7 @@ def scrape_all(sources: list[dict], use_playwright: bool = True) -> list[Scraped
 
 
 def _scrape_requests(source: dict) -> ScrapedStory:
+    """Static site scraping with requests + BeautifulSoup."""
     resp = requests.get(source["url"], headers=HEADERS, timeout=REQUEST_TIMEOUT)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
@@ -90,6 +139,7 @@ def _scrape_requests(source: dict) -> ScrapedStory:
 
 
 def _scrape_playwright(source: dict) -> ScrapedStory:
+    """JS-rendered site scraping with Playwright."""
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
@@ -108,88 +158,136 @@ def _scrape_playwright(source: dict) -> ScrapedStory:
     return _extract_story(soup, source)
 
 
-def _is_site_name(text: str, publication_name: str) -> bool:
-    if not text:
-        return True
-    t = text.lower().strip()
-    if len(t) < 15:
-        return True
-    if publication_name.lower().split()[0] in t[:50].lower():
-        return True
-    for signal in SITE_NAME_SIGNALS:
-        if signal in t:
-            return True
-    return False
-
-
 def _extract_story(soup: BeautifulSoup, source: dict) -> ScrapedStory:
+    """Extract the top story from a parsed homepage. See module docstring
+    for the priority order — OG meta tags are a last resort, not the first
+    check, because on a homepage they describe the SITE, not the top story."""
+    headline, deckline, lede, article_url = "", "", "", ""
+    lead_container = None
     base_url = source["url"]
     pub_name = source["name"]
 
-    lang_el = soup.find("html")
-    lang = lang_el.get("lang", "en") if lang_el else "en"
-    language_hint = lang[:2].lower() if lang else "en"
-
-    headline, deckline, lede, article_url = "", "", "", ""
-
-    # Strategy 1: Named lead/featured article containers
-    LEAD_SELECTORS = [
-        "article.lead", "article.featured", "article.top-story",
-        "[class*='lead-story']", "[class*='top-story']", "[class*='featured-story']",
-        "[class*='headline--primary']", "[class*='main-story']",
-        "[data-testid='lead']", "[data-testid='top-story']",
-        ".story--featured", ".article--lead",
-    ]
+    # ── 1. Known lead-story container selectors ───────────────────────────
     for sel in LEAD_SELECTORS:
-        container = soup.select_one(sel)
-        if container:
-            h = _extract_headline_from_container(container)
+        candidate = soup.select_one(sel)
+        if candidate:
+            h = ""
+            for tag in ["h1", "h2", "h3"]:
+                el = candidate.find(tag)
+                if el:
+                    h = el.get_text(strip=True)
+                    break
             if h and not _is_site_name(h, pub_name):
+                lead_container = candidate
                 headline = h
-                deckline = _extract_deckline_from_container(container)
-                article_url = _extract_url_from_container(container, base_url)
                 break
 
-    # Strategy 2: First article tag with a substantial headline
-    if not headline:
-        for article in soup.find_all("article")[:10]:
-            h = _extract_headline_from_container(article)
-            if h and not _is_site_name(h, pub_name) and len(h) > 20:
-                headline = h
-                deckline = _extract_deckline_from_container(article)
-                article_url = _extract_url_from_container(article, base_url)
+    # ── 2. First <h1> and its parent container ─────────────────────────────
+    if not lead_container:
+        for h1 in soup.find_all("h1"):
+            text = h1.get_text(strip=True)
+            if text and not _is_site_name(text, pub_name):
+                headline = text
+                lead_container = h1.find_parent(["article", "div", "section"])
                 break
 
-    # Strategy 3: First h1/h2 inside an anchor
+    # ── 3. First <article> tag that contains a heading ─────────────────────
+    if not lead_container and not headline:
+        for art in soup.find_all("article"):
+            heading = art.find(["h1", "h2", "h3"])
+            if heading:
+                text = heading.get_text(strip=True)
+                if len(text) > 15 and not _is_site_name(text, pub_name):
+                    lead_container = art
+                    headline = text
+                    break
+
+    # ── 4. First h1/h2 sitting inside a linked <a> tag ──────────────────────
     if not headline:
         for tag in ["h1", "h2"]:
             for el in soup.find_all(tag)[:15]:
                 text = el.get_text(strip=True)
-                if not text or _is_site_name(text, pub_name) or len(text) < 20:
+                if not text or len(text) < 20 or _is_site_name(text, pub_name):
                     continue
                 a = el.find("a") or el.find_parent("a")
                 if a and a.get("href"):
                     headline = text
                     href = a["href"]
                     article_url = href if href.startswith("http") else urljoin(base_url, href)
-                    parent = el.find_parent(["article", "div", "section", "li"])
-                    if parent:
-                        deckline = _extract_deckline_from_container(parent)
+                    lead_container = el.find_parent(["article", "div", "section", "li"])
                     break
             if headline:
                 break
 
-    # Strategy 4: First substantial linked headline anywhere on page
+    # ── 5. Broadest: first substantial h2/h3 anywhere on the page ──────────
+    if not lead_container and not headline:
+        for tag in soup.find_all(["h2", "h3"]):
+            text = tag.get_text(strip=True)
+            if len(text) > 20 and not _is_site_name(text, pub_name):
+                headline = text
+                lead_container = tag.find_parent(["article", "div", "section"])
+                break
+
+    # ── 6. First substantial linked headline anywhere on the page ──────────
     if not headline:
         for a in soup.find_all("a", href=True)[:50]:
             href = a.get("href", "")
-            if any(x in href for x in ["#", "mailto:", "javascript:", "/tag/", "/category/", "/author/"]):
+            if any(x in href for x in NAV_HREF_SIGNALS):
                 continue
             text = a.get_text(strip=True)
             if len(text) > 30 and not _is_site_name(text, pub_name):
                 headline = text
                 article_url = href if href.startswith("http") else urljoin(base_url, href)
                 break
+
+    # ── Pull deckline / lede / article_url from whatever container we found ─
+    if lead_container:
+        for sel in DECKLINE_SELECTORS:
+            el = lead_container.select_one(sel)
+            if el:
+                text = el.get_text(strip=True)
+                if len(text) > 30:
+                    deckline = text
+                    break
+
+        if not deckline:
+            paras = lead_container.find_all("p")
+            visible = [p.get_text(strip=True) for p in paras
+                       if len(p.get_text(strip=True)) > 60]
+            if visible:
+                deckline = visible[0]
+                if len(visible) > 1:
+                    lede = visible[1]
+
+        if not article_url:
+            a = lead_container.find("a", href=True)
+            if a:
+                href = a["href"]
+                article_url = href if href.startswith("http") else urljoin(base_url, href)
+
+    # ── 7. LAST RESORT: og:title / og:description ───────────────────────────
+    if not headline:
+        og_title = soup.find("meta", property="og:title")
+        if og_title:
+            headline = og_title.get("content", "").strip()
+            logger.warning(
+                f"{source['name']}: no article headline found by structural "
+                f"selectors — falling back to og:title (likely the site name, "
+                f"not the top article)"
+            )
+    if not deckline:
+        og_desc = soup.find("meta", property="og:description")
+        if og_desc:
+            deckline = og_desc.get("content", "").strip()
+    if not article_url:
+        og_url = soup.find("meta", property="og:url")
+        if og_url:
+            article_url = og_url.get("content", "").strip()
+
+    # ── Detect likely non-English content ───────────────────────────────────
+    lang_el = soup.find("html")
+    lang = lang_el.get("lang", "en") if lang_el else "en"
+    language_hint = lang[:2].lower() if lang else "en"
 
     return ScrapedStory(
         source_id=source["id"],
@@ -204,48 +302,22 @@ def _extract_story(soup: BeautifulSoup, source: dict) -> ScrapedStory:
     )
 
 
-def _extract_headline_from_container(container) -> str:
-    for tag in ["h1", "h2", "h3"]:
-        el = container.find(tag)
-        if el:
-            return el.get_text(strip=True)
-    return ""
-
-
-def _extract_deckline_from_container(container) -> str:
-    for sel in ["p.summary", "p.deck", ".standfirst", ".summary",
-                ".description", "p.lead", "[class*='summary']",
-                "[class*='standfirst']", "[class*='deck']"]:
-        el = container.select_one(sel)
-        if el:
-            text = el.get_text(strip=True)
-            if len(text) > 30:
-                return text
-    for p in container.find_all("p"):
-        text = p.get_text(strip=True)
-        if len(text) > 60:
-            return text
-    return ""
-
-
-def _extract_url_from_container(container, base_url: str) -> str:
-    a = container.find("a", href=True)
-    if a:
-        href = a["href"]
-        return href if href.startswith("http") else urljoin(base_url, href)
-    return ""
-
-
 def scrape_baselines(baseline_sources: list[dict]) -> list[ScrapedStory]:
+    """
+    Scrape the baseline sources (NYT, WSJ, WaPo, FT, Guardian).
+    Used to calibrate global news saturation — not included in output.
+    Returns top headlines per source for LLM comparison.
+    """
     results = []
     for source in baseline_sources:
         try:
             resp = requests.get(source["url"], headers=HEADERS, timeout=REQUEST_TIMEOUT)
+            resp.raise_for_status()
             soup = BeautifulSoup(resp.text, "html.parser")
             headlines = []
             for tag in soup.find_all(["h1", "h2", "h3"])[:25]:
                 text = tag.get_text(strip=True)
-                if len(text) > 25 and not _is_site_name(text, source["name"]):
+                if len(text) > 20 and not _is_site_name(text, source["name"]):
                     headlines.append(text)
             results.append(ScrapedStory(
                 source_id=source["id"],

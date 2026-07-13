@@ -9,7 +9,7 @@ import json
 import logging
 from datetime import datetime, timezone
 import requests
-from sources import SOURCES, STATUS_LABELS
+from sources import SOURCES, STATUS_LABELS, BASELINE_SOURCES
 
 logger = logging.getLogger(__name__)
 
@@ -42,6 +42,20 @@ COUNTRY_FLAGS = {
 SOURCE_STATUS = {s["id"]: s["status"] for s in SOURCES}
 
 
+def _source_stats() -> dict:
+    """
+    Compute current monitoring stats directly from sources.py so the
+    newsletter's self-description never goes stale as the source list
+    grows. Counts ALL sources (including the 5 baseline-only ones,
+    since those are genuinely scraped/monitored each run, just excluded
+    from story selection).
+    """
+    total = len(SOURCES)
+    countries = len({s["country"] for s in SOURCES})
+    icij = sum(1 for s in SOURCES if s.get("icij"))
+    return {"total": total, "countries": countries, "icij": icij}
+
+
 def build_post(stories: list[dict], date: datetime = None) -> dict:
     """
     Assemble the full Substack post from curated stories.
@@ -57,11 +71,12 @@ def build_post(stories: list[dict], date: datetime = None) -> dict:
     subtitle = f"What's on the front pages that didn't make your feed. {date_str}."
 
     # Intro
-    source_count = len(stories)
+    story_count = len(stories)
+    stats = _source_stats()
     html_parts = [
-        f'<p><em>Today we monitored front pages from 84 publications across 50+ countries. '
-        f'Here are the {source_count} stories that made the front page somewhere in the world '
-        f'and probably didn\'t make yours.</em></p>',
+        f'<p><em>Today we monitored front pages from {stats["total"]} publications across '
+        f'{stats["countries"]} countries. Here are the {story_count} stories that made the '
+        f'front page somewhere in the world and probably didn\'t make yours.</em></p>',
         '<hr/>',
     ]
 
@@ -95,10 +110,10 @@ def build_post(stories: list[dict], date: datetime = None) -> dict:
 
     # Footer
     html_parts.append(
-        '<p><em>World\'s Front Page monitors 84 publications across 50+ countries daily, '
-        'including 28 ICIJ media partners. Stories are selected for national significance '
-        'and global underreporting. State-affiliated sources are labeled. '
-        'All stories translated to English.</em></p>'
+        f'<p><em>World\'s Front Page monitors {stats["total"]} publications across '
+        f'{stats["countries"]} countries daily, including {stats["icij"]} ICIJ media partners. '
+        f'Stories are selected for national significance and global underreporting. '
+        f'State-affiliated sources are labeled. All stories translated to English.</em></p>'
     )
 
     return {

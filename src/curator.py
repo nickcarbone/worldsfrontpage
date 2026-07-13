@@ -1,5 +1,11 @@
 """
 World's Front Page — LLM Curation Layer
+Uses Claude API to:
+1. Translate non-English content
+2. Score each story for uniqueness (not already globally saturated)
+3. Select the best 10-15 stories
+4. Write a 3-sentence brief per story
+5. Add "why it matters" framing
 """
 
 import os
@@ -7,7 +13,7 @@ import json
 import logging
 from anthropic import Anthropic
 from scraper import ScrapedStory
-from sources import STATUS_LABELS
+from sources import STATUS_LABELS  # noqa: F401 — kept for callers that label by source_id
 
 logger = logging.getLogger(__name__)
 client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
@@ -17,6 +23,10 @@ MIN_STORIES = 8
 
 
 def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory]) -> list[dict]:
+    """
+    Full curation pipeline.
+    Returns list of ready-to-publish story dicts.
+    """
     valid = [s for s in stories if s.headline and not s.scrape_error]
     empty_headline = [s for s in stories if not s.headline and not s.scrape_error]
     errored = [s for s in stories if s.scrape_error]
@@ -33,7 +43,7 @@ def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory]) -> list[d
             logger.error(f"  {s.publication}: headline='{s.headline[:60] if s.headline else ''}' error='{s.scrape_error or ''}'")
         raise ValueError("No valid stories scraped — aborting.")
 
-    logger.info(f"Sample valid headlines:")
+    logger.info("Sample valid headlines:")
     for s in valid[:5]:
         logger.info(f"  [{s.publication}] {s.headline[:80]}")
 
@@ -55,6 +65,7 @@ def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory]) -> list[d
 
 
 def _build_baseline_context(baselines: list[ScrapedStory]) -> str:
+    """Summarize baseline headlines into a global news context string."""
     lines = []
     for b in baselines:
         if b.headline:
@@ -63,6 +74,7 @@ def _build_baseline_context(baselines: list[ScrapedStory]) -> str:
 
 
 def _translate_batch(stories: list[ScrapedStory]) -> list[ScrapedStory]:
+    """Translate non-English stories in a single batched API call."""
     to_translate = [s for s in stories if s.language_hint not in ("en",)]
     if not to_translate:
         logger.info("No translation needed — all stories in English")
@@ -111,6 +123,10 @@ Items to translate:
 
 
 def _select_stories(stories: list[ScrapedStory], baseline_text: str) -> list[ScrapedStory]:
+    """
+    Ask Claude to select the 10-15 most unique, globally underreported stories.
+    Returns selected stories in priority order.
+    """
     story_list = []
     for i, s in enumerate(stories):
         story_list.append({
@@ -122,27 +138,29 @@ def _select_stories(stories: list[ScrapedStory], baseline_text: str) -> list[Scr
             "deckline": s.deckline[:300],
         })
 
-    prompt = f"""You are the senior editor of "World's Front Page," a daily newsletter surfacing front-page stories from around the world that haven't broken into global news feeds yet.
+    prompt = f"""You are the senior editor of "World's Front Page," a daily newsletter that surfaces front-page stories from around the world that haven't broken into global news feeds yet.
 
 TODAY'S GLOBAL NEWS BASELINE (what readers already know):
 {baseline_text}
 
 YOUR TASK:
-Review the front-page stories below. Select {MIN_STORIES}-{MAX_STORIES} stories meeting these criteria:
-1. UNIQUE — not already in the global baseline above
-2. NATIONALLY SIGNIFICANT — front page means editors deemed it important
-3. GLOBALLY RELEVANT — implications beyond its own borders
-4. VARIED — no two stories from the same country
-5. SUBSTANTIVE — politics, economics, security, environment, justice
+Review the front-page stories below from {len(stories)} publications worldwide.
+Select {MIN_STORIES}–{MAX_STORIES} stories that best meet ALL of these criteria:
 
-If a state media organ (People's Daily, Granma, Global Times) leads with something revealing about that government's priorities, select it.
+1. UNIQUE — Not already covered in the global baseline above
+2. NATIONALLY SIGNIFICANT — Clearly a major story in its home country (front page = editors deemed it the day's most important story)
+3. GLOBALLY RELEVANT — Has implications beyond its own borders, or reveals something meaningful about that country/region that the world should know
+4. VARIED — No two stories from the same country; aim for geographic spread across regions
+5. SUBSTANTIVE — Politics, economics, security, environment, justice, social upheaval. Not sports or celebrity unless it has genuine geopolitical/social weight.
+
+ALSO: If the front page of a state media organ (like People's Daily, Granma, Global Times) leads with something unusual or telling about that government's current priorities or anxieties, that itself IS the story — select it.
 
 IMPORTANT: You must select at least {MIN_STORIES} stories. If stories seem globally known, select the most locally unique ones anyway — our readers want to see what's front page in each country regardless.
 
-Return ONLY this JSON, nothing else:
-{{"selected": [0, 5, 12, 3, 8, 15, 22, 7]}}
+Return ONLY a JSON array of selected story indices in priority order (most important first):
+{{"selected": [3, 12, 7, ...]}}
 
-Stories:
+Stories to evaluate:
 {json.dumps(story_list, ensure_ascii=False, indent=2)}"""
 
     try:
@@ -152,9 +170,9 @@ Stories:
             messages=[{"role": "user", "content": prompt}],
         )
         raw = resp.content[0].text.strip()
-        logger.info(f"Selection API response: {raw[:200]}")
         if raw.startswith("```"):
             raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
+        logger.info(f"Selection API response: {raw[:200]}")
         result = json.loads(raw)
         indices = result.get("selected", [])[:MAX_STORIES]
         logger.info(f"LLM selected indices: {indices}")
@@ -162,11 +180,12 @@ Stories:
         logger.info(f"Selected {len(selected)} stories")
         return selected
     except Exception as e:
-        logger.warning(f"Selection failed: {e} — falling back to first {MAX_STORIES} stories")
+        logger.warning(f"Selection failed: {e} — falling back to first {MAX_STORIES} valid stories")
         return stories[:MAX_STORIES]
 
 
 def _write_briefs(stories: list[ScrapedStory]) -> list[dict]:
+    """Write a punchy brief for each selected story."""
     results = []
     for s in stories:
         try:
@@ -183,25 +202,27 @@ def _write_briefs(stories: list[ScrapedStory]) -> list[dict]:
                 "original_headline": s.headline,
                 "brief": f"{s.headline}. {s.deckline}".strip(),
                 "why_it_matters": "",
-                "status_label": "",
             })
     return results
 
 
 def _write_single_brief(s: ScrapedStory) -> dict:
-    prompt = f"""You are writing for "World's Front Page," a daily newsletter for globally curious American readers.
+    """Write a 3-sentence brief + why-it-matters for a single story.
+    Note: the Substack-facing status label (state organ / exile / etc.) is
+    resolved in publisher.py from sources.py by source_id — not here."""
+    prompt = f"""You are writing for "World's Front Page," a daily newsletter for smart, globally curious American readers who want to know what's front-page news in other countries — stories they probably haven't seen yet.
 
-STORY:
+STORY SOURCE:
 - Publication: {s.publication} ({s.country})
 - Headline: {s.headline}
-- Summary: {s.deckline}
-- Context: {s.lede}
+- Deckline/summary: {s.deckline}
+- Additional context: {s.lede}
 
-Write:
-1. BRIEF (3 sentences max): What happened, key facts, who's involved, what's at stake. Direct and specific. No hedging.
-2. WHY IT MATTERS (1 sentence): Who beyond {s.country} should care and why. Name the concrete stakes.
+WRITE:
+1. A BRIEF (3 sentences max): What happened. Key facts. Who's involved and what's at stake. Be specific and direct — this is a briefing, not a feature. No fluff, no hedging.
+2. A WHY IT MATTERS line (1 sentence): Who beyond {s.country}'s borders should care about this and why. Be concrete — name the geopolitical, economic, or humanitarian stakes.
 
-Tone: Senior foreign correspondent's cable. No "in a significant development." Just the news.
+TONE: Authoritative. Clear. Like a senior foreign correspondent's one-paragraph cable. No "in a significant development" or "according to reports." Just the news.
 
 Return ONLY this JSON, nothing else:
 {{
@@ -228,5 +249,4 @@ Return ONLY this JSON, nothing else:
         "original_headline": s.headline,
         "brief": result.get("brief", ""),
         "why_it_matters": result.get("why_it_matters", ""),
-        "status_label": "",
     }
