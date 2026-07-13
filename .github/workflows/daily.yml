@@ -20,14 +20,16 @@ permissions:
   issues: write     # open an issue when the pipeline fails
 
 jobs:
-  run-pipeline:
+  # Scrape, curate, and assemble. No Cloudflare exposure here — front-page
+  # sites don't care about the runner's IP — so this stays on GitHub's free,
+  # disposable runners exactly as before.
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    outputs:
+      dry_run: ${{ github.event.inputs.dry_run }}
     env:
-      # main.py imports from sources.py / scraper.py / curator.py / publisher.py
-      # as top-level modules, so src/ must be on the path.
       PYTHONPATH: ${{ github.workspace }}/src
-
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
@@ -42,29 +44,23 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
-      - name: Run pipeline
+      - name: Scrape, curate, and assemble
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          SUBSTACK_COOKIE: ${{ secrets.SUBSTACK_COOKIE }}
         run: |
           if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
             python main.py --dry-run
           else
-            python main.py
+            python main.py --build
           fi
 
-      # history.json is the curator's 7-day "recently covered" memory.
-      # Actions checkouts are ephemeral, so it must be committed back to the
-      # repo to survive between runs. Only updated on real (non-dry-run)
-      # publishes — main.py doesn't write it otherwise.
-      - name: Persist coverage history
-        if: success() && github.event.inputs.dry_run != 'true'
-        run: |
-          git config user.name "wfp-pipeline"
-          git config user.email "actions@users.noreply.github.com"
-          git pull --rebase --autostash origin ${{ github.ref_name }}
-          git add history.json
-          git diff --cached --quiet || (git commit -m "chore: coverage history $(date -u +%F)" && git push)
+      - name: Upload pending post for publish job
+        if: github.event.inputs.dry_run != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pending-post
+          path: logs/pending_post.json
+          retention-days: 1
 
       - name: Upload logs
         if: always()
@@ -74,11 +70,60 @@ jobs:
           path: logs/
           retention-days: 14
 
-      # If the 4am run dies, don't find out by absence — open an issue.
-      # The assembled HTML (if the run got that far) is in the logs artifact,
-      # so a Substack API failure costs a copy-paste, not the edition.
+  # Posts the assembled edition using a real, already-authenticated Chromium
+  # session — see publish_to_substack.py. Must run from this self-hosted
+  # runner (residential IP + genuine browser fingerprint); GitHub-hosted
+  # runners get blocked by Cloudflare regardless of cookie validity
+  # (confirmed 2026-07-13). Requires SUBSTACK_PUBLISHER label to be set on
+  # the runner when registering it, so this job can never accidentally land
+  # on a stranger's runner.
+  publish:
+    needs: build
+    if: needs.build.outputs.dry_run != 'true'
+    runs-on: [self-hosted, macOS, wfp-publisher]
+    timeout-minutes: 10
+    env:
+      PYTHONPATH: ${{ github.workspace }}/src
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+
+      - name: Download pending post
+        uses: actions/download-artifact@v4
+        with:
+          name: pending-post
+          path: logs/
+
+      - name: Post to Substack via browser session
+        run: |
+          python main.py --publish logs/pending_post.json
+
+      # history.json is the curator's 7-day "recently covered" memory.
+      # Only updated here, after a real successful post — main.py --publish
+      # only calls update_history() on success.
+      - name: Persist coverage history
+        if: success()
+        run: |
+          git config user.name "wfp-pipeline"
+          git config user.email "actions@users.noreply.github.com"
+          git pull --rebase --autostash origin ${{ github.ref_name }}
+          git add history.json
+          git diff --cached --quiet || (git commit -m "chore: coverage history $(date -u +%F)" && git push)
+
+  # Separate job so a build-only failure and a publish-only failure both
+  # reliably reach this step (a job-level `if: failure()` on build or
+  # publish alone would miss failures in the other job).
+  notify-failure:
+    needs: [build, publish]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
       - name: Open issue on failure
-        if: failure()
         uses: actions/github-script@v7
         with:
           script: |
@@ -93,9 +138,12 @@ jobs:
                 ``,
                 `**Run:** ${runUrl}`,
                 ``,
-                `If the run reached step 4, the assembled edition (JSON + paste-ready HTML) is in the \`pipeline-logs-${context.runId}\` artifact — the issue is recoverable manually.`,
+                `Check which job failed: `,
+                `- **build** (GitHub-hosted): scraping/curation issue — see the pipeline-logs artifact.`,
+                `- **publish** (self-hosted Mac): the machine may be offline, or the saved Substack session `,
+                `  may be stale — re-run \`capture_substack_session.py\` on that machine if so.`,
                 ``,
-                `If this failed at the Substack post step, check the logs for which of two messages it logged: an expired/invalid cookie (refresh SUBSTACK_COOKIE) vs. a Cloudflare-looking block (the runner's IP is being blocked outright, and the cookie fix alone won't clear that).`,
+                `If build succeeded, the assembled edition is in the \`pending-post\` artifact and recoverable manually.`,
               ].join('\n'),
               labels: ['pipeline-failure'],
             });
