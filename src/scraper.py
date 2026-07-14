@@ -107,6 +107,48 @@ SITE_NAME_SIGNALS = [
     "all the news", "your source for", "stay informed",
 ]
 
+# Promotional/boilerplate phrases — newsletter signups, app-download
+# prompts, social-follow CTAs. These are real homepage content, but never
+# the actual lead story, so they get the same treatment as site-name
+# rejection: reject this candidate, let extraction try the next tier.
+PROMO_SIGNALS = [
+    "newsletter", "subscribe", "sign up", "sign-up", "daily digest",
+    "morning briefing", "download our app", "download the app",
+    "get the app", "app store", "google play", "follow us on",
+    "delivers the latest", "delivered to your inbox",
+]
+
+# Wire-service attribution markers. World's Front Page exists to surface
+# what a country's OWN newsroom chose to invest reporting resources in — a
+# story that's really AP/Reuters/AFP/Bloomberg copy republished under a
+# local masthead defeats that premise even though it appears on a genuine
+# front page. Checked twice downstream in curator.py: once cheaply against
+# headline/deckline teaser text pre-selection, and again post-selection
+# against the fetched article body, since dateline attribution often only
+# shows up in full article text, not the homepage teaser.
+# Known limitation: this is a Latin-script regex, so it will under-detect
+# wire content on non-Latin-script front pages where the agency name is
+# transliterated rather than kept in Roman characters (curator.py runs a
+# second pass after translation to partially cover that gap).
+WIRE_SERVICE_PATTERNS = [
+    r"\(reuters\)", r"\breuters\b",
+    r"\(ap\)", r"\bassociated press\b",
+    r"\(afp\)", r"\bagence france-presse\b", r"\bafp\b",
+    r"\(bloomberg\)", r"\bbloomberg\b",
+    r"\bdpa\b", r"\bdeutsche presse-agentur\b",
+    r"\befe\b",
+]
+_WIRE_RE = re.compile("|".join(WIRE_SERVICE_PATTERNS), re.IGNORECASE)
+
+
+def detect_wire_service(*texts: str) -> bool:
+    """True if any wire-service attribution marker appears in the given
+    text(s). Known false-positive risk: a story genuinely ABOUT one of
+    these agencies as a subject (not sourced from it) would also match —
+    rare enough in front-page news to accept the tradeoff."""
+    combined = " ".join(t for t in texts if t)
+    return bool(_WIRE_RE.search(combined))
+
 # Link patterns that indicate navigation, not an article
 NAV_HREF_SIGNALS = ["#", "mailto:", "javascript:", "/tag/", "/category/", "/author/"]
 
@@ -143,12 +185,19 @@ class ScrapedStory:
     lede: str = ""
     article_url: str = ""
     language_hint: str = "en"
+    wire_service: bool = False    # best-effort flag set at scrape time; curator.py
+                                   # re-checks this at multiple later stages since
+                                   # translation can surface attribution this
+                                   # regex couldn't see in the original script
     scrape_error: Optional[str] = None
     candidates: list = field(default_factory=list)  # list[Candidate], primary first
 
 
 def _is_site_name(text: str, publication_name: str) -> bool:
-    """Reject candidate headlines that are actually masthead/nav text."""
+    """Reject candidate headlines that are actually masthead/nav text, or
+    promotional boilerplate (newsletter signups, app-download prompts,
+    etc.) — neither is ever the actual lead story, and both get the same
+    treatment: reject this candidate, let extraction try the next tier."""
     if not text:
         return True
     t = text.lower().strip()
@@ -156,7 +205,9 @@ def _is_site_name(text: str, publication_name: str) -> bool:
         return True
     if publication_name and publication_name.lower().split()[0] in t[:50]:
         return True
-    return any(signal in t for signal in SITE_NAME_SIGNALS)
+    if any(signal in t for signal in SITE_NAME_SIGNALS):
+        return True
+    return any(signal in t for signal in PROMO_SIGNALS)
 
 
 def _error_story(source: dict, error: str) -> ScrapedStory:
@@ -457,6 +508,7 @@ def _extract_story(soup: BeautifulSoup, source: dict) -> ScrapedStory:
         lede=lede[:800] if lede else "",
         article_url=article_url,
         language_hint=language_hint,
+        wire_service=detect_wire_service(headline, deckline, lede),
         candidates=candidates,
     )
 

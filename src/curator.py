@@ -1,57 +1,108 @@
 """
 World's Front Page — LLM Curation Layer
+Uses Claude API to:
+1. Filter out wire-service-sourced and syndicated/duplicated stories
+2. Translate non-English content
+3. Screen for sufficient concrete information to brief on
+4. Rank a buffer of candidate stories for uniqueness/significance
+5. Write a 3-sentence brief per story, walking the ranked buffer until
+   enough good ones are written
+6. Add "why it matters" framing
 
-Model split (v2):
-  - SELECTION runs on Sonnet. It's one call per day and it's the editorial
-    judgment that defines the entire issue — not the place to economize.
-  - Translation and brief-writing (mechanical, high-volume) stay on Haiku.
-
-Grounding (v2):
-  - After selection, each story's article page is fetched and the brief is
-    written from actual source text with explicit only-stated-facts rules.
-    Briefs written from a headline + truncated deckline with instructions
-    to "be specific" were a hallucination machine.
-
-Memory (v2):
-  - The selection prompt receives the last 7 days of published stories so
-    a slow-burn story doesn't lead the newsletter three days straight.
-
-Candidates (v2):
-  - Each source now supplies up to 5 candidate headlines. The model picks
-    both the source AND the candidate, recovering from scraper mistakes
-    and reaching past the mechanical "first headline found."
+v2 additions (2026-07-13) — in response to four recurring failure modes
+seen in production output:
+  - MODEL SPLIT RESTORED: selection now runs on Sonnet (SELECTION_MODEL),
+    not Haiku. Selection is the single hardest reasoning task in the
+    pipeline — holding ~150 candidates and a baseline/history context in
+    view and making nuanced global-saturation judgments — and running it
+    on Haiku was an intentional cost-saving call made at some point during
+    the rewrite. Checked current API pricing: Sonnet's introductory rate is
+    roughly 2x Haiku's, and this is a single daily call over ~25-30k input
+    tokens — a few cents/day difference, not worth the quality tradeoff.
+  - WIRE-SERVICE EXCLUSION: this newsletter exists to show off local
+    reportage outlets actually commit resources to, not AP/Reuters/AFP/
+    Bloomberg copy republished under a local masthead. Filtered in two
+    passes (pre- and post-translation) via scraper.detect_wire_service(),
+    plus a third pass after article-text fetch, right before brief-writing,
+    since dateline attribution often only appears in full article text.
+  - SYNDICATION CLUSTERING: cheap lexical (Jaccard word-overlap) clustering
+    across all candidate headlines. A cluster of near-identical headlines
+    across several countries is a strong signal of blanket global coverage
+    (or wire copy the regex missed) — clusters at or above CLUSTER_CUTOFF
+    are dropped entirely, independent of the baseline-comparison check.
+  - SUFFICIENCY SCREENING: a batched pre-selection call asks whether each
+    story has enough concrete information to support a real brief, so
+    stories that are just a bare decree number or a publication's own
+    self-description get dropped before a slot is spent on them, instead
+    of surfacing as an unreadable brief downstream.
+  - BUFFER-BASED SELECTION: _select_stories now returns a ranked buffer of
+    up to SELECTION_BUFFER candidates (not a fixed 10-15). The brief-writing
+    step walks that buffer, skipping anything that turns out insufficient,
+    wire-sourced, or a model refusal on closer inspection, stopping at
+    MAX_STORIES good briefs or an exhausted buffer. There is deliberately
+    no hard floor — a thin news day produces fewer, better stories rather
+    than the same count padded with filler.
+  - RECENT-COVERAGE AWARENESS: curate() now actually accepts and uses the
+    `recent_coverage` argument main.py has been passing in — the two were
+    out of sync (main.py already called curate(..., recent_coverage=...)
+    against a curate() that didn't accept the kwarg, which would have
+    raised TypeError on the next real run regardless of anything else here).
+    History is now folded into the selection prompt alongside the baseline,
+    so a slow-burn story is less likely to repeat on consecutive days.
+  - REFUSAL-TEXT LEAK FIX: previously, if the brief-writing model returned
+    syntactically valid JSON containing a refusal sentence in the "brief"
+    field (e.g. "I cannot write this brief — the article text is
+    unavailable..."), no exception fired and that refusal text got
+    published verbatim as if it were real copy. Fixed two ways: (1) the
+    brief prompt now has an explicit insufficient-information escape hatch
+    that returns {"insufficient": true} instead of prose, and (2) a regex
+    safety net scans returned brief/why-it-matters text for refusal
+    language as a backstop for whichever model doesn't reliably follow (1).
 """
 
-from __future__ import annotations  # lets `list[dict] | None` etc. run on Python < 3.10
-
 import os
+import re
 import json
 import logging
 from anthropic import Anthropic
-from scraper import ScrapedStory, Candidate, fetch_article_text
-from sources import SOURCES, STATUS_LABELS  # noqa: F401 — STATUS_LABELS kept for callers
+from scraper import ScrapedStory, fetch_article_text, detect_wire_service
+from sources import STATUS_LABELS  # noqa: F401 — kept for callers that label by source_id
+from publisher import HISTORY_DAYS
 
 logger = logging.getLogger(__name__)
 client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
-MODEL_FAST = "claude-haiku-4-5-20251001"   # translation + briefs
-MODEL_SELECT = "claude-sonnet-4-6"          # story selection — the editorial call
-MAX_STORIES = 15
-MIN_STORIES = 8
-TRANSLATE_CHUNK_SIZE = 20                   # items per translation call — one big
-                                            # call blew past max_tokens, truncated
-                                            # the JSON, and silently fell back to
-                                            # untranslated originals
+MODEL = "claude-haiku-4-5-20251001"       # translation, sufficiency screening, briefs
+SELECTION_MODEL = "claude-sonnet-5"       # selection only — the hardest reasoning task here
 
-_SOURCE_STATUS = {s["id"]: s["status"] for s in SOURCES}
+MAX_STORIES = 15          # target number of briefs to actually write
+MIN_STORIES = 8           # soft guidance only, logged if missed — NOT enforced, see docstring
+SELECTION_BUFFER = 25     # ranked candidates returned by selection, walked by brief-writing
+
+CLUSTER_SIMILARITY_THRESHOLD = 0.5   # Jaccard word-overlap to count as "same story"
+CLUSTER_SIZE_CUTOFF = 4              # cluster this size or larger gets dropped entirely
+# Both of the above are provisional starting values, not tuned against real
+# output yet — worth revisiting once a couple weeks of cluster logs exist.
+
+_STOPWORDS = {
+    "the", "a", "an", "of", "to", "in", "on", "for", "and", "or", "with",
+    "at", "by", "from", "is", "as", "after", "over", "amid", "into", "its",
+    "it", "his", "her", "their", "this", "that", "will", "has", "have",
+}
+
+REFUSAL_MARKERS = [
+    "i cannot", "i can't", "unable to", "cannot write", "cannot provide",
+    "does not contain", "do not contain", "not contain specific news",
+    "insufficient information", "no article text", "text is unavailable",
+    "unable to provide", "cannot accurately", "only a headline",
+    "not contain enough", "lacks enough",
+]
 
 
 def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory],
-           recent_coverage: list[dict] | None = None) -> list[dict]:
+           recent_coverage: list[dict] = None) -> list[dict]:
     """
     Full curation pipeline.
-    recent_coverage: list of {date, country, publication, headline} dicts
-    from the last 7 days of published editions (see publisher.load_history).
     Returns list of ready-to-publish story dicts.
     """
     valid = [s for s in stories if s.headline and not s.scrape_error]
@@ -74,28 +125,49 @@ def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory],
     for s in valid[:5]:
         logger.info(f"  [{s.publication}] {s.headline[:80]}")
 
+    # ── Wire-service exclusion, pass 1 (original-language teaser text) ─────
+    valid = _filter_wire_service(valid, stage="pre-translation")
+    if not valid:
+        raise ValueError("All valid stories were wire-service-sourced — aborting.")
+
     baseline_text = _build_baseline_context(baselines)
     logger.info(f"Baseline context built from {len(baselines)} sources")
-
-    recent_text = _build_recent_context(recent_coverage or [])
+    history_text = _build_history_context(recent_coverage or [])
+    logger.info(f"History context built from {len(recent_coverage or [])} recent entries")
 
     valid = _translate_batch(valid)
-    selected = _select_stories(valid, baseline_text, recent_text)
 
-    if not selected:
-        logger.warning("LLM returned empty selection — falling back to first valid stories (country-deduped)")
-        selected = _dedupe_by_country(valid)[:MAX_STORIES]
+    # ── Wire-service exclusion, pass 2 (post-translation) ──────────────────
+    # Catches attribution only legible after translation — e.g. a
+    # transliterated or non-Latin-script mention of a wire service.
+    valid = _filter_wire_service(valid, stage="post-translation")
+    if not valid:
+        raise ValueError("All translated stories were wire-service-sourced — aborting.")
 
-    logger.info(f"Writing briefs for {len(selected)} stories...")
-    briefed = _write_briefs(selected)
-    logger.info(f"Briefs written: {len(briefed)}")
+    # ── Cross-source syndication clustering ─────────────────────────────────
+    valid = _cluster_and_filter_syndicated(valid)
+    if not valid:
+        raise ValueError("All stories were dropped as syndicated/duplicated — aborting.")
+
+    # ── Sufficiency screen ───────────────────────────────────────────────────
+    valid = _screen_sufficiency(valid)
+    if not valid:
+        raise ValueError("No stories survived the sufficiency screen — aborting.")
+
+    ranked = _select_stories(valid, baseline_text, history_text)
+    if not ranked:
+        logger.warning("LLM returned empty selection — falling back to first candidates")
+        ranked = valid[:SELECTION_BUFFER]
+
+    logger.info(f"Writing briefs from a ranked buffer of {len(ranked)} candidates (target {MAX_STORIES})...")
+    briefed = _write_briefs(ranked, target=MAX_STORIES)
+    logger.info(f"Briefs written: {len(briefed)} (target {MAX_STORIES}, usual guidance floor {MIN_STORIES})")
+    if len(briefed) < MIN_STORIES:
+        logger.info(f"Below the usual {MIN_STORIES}-story guidance today — "
+                    f"publishing {len(briefed)} rather than padding with weak stories.")
 
     return briefed
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Context builders
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _build_baseline_context(baselines: list[ScrapedStory]) -> str:
     """Summarize baseline headlines into a global news context string."""
@@ -106,273 +178,366 @@ def _build_baseline_context(baselines: list[ScrapedStory]) -> str:
     return "\n".join(lines)
 
 
-def _build_recent_context(recent: list[dict]) -> str:
-    """Format the last 7 days of published stories for the selection prompt."""
-    if not recent:
-        return "None — no recent editions on record."
-    lines = []
-    for h in recent[-120:]:  # hard cap; ~15 stories/day * 7 days
-        lines.append(f"- {h.get('date', '?')} [{h.get('country', '?')}] {h.get('headline', '')[:120]}")
+def _build_history_context(recent_coverage: list[dict]) -> str:
+    """Summarize the last several days of published stories so the
+    selection model can avoid re-running the same underlying story on
+    consecutive days. Entries come from publisher.load_history()."""
+    if not recent_coverage:
+        return "(no recent coverage history available)"
+    lines = [
+        f"- [{h.get('date', '')}] {h.get('country', '')} — {h.get('publication', '')}: {h.get('headline', '')}"
+        for h in recent_coverage
+    ]
     return "\n".join(lines)
 
 
-def _candidates_of(s: ScrapedStory) -> list[Candidate]:
-    """Candidate list, synthesizing one from the primary fields if the
-    scraper predates multi-candidate extraction or found only the og fallback."""
-    if s.candidates:
-        return s.candidates
-    return [Candidate(headline=s.headline, deckline=s.deckline, article_url=s.article_url)]
+# ─────────────────────────────────────────────────────────────────────────────
+# Wire-service exclusion
+# ─────────────────────────────────────────────────────────────────────────────
 
-
-def _dedupe_by_country(stories: list[ScrapedStory]) -> list[ScrapedStory]:
-    seen, out = set(), []
+def _filter_wire_service(stories: list[ScrapedStory], stage: str = "") -> list[ScrapedStory]:
+    """Drop any story whose current headline/deckline/lede text carries a
+    wire-service attribution marker. Recomputed fresh at each call (rather
+    than trusting the wire_service flag set once at scrape time) since
+    translation changes the text being checked."""
+    kept, dropped = [], []
     for s in stories:
-        if s.country not in seen:
-            seen.add(s.country)
-            out.append(s)
-    return out
-
-
-def _parse_json_response(raw: str):
-    raw = raw.strip()
-    if raw.startswith("```"):
-        raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
-    return json.loads(raw)
+        if detect_wire_service(s.headline, s.deckline, s.lede):
+            dropped.append(s)
+        else:
+            kept.append(s)
+    if dropped:
+        label = f" ({stage})" if stage else ""
+        logger.info(f"Dropped {len(dropped)} wire-service-sourced stories{label}: "
+                    f"{[d.publication for d in dropped]}")
+    return kept
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Translation (Haiku, chunked)
+# Cross-source syndication clustering
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _tokenize(text: str) -> set:
+    words = re.findall(r"[a-z0-9']+", text.lower())
+    return {w for w in words if w not in _STOPWORDS and len(w) > 2}
+
+
+def _jaccard(a: set, b: set) -> float:
+    if not a or not b:
+        return 0.0
+    union = len(a | b)
+    return len(a & b) / union if union else 0.0
+
+
+def _cluster_and_filter_syndicated(
+    stories: list[ScrapedStory],
+    threshold: float = CLUSTER_SIMILARITY_THRESHOLD,
+    cutoff: int = CLUSTER_SIZE_CUTOFF,
+) -> list[ScrapedStory]:
+    """
+    Group stories whose (translated) headlines are near-duplicates by word
+    overlap — a strong signal of shared wire copy the regex filter missed,
+    or a globally saturated event independently picked up across many
+    front pages. Any cluster at or above `cutoff` size is dropped in full.
+    Pure lexical/local computation — no API cost.
+    """
+    n = len(stories)
+    token_sets = [_tokenize(s.headline) for s in stories]
+    parent = list(range(n))
+
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    def union(i, j):
+        ri, rj = find(i), find(j)
+        if ri != rj:
+            parent[ri] = rj
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            if _jaccard(token_sets[i], token_sets[j]) >= threshold:
+                union(i, j)
+
+    clusters: dict = {}
+    for i in range(n):
+        clusters.setdefault(find(i), []).append(i)
+
+    dropped_indices = set()
+    for root, members in clusters.items():
+        if len(members) >= cutoff:
+            dropped_indices.update(members)
+            names = [stories[i].publication for i in members]
+            logger.info(f"Dropped syndication cluster of {len(members)} near-duplicate "
+                        f"headlines (likely the same underlying story across outlets): {names}")
+
+    return [s for i, s in enumerate(stories) if i not in dropped_indices]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Translation
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _translate_batch(stories: list[ScrapedStory]) -> list[ScrapedStory]:
-    """Translate non-English stories in chunked API calls. Also translates
-    alternate candidate headlines so selection sees them in English."""
+    """Translate non-English stories in a single batched API call."""
     to_translate = [s for s in stories if s.language_hint not in ("en",)]
     if not to_translate:
         logger.info("No translation needed — all stories in English")
         return stories
 
-    logger.info(f"Translating {len(to_translate)} non-English stories "
-                f"in chunks of {TRANSLATE_CHUNK_SIZE}...")
+    logger.info(f"Translating {len(to_translate)} non-English stories...")
 
-    translated_count = 0
-    for start in range(0, len(to_translate), TRANSLATE_CHUNK_SIZE):
-        chunk = to_translate[start:start + TRANSLATE_CHUNK_SIZE]
-        items = []
-        for i, s in enumerate(chunk):
-            cands = _candidates_of(s)
-            items.append({
-                "index": i,
-                "language": s.language_hint,
-                "headline": s.headline,
-                "deckline": s.deckline,
-                "alt_headlines": [c.headline for c in cands[1:]],
-            })
+    items = []
+    for i, s in enumerate(to_translate):
+        items.append({
+            "index": i,
+            "source_id": s.source_id,
+            "language": s.language_hint,
+            "headline": s.headline,
+            "deckline": s.deckline,
+        })
 
-        prompt = f"""You are a professional news translator. Translate each item to English.
+    prompt = f"""You are a professional news translator. Translate each item to English.
 Preserve journalistic tone and meaning precisely. Do not summarize or editorialize.
-Return ONLY a JSON array with objects:
-{{"index": N, "headline": "...", "deckline": "...", "alt_headlines": ["...", ...]}}
-Keep alt_headlines in the same order and length as given. No preamble, no explanation, just the JSON array.
+Return ONLY a JSON array with objects: {{"index": N, "headline": "...", "deckline": "..."}}
+No preamble, no explanation, just the JSON array.
 
 Items to translate:
 {json.dumps(items, ensure_ascii=False, indent=2)}"""
 
-        try:
-            resp = client.messages.create(
-                model=MODEL_FAST,
-                max_tokens=8000,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            translations = _parse_json_response(resp.content[0].text)
-            trans_map = {t["index"]: t for t in translations}
-            for i, s in enumerate(chunk):
-                t = trans_map.get(i)
-                if not t:
-                    continue
-                s.headline = t.get("headline", s.headline)
-                s.deckline = t.get("deckline", s.deckline)
-                cands = _candidates_of(s)
-                if s.candidates:
-                    cands[0].headline = s.headline
-                    cands[0].deckline = s.deckline
-                    alts = t.get("alt_headlines", [])
-                    for c, alt in zip(cands[1:], alts):
-                        if alt:
-                            c.headline = alt
-                translated_count += 1
-        except Exception as e:
-            logger.warning(f"Translation chunk {start}-{start + len(chunk)} failed: {e} — "
-                           f"using originals for that chunk")
+    try:
+        resp = client.messages.create(
+            model=MODEL,
+            max_tokens=4000,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        raw = resp.content[0].text.strip()
+        if raw.startswith("```"):
+            raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
+        translations = json.loads(raw)
+        trans_map = {t["index"]: t for t in translations}
+        for i, s in enumerate(to_translate):
+            if i in trans_map:
+                s.headline = trans_map[i].get("headline", s.headline)
+                s.deckline = trans_map[i].get("deckline", s.deckline)
+        logger.info(f"Translation complete for {len(translations)} items")
+    except Exception as e:
+        logger.warning(f"Translation failed: {e} — using originals")
 
-    logger.info(f"Translation complete for {translated_count}/{len(to_translate)} stories")
     return stories
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Selection (Sonnet)
+# Sufficiency screening
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _select_stories(stories: list[ScrapedStory], baseline_text: str,
-                    recent_text: str) -> list[ScrapedStory]:
+def _screen_sufficiency(stories: list[ScrapedStory]) -> list[ScrapedStory]:
     """
-    Ask Sonnet to select the 8-15 most unique, globally underreported
-    stories — choosing both the source and WHICH candidate headline is the
-    real story. Returns selected stories in priority order, with the chosen
-    candidate promoted onto the story object.
+    Batched pre-selection check: does each story carry enough concrete
+    information (who/what/when/where, or at least a clear specific event)
+    to support a factual, comprehensible brief for a reader with zero
+    context? Filters out thin extractions and self-referential publication
+    blurbs before a selection slot gets spent on them.
+    """
+    items = []
+    for i, s in enumerate(stories):
+        items.append({
+            "index": i,
+            "headline": s.headline,
+            "deckline": s.deckline[:300],
+            "lede": s.lede[:300],
+        })
+
+    prompt = f"""You are screening candidate news items for a daily international briefing aimed at readers with zero prior context on any of these stories.
+
+For each item, decide if there is ENOUGH concrete information to write a factual 3-sentence brief: a real, explainable event, decision, or development — not just a bare policy/decree number with no explanation of what it does, and not a publication's own self-description (e.g. promoting its newsletter or describing its coverage areas).
+
+Mark "sufficient": false for anything too vague, fragmentary, or self-referential to explain.
+Mark "sufficient": true only when there's a real news event a reader could understand from this alone.
+
+Return ONLY a JSON array: [{{"index": N, "sufficient": true/false}}, ...]
+No preamble, no explanation, just the JSON array.
+
+Items:
+{json.dumps(items, ensure_ascii=False, indent=2)}"""
+
+    try:
+        resp = client.messages.create(
+            model=MODEL,
+            max_tokens=3000,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        raw = resp.content[0].text.strip()
+        if raw.startswith("```"):
+            raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
+        verdicts = json.loads(raw)
+        sufficient_idx = {v["index"] for v in verdicts if v.get("sufficient")}
+        kept = [s for i, s in enumerate(stories) if i in sufficient_idx]
+        dropped_count = len(stories) - len(kept)
+        if dropped_count:
+            dropped_names = [s.publication for i, s in enumerate(stories) if i not in sufficient_idx]
+            logger.info(f"Sufficiency screen dropped {dropped_count} thin/promo stories: {dropped_names}")
+        return kept
+    except Exception as e:
+        logger.warning(f"Sufficiency screening failed: {e} — skipping screen, passing all through")
+        return stories
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Selection
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _select_stories(stories: list[ScrapedStory], baseline_text: str, history_text: str) -> list[ScrapedStory]:
+    """
+    Ask Claude to rank a buffer of up to SELECTION_BUFFER candidate stories,
+    most important first. Runs on SELECTION_MODEL (Sonnet) — this is the
+    hardest reasoning task in the pipeline, weighing uniqueness against a
+    baseline AND recent history, geographic spread, and significance
+    simultaneously across ~150 candidates.
     """
     story_list = []
     for i, s in enumerate(stories):
-        cands = _candidates_of(s)
-        cand_entries = []
-        for j, c in enumerate(cands):
-            entry = {"c": j, "headline": c.headline}
-            if j == 0 and (c.deckline or s.deckline):
-                entry["deckline"] = (c.deckline or s.deckline)[:300]
-            cand_entries.append(entry)
         story_list.append({
             "index": i,
+            "source_id": s.source_id,
             "country": s.country,
             "publication": s.publication,
-            "status": _SOURCE_STATUS.get(s.source_id, "independent"),
-            "candidates": cand_entries,
+            "headline": s.headline,
+            "deckline": s.deckline[:300],
         })
 
-    prompt = f"""You are the senior editor of "World's Front Page," a daily newsletter that surfaces front-page stories from around the world that haven't broken into global news feeds yet.
+    prompt = f"""You are the senior editor of "World's Front Page," a daily newsletter that surfaces front-page stories from around the world that haven't broken into global news feeds yet — and specifically showcases local news outlets' OWN reporting, not wire-service copy.
 
 TODAY'S GLOBAL NEWS BASELINE (what readers already know):
 {baseline_text}
 
-RECENTLY COVERED IN THIS NEWSLETTER (last 7 days — do NOT reselect these stories or minor follow-ups; a genuinely major NEW development in the same saga is fine):
-{recent_text}
+STORIES COVERED IN THE LAST {HISTORY_DAYS} DAYS (avoid re-running the same underlying story on consecutive days):
+{history_text}
 
 YOUR TASK:
-Review the front-page stories below from {len(stories)} publications worldwide.
-Each publication lists up to 5 candidate headlines in the order they appeared on the page. Candidate 0 is our scraper's best guess at the lead story, but the scraper can be wrong — use your judgment about which candidate is actually the day's most significant story for that country.
+Review the front-page stories below from {len(stories)} publications worldwide. (Wire-service-sourced and cross-source-duplicated stories have already been removed from this list.)
+Rank as many stories as genuinely qualify — up to {SELECTION_BUFFER} — most important first, using ALL of these criteria:
 
-Select {MIN_STORIES}–{MAX_STORIES} stories that best meet ALL of these criteria:
+1. UNIQUE — Not already covered in the global baseline above, and not a story already covered in the recent history above
+2. LOCALLY REPORTED — This should be a paper's own original reporting on a domestic or regional matter, not coverage of a global/international event that any front page could have run that day (a war, a multinational summit, a global market move). A well-written story about a purely global event still ranks LOW — this newsletter's value is showing what LOCAL institutions, actors, and citizens are doing, not re-surfacing global news through a local lens.
+3. NATIONALLY SIGNIFICANT — front page = editors deemed it the day's most important story
+4. GLOBALLY RELEVANT — has implications beyond its own borders, or reveals something meaningful about that country/region the world should know
+5. VARIED — no two stories from the same country in the top ranks; aim for geographic spread across regions
+6. SUBSTANTIVE — politics, economics, security, environment, justice, social upheaval. Not sports or celebrity unless it has genuine geopolitical/social weight.
 
-1. UNIQUE — Not already covered in the global baseline above, and not covered by this newsletter in the last 7 days
-2. NATIONALLY SIGNIFICANT — Clearly a major story in its home country (front page = editors deemed it the day's most important story)
-3. GLOBALLY RELEVANT — Has implications beyond its own borders, or reveals something meaningful about that country/region that the world should know
-4. VARIED — No two stories from the same country; aim for geographic spread across regions
-5. SUBSTANTIVE — Politics, economics, security, environment, justice, social upheaval. Not sports or celebrity unless it has genuine geopolitical/social weight.
+TIE-BREAK RULE: When UNIQUE/LOCAL and GLOBALLY RELEVANT conflict — i.e., a story is relevant mainly BECAUSE it's a huge global event — LOCAL AND UNIQUE WINS. A story already dominating US front pages should rank low here regardless of its objective world importance; that's the entire premise of this newsletter.
 
-ALSO: If the front page of a state media organ (status "state_controlled", like People's Daily, Granma, Global Times) leads with something unusual or telling about that government's current priorities or anxieties, that itself IS the story — select it.
+ALSO: If a state media organ's front page leads with something unusual or telling about that government's current priorities or anxieties, that itself IS the story — rank it accordingly.
 
-IMPORTANT: You must select at least {MIN_STORIES} stories. If stories seem globally known, select the most locally unique ones anyway — our readers want to see what's front page in each country regardless.
-
-Return ONLY this JSON, in priority order (most important first), nothing else:
-{{"selected": [{{"index": 3, "candidate": 0}}, {{"index": 12, "candidate": 2}}, ...]}}
+Return ONLY a JSON array of ranked story indices, most important first, up to {SELECTION_BUFFER} entries — fewer is fine if fewer genuinely qualify:
+{{"selected": [3, 12, 7, ...]}}
 
 Stories to evaluate:
 {json.dumps(story_list, ensure_ascii=False, indent=2)}"""
 
     try:
         resp = client.messages.create(
-            model=MODEL_SELECT,
-            max_tokens=1500,
+            model=SELECTION_MODEL,
+            max_tokens=800,
             messages=[{"role": "user", "content": prompt}],
         )
-        raw = resp.content[0].text
+        raw = resp.content[0].text.strip()
+        if raw.startswith("```"):
+            raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
         logger.info(f"Selection API response: {raw[:200]}")
-        result = _parse_json_response(raw)
-        picks = result.get("selected", [])[:MAX_STORIES]
-
-        selected, seen_countries = [], set()
-        for pick in picks:
-            # Accept both {"index": N, "candidate": M} and bare-int legacy form
-            if isinstance(pick, dict):
-                idx, cand_idx = pick.get("index"), pick.get("candidate", 0)
-            else:
-                idx, cand_idx = pick, 0
-            if idx is None or not (0 <= idx < len(stories)):
-                continue
-            story = stories[idx]
-            if story.country in seen_countries:  # belt-and-suspenders dedupe
-                continue
-            seen_countries.add(story.country)
-
-            # Promote the chosen candidate onto the story object
-            cands = _candidates_of(story)
-            if 0 < cand_idx < len(cands):
-                c = cands[cand_idx]
-                story.headline = c.headline
-                story.article_url = c.article_url or story.article_url
-                story.deckline = c.deckline
-                story.lede = ""
-            selected.append(story)
-
-        logger.info(f"Selected {len(selected)} stories "
-                    f"({sum(1 for p in picks if isinstance(p, dict) and p.get('candidate', 0) > 0)} "
-                    f"from non-primary candidates)")
+        result = json.loads(raw)
+        indices = result.get("selected", [])[:SELECTION_BUFFER]
+        logger.info(f"LLM ranked indices: {indices}")
+        selected = [stories[i] for i in indices if i < len(stories)]
+        logger.info(f"Selection returned {len(selected)} ranked candidates")
         return selected
     except Exception as e:
-        logger.warning(f"Selection failed: {e} — falling back to first "
-                       f"{MAX_STORIES} valid stories (country-deduped)")
-        return _dedupe_by_country(stories)[:MAX_STORIES]
+        logger.warning(f"Selection failed: {e} — falling back to first {SELECTION_BUFFER} valid stories")
+        return stories[:SELECTION_BUFFER]
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Briefs (Haiku, grounded in fetched article text)
+# Brief writing
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _write_briefs(stories: list[ScrapedStory]) -> list[dict]:
-    """Write a grounded brief for each selected story. Fetches each story's
-    article page first (~8–15 fetches/run) so the brief is written from real
-    source text, not from a headline the model must 'be specific' about."""
+def _looks_like_refusal(text: str) -> bool:
+    t = (text or "").lower()
+    return any(marker in t for marker in REFUSAL_MARKERS)
+
+
+def _write_briefs(ranked_stories: list[ScrapedStory], target: int) -> list[dict]:
+    """
+    Walk the ranked candidate buffer writing briefs, stopping once `target`
+    good briefs are written or the buffer is exhausted. Skips (rather than
+    publishes a degraded fallback for) anything that turns out wire-sourced,
+    insufficient, or a model refusal on closer inspection — the buffer means
+    there's always a next candidate to try instead of a dead slot.
+    """
     results = []
-    grounded = 0
-    for s in stories:
-        article_text = fetch_article_text(s.article_url or "")
-        if article_text:
-            grounded += 1
+    for s in ranked_stories:
+        if len(results) >= target:
+            break
+
+        article_text = ""
+        if s.article_url:
+            try:
+                article_text = fetch_article_text(s.article_url)
+            except Exception as e:
+                logger.info(f"  Article fetch failed for {s.publication}: {e}")
+
+        # Wire-service pass 3: full article text, right before writing.
+        # Dateline attribution frequently only appears in the body, not the
+        # homepage teaser checked in curate()'s earlier passes.
+        if detect_wire_service(s.headline, s.deckline, article_text):
+            logger.info(f"  Skipped {s.publication}: wire-service attribution found in fetched article text")
+            continue
+
         try:
             brief = _write_single_brief(s, article_text)
-            results.append(brief)
-            logger.info(f"  Brief written ({'grounded' if article_text else 'headline-only'}): "
-                        f"[{s.country}] {s.headline[:60]}")
         except Exception as e:
-            logger.warning(f"  Brief failed for {s.publication}: {e} — using headline fallback")
-            results.append({
-                "source_id": s.source_id,
-                "country": s.country,
-                "publication": s.publication,
-                "article_url": s.article_url or s.url,
-                "original_headline": s.headline,
-                "brief": f"{s.headline}. {s.deckline}".strip(),
-                "why_it_matters": "",
-            })
-    logger.info(f"Briefs grounded in article text: {grounded}/{len(stories)}")
+            logger.warning(f"  Brief failed for {s.publication}: {e} — skipping, trying next candidate")
+            continue
+
+        if brief is None:
+            logger.info(f"  Skipped {s.publication}: model flagged insufficient information")
+            continue
+        if _looks_like_refusal(brief.get("brief", "")) or _looks_like_refusal(brief.get("why_it_matters", "")):
+            logger.info(f"  Skipped {s.publication}: refusal-pattern detected in brief text — treating as failure")
+            continue
+
+        results.append(brief)
+        logger.info(f"  Brief written: [{s.country}] {s.headline[:60]}")
+
     return results
 
 
-def _write_single_brief(s: ScrapedStory, article_text: str = "") -> dict:
-    """Write a brief + why-it-matters for a single story, grounded in the
-    fetched article text. Note: the Substack-facing status label (state
-    organ / exile / etc.) is resolved in publisher.py from sources.py by
-    source_id — not here."""
+def _write_single_brief(s: ScrapedStory, article_text: str = "") -> dict | None:
+    """Write a 3-sentence brief + why-it-matters for a single story, or
+    return None if the model determines there isn't enough real information
+    to work with. Uses fetched article text for grounding when available,
+    falling back to the scraper's lede paragraph otherwise.
+    Note: the Substack-facing status label (state organ / exile / etc.) is
+    resolved in publisher.py from sources.py by source_id — not here."""
+    context_block = article_text if article_text else s.lede
+
     prompt = f"""You are writing for "World's Front Page," a daily newsletter for smart, globally curious American readers who want to know what's front-page news in other countries — stories they probably haven't seen yet.
 
-SOURCE MATERIAL:
+STORY SOURCE:
 - Publication: {s.publication} ({s.country})
 - Headline: {s.headline}
-- Deckline/summary: {s.deckline or "(none)"}
-- Additional context: {s.lede or "(none)"}
-- Article text (may be partial or machine-scraped):
-{article_text or "(article text unavailable — headline and deckline are your ONLY source material)"}
+- Deckline/summary: {s.deckline}
+- Additional context (fetched article text when available): {context_block}
 
-WRITE:
-1. A BRIEF (3 sentences max): What happened. Key facts. Who's involved and what's at stake. Direct and declarative — this is a briefing, not a feature.
-2. A WHY IT MATTERS line (1 sentence): Who beyond {s.country}'s borders should care about this and why.
+If the information above is too thin, vague, or fragmentary to write a factual, comprehensible brief for a reader with zero context — for example, it only names a decree/policy/case number with no explanation of what it actually does, or it's just a publication's self-description — return ONLY this JSON and nothing else:
+{{"insufficient": true}}
 
-GROUNDING RULES (these override everything else):
-- Use ONLY facts stated in the source material above. Do not add names, numbers, dates, locations, or causal claims that are not in it.
-- If the material supports only one or two sentences, write one or two. Shorter and accurate beats longer and invented.
-- If you cannot say who beyond the country's borders should care WITHOUT inventing facts, return an empty string for why_it_matters.
-- No "in a significant development," no "according to reports." Just the news, as far as the source material actually goes.
+Otherwise, WRITE:
+1. A BRIEF (3 sentences max): What happened. Key facts. Who's involved and what's at stake. Be specific and direct — this is a briefing, not a feature. No fluff, no hedging.
+2. A WHY IT MATTERS line (1 sentence): Who beyond {s.country}'s borders should care about this and why. Be concrete — name the geopolitical, economic, or humanitarian stakes.
 
-TONE: Authoritative. Clear. Like a senior foreign correspondent's one-paragraph cable.
+TONE: Authoritative. Clear. Like a senior foreign correspondent's one-paragraph cable. No "in a significant development" or "according to reports." Just the news.
 
 Return ONLY this JSON, nothing else:
 {{
@@ -381,12 +546,18 @@ Return ONLY this JSON, nothing else:
 }}"""
 
     resp = client.messages.create(
-        model=MODEL_FAST,
+        model=MODEL,
         max_tokens=400,
         messages=[{"role": "user", "content": prompt}],
     )
 
-    result = _parse_json_response(resp.content[0].text)
+    raw = resp.content[0].text.strip()
+    if raw.startswith("```"):
+        raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
+    result = json.loads(raw)
+
+    if result.get("insufficient"):
+        return None
 
     return {
         "source_id": s.source_id,
