@@ -227,7 +227,8 @@ def _build_content_doc(stories: list[dict], stats: dict, story_count: int) -> li
         if status_label:
             content.append(_para_node([_text_node(status_label, marks=[{"type": "em"}])]))
 
-        content.append(_para_node([_text_node(story["brief"])]))
+        if story.get("brief"):
+            content.append(_para_node([_text_node(story["brief"])]))
 
         if story.get("why_it_matters"):
             content.append(_para_node([
