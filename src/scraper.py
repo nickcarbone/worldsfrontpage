@@ -53,6 +53,11 @@ PLAYWRIGHT_SITES = {
     "wsj", "nyt", "ft", "le_monde", "le_figaro", "faz", "sz",
     "nzz", "nrc", "volkskrant", "el_pais", "corriere", "repubblica",
     "dn_sweden", "gazeta", "straits_t", "scmp", "malaysiakini",
+    # Reuters and Bloomberg both sit behind aggressive bot management
+    # (Cloudflare/PerimeterX-class); pre-declaring avoids burning a request
+    # cycle on a guaranteed 403 before escalating. AP and BBC are typically
+    # reachable via plain requests and can escalate organically if not.
+    "reuters_baseline", "bloomberg_baseline",
 }
 
 # Rotating pool of realistic browser fingerprints (first rung of the
@@ -189,6 +194,9 @@ class ScrapedStory:
                                    # re-checks this at multiple later stages since
                                    # translation can surface attribution this
                                    # regex couldn't see in the original script
+    localization_score: int = 3   # 1-5, set by curator._screen_stories(); default
+                                   # is a neutral middle value used only if
+                                   # screening fails and stories pass through unscored
     scrape_error: Optional[str] = None
     candidates: list = field(default_factory=list)  # list[Candidate], primary first
 

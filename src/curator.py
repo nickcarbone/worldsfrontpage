@@ -49,6 +49,29 @@ seen in production output:
     raised TypeError on the next real run regardless of anything else here).
     History is now folded into the selection prompt alongside the baseline,
     so a slow-burn story is less likely to repeat on consecutive days.
+v3 additions (same day) — a second real story slipped through the exact
+same pattern the v2 tie-break rule was meant to catch (a French paper's
+foreign-desk report on a Ukrainian cabinet dismissal, no French stake at
+all), which showed prose-only guidance wasn't reliable enough on its own:
+  - EXPANDED BASELINE: sources.py now also scrapes Reuters, AP, BBC News,
+    and Bloomberg as comparison-only baseline sources (never publishable —
+    same treatment as the original 5). The old 5-source baseline could go
+    quiet on a globally huge story if NYT/WSJ's known bot-blocking issue
+    hit that morning; wire-agency front pages are a more resilient proxy
+    for "is this already blanket-known."
+  - STRUCTURED LOCALIZATION SCORE: _screen_stories() (formerly
+    _screen_sufficiency) now also emits a 1-5 localization_score per
+    story — how directly it concerns the SOURCE'S OWN country (compared
+    against sources.py's assigned country field, which correctly credits
+    an exile outlet like Meduza for Russia rather than wherever it
+    physically operates) rather than being a bystander report on someone
+    else's news. This replaces asking the selection model to infer that
+    distinction unaided from prose alone. Score 1 (zero connection) is
+    hard-excluded pre-selection; scores 2-5 pass through as a ranking
+    signal only, specifically so a story like "the US imposes tariffs
+    targeting Brazil" (Brazil is a direct target, not a bystander — score
+    4) doesn't get caught in the same net as the Hormuz/Fedorov cases.
+
   - REFUSAL-TEXT LEAK FIX: previously, if the brief-writing model returned
     syntactically valid JSON containing a refusal sentence in the "brief"
     field (e.g. "I cannot write this brief — the article text is
@@ -149,10 +172,10 @@ def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory],
     if not valid:
         raise ValueError("All stories were dropped as syndicated/duplicated — aborting.")
 
-    # ── Sufficiency screen ───────────────────────────────────────────────────
-    valid = _screen_sufficiency(valid)
+    # ── Sufficiency + localization screen ───────────────────────────────────
+    valid = _screen_stories(valid)
     if not valid:
-        raise ValueError("No stories survived the sufficiency screen — aborting.")
+        raise ValueError("No stories survived the sufficiency/localization screen — aborting.")
 
     ranked = _select_stories(valid, baseline_text, history_text)
     if not ranked:
@@ -330,21 +353,42 @@ Items to translate:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Sufficiency screening
+# Sufficiency + localization screening
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _screen_sufficiency(stories: list[ScrapedStory]) -> list[ScrapedStory]:
+# A story rated 1 (zero connection to the source's own country) is the
+# pattern behind two repeat failures: a Canadian paper's wire-style report
+# on a Strait of Hormuz strike, and a French paper's foreign-desk report on
+# a Ukrainian cabinet dismissal. Both had zero distinctive stake for the
+# source's own country — they were just well-written foreign-desk copy.
+# Scores 2-5 are NOT filtered here, only used as a ranking signal in
+# selection, specifically so a story like "the US imposes tariffs
+# specifically targeting Brazil" (Brazil is a direct, named target — score
+# 4) doesn't get caught in the same net. Only the unambiguous "no
+# connection at all" case is auto-dropped.
+LOCALIZATION_HARD_EXCLUDE_SCORE = 1
+
+
+def _screen_stories(stories: list[ScrapedStory]) -> list[ScrapedStory]:
     """
-    Batched pre-selection check: does each story carry enough concrete
-    information (who/what/when/where, or at least a clear specific event)
-    to support a factual, comprehensible brief for a reader with zero
-    context? Filters out thin extractions and self-referential publication
-    blurbs before a selection slot gets spent on them.
+    Batched pre-selection screen producing two judgments per story:
+      - sufficient: is there enough concrete information (a real,
+        explainable event/decision/development) for a factual brief?
+      - localization_score (1-5): how directly does this story concern the
+        SOURCE'S OWN country (sources.py's assigned country — which
+        correctly credits an exile outlet like Meduza for Russia, its
+        assigned subject country, rather than wherever it physically
+        operates from) — as opposed to being a foreign-desk report on
+        someone else's news with no distinctive local stake?
+    Drops insufficient stories and stories scoring exactly
+    LOCALIZATION_HARD_EXCLUDE_SCORE. Everything else passes through with
+    its score attached, to be weighed (not filtered) during selection.
     """
     items = []
     for i, s in enumerate(stories):
         items.append({
             "index": i,
+            "country": s.country,
             "headline": s.headline,
             "deckline": s.deckline[:300],
             "lede": s.lede[:300],
@@ -352,12 +396,18 @@ def _screen_sufficiency(stories: list[ScrapedStory]) -> list[ScrapedStory]:
 
     prompt = f"""You are screening candidate news items for a daily international briefing aimed at readers with zero prior context on any of these stories.
 
-For each item, decide if there is ENOUGH concrete information to write a factual 3-sentence brief: a real, explainable event, decision, or development — not just a bare policy/decree number with no explanation of what it does, and not a publication's own self-description (e.g. promoting its newsletter or describing its coverage areas).
+For each item, provide two judgments:
 
-Mark "sufficient": false for anything too vague, fragmentary, or self-referential to explain.
-Mark "sufficient": true only when there's a real news event a reader could understand from this alone.
+1. SUFFICIENT: Is there enough concrete information to write a factual 3-sentence brief — a real, explainable event, decision, or development? Mark false for anything too vague, fragmentary, or self-referential (e.g. a bare policy/decree number with no explanation of what it does, or a publication promoting its own newsletter).
 
-Return ONLY a JSON array: [{{"index": N, "sufficient": true/false}}, ...]
+2. LOCALIZATION_SCORE (1-5): How directly does this story concern or affect THIS ITEM'S OWN COUNTRY (the "country" field given for each item) — not just the world in general?
+   5 = The story is fundamentally about this country's own people, government, institutions, or internal affairs.
+   4 = The story concerns an external actor or event, but this country is a direct, specifically-named target, party, or beneficiary of it (e.g. tariffs imposed specifically on this country, a bilateral deal this country is signing, a foreign court ruling specifically about this country's citizens).
+   3 = The story concerns a regional bloc or grouping this country belongs to, with real, specific impact on this country described (not just membership).
+   2 = The story is primarily about a foreign country or global event, with this country's angle limited to secondary commentary, reaction quotes, or general analysis — no direct stake.
+   1 = The story is essentially a foreign-desk report on another country's internal affairs, with no distinctive connection to this country at all.
+
+Return ONLY a JSON array: [{{"index": N, "sufficient": true/false, "localization_score": 1-5}}, ...]
 No preamble, no explanation, just the JSON array.
 
 Items:
@@ -366,22 +416,42 @@ Items:
     try:
         resp = client.messages.create(
             model=MODEL,
-            max_tokens=3000,
+            max_tokens=4000,
             messages=[{"role": "user", "content": prompt}],
         )
         raw = resp.content[0].text.strip()
         if raw.startswith("```"):
             raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
         verdicts = json.loads(raw)
-        sufficient_idx = {v["index"] for v in verdicts if v.get("sufficient")}
-        kept = [s for i, s in enumerate(stories) if i in sufficient_idx]
-        dropped_count = len(stories) - len(kept)
-        if dropped_count:
-            dropped_names = [s.publication for i, s in enumerate(stories) if i not in sufficient_idx]
-            logger.info(f"Sufficiency screen dropped {dropped_count} thin/promo stories: {dropped_names}")
+        verdict_map = {v["index"]: v for v in verdicts}
+
+        kept, dropped_insufficient, dropped_foreign = [], [], []
+        for i, s in enumerate(stories):
+            v = verdict_map.get(i)
+            if v is None:
+                # No verdict returned for this index — fail open rather
+                # than silently dropping a story the model just didn't rank.
+                kept.append(s)
+                continue
+            if not v.get("sufficient", True):
+                dropped_insufficient.append(s)
+                continue
+            score = v.get("localization_score", 3)
+            if score == LOCALIZATION_HARD_EXCLUDE_SCORE:
+                dropped_foreign.append(s)
+                continue
+            s.localization_score = score
+            kept.append(s)
+
+        if dropped_insufficient:
+            logger.info(f"Sufficiency screen dropped {len(dropped_insufficient)} thin/promo stories: "
+                        f"{[s.publication for s in dropped_insufficient]}")
+        if dropped_foreign:
+            logger.info(f"Localization screen dropped {len(dropped_foreign)} stories with zero "
+                        f"connection to their source's own country: {[s.publication for s in dropped_foreign]}")
         return kept
     except Exception as e:
-        logger.warning(f"Sufficiency screening failed: {e} — skipping screen, passing all through")
+        logger.warning(f"Screening failed: {e} — skipping screen, passing all through unscored")
         return stories
 
 
@@ -406,9 +476,17 @@ def _select_stories(stories: list[ScrapedStory], baseline_text: str, history_tex
             "publication": s.publication,
             "headline": s.headline,
             "deckline": s.deckline[:300],
+            "localization_score": getattr(s, "localization_score", 3),
         })
 
     prompt = f"""You are the senior editor of "World's Front Page," a daily newsletter that surfaces front-page stories from around the world that haven't broken into global news feeds yet — and specifically showcases local news outlets' OWN reporting, not wire-service copy.
+
+Each story below already carries a localization_score (1-5, pre-computed) indicating how directly it concerns the source's OWN country:
+  5 = fundamentally about this country's own affairs
+  4 = an external event/actor, but this country is a direct, named target/party/beneficiary
+  3 = a regional bloc this country belongs to, with specific described impact
+  2 = mostly foreign news with only secondary local commentary or reaction
+(Score-1 stories — zero connection to the source's own country — have already been removed entirely.)
 
 TODAY'S GLOBAL NEWS BASELINE (what readers already know):
 {baseline_text}
@@ -421,13 +499,13 @@ Review the front-page stories below from {len(stories)} publications worldwide. 
 Rank as many stories as genuinely qualify — up to {SELECTION_BUFFER} — most important first, using ALL of these criteria:
 
 1. UNIQUE — Not already covered in the global baseline above, and not a story already covered in the recent history above
-2. LOCALLY REPORTED — This should be a paper's own original reporting on a domestic or regional matter, not coverage of a global/international event that any front page could have run that day (a war, a multinational summit, a global market move). A well-written story about a purely global event still ranks LOW — this newsletter's value is showing what LOCAL institutions, actors, and citizens are doing, not re-surfacing global news through a local lens.
+2. LOCAL CONNECTION — Favor higher localization_score. A 4 or 5 should generally outrank a 2 unless the 2 is dramatically more nationally significant. A high score alone isn't sufficient on its own — the story still needs to clear the other criteria too — but a low score (2) should be treated as a real strike against a story, on par with a criterion failure, not a minor tiebreaker.
 3. NATIONALLY SIGNIFICANT — front page = editors deemed it the day's most important story
 4. GLOBALLY RELEVANT — has implications beyond its own borders, or reveals something meaningful about that country/region the world should know
 5. VARIED — no two stories from the same country in the top ranks; aim for geographic spread across regions
 6. SUBSTANTIVE — politics, economics, security, environment, justice, social upheaval. Not sports or celebrity unless it has genuine geopolitical/social weight.
 
-TIE-BREAK RULE: When UNIQUE/LOCAL and GLOBALLY RELEVANT conflict — i.e., a story is relevant mainly BECAUSE it's a huge global event — LOCAL AND UNIQUE WINS. A story already dominating US front pages should rank low here regardless of its objective world importance; that's the entire premise of this newsletter.
+TIE-BREAK RULE: When LOCAL CONNECTION and GLOBALLY RELEVANT conflict — i.e., a story is relevant mainly BECAUSE it's a huge global event with only a score of 2 for this particular source — LOCAL CONNECTION WINS. A story already dominating US front pages, told from a source with no distinctive stake in it, should rank low here regardless of its objective world importance; that's the entire premise of this newsletter. A high-scoring (4-5) multi-country story — e.g. a bilateral trade dispute where this country is the direct, named target — is a different case and should be judged on its merits, not suppressed.
 
 ALSO: If a state media organ's front page leads with something unusual or telling about that government's current priorities or anxieties, that itself IS the story — rank it accordingly.
 

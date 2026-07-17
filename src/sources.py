@@ -10,6 +10,19 @@ SOURCES = [
     {"id": 'nyt', "country": 'USA', "region": 'Americas', "name": 'The New York Times', "url": 'https://www.nytimes.com', "status": 'independent', "icij": True},
     {"id": 'wsj', "country": 'USA', "region": 'Americas', "name": 'The Wall Street Journal', "url": 'https://www.wsj.com', "status": 'independent', "icij": False},
     {"id": 'wapo', "country": 'USA', "region": 'Americas', "name": 'The Washington Post', "url": 'https://www.washingtonpost.com', "status": 'independent', "icij": True},
+    # Wire-agency/global-broadcaster homepages — comparison-only, exactly
+    # like the five baseline sources above. Never eligible to be published
+    # as a newsletter story (BASELINE_SOURCES below excludes them from
+    # get_sources()). Added because the original 5-source baseline missed
+    # globally-saturated stories that NYT/WSJ/WaPo/FT/Guardian happened not
+    # to have fresh headlines for that morning (NYT/WSJ have a documented
+    # bot-blocking issue — see main.py's MIN_BASELINES note) — wire-agency
+    # front pages are actually a better proxy for "is this already
+    # blanket-known" than any single newspaper's homepage.
+    {"id": 'reuters_baseline', "country": 'Global (wire service)', "region": 'Americas', "name": 'Reuters', "url": 'https://www.reuters.com', "status": 'independent', "icij": False},
+    {"id": 'ap_baseline', "country": 'Global (wire service)', "region": 'Americas', "name": 'Associated Press', "url": 'https://apnews.com', "status": 'independent', "icij": False},
+    {"id": 'bbc_baseline', "country": 'Global (wire service)', "region": 'Europe', "name": 'BBC News', "url": 'https://www.bbc.com/news', "status": 'independent', "icij": False},
+    {"id": 'bloomberg_baseline', "country": 'Global (wire service)', "region": 'Americas', "name": 'Bloomberg', "url": 'https://www.bloomberg.com', "status": 'independent', "icij": False},
     {"id": 'globe_mail', "country": 'Canada', "region": 'Americas', "name": 'The Globe and Mail', "url": 'https://www.theglobeandmail.com', "status": 'independent', "icij": True},
     {"id": 'nat_post', "country": 'Canada', "region": 'Americas', "name": 'National Post', "url": 'https://nationalpost.com', "status": 'independent', "icij": False},
     {"id": 'el_universal', "country": 'Mexico', "region": 'Americas', "name": 'El Universal', "url": 'https://www.eluniversal.com.mx', "status": 'independent', "icij": False},
@@ -181,7 +194,10 @@ SOURCES = [
 
 # Sources used as global baseline — excluded from newsletter output
 # but used to calibrate what's already globally known
-BASELINE_SOURCES = {"nyt", "wsj", "wapo", "guardian", "ft"}
+BASELINE_SOURCES = {
+    "nyt", "wsj", "wapo", "guardian", "ft",
+    "reuters_baseline", "ap_baseline", "bbc_baseline", "bloomberg_baseline",
+}
 
 # Status label copy for Substack output
 STATUS_LABELS = {
