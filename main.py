@@ -58,20 +58,36 @@ logger = logging.getLogger("main")
 # than the Substack posting fix, since this fails safe rather than silently).
 MIN_BASELINES = 2
 
+# Front-page vision selection (2026-07-17) replaced the old web-only
+# selection logic for sources with verified frontpage coverage (~59 of 167
+# as of the coverage audit) — sources without it drop out silently, by
+# design, rather than falling back to the old heuristic. That means the
+# pool feeding curator.curate() is smaller and its size now depends on
+# THREE independent things working: kiosko.net/frontpages.com being up,
+# each source's own web scrape still succeeding (front-page selection only
+# picks among already-scraped candidates, it doesn't source article text
+# itself), and the vision call's own judgment. This threshold is a
+# starting guess, not a calibrated number — nobody has seen a real
+# distribution of daily match counts yet. Revisit after the first week of
+# production runs, same as the clustering thresholds already flagged for
+# recalibration.
+MIN_FRONTPAGE_MATCHES = 15
+
 PENDING_POST_PATH = Path("logs") / "pending_post.json"
 
 
 def _scrape_curate_build():
-    """Steps 1-4, shared by the full run and --build. Returns (post, curated, run_date)."""
+    """Steps 1-5, shared by the full run and --build. Returns (post, curated, run_date)."""
     from sources import get_sources, get_baseline_sources
     from scraper import scrape_all, scrape_baselines
+    from frontpage_selector import apply_frontpage_selection
     from curator import curate
     from publisher import build_post, load_history
 
     run_date = datetime.now(timezone.utc)
     logger.info(f"=== World's Front Page pipeline starting — {run_date.strftime('%Y-%m-%d %H:%M UTC')} ===")
 
-    logger.info("Step 1/4: Scraping baseline sources...")
+    logger.info("Step 1/5: Scraping baseline sources...")
     baseline_sources = get_baseline_sources()
     baselines = scrape_baselines(baseline_sources)
     baseline_ok = sum(1 for b in baselines if b.headline)
@@ -85,7 +101,7 @@ def _scrape_curate_build():
         )
         sys.exit(1)
 
-    logger.info("Step 2/4: Scraping all sources...")
+    logger.info("Step 2/5: Scraping all sources...")
     sources = get_sources(exclude_baseline=True)
     stories = scrape_all(sources, use_playwright=True)
     successful = sum(1 for s in stories if s.headline and not s.scrape_error)
@@ -96,13 +112,34 @@ def _scrape_curate_build():
         logger.error("Too few successful scrapes — aborting pipeline.")
         sys.exit(1)
 
-    logger.info("Step 3/4: Running LLM curation...")
+    logger.info("Step 3/5: Applying front-page vision selection...")
+    sources_by_id = {s["id"]: s for s in sources}
+    with_frontpage = sum(1 for s in sources if "frontpage" in s)
+    stories, frontpage_logs = apply_frontpage_selection(stories, sources_by_id, on=run_date.date())
+    matched = sum(1 for l in frontpage_logs if l.matched)
+    logger.info(f"  Front-page selection: {matched}/{with_frontpage} sources with frontpage config matched")
+    for log in frontpage_logs:
+        if not log.matched:
+            logger.info(f"    dropped {log.source_id}: {log.reason}")
+        elif log.wire_elements_skipped:
+            logger.info(f"    {log.source_id}: skipped {log.wire_elements_skipped} wire-credited element(s) before matching")
+
+    if matched < MIN_FRONTPAGE_MATCHES:
+        logger.error(
+            f"Only {matched} sources matched via front-page selection "
+            f"(minimum {MIN_FRONTPAGE_MATCHES}) — aborting rather than publishing "
+            f"a thin issue. Check kiosko.net/frontpages.com availability and the "
+            f"vision call's own error log above before re-running."
+        )
+        sys.exit(1)
+
+    logger.info("Step 4/5: Running LLM curation...")
     recent_coverage = load_history()
     logger.info(f"  Coverage history loaded: {len(recent_coverage)} recent stories")
     curated = curate(stories, baselines, recent_coverage=recent_coverage)
     logger.info(f"  Selected and briefed: {len(curated)} stories")
 
-    logger.info("Step 4/4: Assembling post...")
+    logger.info("Step 5/5: Assembling post...")
     post = build_post(curated, date=run_date)
     logger.info(f"  Post title: {post['title']}")
 
