@@ -53,7 +53,7 @@ from __future__ import annotations
 import re
 import logging
 from dataclasses import dataclass
-from datetime import date as date_cls
+from datetime import date as date_cls, timedelta
 from typing import Optional
 
 import requests
@@ -83,6 +83,23 @@ class FrontPageResult:
     image_bytes: bytes
     image_url: str
     content_type: str
+    used_date: date_cls = None  # the edition's ACTUAL date, which may be
+                                 # up to STALENESS_TOLERANCE_DAYS earlier
+                                 # than the date requested -- see below
+
+
+# How many days old an edition is allowed to be before it's treated as a
+# real failure rather than expected rollover noise. Confirmed live
+# (2026-07-19, run at ~01:00 UTC): at that hour, ~40 of 55 sources were
+# still showing their prior day's edition -- not because anything was
+# broken, but because most of the world hadn't published "today" yet in
+# UTC terms. Requiring an exact date match treated all of that ordinary
+# publish-timing lag as failure. 1 day tolerates that; a source showing up
+# MORE than 1 day stale (a few did: reforma was 4 days behind, adevarul 3)
+# is a genuinely different problem -- frontpages.com/kiosko.net not
+# refreshing that particular outlet -- and should still fail loudly rather
+# than being silently absorbed by a wider tolerance window.
+STALENESS_TOLERANCE_DAYS = 1
 
 
 class FrontPageUnavailable(Exception):
@@ -130,28 +147,31 @@ def _fetch_by_provider(source_id: str, cfg: dict, on: date_cls) -> FrontPageResu
 
 
 def _fetch_kiosko(source_id: str, cfg: dict, on: date_cls) -> FrontPageResult:
-    """kiosko.net: URL is fully predictable, no page fetch required.
-    Requests the 750px-wide version -- confirmed live at 750x1343px, which
-    is plenty of resolution for a vision model to read headline hierarchy
-    and byline/wire-credit text."""
+    """kiosko.net: URL is fully predictable and date-specific, so unlike
+    frontpages.com, retrying with an earlier date is a genuinely different
+    request (not just re-reading the same live page). Tries `on`, then up
+    to STALENESS_TOLERANCE_DAYS earlier, before giving up."""
     country_code = cfg["country_code"]
     slug = cfg["slug"]
-    url = (
-        f"https://img.kiosko.net/{on.year}/{on.month:02d}/{on.day:02d}"
-        f"/{country_code}/{slug}.750.jpg"
-    )
-    resp = _get(url)
-    if resp is None or resp.status_code != 200 or not resp.content:
-        raise FrontPageUnavailable(
-            f"{source_id}: kiosko image fetch failed for {url}"
+    last_err = None
+    for days_back in range(0, STALENESS_TOLERANCE_DAYS + 1):
+        try_date = on - timedelta(days=days_back)
+        url = (
+            f"https://img.kiosko.net/{try_date.year}/{try_date.month:02d}/{try_date.day:02d}"
+            f"/{country_code}/{slug}.750.jpg"
         )
-    return FrontPageResult(
-        source_id=source_id,
-        provider="kiosko",
-        image_bytes=resp.content,
-        image_url=url,
-        content_type=resp.headers.get("Content-Type", "image/jpeg"),
-    )
+        resp = _get(url)
+        if resp is not None and resp.status_code == 200 and resp.content:
+            if days_back:
+                logger.info(f"{source_id}: kiosko edition is {days_back} day(s) stale ({try_date}) — within tolerance")
+            return FrontPageResult(
+                source_id=source_id, provider="kiosko",
+                image_bytes=resp.content, image_url=url,
+                content_type=resp.headers.get("Content-Type", "image/jpeg"),
+                used_date=try_date,
+            )
+        last_err = f"kiosko image fetch failed for {url}"
+    raise FrontPageUnavailable(f"{source_id}: {last_err} (tried today and {STALENESS_TOLERANCE_DAYS} day(s) back)")
 
 
 def _fetch_frontpages(source_id: str, cfg: dict, on: date_cls) -> FrontPageResult:
@@ -206,12 +226,23 @@ def _fetch_frontpages(source_id: str, cfg: dict, on: date_cls) -> FrontPageResul
         )
     yyyy, mm, dd = m.groups()
     found_date = date_cls(int(yyyy), int(mm), int(dd))
-    if found_date != on:
+    staleness = (on - found_date).days
+    if staleness < 0 or staleness > STALENESS_TOLERANCE_DAYS:
+        # Note: re-fetching wouldn't change this -- frontpages.com always
+        # serves whatever it currently has live for this outlet, there's no
+        # way to request a specific past date (confirmed: its own "?d="
+        # param breaks the image injection entirely). So this is a genuine
+        # staleness problem on their end for this outlet, not a timing gap
+        # we can retry past.
         raise FrontPageUnavailable(
             f"{source_id}: frontpages.com's live edition for {slug} is dated "
-            f"{found_date}, not the requested {on} (likely a publish-timing/"
-            f"rollover gap)"
+            f"{found_date}, {staleness} day(s) from the requested {on} "
+            f"(beyond the {STALENESS_TOLERANCE_DAYS}-day tolerance -- this "
+            f"looks like a genuinely stale/unrefreshed outlet, not ordinary "
+            f"publish-timing lag)"
         )
+    if staleness:
+        logger.info(f"{source_id}: frontpages.com edition is {staleness} day(s) stale ({found_date}) — within tolerance")
 
     image_url = f"https://www.frontpages.com{src}"
     img_resp = _get(image_url)
@@ -225,6 +256,7 @@ def _fetch_frontpages(source_id: str, cfg: dict, on: date_cls) -> FrontPageResul
         image_bytes=img_resp.content,
         image_url=image_url,
         content_type=img_resp.headers.get("Content-Type", "image/webp"),
+        used_date=found_date,
     )
 
 

@@ -205,7 +205,7 @@ Return ONLY this JSON, nothing else:
 
     resp = client.messages.create(
         model=MODEL,
-        max_tokens=1000,
+        max_tokens=2000,
         messages=[{
             "role": "user",
             "content": [
@@ -217,7 +217,17 @@ Return ONLY this JSON, nothing else:
     raw = _extract_text(resp)
     if raw.startswith("```"):
         raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
-    return json.loads(raw)
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        # 2026-07-19 live run: max_tokens=1000 was cutting off responses
+        # mid-string for front pages with several long/non-Latin-script
+        # headlines, producing exactly this error 3 times in one run.
+        # Bumped to 2000; logging the raw text here too so if it recurs at
+        # the new limit, the actual failure mode is visible instead of just
+        # "here's a parse error."
+        logger.warning(f"{story.source_id}: JSON parse failed ({e}); raw response: {raw[:500]}")
+        raise
 
 
 def _extract_text(resp) -> str:
