@@ -214,7 +214,19 @@ Return ONLY this JSON, nothing else:
             ],
         }],
     )
-    raw = resp.content[0].text.strip()
+    raw = _extract_text(resp)
     if raw.startswith("```"):
         raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
     return json.loads(raw)
+
+
+def _extract_text(resp) -> str:
+    """Find the actual text response block, rather than assuming
+    resp.content[0] is always it. Confirmed live (2026-07-18): Sonnet can
+    return a ThinkingBlock before the TextBlock even without extended
+    thinking explicitly requested, and content[0].text then doesn't exist
+    -- this killed 5 of 8 sources in the first live test run."""
+    for block in resp.content:
+        if getattr(block, "type", None) == "text":
+            return block.text.strip()
+    raise ValueError(f"No text block found in response content: {resp.content!r}")
