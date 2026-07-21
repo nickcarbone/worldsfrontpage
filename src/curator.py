@@ -90,6 +90,21 @@ file were carrying the identical latent bug — only the selection one had
 happened to trip it so far. Replaced every resp.content[0].text.strip()
 with a shared _extract_text(resp) helper that finds the actual text block
 by type instead of assuming position. See _extract_text() below.
+
+v5 fix (same day, next run) — the v4 fix stopped the crash but exposed
+the real root cause underneath it: _extract_text() correctly found NO
+text block at all in the selection response, because claude-sonnet-5 runs
+adaptive thinking at effort=high by default whenever a request omits a
+thinking field, and the call's max_tokens=800 wasn't enough headroom for
+that thinking plus the actual JSON output -- the model spent the entire
+budget reasoning and hit max_tokens before writing a single output
+character. Practically, this means selection has been silently no-op'ing
+(falling back to raw candidate order) since the v2 model-split-to-Sonnet
+change, regardless of the v4 fix -- explains why the same handful of
+countries kept winning run after run, independent of everything else in
+this file. Fixed by raising _select_stories' max_tokens to 4000 and
+setting output_config={"effort": "medium"} explicitly rather than relying
+on the high default, per Anthropic's current Sonnet 5 guidance.
 """
 
 import os
@@ -541,7 +556,8 @@ Stories to evaluate:
     try:
         resp = client.messages.create(
             model=SELECTION_MODEL,
-            max_tokens=800,
+            max_tokens=4000,
+            output_config={"effort": "medium"},
             messages=[{"role": "user", "content": prompt}],
         )
         raw = _extract_text(resp)
