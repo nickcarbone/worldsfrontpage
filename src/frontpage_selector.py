@@ -206,6 +206,7 @@ Return ONLY this JSON, nothing else:
     resp = client.messages.create(
         model=MODEL,
         max_tokens=2000,
+        thinking={"type": "disabled"},
         messages=[{
             "role": "user",
             "content": [
