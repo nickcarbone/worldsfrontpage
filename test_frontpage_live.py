@@ -34,7 +34,7 @@ Usage:
 import os
 import sys
 import logging
-from datetime import date, timedelta
+from datetime import date, datetime, timezone, timedelta
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 sys.path.insert(0, "src")  # so `import sources` / `import scraper` etc. work run from repo root
@@ -48,6 +48,14 @@ from sources import SOURCES  # noqa: E402
 from scraper import scrape_all  # noqa: E402
 from frontpage_selector import apply_frontpage_selection  # noqa: E402
 
+TODAY_UTC = datetime.now(timezone.utc).date()
+# Uses UTC, not date.today() (which reads your machine's LOCAL timezone) --
+# the fetcher compares against each site's own roughly-UTC publish date, so
+# a local-time date() here would cause false "rollover gap" drops that have
+# nothing to do with the real cross-timezone edge case this is meant to
+# surface. main.py's real pipeline already does this correctly
+# (datetime.now(timezone.utc)); this test script just hadn't matched it.
+
 # A deliberately small, deliberately diverse sample: different providers
 # (kiosko-only, frontpages-only, both-with-fallback), different scripts,
 # different regions — not just "whatever's first in the file."
@@ -57,10 +65,15 @@ TEST_SOURCE_IDS = [
     "dawn",            # Pakistan — frontpages only, non-Latin-adjacent script context
     "irish_times",     # Ireland — has both providers (kiosko primary)
     "haaretz",         # Israel — frontpages only, Hebrew script
-    "el_pais",         # Spain — kiosko primary
+    "granma",          # Cuba — kiosko, state-controlled outlet (interesting selection case)
     "the_hindu",       # India — frontpages only, far-ahead timezone (rollover risk case)
-    "nzz",             # Switzerland — kiosko primary
+    "publico",         # Portugal — has both providers (kiosko primary)
 ]
+# Deliberately avoids NZZ/El País/etc. from scraper.py's PLAYWRIGHT_SITES set —
+# all 8 above are requests-only, so this runs with nothing but
+# `pip install -r requirements.txt`, no `playwright install chromium` needed
+# for this first pass. Add Playwright-dependent sources back in later once
+# you've confirmed the basics work.
 
 
 def main():
@@ -81,7 +94,7 @@ def main():
     # `on=today` first; if that's an obvious rollover-timing miss for a
     # far-ahead-of-UTC source, this also tries yesterday so you're not
     # blocked from testing just because you ran this at the wrong hour.
-    survivors, logs = apply_frontpage_selection(stories, sources_by_id, on=date.today())
+    survivors, logs = apply_frontpage_selection(stories, sources_by_id, on=TODAY_UTC)
 
     matched_ids = {s.source_id for s in survivors}
     retry_ids = [l.source_id for l in logs if not l.matched and "not the requested" in l.reason]
@@ -90,7 +103,7 @@ def main():
         retry_sources = {sid: sources_by_id[sid] for sid in retry_ids}
         retry_stories = [s for s in stories if s.source_id in retry_ids]
         retry_survivors, retry_logs = apply_frontpage_selection(
-            retry_stories, retry_sources, on=date.today() - timedelta(days=1)
+            retry_stories, retry_sources, on=TODAY_UTC - timedelta(days=1)
         )
         survivors += retry_survivors
         logs = [l for l in logs if l.source_id not in retry_ids] + retry_logs
