@@ -81,6 +81,15 @@ all), which showed prose-only guidance wasn't reliable enough on its own:
     that returns {"insufficient": true} instead of prose, and (2) a regex
     safety net scans returned brief/why-it-matters text for refusal
     language as a backstop for whichever model doesn't reliably follow (1).
+
+v4 fix (2026-07-21) — a fifth resp.content[0].text call site (this time
+in _select_stories, running on SELECTION_MODEL) hit the same ThinkingBlock-
+before-TextBlock failure mode already fixed once in frontpage_selector.py.
+That fix was never applied here, so all four Claude API call sites in this
+file were carrying the identical latent bug — only the selection one had
+happened to trip it so far. Replaced every resp.content[0].text.strip()
+with a shared _extract_text(resp) helper that finds the actual text block
+by type instead of assuming position. See _extract_text() below.
 """
 
 import os
@@ -120,6 +129,20 @@ REFUSAL_MARKERS = [
     "unable to provide", "cannot accurately", "only a headline",
     "not contain enough", "lacks enough",
 ]
+
+
+def _extract_text(resp) -> str:
+    """Find the actual text response block, rather than assuming
+    resp.content[0] is always it. Confirmed live: Sonnet (and, as of
+    2026-07-21, apparently other models in this rotation too) can return a
+    ThinkingBlock before the TextBlock even without extended thinking
+    explicitly requested, and content[0].text then doesn't exist. Every
+    Claude API call site in this file should route through here instead of
+    touching resp.content[0] directly."""
+    for block in resp.content:
+        if getattr(block, "type", None) == "text":
+            return block.text.strip()
+    raise ValueError(f"No text block found in response content: {resp.content!r}")
 
 
 def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory],
@@ -336,7 +359,7 @@ Items to translate:
             max_tokens=4000,
             messages=[{"role": "user", "content": prompt}],
         )
-        raw = resp.content[0].text.strip()
+        raw = _extract_text(resp)
         if raw.startswith("```"):
             raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
         translations = json.loads(raw)
@@ -378,7 +401,7 @@ def _screen_stories(stories: list[ScrapedStory]) -> list[ScrapedStory]:
         SOURCE'S OWN country (sources.py's assigned country — which
         correctly credits an exile outlet like Meduza for Russia, its
         assigned subject country, rather than wherever it physically
-        operates from) — as opposed to being a foreign-desk report on
+        operates) — as opposed to being a foreign-desk report on
         someone else's news with no distinctive local stake?
     Drops insufficient stories and stories scoring exactly
     LOCALIZATION_HARD_EXCLUDE_SCORE. Everything else passes through with
@@ -419,7 +442,7 @@ Items:
             max_tokens=4000,
             messages=[{"role": "user", "content": prompt}],
         )
-        raw = resp.content[0].text.strip()
+        raw = _extract_text(resp)
         if raw.startswith("```"):
             raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
         verdicts = json.loads(raw)
@@ -521,7 +544,7 @@ Stories to evaluate:
             max_tokens=800,
             messages=[{"role": "user", "content": prompt}],
         )
-        raw = resp.content[0].text.strip()
+        raw = _extract_text(resp)
         if raw.startswith("```"):
             raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
         logger.info(f"Selection API response: {raw[:200]}")
@@ -629,7 +652,7 @@ Return ONLY this JSON, nothing else:
         messages=[{"role": "user", "content": prompt}],
     )
 
-    raw = resp.content[0].text.strip()
+    raw = _extract_text(resp)
     if raw.startswith("```"):
         raw = raw.split("\n", 1)[1].rsplit("```", 1)[0]
     result = json.loads(raw)
