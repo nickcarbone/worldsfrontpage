@@ -1,359 +1,5 @@
 [
   {
-    "date": "2026-07-14",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "U.S. launches strikes on Iran, threatens 20% toll on ships in Strait of Hormuz"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Desperate Measures"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Moraes Bans Flávio's Visits to Bolsonaro for 90 Days; Senator's Defense Calls Decision Unconstitutional"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Two Decades Later. Skanska: An Iconic Trial in Which the Swedish Manager Himself Put a Number on the Bribe"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Colombia",
-    "publication": "El Tiempo",
-    "headline": "'International Confidence Is Returning': José Manuel Restrepo Recounts How His Meeting with the World Bank Went"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Government Declares Preventive Emergency in 10 Regions Due to Frontal System Predicted to Be of 'Great Intensity'"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Venezuela",
-    "publication": "El Nacional",
-    "headline": "paywall · ads · cookies"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Mariana, of Santiago and of Cuba"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Jamaica",
-    "publication": "Jamaica Gleaner",
-    "headline": "LOUD LIFE, QUIET GOODBYE - Tributes pour in for straight-talking former minister and MP"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "The Latest Trips of Congresspeople Abroad Before the Bicameral Parliament Arrives"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Guatemala",
-    "publication": "Prensa Libre",
-    "headline": "RECEIVE OUR MORNING NEWSLETTER"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Costa Rica",
-    "publication": "La Nación (Costa Rica)",
-    "headline": "Latest News from Costa Rica"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Panama",
-    "publication": "La Prensa (Panama)",
-    "headline": "Official: Thomas Christiansen Will Remain at the Head of Panama's National Team"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Ecuador",
-    "publication": "El Universo",
-    "headline": "Your Opinion Matters"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Bolivia",
-    "publication": "El Deber",
-    "headline": "'Coup' Case: Justice Orders House Arrest for General Juan José Zúñiga"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "U.S. launches new strikes on Iran, threatens 20% toll on ships in Strait of Hormuz"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Desperate Measures"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Moraes bans Flávio's visits to Bolsonaro for 90 days; senator's defense calls decision unconstitutional"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Two decades later. Skanska: an iconic trial in which the Swedish manager himself put a number on the bribe"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Colombia",
-    "publication": "El Tiempo",
-    "headline": "'There will be no more false peace processes': De la Esperilla announces end of Peace Commissioner's Office"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Government declares preventive emergency in 10 regions due to frontal system expected to be of 'great intensity'"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Venezuela",
-    "publication": "El Nacional",
-    "headline": "paywall · ads · cookies"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Mariana, from Santiago and from Cuba"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Jamaica",
-    "publication": "Jamaica Gleaner",
-    "headline": "LOUD LIFE, QUIET GOODBYE - Tributes pour in for straight-talking former minister and MP"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Congressmen's last trips abroad before the bicameral Parliament arrives"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Guatemala",
-    "publication": "Prensa Libre",
-    "headline": "RECEIVE OUR MORNING NEWSLETTER"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Costa Rica",
-    "publication": "La Nación (Costa Rica)",
-    "headline": "Latest news from Costa Rica"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Panama",
-    "publication": "La Prensa (Panama)",
-    "headline": "Official: Thomas Christiansen will continue leading Panama's National Team"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Nicaragua",
-    "publication": "La Prensa (Nicaragua)",
-    "headline": "New streets, more land and an empty roundabout: this is how work progresses on Heroes and Martyrs Road"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Ecuador",
-    "publication": "El Universo",
-    "headline": "Your opinion matters"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Ukraine",
-    "publication": "Kyiv Independent",
-    "headline": "Ukraine PM's resignation stuns lawmakers as potential successors emerge"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Uganda",
-    "publication": "Daily Monitor",
-    "headline": "Govt breaks silence on NMG siege, says Museveni ordered 'security inquiry'"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Xi to attend opening ceremony of 2026 World AI Conference, deliver keynote speech"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Georgia",
-    "publication": "Civil.ge",
-    "headline": "Georgia Arrests 28 People Over Alleged Corruption Offenses"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Iraq",
-    "publication": "Al Mada",
-    "headline": "News website: Factions set security and political guarantees as condition for laying down arms"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Poland",
-    "publication": "Gazeta Wyborcza",
-    "headline": "America loses a Nobel laureate. China gives him a laboratory of the future"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Serbia",
-    "publication": "Danas",
-    "headline": "\"Political legitimacy of authorities seriously damaged\": What does the EU Parliament's statement mean that free elections are the solution to Serbia's crisis?"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Niger",
-    "publication": "Le Sahel",
-    "headline": "Attempted incursion into Niamey airport area: 22 assailants neutralized, around twenty suspects captured and significant equipment seized"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Czech Republic",
-    "publication": "Hospodářské noviny",
-    "headline": "Damage to EU financial interests and other suspicions: European prosecutors have launched criminal proceedings over the payment of subsidies to Agrofert"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "Bloomberg defamation suit: Shanmugam, Tan See Leng each awarded $230k in damages"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Azerbaijan",
-    "publication": "Meydan TV",
-    "headline": "Ilham Aliyev: \"Azerbaijan is seriously considering complete withdrawal from the Council of Europe\""
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Papua New Guinea",
-    "publication": "Post-Courier",
-    "headline": "Marape shakes up cabinet: Six Ministers axed as new appointments take floor"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Zimbabwe",
-    "publication": "NewsDay (Zimbabwe)",
-    "headline": "390 000 illegal properties choke Harare"
-  },
-  {
-    "date": "2026-07-14",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Ex-government scientist accused of copying work files to further new career in China"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Ontario wildfires engulf train in flames; smoke blankets the province. Here's what to know"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "EUA decidem taxar produtos do Brasil em 25% apÃ³s investigaÃ§Ã£o comercial sobre Pix e etanol"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Panama",
-    "publication": "La Prensa (Panama)",
-    "headline": "Caso de Ali Zaki Hage por explosión de avión de Alas llega a la Corte Suprema de Justicia"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Bolivia",
-    "publication": "El Deber",
-    "headline": "Policía llega a Rincón de Palometas en busca de los reclutadores para la guerra de Rusia"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "France",
-    "publication": "Le Monde",
-    "headline": "Departure of Ukraine's popular defense minister sparks protests"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "EN DIRECT - Affaire Jubillar : des ossements encore non identifiés retrouvés lors de fouilles autour de Cagnac-les-Mines"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "„Die Stüdlhütte rutscht vom Berg“"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Eén datacenter van Microsoft slurpt evenveel stroom als heel Eindhoven. Hoe kan dat op het toch al volle Nederlandse stroomnet?"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "La legge elettorale passa alla Camera con 217 sì. Tensione in Aula. Schlein: «Maggioranza colabrodo». Conte: «Il Quirinale non sarà mai Colle Oppio»"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Just nu:Tsunamivarning i Nya Zeeland efter skalv"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Finland",
-    "publication": "Helsingin Sanomat",
-    "headline": "Rakentaminen|Miten uimaportaat voivat maksaa neljännesmiljoonan? Näin Helsinki vastaa"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Ukraine",
-    "publication": "Kyiv Independent",
-    "headline": "Zelensky dismisses Defense Minister Fedorov, deepening turmoil in Ukraine's military leadership"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Russia",
-    "publication": "Meduza",
-    "headline": "Главком ВСУ плетет интриги, ему пора в отставкуМихаил Федоров созвал пресс-конференцию, чтобы обсудить свою отставку с поста министра обороны Украины. Краткий пересказ"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Serbia",
-    "publication": "Danas",
-    "headline": "Alarmantno u Pančevu: Na 15.000 školske dece svega dva pedijatra"
-  },
-  {
-    "date": "2026-07-16",
-    "country": "Iceland",
-    "publication": "Morgunblaðið",
-    "headline": "Ár frá gosi og hrinan virðist að lokum komin"
-  },
-  {
     "date": "2026-07-17",
     "country": "Canada",
     "publication": "The Globe and Mail",
@@ -502,5 +148,59 @@
     "country": "South Africa",
     "publication": "Business Day",
     "headline": "Treasury says latest World Bank loan in line with low-cost borrowing strategy"
+  },
+  {
+    "date": "2026-07-24",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Red Sea attack threat to energy security: Qatar"
+  },
+  {
+    "date": "2026-07-24",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "LIVE - Fires in Gironde: \"We are very worried because of winds at 80 km/h expected,\" alerts fire chief"
+  },
+  {
+    "date": "2026-07-24",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Carney won’t rule out imposing retaliatory tariffs on U.S."
+  },
+  {
+    "date": "2026-07-24",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Masondo resigns as PIC chair as Godongwana prepares sweeping board overhaul"
+  },
+  {
+    "date": "2026-07-24",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Pakistan warns Houthi rebels to steer clear of its ships"
+  },
+  {
+    "date": "2026-07-24",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Oaxaca Prosecutor's Office releases composite sketch of alleged perpetrator in journalist Alejandro Leyva's murder; motorcycle used in escape recovered"
+  },
+  {
+    "date": "2026-07-24",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "China aims to elevate basic education with focus on virtue, health and equity"
+  },
+  {
+    "date": "2026-07-24",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "Revealed: What happened at the PM’s secretive Point Piper dinner"
+  },
+  {
+    "date": "2026-07-24",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "‘Look at Brexit’: restricting migration will cost SA dearly, warns Sim Tshabalala"
   }
 ]
