@@ -480,7 +480,18 @@ Items:
                 continue
             s.localization_score = score
             kept.append(s)
-
+# Full per-story score visibility. Without this the screen only
+        # reports what it DROPPED, so a rubric that rates a French wildfire
+        # as a 3 for a Norwegian paper looks identical in the logs to one
+        # working correctly.
+        dist = {}
+        for s in kept:
+            dist[s.localization_score] = dist.get(s.localization_score, 0) + 1
+        logger.info(f"Localization distribution (kept): "
+                    f"{ {k: dist[k] for k in sorted(dist)} }")
+        for s in sorted(kept, key=lambda x: x.localization_score):
+            logger.info(f"  loc={s.localization_score} [{s.country}] "
+                        f"{s.publication}: {s.headline[:70]}")
         if dropped_insufficient:
             logger.info(f"Sufficiency screen dropped {len(dropped_insufficient)} thin/promo stories: "
                         f"{[s.publication for s in dropped_insufficient]}")
@@ -496,7 +507,26 @@ Items:
 # ─────────────────────────────────────────────────────────────────────────────
 # Selection
 # ─────────────────────────────────────────────────────────────────────────────
-
+def _enforce_one_per_country(ranked: list[ScrapedStory]) -> list[ScrapedStory]:
+    """One story per country per edition, enforced structurally rather than
+    left to the selection prompt's criterion 5. Order is preserved, so the
+    highest-ranked story from each country survives and later ones from that
+    country are dropped -- which also means adding a SECOND outlet per
+    country becomes a quality lever rather than redundancy: the selector can
+    take the domestic story and discard the bystander one. On 2026-07-27
+    Norway had exactly one outlet and it led on a French wildfire, so there
+    was no alternative to fall back to."""
+    seen, out, dropped = set(), [], []
+    for s in ranked:
+        if s.country in seen:
+            dropped.append(f"{s.country}/{s.publication}")
+            continue
+        seen.add(s.country)
+        out.append(s)
+    if dropped:
+        logger.info(f"One-per-country rule dropped {len(dropped)} lower-ranked "
+                    f"duplicates: {dropped}")
+    return out
 def _select_stories(stories: list[ScrapedStory], baseline_text: str, history_text: str) -> list[ScrapedStory]:
     """
     Ask Claude to rank a buffer of up to SELECTION_BUFFER candidate stories,
@@ -568,6 +598,7 @@ Stories to evaluate:
         indices = result.get("selected", [])[:SELECTION_BUFFER]
         logger.info(f"LLM ranked indices: {indices}")
         selected = [stories[i] for i in indices if i < len(stories)]
+        selected = _enforce_one_per_country(selected)
         logger.info(f"Selection returned {len(selected)} ranked candidates")
         return selected
     except Exception as e:
