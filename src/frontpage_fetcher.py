@@ -101,6 +101,44 @@ class FrontPageResult:
 # than being silently absorbed by a wider tolerance window.
 STALENESS_TOLERANCE_DAYS = 1
 
+# ── Publication cadence ──────────────────────────────────────────────────
+# The 1-day tolerance above silently assumes every source is a daily. It
+# isn't. On 2026-07-27 Der Spiegel (3 days) and Mail & Guardian (3 days)
+# were both dropped as "genuinely stale/unrefreshed" when in fact both were
+# showing their correct, current editions -- they are weeklies. A weekly
+# under a 1-day tolerance fails roughly six days in seven, which means
+# those countries are structurally excluded from the newsletter rather
+# than occasionally unlucky.
+#
+# Tolerance is therefore derived from cadence. Sources can declare it
+# either in their frontpage config ({"cadence": "weekly", ...}) or here by
+# source_id; the config wins if both are present. This dict is a seed
+# containing only the cases confirmed from production logs -- populating
+# the rest of the source list properly is a research pass, not a guess,
+# and mislabelling a daily as a weekly would let genuinely stale editions
+# through unnoticed. Anything not listed is treated as a daily, which
+# fails safe (drops) rather than unsafe (publishes stale news).
+CADENCE_TOLERANCE_DAYS = {
+    "daily": 1,
+    "weekday": 3,    # no weekend edition -- Monday must reach back to Friday
+    "semiweekly": 4,
+    "weekly": 8,     # a full cycle plus a day of publish-timing lag
+    "biweekly": 15,
+}
+DEFAULT_CADENCE = "daily"
+
+CADENCE_BY_SOURCE = {
+    "spiegel": "weekly",   # Der Spiegel — print edition is weekly
+    "mg_sa": "weekly",     # Mail & Guardian — weekly
+}
+
+
+def _tolerance_for(source_id: str, cfg: dict) -> int:
+    """Staleness tolerance in days for this source, from its declared
+    cadence. Config-level cadence overrides the module-level table."""
+    cadence = cfg.get("cadence") or CADENCE_BY_SOURCE.get(source_id, DEFAULT_CADENCE)
+    return CADENCE_TOLERANCE_DAYS.get(cadence, CADENCE_TOLERANCE_DAYS[DEFAULT_CADENCE])
+
 
 class FrontPageUnavailable(Exception):
     """Raised when a front page couldn't be fetched for any reason worth
@@ -124,8 +162,13 @@ def fetch_frontpage(source: dict, on: Optional[date_cls] = None) -> FrontPageRes
 
     on = on or date_cls.today()
 
+    # Resolved once at source level so a fallback provider block that omits
+    # "cadence" still inherits the source's real publication cadence rather
+    # than silently reverting to the daily default.
+    tolerance = _tolerance_for(source["id"], cfg)
+
     try:
-        return _fetch_by_provider(source["id"], cfg, on)
+        return _fetch_by_provider(source["id"], cfg, on, tolerance)
     except FrontPageUnavailable as e:
         fallback = cfg.get("fallback")
         if not fallback:
@@ -134,19 +177,23 @@ def fetch_frontpage(source: dict, on: Optional[date_cls] = None) -> FrontPageRes
             "Primary provider failed for %s (%s); trying fallback %s",
             source["id"], e, fallback.get("provider"),
         )
-        return _fetch_by_provider(source["id"], fallback, on)
+        return _fetch_by_provider(source["id"], fallback, on, tolerance)
 
 
-def _fetch_by_provider(source_id: str, cfg: dict, on: date_cls) -> FrontPageResult:
+def _fetch_by_provider(source_id: str, cfg: dict, on: date_cls,
+                       tolerance: Optional[int] = None) -> FrontPageResult:
     provider = cfg["provider"]
+    if tolerance is None:
+        tolerance = _tolerance_for(source_id, cfg)
     if provider == "kiosko":
-        return _fetch_kiosko(source_id, cfg, on)
+        return _fetch_kiosko(source_id, cfg, on, tolerance)
     elif provider == "frontpages":
-        return _fetch_frontpages(source_id, cfg, on)
+        return _fetch_frontpages(source_id, cfg, on, tolerance)
     raise FrontPageUnavailable(f"{source_id}: unknown provider '{provider}'")
 
 
-def _fetch_kiosko(source_id: str, cfg: dict, on: date_cls) -> FrontPageResult:
+def _fetch_kiosko(source_id: str, cfg: dict, on: date_cls,
+                  tolerance: int = STALENESS_TOLERANCE_DAYS) -> FrontPageResult:
     """kiosko.net: URL is fully predictable and date-specific, so unlike
     frontpages.com, retrying with an earlier date is a genuinely different
     request (not just re-reading the same live page). Tries `on`, then up
@@ -154,7 +201,7 @@ def _fetch_kiosko(source_id: str, cfg: dict, on: date_cls) -> FrontPageResult:
     country_code = cfg["country_code"]
     slug = cfg["slug"]
     last_err = None
-    for days_back in range(0, STALENESS_TOLERANCE_DAYS + 1):
+    for days_back in range(0, tolerance + 1):
         try_date = on - timedelta(days=days_back)
         url = (
             f"https://img.kiosko.net/{try_date.year}/{try_date.month:02d}/{try_date.day:02d}"
@@ -171,10 +218,11 @@ def _fetch_kiosko(source_id: str, cfg: dict, on: date_cls) -> FrontPageResult:
                 used_date=try_date,
             )
         last_err = f"kiosko image fetch failed for {url}"
-    raise FrontPageUnavailable(f"{source_id}: {last_err} (tried today and {STALENESS_TOLERANCE_DAYS} day(s) back)")
+    raise FrontPageUnavailable(f"{source_id}: {last_err} (tried today and {tolerance} day(s) back)")
 
 
-def _fetch_frontpages(source_id: str, cfg: dict, on: date_cls) -> FrontPageResult:
+def _fetch_frontpages(source_id: str, cfg: dict, on: date_cls,
+                      tolerance: int = STALENESS_TOLERANCE_DAYS) -> FrontPageResult:
     """frontpages.com: the outlet's own dedicated page (/{slug}/) does NOT
     reliably expose its own cover thumbnail in static HTML -- confirmed by
     testing (2026-07-17): that page only contains OTHER outlets' thumbnails
@@ -227,7 +275,7 @@ def _fetch_frontpages(source_id: str, cfg: dict, on: date_cls) -> FrontPageResul
     yyyy, mm, dd = m.groups()
     found_date = date_cls(int(yyyy), int(mm), int(dd))
     staleness = (on - found_date).days
-    if staleness < 0 or staleness > STALENESS_TOLERANCE_DAYS:
+    if staleness < 0 or staleness > tolerance:
         # Note: re-fetching wouldn't change this -- frontpages.com always
         # serves whatever it currently has live for this outlet, there's no
         # way to request a specific past date (confirmed: its own "?d="
@@ -237,7 +285,7 @@ def _fetch_frontpages(source_id: str, cfg: dict, on: date_cls) -> FrontPageResul
         raise FrontPageUnavailable(
             f"{source_id}: frontpages.com's live edition for {slug} is dated "
             f"{found_date}, {staleness} day(s) from the requested {on} "
-            f"(beyond the {STALENESS_TOLERANCE_DAYS}-day tolerance -- this "
+            f"(beyond the {tolerance}-day tolerance -- this "
             f"looks like a genuinely stale/unrefreshed outlet, not ordinary "
             f"publish-timing lag)"
         )

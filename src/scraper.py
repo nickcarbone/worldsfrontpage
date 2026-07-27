@@ -87,7 +87,20 @@ def _headers() -> dict:
 REQUEST_TIMEOUT = 20
 MAX_WORKERS = 8            # concurrent requests-based scrapes
 MAX_RETRIES = 2            # attempts before giving up (non-bot-wall errors)
-MAX_CANDIDATES = 5         # candidate headlines collected per source
+# Candidate headlines collected per source.
+#
+# Raised 5 -> 18 (2026-07-27). The 2026-07-27 run matched only 20 of 55
+# frontpage-configured sources, and ~20 of the 35 drops were the vision
+# call correctly reporting that NONE of the scraped candidates described
+# any story on the print front page (Straits Times, Haaretz, SCMP,
+# Kathimerini, Inquirer, Punch, Liberty Times, Hurriyet, ThisDay...). That
+# is not a matching failure, it's a coverage failure: a homepage and a
+# print front page diverge constantly, and five candidates is far too
+# narrow a net to reliably contain whatever the print editors led with.
+# The cost of a wider net is a longer vision prompt, not a worse decision --
+# the vision call is choosing among candidates, so extra wrong ones are
+# inert, while a missing right one drops the whole country for the day.
+MAX_CANDIDATES = 18
 BLOCK_STATUS_CODES = {403, 429, 503}  # bot-wall signals → escalate to Playwright
 
 LEAD_SELECTORS = [
@@ -121,7 +134,96 @@ PROMO_SIGNALS = [
     "morning briefing", "download our app", "download the app",
     "get the app", "app store", "google play", "follow us on",
     "delivers the latest", "delivered to your inbox",
+    # Non-English promo boilerplate seen in the 2026-07-27 run
+    "recibe nuestro", "reciba nuestro", "suscríbete", "suscribete",
+    "abonnez-vous", "abonnieren", "assine", "boletín", "boletin",
+    "su opinión importa", "su opinion importa", "encontrá a tu",
+    "encontra a tu", "let us curate", "contact us today",
 ]
+
+# Interstitials, bot walls, consent notices, legal furniture and bare
+# domain strings. These are not "a headline the heuristic guessed wrong" --
+# they are pages or fragments with no news content at all, and they poison
+# everything downstream: the front-page vision call cannot match a real
+# print lead against "JavaScript is disabled", so the source drops, and
+# any that survive burn a sufficiency-screen slot for nothing.
+#
+# The 2026-07-27 run put at least a dozen of these into the candidate
+# pool -- El País (Uruguay), La Prensa Gráfica, Público, Times of Malta,
+# Trend News, Arab News, Sudan Tribune, Solomon Star ("Performing security
+# verification"), The Australian ("You might have been detected and
+# blocked as a crawler bot!"), SCMP ("Opt out of the sale or sharing of
+# personal information"), Der Standard (a copyright line), El Nacional
+# ("paywall · ads · cookies"), plus four bare domains reaching the
+# candidate list via the unguarded og:title fallback.
+JUNK_SIGNALS = [
+    # Bot walls / JS interstitials
+    "javascript is disabled", "enable javascript", "javascript required",
+    "performing security verification", "security verification",
+    "checking your browser", "verify you are human", "are you a robot",
+    "detected and blocked", "crawler bot", "access denied",
+    "unusual traffic", "please wait while", "redirecting",
+    "transferring to the website", "one moment", "403 forbidden",
+    # Consent / legal / account furniture
+    "cookie", "consent", "privacy policy", "terms of service",
+    "terms of use", "all rights reserved", "opt out of the sale",
+    "personal information", "verlagsgesellschaft",
+    "log in to continue", "create an account", "already a subscriber",
+    "paywall · ads", "paywall - ads",
+    # Nav / section furniture that reads like a headline
+    "advertise with us", "about us", "contact us", "help centre",
+    "help center", "most read", "más leídas", "mais lidas",
+]
+
+# Bare-domain junk: "www.standaard.be", "www.heraldonline.co.zw",
+# "www.monitor.co.ug", "www.irrawaddy.com" all reached the candidate list
+# on 2026-07-27 via og:title. A "headline" that is only a hostname is
+# never a story.
+_BARE_DOMAIN_RE = re.compile(r"^\s*(https?://)?(www\.)?[a-z0-9\-]+(\.[a-z]{2,}){1,3}/?\s*$", re.I)
+
+# All-caps section/label prefixes glued to the front of a real headline by
+# sloppy markup -- e.g. Daily Nation's "PREMIUMAdongo dared to dream, made
+# Kenya proud, met harsh end" or Dagens Nyheter's "Just nu:Knivdåd i
+# Paris". The headline underneath is genuine, so these are STRIPPED rather
+# than rejected; rejecting them would throw away real leads.
+_LABEL_PREFIX_RE = re.compile(
+    r"^(PREMIUM|EXCLUSIVE|BREAKING|UPDATE[D]?|LIVE|VIDEO|PHOTOS?|GALLERY|OPINION|"
+    r"ANALYSIS|EDITORIAL|COMMENT|INTERVIEW|EXKLUSIV|EILMELDUNG|DIRECTO|EN VIVO|"
+    r"ÚLTIMA HORA|ULTIMA HORA|EXCLUSIVO|ANÁLISE|ANALISE|DIRECT|ÉDITO|EDITO|"
+    r"Just nu|Nyhet|Siste nytt|Seneste nyt)\s*[:\-–—]?\s*"
+)
+
+
+def _strip_label_prefix(text: str) -> str:
+    """Remove a glued section/label prefix, leaving the real headline.
+    Applied repeatedly since some sites stack two ('PREMIUMLIVE...')."""
+    prev = None
+    out = (text or "").strip()
+    while out != prev:
+        prev = out
+        out = _LABEL_PREFIX_RE.sub("", out).strip()
+    return out
+
+
+def _decode(resp) -> str:
+    """
+    Return correctly-decoded response text.
+
+    requests falls back to ISO-8859-1 for any text/* response whose HTTP
+    Content-Type header omits a charset, regardless of what the document
+    itself declares in a <meta> tag. Most non-Anglophone outlets in this
+    source list declare UTF-8 only in markup, so the 2026-07-27 run carried
+    mojibake through the entire pipeline: Folha's "tarifaÃ§o"/"FlÃ¡vio",
+    Asahi's "ããã¼ã«ãã", Adevărul's "cumpÄrÄturi". Translation
+    happened to repair the Brazilian story before publication, but the
+    corrupted text was what the sufficiency screen, the localization
+    scorer, the syndication clustering and the front-page vision matcher
+    all actually saw.
+    """
+    ctype = resp.headers.get("Content-Type", "") or ""
+    if "charset=" not in ctype.lower():
+        resp.encoding = resp.apparent_encoding or "utf-8"
+    return resp.text
 
 # Wire-service attribution markers. World's Front Page exists to surface
 # what a country's OWN newsroom chose to invest reporting resources in — a
@@ -201,6 +303,58 @@ class ScrapedStory:
     candidates: list = field(default_factory=list)  # list[Candidate], primary first
 
 
+# Leading articles and other non-distinctive first words in masthead names.
+# These must never be used on their own to identify masthead text.
+_MASTHEAD_STOPWORDS = {
+    "the", "le", "la", "les", "el", "los", "las", "o", "a", "os", "as",
+    "il", "lo", "de", "der", "die", "das", "het", "al", "an", "l", "un",
+    "una", "new", "daily", "news", "times", "post", "star", "sun", "mail",
+    "herald", "tribune", "journal", "press", "observer", "national",
+}
+
+
+def _masthead_tokens(publication_name: str) -> list[str]:
+    """Distinctive tokens from a publication's name, dropping leading
+    articles and generic newspaper words."""
+    if not publication_name:
+        return []
+    words = re.findall(r"[^\W\d_]+", publication_name.lower(), re.UNICODE)
+    return [w for w in words if w not in _MASTHEAD_STOPWORDS and len(w) > 2]
+
+
+def _matches_publication_name(t: str, publication_name: str) -> bool:
+    """
+    True if `t` looks like the outlet's own masthead rather than a headline.
+
+    Replaces a first-word substring test that was catastrophically broad:
+    it took publication_name.lower().split()[0] and asked whether that
+    appeared anywhere in the first 50 characters. For every outlet whose
+    name begins with an article -- The Punch, The Globe and Mail, Le Monde,
+    La Nación, El Universal, O Globo, Il Fatto, De Standaard, Der Standard,
+    Al-Ahram, and dozens more across this source list -- that reduced to
+    asking whether the headline contained "the"/"le"/"la"/"el"/"o"/"al"
+    early on. Which most of their headlines do, in their own language.
+
+    Verified against real headlines from the 2026-07-27 run: O Globo's
+    "Bolsonaro deve depor na próxima semana", The Punch's NSCDC petrol
+    story, Le Monde's "Emmanuel Macron convoque le conseil de défense" and
+    La Nación's "El Gobierno no hará un pedido de disculpas a Lula" were
+    ALL being rejected as masthead text. This silently suppressed real
+    leads at every extraction tier and in the alternate sweep, and is very
+    likely a larger contributor to thin candidate lists than any of the
+    junk-text problems this batch was written to fix.
+
+    The replacement requires either the full masthead as a phrase, or a
+    distinctive (non-article, non-generic) token from it.
+    """
+    if not publication_name:
+        return False
+    head = t[:80]
+    if publication_name.lower().strip() in head:
+        return True
+    return any(tok in head for tok in _masthead_tokens(publication_name))
+
+
 def _is_site_name(text: str, publication_name: str) -> bool:
     """Reject candidate headlines that are actually masthead/nav text, or
     promotional boilerplate (newsletter signups, app-download prompts,
@@ -209,11 +363,17 @@ def _is_site_name(text: str, publication_name: str) -> bool:
     if not text:
         return True
     t = text.lower().strip()
+    if _BARE_DOMAIN_RE.match(t):
+        return True
+    if t.startswith("©") or t.startswith("(c)"):
+        return True
     if _effective_len(t) < 15:
         return True
-    if publication_name and publication_name.lower().split()[0] in t[:50]:
+    if _matches_publication_name(t, publication_name):
         return True
     if any(signal in t for signal in SITE_NAME_SIGNALS):
+        return True
+    if any(signal in t for signal in JUNK_SIGNALS):
         return True
     return any(signal in t for signal in PROMO_SIGNALS)
 
@@ -274,10 +434,28 @@ def scrape_all(sources: list[dict], use_playwright: bool = True) -> list[Scraped
             results[s["id"]] = _error_story(s, "HTTP 403 (blocked, no browser fallback)")
 
     ordered = [results[s["id"]] for s in sources if s["id"] in results]
+    cand_counts = []
     for story in ordered:
         if story.headline:
             logger.info(f"  {story.publication}: '{story.headline[:70]}' "
                         f"(+{max(0, len(story.candidates) - 1)} alt candidates)")
+        elif story.candidates:
+            # No primary survived the site-name/junk guards, but the
+            # alternate sweep found real stories -- worth logging distinctly
+            # from a hard scrape failure, since the front-page vision call
+            # can still match against these.
+            logger.info(f"  {story.publication}: no primary headline, "
+                        f"{len(story.candidates)} alternate candidate(s)")
+        if not story.scrape_error:
+            cand_counts.append(len(story.candidates))
+    if cand_counts:
+        cand_counts.sort()
+        logger.info(
+            f"Candidate depth across {len(cand_counts)} scraped sources: "
+            f"median {cand_counts[len(cand_counts)//2]}, "
+            f"min {cand_counts[0]}, max {cand_counts[-1]}, "
+            f"{sum(1 for c in cand_counts if c == 0)} with none"
+        )
     return ordered
 
 
@@ -296,7 +474,7 @@ def _scrape_requests_safe(source: dict) -> tuple[ScrapedStory, bool]:
                 # browser fingerprint usually does — escalate.
                 return _error_story(source, f"HTTP {resp.status_code}"), True
             resp.raise_for_status()
-            soup = BeautifulSoup(resp.text, "html.parser")
+            soup = BeautifulSoup(_decode(resp), "html.parser")
             return _extract_story(soup, source), False
         except requests.RequestException as e:
             last_err = str(e)
@@ -470,15 +648,32 @@ def _extract_story(soup: BeautifulSoup, source: dict) -> ScrapedStory:
                 article_url = href if href.startswith("http") else urljoin(base_url, href)
 
     # ── 7. LAST RESORT: og:title / og:description ───────────────────────────
+    #
+    # 2026-07-27: this tier was previously UNGUARDED -- whatever og:title
+    # contained became the primary candidate with no _is_site_name() check,
+    # which is how "O GLOBO | Confira as principais notícias", "Le Monde -
+    # World news, culture and opinion", "The New Times", "www.standaard.be"
+    # and "www.heraldonline.co.zw" all reached the front-page vision call as
+    # this outlet's supposed lead story. Every one of those sources then
+    # dropped, because no print front page can be matched against a
+    # masthead. An empty headline is strictly better than a fake one: the
+    # alternate-candidate sweep below still runs, so the source keeps a
+    # real chance instead of being poisoned by its own site name.
     if not headline:
         og_title = soup.find("meta", property="og:title")
         if og_title:
-            headline = og_title.get("content", "").strip()
-            logger.warning(
-                f"{source['name']}: no article headline found by structural "
-                f"selectors — falling back to og:title (likely the site name, "
-                f"not the top article)"
-            )
+            og_text = _strip_label_prefix(og_title.get("content", "").strip())
+            if og_text and not _is_site_name(og_text, pub_name):
+                headline = og_text
+                logger.warning(
+                    f"{source['name']}: no article headline found by structural "
+                    f"selectors — falling back to og:title"
+                )
+            else:
+                logger.info(
+                    f"{source['name']}: og:title rejected as site name/boilerplate "
+                    f"('{og_text[:60]}') — relying on alternate candidates"
+                )
     if not deckline:
         og_desc = soup.find("meta", property="og:description")
         if og_desc:
@@ -494,6 +689,8 @@ def _extract_story(soup: BeautifulSoup, source: dict) -> ScrapedStory:
     language_hint = lang[:2].lower() if lang else "en"
 
     # ── Build candidate list: primary first, then alternates in page order ──
+    headline = _strip_label_prefix(headline) if headline else ""
+
     candidates = []
     if headline:
         candidates.append(Candidate(
@@ -505,6 +702,17 @@ def _extract_story(soup: BeautifulSoup, source: dict) -> ScrapedStory:
         _collect_alt_candidates(soup, source, exclude=headline,
                                 limit=MAX_CANDIDATES - len(candidates))
     )
+
+    # If every tier's primary was rejected (usually: og:title was the site
+    # name and structural selectors found nothing), fall back to the first
+    # alternate. It has already passed the same junk/site-name guards, and
+    # document order makes it the best available guess at the lead. Keeps
+    # main.py's "successful scrapes" count meaningful now that the og:title
+    # tier can legitimately return nothing.
+    if not headline and candidates:
+        headline = candidates[0].headline
+        deckline = deckline or candidates[0].deckline
+        article_url = article_url or candidates[0].article_url
 
     return ScrapedStory(
         source_id=source["id"],
@@ -522,12 +730,21 @@ def _extract_story(soup: BeautifulSoup, source: dict) -> ScrapedStory:
 
 
 def _collect_alt_candidates(soup: BeautifulSoup, source: dict,
-                            exclude: str = "", limit: int = 4) -> list[Candidate]:
+                            exclude: str = "", limit: int = 17) -> list[Candidate]:
     """
     Collect additional candidate headlines in document order. The second or
     third front-page story is often the more underreported one — and when
     the primary heuristic grabs the wrong element, these give the curator a
     recovery path instead of a dead slot for that country.
+
+    Two sweeps as of 2026-07-27. The heading sweep is the original and
+    still runs first, so document order is preserved for sites with sane
+    markup. The anchor sweep is new: a large minority of this source list
+    (particularly Asian and African outlets, and anything built on a
+    card/grid template) puts its front-page leads in <a> text or <span>s
+    inside links, with headings reserved for section labels. Those sites
+    were previously contributing at most one candidate — usually the wrong
+    one — which is a direct cause of the print/web mismatch drops.
     """
     if limit <= 0:
         return []
@@ -536,24 +753,38 @@ def _collect_alt_candidates(soup: BeautifulSoup, source: dict,
     seen = {exclude.lower().strip()} if exclude else set()
     out: list[Candidate] = []
 
-    for el in soup.find_all(["h1", "h2", "h3"]):
-        text = el.get_text(strip=True)
+    def _consider(text: str, href: str) -> bool:
+        """Returns True if the limit is now reached."""
+        text = _strip_label_prefix(text)
         if not text or _effective_len(text) < 20 or _is_site_name(text, pub_name):
-            continue
+            return False
         key = text.lower().strip()
         if key in seen:
-            continue
-        a = el.find("a") or el.find_parent("a")
-        href = a.get("href", "") if a else ""
+            return False
         if href and any(x in href for x in NAV_HREF_SIGNALS):
-            continue
+            return False
         url = ""
         if href:
             url = href if href.startswith("http") else urljoin(base_url, href)
         seen.add(key)
         out.append(Candidate(headline=text[:500], article_url=url))
-        if len(out) >= limit:
-            break
+        return len(out) >= limit
+
+    # ── Sweep 1: headings (original behaviour) ──────────────────────────
+    for el in soup.find_all(["h1", "h2", "h3"]):
+        a = el.find("a") or el.find_parent("a")
+        href = a.get("href", "") if a else ""
+        if _consider(el.get_text(strip=True), href):
+            return out
+
+    # ── Sweep 2: substantial linked text not already captured ───────────
+    # Only fires if the heading sweep left room, so heading-driven sites
+    # are unaffected. Capped at 400 anchors so a link-farm homepage can't
+    # dominate the pass.
+    for a in soup.find_all("a", href=True)[:400]:
+        if _consider(a.get_text(strip=True), a.get("href", "")):
+            return out
+
     return out
 
 
@@ -574,7 +805,7 @@ def fetch_article_text(url: str, max_chars: int = 2500) -> str:
     try:
         resp = requests.get(url, headers=_headers(), timeout=REQUEST_TIMEOUT)
         resp.raise_for_status()
-        soup = BeautifulSoup(resp.text, "html.parser")
+        soup = BeautifulSoup(_decode(resp), "html.parser")
         container = (
             soup.find("article")
             or soup.find(attrs={"class": re.compile(r"article|story[-_]body|content", re.I)})
@@ -618,7 +849,7 @@ def scrape_baselines(baseline_sources: list[dict]) -> list[ScrapedStory]:
                 escalate.append(source)
                 continue
             resp.raise_for_status()
-            html_by_id[source["id"]] = resp.text
+            html_by_id[source["id"]] = _decode(resp)
         except requests.RequestException as e:
             logger.warning(f"Baseline requests fetch failed for {source['name']}: {e} — escalating")
             escalate.append(source)

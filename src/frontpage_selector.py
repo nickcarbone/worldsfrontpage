@@ -77,6 +77,17 @@ class FrontPageSelection:
     reason: str                     # why matched / why not, for logging
     wire_elements_skipped: int = 0  # how many prominent elements were wire-flagged and passed over
     frontpage_image_url: str = ""
+    # Audit fields (added 2026-07-27). Previously the drop log explained
+    # itself in detail while every successful match was invisible -- you
+    # could see exactly why 35 sources failed and nothing at all about what
+    # the 20 survivors actually matched, or how far down the front page the
+    # selector had to reach to find it. That asymmetry makes it impossible
+    # to tell a confident match from a marginal one.
+    matched_index: int = -1         # index into story.candidates
+    matched_headline: str = ""      # the web candidate that won
+    frontpage_headline: str = ""    # the print element it was matched to
+    element_rank: int = 0           # 1 = banner lead, higher = further down
+    elements_seen: int = 0          # prominent elements the vision call identified
 
 
 def apply_frontpage_selection(
@@ -152,12 +163,24 @@ def apply_frontpage_selection(
         story.deckline = matched.deckline
         story.article_url = matched.article_url or story.article_url
         survivors.append(story)
+
+        elements = vision_result.get("elements", []) or []
         logs.append(FrontPageSelection(
             source_id=source_id, matched=True,
             reason=vision_result.get("reason", "matched"),
             wire_elements_skipped=wire_skipped,
             frontpage_image_url=fp_result.image_url,
+            matched_index=idx,
+            matched_headline=matched.headline,
+            frontpage_headline=vision_result.get("matched_frontpage_headline", ""),
+            element_rank=vision_result.get("matched_element_rank", 0),
+            elements_seen=len(elements),
         ))
+        logger.info(
+            f"  matched {source_id}: candidate #{idx} of {len(story.candidates)} "
+            f"= element rank {vision_result.get('matched_element_rank', '?')} "
+            f"of {len(elements)} — '{matched.headline[:70]}'"
+        )
 
     logger.info(
         f"Front-page selection: {len(survivors)} matched / "
@@ -176,18 +199,23 @@ def _rank_and_match(story: ScrapedStory, image_bytes: bytes, content_type: str) 
     media_type = _CONTENT_TYPE_TO_MEDIA_TYPE.get(content_type, "image/jpeg")
     b64_image = base64.standard_b64encode(image_bytes).decode("ascii")
 
+    # Candidate lists are materially longer as of 2026-07-27 (scraper.py's
+    # MAX_CANDIDATES went 5 -> 18) because the previous cap was the single
+    # largest cause of "no candidate matches this front page" drops.
+    # Decklines are trimmed harder to keep the prompt from ballooning --
+    # the headline is what carries the match.
     candidate_list = [
-        {"index": i, "headline": c.headline, "deckline": c.deckline[:200]}
+        {"index": i, "headline": c.headline, "deckline": c.deckline[:120]}
         for i, c in enumerate(story.candidates)
     ]
 
     prompt = f"""You are looking at today's actual front page of {story.publication} ({story.country}).
 
 TASK:
-1. Identify the prominent story elements on this front page (banner/lead, secondary stories, teasers) -- typically 2-5 elements, most prominent first.
+1. Identify the prominent story elements on this front page (banner/lead, secondary stories, teasers) -- typically 3-8 elements, most prominent first.
 2. For EACH element, note if it is credited to a wire service (AP, Reuters, AFP, Bloomberg, dpa, EFE, or that wire service's name transliterated/translated into this page's language). Wire credit is often printed directly under or beside a headline in small type.
-3. Find the MOST PROMINENT element that is NOT wire-credited. If the true banner lead is wire-credited, skip it and look at the next-most-prominent eligible element -- do not default to the banner just because it's biggest.
-4. Match that eligible element against the list of web-scraped candidate headlines below (they come from this same outlet's website, so should describe the same underlying story even if the exact wording differs from the print headline). If none of the candidates plausibly describes the same story as any eligible front-page element, say so explicitly -- do not force a weak match.
+3. Rank the elements that are NOT wire-credited, most prominent first. If the true banner lead is wire-credited, it is not eligible -- do not default to the banner just because it's biggest.
+4. Walk that eligible list in order and select the FIRST element that has a plausible match among the web-scraped candidate headlines below. The candidates come from this same outlet's website today, so a match should describe the same underlying story even where the print headline and the web headline are worded quite differently (print headlines are often shorter, punchier, or more elliptical). Prefer a real match further down the page over no match at all. If NONE of the eligible elements matches any candidate, say so explicitly -- do not force a match between stories that are genuinely about different things.
 
 WEB-SCRAPED CANDIDATES (from this outlet's own website today):
 {json.dumps(candidate_list, ensure_ascii=False, indent=2)}
@@ -199,13 +227,15 @@ Return ONLY this JSON, nothing else:
     ...
   ],
   "selected_candidate_index": <int index from the candidate list above, or null if no eligible match>,
+  "matched_frontpage_headline": "<the front-page element's own headline, as printed>",
+  "matched_element_rank": <the "rank" value of the element you matched, or null>,
   "reason": "<one sentence: which front-page element you matched and why>",
   "reason_no_match": "<if selected_candidate_index is null, one sentence why -- e.g. 'entire front page is wire-led' or 'no scraped candidate describes the eligible lead story'>"
 }}"""
 
     resp = client.messages.create(
         model=MODEL,
-        max_tokens=2000,
+        max_tokens=3000,
         thinking={"type": "disabled"},
         messages=[{
             "role": "user",
