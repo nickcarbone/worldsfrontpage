@@ -1,15 +1,16 @@
 """
 World's Front Page — Master Source List
-163 publications across 60+ countries.
+172 publications across 60+ countries (10 of them baseline-only).
 Each source: (id, country, region, name, url, status, icij)
+Baseline sources additionally carry "baseline_feed" (RSS/Atom URL).
 Status: "independent" | "state_controlled" | "state_affiliated" | "state_adjacent" | "exile" | "pressured"
 """
 
 SOURCES = [
     # ──── AMERICAS ────
-    {"id": 'nyt', "country": 'USA', "region": 'Americas', "name": 'The New York Times', "url": 'https://www.nytimes.com', "status": 'independent', "icij": True, "frontpage": {"provider": "kiosko", "country_code": "us", "slug": "newyork_times", "fallback": {"provider": "frontpages", "slug": "the-new-york-times", "country_slug": "us"}}},
-    {"id": 'wsj', "country": 'USA', "region": 'Americas', "name": 'The Wall Street Journal', "url": 'https://www.wsj.com', "status": 'independent', "icij": False, "frontpage": {"provider": "kiosko", "country_code": "us", "slug": "wsj"}},
-    {"id": 'wapo', "country": 'USA', "region": 'Americas', "name": 'The Washington Post', "url": 'https://www.washingtonpost.com', "status": 'independent', "icij": True, "frontpage": {"provider": "kiosko", "country_code": "us", "slug": "washington_post", "fallback": {"provider": "frontpages", "slug": "the-washington-post", "country_slug": "us"}}},
+    {"id": 'nyt', "country": 'USA', "region": 'Americas', "name": 'The New York Times', "url": 'https://www.nytimes.com', "status": 'independent', "icij": True, "baseline_feed": 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', "frontpage": {"provider": "kiosko", "country_code": "us", "slug": "newyork_times", "fallback": {"provider": "frontpages", "slug": "the-new-york-times", "country_slug": "us"}}},
+    {"id": 'wsj', "country": 'USA', "region": 'Americas', "name": 'The Wall Street Journal', "url": 'https://www.wsj.com', "status": 'independent', "icij": False, "baseline_feed": 'https://feeds.a.dj.com/rss/RSSWorldNews.xml', "frontpage": {"provider": "kiosko", "country_code": "us", "slug": "wsj"}},
+    {"id": 'wapo', "country": 'USA', "region": 'Americas', "name": 'The Washington Post', "url": 'https://www.washingtonpost.com', "status": 'independent', "icij": True, "baseline_feed": 'https://feeds.washingtonpost.com/rss/world', "frontpage": {"provider": "kiosko", "country_code": "us", "slug": "washington_post", "fallback": {"provider": "frontpages", "slug": "the-washington-post", "country_slug": "us"}}},
     {"id": 'globe_mail', "country": 'Canada', "region": 'Americas', "name": 'The Globe and Mail', "url": 'https://www.theglobeandmail.com', "status": 'independent', "icij": True, "frontpage": {"provider": "kiosko", "country_code": "ca", "slug": "ca_globe_mail", "fallback": {"provider": "frontpages", "slug": "the-globe-and-mail", "country_slug": "canada"}}},
     {"id": 'nat_post', "country": 'Canada', "region": 'Americas', "name": 'National Post', "url": 'https://nationalpost.com', "status": 'independent', "icij": False, "frontpage": {"provider": "kiosko", "country_code": "ca", "slug": "ca_national_post", "fallback": {"provider": "frontpages", "slug": "national-post", "country_slug": "canada"}}},
     {"id": 'el_universal', "country": 'Mexico', "region": 'Americas', "name": 'El Universal', "url": 'https://www.eluniversal.com.mx', "status": 'independent', "icij": False, "frontpage": {"provider": "kiosko", "country_code": "mx", "slug": "mx_universal", "fallback": {"provider": "frontpages", "slug": "el-universal-mexico", "country_slug": "mexico"}}},
@@ -41,8 +42,8 @@ SOURCES = [
     {"id": 'tribune_bs', "country": 'Bahamas', "region": 'Americas', "name": 'The Tribune (Bahamas)', "url": 'https://www.tribune242.com', "status": 'independent', "icij": False},
 
     # ──── EUROPE (incl. Caucasus & Central Asia) ────
-    {"id": 'ft', "country": 'UK', "region": 'Europe', "name": 'Financial Times', "url": 'https://www.ft.com', "status": 'independent', "icij": False, "frontpage": {"provider": "frontpages", "slug": "financial-times", "country_slug": "uk"}},
-    {"id": 'guardian', "country": 'UK', "region": 'Europe', "name": 'The Guardian', "url": 'https://www.theguardian.com', "status": 'independent', "icij": True},
+    {"id": 'ft', "country": 'UK', "region": 'Europe', "name": 'Financial Times', "url": 'https://www.ft.com', "status": 'independent', "icij": False, "baseline_feed": 'https://www.ft.com/rss/home', "frontpage": {"provider": "frontpages", "slug": "financial-times", "country_slug": "uk"}},
+    {"id": 'guardian', "country": 'UK', "region": 'Europe', "name": 'The Guardian', "url": 'https://www.theguardian.com', "status": 'independent', "icij": True, "baseline_feed": 'https://www.theguardian.com/world/rss'},
     {"id": 'the_times', "country": 'UK', "region": 'Europe', "name": 'The Times', "url": 'https://www.thetimes.co.uk', "status": 'independent', "icij": False},
     {"id": 'irish_times', "country": 'Ireland', "region": 'Europe', "name": 'Irish Times', "url": 'https://www.irishtimes.com', "status": 'independent', "icij": True, "frontpage": {"provider": "kiosko", "country_code": "ie", "slug": "irish_times", "fallback": {"provider": "frontpages", "slug": "the-irish-times", "country_slug": "ireland"}}},
     {"id": 'le_monde', "country": 'France', "region": 'Europe', "name": 'Le Monde', "url": 'https://www.lemonde.fr', "status": 'independent', "icij": True, "frontpage": {"provider": "frontpages", "slug": "le-monde", "country_slug": "france", "fallback": {"provider": "kiosko", "country_code": "fr", "slug": "lemonde"}}},
@@ -187,11 +188,36 @@ SOURCES = [
     {"id": 'vanguard_ng', "country": 'Nigeria', "region": 'Africa & Middle East', "name": 'Vanguard', "url": 'https://www.vanguardngr.com', "status": 'independent', "icij": False, "frontpage": {"provider": "frontpages", "slug": "vanguard-nigeria", "country_slug": "nigeria"}},
     {"id": 'le_devoir', "country": 'Canada', "region": 'Americas', "name": 'Le Devoir', "url": 'https://www.ledevoir.com', "status": 'independent', "icij": False, "frontpage": {"provider": "frontpages", "slug": "le-devoir", "country_slug": "canada"}},
     {"id": 'business_day_za', "country": 'South Africa', "region": 'Africa & Middle East', "name": 'Business Day', "url": 'https://www.businesslive.co.za/bd/', "status": 'independent', "icij": False, "frontpage": {"provider": "frontpages", "slug": "business-day-za", "country_slug": "south-africa"}},
+
+    # ──── BASELINE-ONLY WIRE & BROADCAST SOURCES (2026-07-28) ────
+    # Never publishable — get_sources() excludes everything in
+    # BASELINE_SOURCES. These exist purely to calibrate global saturation.
+    #
+    # Added after the 2026-07-28 abort, in which four of five baselines
+    # failed and every one of those four had gone through Playwright. These
+    # are unpaywalled and feed-first, so they never enter the browser path.
+    #
+    # AP and Reuters are deliberately absent: AP has retired its public RSS
+    # hubs, and both outlets 403 their feeds AND their homepages from
+    # datacenter IPs. Al Jazeera / France 24 / BBC are the practical
+    # substitutes for wire-level global coverage.
+    #
+    # NOTE: Al Jazeera here does NOT close the Qatar coverage gap — baseline
+    # sources are excluded from publishable output by get_sources().
+    {"id": 'bbc_baseline', "country": 'UK', "region": 'Europe', "name": 'BBC News', "url": 'https://www.bbc.com/news', "status": 'independent', "icij": False, "baseline_feed": 'https://feeds.bbci.co.uk/news/world/rss.xml'},
+    {"id": 'aljazeera_baseline', "country": 'Qatar', "region": 'Africa & Middle East', "name": 'Al Jazeera English', "url": 'https://www.aljazeera.com', "status": 'state_affiliated', "icij": False, "baseline_feed": 'https://www.aljazeera.com/xml/rss/all.xml'},
+    {"id": 'france24_baseline', "country": 'France', "region": 'Europe', "name": 'France 24', "url": 'https://www.france24.com/en/', "status": 'state_affiliated', "icij": False, "baseline_feed": 'https://www.france24.com/en/rss'},
+    {"id": 'cbc_baseline', "country": 'Canada', "region": 'Americas', "name": 'CBC News', "url": 'https://www.cbc.ca/news', "status": 'independent', "icij": False, "baseline_feed": 'https://www.cbc.ca/webfeed/rss/rss-world'},
+    {"id": 'npr_baseline', "country": 'USA', "region": 'Americas', "name": 'NPR', "url": 'https://www.npr.org', "status": 'independent', "icij": False, "baseline_feed": 'https://feeds.npr.org/1001/rss.xml'},
 ]
 
 # Sources used as global baseline — excluded from newsletter output
 # but used to calibrate what's already globally known
-BASELINE_SOURCES = {"nyt", "wsj", "wapo", "guardian", "ft"}
+BASELINE_SOURCES = {
+    "nyt", "wsj", "wapo", "guardian", "ft",
+    "bbc_baseline", "aljazeera_baseline", "france24_baseline",
+    "cbc_baseline", "npr_baseline",
+}
 
 # Status label copy for Substack output
 STATUS_LABELS = {

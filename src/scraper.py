@@ -53,11 +53,11 @@ PLAYWRIGHT_SITES = {
     "wsj", "nyt", "ft", "le_monde", "le_figaro", "faz", "sz",
     "nzz", "nrc", "volkskrant", "el_pais", "corriere", "repubblica",
     "dn_sweden", "gazeta", "straits_t", "scmp", "malaysiakini",
-    # Reuters and Bloomberg both sit behind aggressive bot management
-    # (Cloudflare/PerimeterX-class); pre-declaring avoids burning a request
-    # cycle on a guaranteed 403 before escalating. AP and BBC are typically
-    # reachable via plain requests and can escalate organically if not.
-    "reuters_baseline", "bloomberg_baseline",
+    # NOTE (2026-07-28): "reuters_baseline" / "bloomberg_baseline" were
+    # removed from this set. They had been pre-declared here, but the
+    # matching entries were never added to sources.py, so the IDs referred
+    # to nothing. Baseline calibration is now feed-first (see
+    # scrape_baselines) and does not route through this set at all.
 }
 
 # Rotating pool of realistic browser fingerprints (first rung of the
@@ -828,18 +828,84 @@ def fetch_article_text(url: str, max_chars: int = 2500) -> str:
 # Baselines
 # ─────────────────────────────────────────────────────────────────────────────
 
+def _fetch_feed_headlines(feed_url: str, pub_name: str, limit: int = 40) -> list[str]:
+    """
+    Pull headlines from an RSS/Atom feed.
+
+    Baselines answer exactly one question — "what is the world already
+    covering?" — and that needs no front-page layout fidelity, so scraping
+    a rendered homepage was always more machinery than the job required.
+    Feeds are published for machine consumption: no JS render, no consent
+    interstitial, no bot wall, and titles arrive clean enough that the junk
+    filters rarely fire.
+
+    Titles still pass through _is_site_name/_effective_len, because a few
+    feeds carry section-label or promo items alongside real stories.
+    """
+    resp = requests.get(feed_url, headers=_headers(), timeout=REQUEST_TIMEOUT)
+    resp.raise_for_status()
+    soup = BeautifulSoup(_decode(resp), "xml")
+    nodes = soup.find_all("item") or soup.find_all("entry")   # RSS, then Atom
+    out: list[str] = []
+    for node in nodes[:limit]:
+        title = node.find("title")
+        if not title:
+            continue
+        text = title.get_text(strip=True)
+        if _effective_len(text) > 20 and not _is_site_name(text, pub_name):
+            out.append(text)
+    return out
+
+
 def scrape_baselines(baseline_sources: list[dict]) -> list[ScrapedStory]:
     """
-    Scrape the baseline sources (NYT, WSJ, WaPo, FT, Guardian) — the
-    calibration for what's already globally known. The uniqueness filter IS
-    the product, so unlike the old version this routes JS-heavy/bot-walled
-    baselines (NYT, WSJ, FT) through Playwright instead of letting plain
-    requests silently 403 and hollow out the baseline.
+    Scrape the baseline sources — the calibration for what is already
+    globally known. The uniqueness filter IS the product, so this tries
+    feeds first and falls back to the original requests -> Playwright
+    ladder for any source without a working feed.
+
+    Why feed-first (2026-07-28): that day's run aborted with 1/5 baselines,
+    and every one of the four failures had gone through Playwright, while
+    the single success (Guardian) was the only one that never touched it.
+    Headless Chromium from a datacenter IP is trivially fingerprinted;
+    NYT/WSJ/FT returned gate pages whose headings _is_site_name correctly
+    stripped to zero via JUNK_SIGNALS ("cookie", "consent", "log in to
+    continue"). That is indistinguishable in the logs from a page that
+    genuinely had no headlines on it — which is why the same NYT/WSJ
+    symptom had been misread as transient since 2026-07-13.
     """
+    headlines_by_id: dict[str, list[str]] = {}
+    needs_html: list[dict] = []
+
+    # ── Pass 1: feeds ────────────────────────────────────────────────────
+    for source in baseline_sources:
+        feed = source.get("baseline_feed")
+        if not feed:
+            needs_html.append(source)
+            continue
+        try:
+            hl = _fetch_feed_headlines(feed, source["name"])
+            if hl:
+                headlines_by_id[source["id"]] = hl
+                logger.info(f"Baseline {source['name']}: {len(hl)} headlines (feed)")
+            else:
+                logger.warning(
+                    f"Baseline feed for {source['name']} returned no usable "
+                    "titles — falling back to homepage"
+                )
+                needs_html.append(source)
+        except Exception as e:
+            logger.warning(
+                f"Baseline feed failed for {source['name']}: {e} — falling back to homepage"
+            )
+            needs_html.append(source)
+        time.sleep(random.uniform(0.3, 0.8))
+
+    # ── Pass 2: original homepage ladder for whatever the feeds missed ───
     html_by_id: dict[str, str] = {}
     escalate: list[dict] = []
 
-    for source in baseline_sources:
+    for source in needs_html:
         if source["id"] in PLAYWRIGHT_SITES:
             escalate.append(source)
             continue
@@ -851,31 +917,41 @@ def scrape_baselines(baseline_sources: list[dict]) -> list[ScrapedStory]:
             resp.raise_for_status()
             html_by_id[source["id"]] = _decode(resp)
         except requests.RequestException as e:
-            logger.warning(f"Baseline requests fetch failed for {source['name']}: {e} — escalating")
+            logger.warning(
+                f"Baseline requests fetch failed for {source['name']}: {e} — escalating"
+            )
             escalate.append(source)
         time.sleep(random.uniform(0.5, 1.5))
 
     if escalate:
         html_by_id.update(_fetch_html_playwright(escalate))
 
-    results = []
-    for source in baseline_sources:
+    for source in needs_html:
         html = html_by_id.get(source["id"])
         if not html:
-            logger.warning(f"Baseline scrape failed for {source['name']} (all methods)")
             continue
         soup = BeautifulSoup(html, "html.parser")
-        headlines = []
+        hl = []
         for tag in soup.find_all(["h1", "h2", "h3"])[:40]:
             text = tag.get_text(strip=True)
             if _effective_len(text) > 20 and not _is_site_name(text, source["name"]):
-                headlines.append(text)
+                hl.append(text)
+        if hl:
+            headlines_by_id[source["id"]] = hl
+            logger.info(f"Baseline {source['name']}: {len(hl)} headlines (homepage)")
+
+    # ── Assemble in source order ─────────────────────────────────────────
+    results = []
+    for source in baseline_sources:
+        hl = headlines_by_id.get(source["id"])
+        if not hl:
+            logger.warning(f"Baseline scrape failed for {source['name']} (all methods)")
+            continue
         results.append(ScrapedStory(
             source_id=source["id"],
             country=source["country"],
             publication=source["name"],
             url=source["url"],
-            headline=" | ".join(headlines[:10]),
+            headline=" | ".join(hl[:10]),
         ))
-        logger.info(f"Baseline {source['name']}: {len(headlines)} headlines")
     return results
