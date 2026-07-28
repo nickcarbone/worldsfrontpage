@@ -57,7 +57,7 @@ import logging
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 import requests
-from sources import SOURCES, STATUS_LABELS, BASELINE_SOURCES
+from sources import SOURCES, STATUS_LABELS, BASELINE_SOURCES, get_sources
 
 logger = logging.getLogger(__name__)
 
@@ -113,14 +113,40 @@ def _source_stats() -> dict:
     """
     Compute current monitoring stats directly from sources.py so the
     newsletter's self-description never goes stale as the source list
-    grows. Counts ALL sources (including the 5 baseline-only ones,
-    since those are genuinely scraped/monitored each run, just excluded
-    from story selection).
+    grows.
+
+    total/countries/icij count ALL sources (including the baseline-only
+    ones — 10 as of 2026-07-28's baseline rewrite — since those are
+    genuinely scraped/monitored each run, just excluded from story
+    selection). That's accurate for "monitors" language.
+
+    Fixed 2026-07-29: the footer's NEXT sentence ("Stories are selected
+    for national significance...") was pairing that same 172/133 total
+    with selection language, implying all 172 were eligible for a slot.
+    They aren't — the 10 baseline sources (5 as of the original build,
+    5 more added 2026-07-28: BBC, Al Jazeera, France 24, CBC, NPR) exist
+    purely to calibrate global saturation and get_sources() excludes them
+    from anything publishable. publishable/publishable_countries are the
+    correct numbers for that sentence; total/countries stay correct for
+    the "monitors" sentence, which doesn't claim a selection pool.
     """
     total = len(SOURCES)
     countries = len({s["country"] for s in SOURCES})
     icij = sum(1 for s in SOURCES if s.get("icij"))
-    return {"total": total, "countries": countries, "icij": icij}
+
+    publishable_list = get_sources()
+    publishable = len(publishable_list)
+    publishable_countries = len({s["country"] for s in publishable_list})
+    publishable_icij = sum(1 for s in publishable_list if s.get("icij"))
+
+    return {
+        "total": total,
+        "countries": countries,
+        "icij": icij,
+        "publishable": publishable,
+        "publishable_countries": publishable_countries,
+        "publishable_icij": publishable_icij,
+    }
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -245,7 +271,9 @@ def _build_content_doc(stories: list[dict], stats: dict, story_count: int) -> li
 
     content.append(_para_node([_text_node(
         f"World's Front Page monitors {stats['total']} publications across "
-        f"{stats['countries']} countries daily, including {stats['icij']} ICIJ media partners. "
+        f"{stats['countries']} countries daily, {stats['publishable']} of them eligible "
+        f"for selection (the rest are wire/broadcast sources used only to calibrate "
+        f"global coverage), including {stats['publishable_icij']} ICIJ media partners. "
         f"Stories are selected for national significance and global underreporting. "
         f"State-affiliated sources are labeled. All stories translated to English.",
         marks=[{"type": "em"}],
@@ -309,7 +337,9 @@ def build_post(stories: list[dict], date: datetime = None) -> dict:
     # Footer
     html_parts.append(
         f'<p><em>World\'s Front Page monitors {stats["total"]} publications across '
-        f'{stats["countries"]} countries daily, including {stats["icij"]} ICIJ media partners. '
+        f'{stats["countries"]} countries daily, {stats["publishable"]} of them eligible '
+        f'for selection (the rest are wire/broadcast sources used only to calibrate '
+        f'global coverage), including {stats["publishable_icij"]} ICIJ media partners. '
         f'Stories are selected for national significance and global underreporting. '
         f'State-affiliated sources are labeled. All stories translated to English.</em></p>'
     )

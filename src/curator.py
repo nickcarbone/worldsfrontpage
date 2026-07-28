@@ -105,6 +105,50 @@ countries kept winning run after run, independent of everything else in
 this file. Fixed by raising _select_stories' max_tokens to 4000 and
 setting output_config={"effort": "medium"} explicitly rather than relying
 on the high default, per Anthropic's current Sonnet 5 guidance.
+
+v6 additions (2026-07-29) — the 2026-07-28 baseline rewrite (see
+scraper.py) widened the baseline pool from 5 paywalled dailies to 10
+sources including live wire/broadcast feeds, and that made a real
+saturation failure visible for the first time: Le Monde's lead that day
+(Macron visiting Bordeaux over a southwestern France wildfire) and the
+BBC baseline's top item that same day (Gironde wildfires ahead of a
+heatwave) were the same event. Checking why UNIQUE (criterion 1 below)
+didn't already catch this exposed the same lesson already learned about
+localization -- prose-only instructions aren't reliable, structural
+signals are -- but never applied to the saturation axis. A lexical check
+was tried first and rejected: Jaccard word-overlap between those two
+headlines is 0.0 (france/french, wildfire/wildfires, and especially
+bordeaux/gironde share no tokens at all -- Bordeaux is a city IN the
+Gironde department, a relationship no string-overlap method can see).
+That's exactly why _cluster_and_filter_syndicated's identical technique
+doesn't catch this either: syndication clustering targets near-verbatim
+wire copy, and saturation is close to the opposite case by design --
+genuinely distinct local phrasing describing the same underlying event.
+Only a model that knows the place-name relationship can judge that, so
+this adds a SATURATION_SCORE to _screen_stories (now baseline-aware)
+rather than a cheap heuristic, mirroring how localization_score already
+works: a structured 1-5 field, ranking signal only (not hard-excluded --
+see SATURATION_HARD_EXCLUDE_SCORE below for why), fed into
+_select_stories alongside localization_score with its own explicit
+tie-break rule.
+
+Also this round: a fabrication caught in the 2026-07-28 SCMP brief (an
+invented "$11 billion in H1 2024 cross-border biotech deals" statistic
+grafted onto an HKU leadership-succession story that has nothing to do
+with biotech) turned out NOT to be a scraping contamination bug -- the
+actual fetched article text was clean, HKU-only, no such figure anywhere
+in it. That means the brief-writing model introduced the figure from its
+own training data, unprompted, to make the "why it matters" line sound
+more consequential. _write_single_brief's prompt now explicitly forbids
+introducing facts/figures not present in the given source material, and
+_write_briefs adds a cheap grounding check: any dollar amount,
+percentage, or large number in the written brief that doesn't also appear
+in the headline/deckline/context given to the model is treated as a
+fabrication risk and the brief is discarded (same skip-and-try-next-
+candidate path already used for insufficient-information and refusal-text
+cases). This is a blunt instrument -- it won't catch a fabricated claim
+with no numbers in it -- but the specific failure observed was numeric,
+and it's cheap grounding for exactly that pattern.
 """
 
 import os
@@ -210,8 +254,8 @@ def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory],
     if not valid:
         raise ValueError("All stories were dropped as syndicated/duplicated — aborting.")
 
-    # ── Sufficiency + localization screen ───────────────────────────────────
-    valid = _screen_stories(valid)
+    # ── Sufficiency + localization + saturation screen ──────────────────────
+    valid = _screen_stories(valid, baseline_text)
     if not valid:
         raise ValueError("No stories survived the sufficiency/localization screen — aborting.")
 
@@ -407,9 +451,9 @@ Items to translate:
 LOCALIZATION_HARD_EXCLUDE_SCORE = 1
 
 
-def _screen_stories(stories: list[ScrapedStory]) -> list[ScrapedStory]:
+def _screen_stories(stories: list[ScrapedStory], baseline_text: str = "") -> list[ScrapedStory]:
     """
-    Batched pre-selection screen producing two judgments per story:
+    Batched pre-selection screen producing three judgments per story:
       - sufficient: is there enough concrete information (a real,
         explainable event/decision/development) for a factual brief?
       - localization_score (1-5): how directly does this story concern the
@@ -418,9 +462,22 @@ def _screen_stories(stories: list[ScrapedStory]) -> list[ScrapedStory]:
         assigned subject country, rather than wherever it physically
         operates) — as opposed to being a foreign-desk report on
         someone else's news with no distinctive local stake?
+      - saturation_score (1-5, added 2026-07-29): is this the SAME
+        underlying event as something already in today's baseline, or
+        does it add real information beyond it? A cheap lexical check
+        (the same Jaccard technique _cluster_and_filter_syndicated uses)
+        was tried and rejected here — it scored 0.0 similarity between
+        Le Monde's "Macron visits Bordeaux over southwestern France
+        wildfire" and the BBC baseline's "Gironde wildfires ahead of
+        heatwave," the same event, because Bordeaux/Gironde and
+        wildfire/wildfires share no literal tokens. Only a model that
+        knows the place-name relationship can catch that, hence a scored
+        LLM judgment rather than a heuristic.
+
     Drops insufficient stories and stories scoring exactly
-    LOCALIZATION_HARD_EXCLUDE_SCORE. Everything else passes through with
-    its score attached, to be weighed (not filtered) during selection.
+    LOCALIZATION_HARD_EXCLUDE_SCORE. saturation_score is NEVER hard-
+    excluded here — see the comment at its assignment above for why —
+    it passes through as a ranking signal for _select_stories.
     """
     items = []
     for i, s in enumerate(stories):
@@ -432,9 +489,14 @@ def _screen_stories(stories: list[ScrapedStory]) -> list[ScrapedStory]:
             "lede": s.lede[:300],
         })
 
+    baseline_block = baseline_text or "(no baseline available today)"
+
     prompt = f"""You are screening candidate news items for a daily international briefing aimed at readers with zero prior context on any of these stories.
 
-For each item, provide two judgments:
+TODAY'S GLOBAL NEWS BASELINE (wire/broadcast headlines — what readers already know from mainstream global coverage):
+{baseline_block}
+
+For each item, provide three judgments:
 
 1. SUFFICIENT: Is there enough concrete information to write a factual 3-sentence brief — a real, explainable event, decision, or development? Mark false for anything too vague, fragmentary, or self-referential (e.g. a bare policy/decree number with no explanation of what it does, or a publication promoting its own newsletter).
 
@@ -445,7 +507,14 @@ For each item, provide two judgments:
    2 = The story is primarily about a foreign country or global event, with this country's angle limited to secondary commentary, reaction quotes, or general analysis — no direct stake.
    1 = The story is essentially a foreign-desk report on another country's internal affairs, with no distinctive connection to this country at all.
 
-Return ONLY a JSON array: [{{"index": N, "sufficient": true/false, "localization_score": 1-5}}, ...]
+3. SATURATION_SCORE (1-5): Does this item describe the SAME underlying event, decision, or development as something already in TODAY'S GLOBAL NEWS BASELINE above — even if worded completely differently, using different place names (e.g. a city vs. the region/department it's in), or covering it from a different national angle? Judge by the actual underlying event, not by word overlap.
+   5 = Not reflected in the baseline at all — this is information the baseline sources aren't reporting.
+   4 = The general subject or region is touched on in the baseline, but this item's specific facts/development are genuinely new.
+   3 = The baseline covers the same broad event, and this item adds a real, distinct national angle (a specific decision, stake, or consequence for its own country) beyond what the baseline reports.
+   2 = The baseline already covers this same specific event, and this item's local detail is mostly color or reaction rather than materially new information.
+   1 = This item describes the same underlying event as something already in the baseline, with no additional information or angle beyond what a reader already knows from the baseline alone.
+
+Return ONLY a JSON array: [{{"index": N, "sufficient": true/false, "localization_score": 1-5, "saturation_score": 1-5}}, ...]
 No preamble, no explanation, just the JSON array.
 
 Items:
@@ -479,8 +548,21 @@ Items:
                 dropped_foreign.append(s)
                 continue
             s.localization_score = score
+            # SATURATION_SCORE (added 2026-07-29): NOT hard-excluded even at
+            # its lowest value (1 = same underlying event as something
+            # already in the baseline). Unlike localization's score-1 case
+            # (zero connection to the source's own country, which is a
+            # clean structural disqualifier), a low saturation score alone
+            # doesn't tell you enough — the canonical counterexample is a
+            # Brazilian paper covering US tariffs specifically targeting
+            # Brazil: the underlying event IS globally known, but the
+            # story still deserves a slot because of its direct, named
+            # stake. That judgment needs localization_score in the loop
+            # too, so it's left as a ranking signal for _select_stories'
+            # explicit tie-break rule rather than filtered here.
+            s.saturation_score = v.get("saturation_score", 3)
             kept.append(s)
-# Full per-story score visibility. Without this the screen only
+        # Full per-story score visibility. Without this the screen only
         # reports what it DROPPED, so a rubric that rates a French wildfire
         # as a 3 for a Norwegian paper looks identical in the logs to one
         # working correctly.
@@ -489,9 +571,14 @@ Items:
             dist[s.localization_score] = dist.get(s.localization_score, 0) + 1
         logger.info(f"Localization distribution (kept): "
                     f"{ {k: dist[k] for k in sorted(dist)} }")
-        for s in sorted(kept, key=lambda x: x.localization_score):
-            logger.info(f"  loc={s.localization_score} [{s.country}] "
-                        f"{s.publication}: {s.headline[:70]}")
+        sat_dist = {}
+        for s in kept:
+            sat_dist[s.saturation_score] = sat_dist.get(s.saturation_score, 0) + 1
+        logger.info(f"Saturation distribution (kept, 1=already known/5=fresh): "
+                    f"{ {k: sat_dist[k] for k in sorted(sat_dist)} }")
+        for s in sorted(kept, key=lambda x: (x.localization_score, x.saturation_score)):
+            logger.info(f"  loc={s.localization_score} sat={s.saturation_score} "
+                        f"[{s.country}] {s.publication}: {s.headline[:70]}")
         if dropped_insufficient:
             logger.info(f"Sufficiency screen dropped {len(dropped_insufficient)} thin/promo stories: "
                         f"{[s.publication for s in dropped_insufficient]}")
@@ -545,16 +632,26 @@ def _select_stories(stories: list[ScrapedStory], baseline_text: str, history_tex
             "headline": s.headline,
             "deckline": s.deckline[:300],
             "localization_score": getattr(s, "localization_score", 3),
+            "saturation_score": getattr(s, "saturation_score", 3),
         })
 
     prompt = f"""You are the senior editor of "World's Front Page," a daily newsletter that surfaces front-page stories from around the world that haven't broken into global news feeds yet — and specifically showcases local news outlets' OWN reporting, not wire-service copy.
 
-Each story below already carries a localization_score (1-5, pre-computed) indicating how directly it concerns the source's OWN country:
+Each story below already carries two pre-computed 1-5 scores:
+
+localization_score — how directly the story concerns the source's OWN country:
   5 = fundamentally about this country's own affairs
   4 = an external event/actor, but this country is a direct, named target/party/beneficiary
   3 = a regional bloc this country belongs to, with specific described impact
   2 = mostly foreign news with only secondary local commentary or reaction
 (Score-1 stories — zero connection to the source's own country — have already been removed entirely.)
+
+saturation_score — whether the story is the SAME underlying event as something already in today's global baseline, judged by the actual event, not by wording:
+  5 = not reflected in the baseline at all
+  4 = general subject/region touched on, but this item's specifics are genuinely new
+  3 = same broad event, but this item adds a real, distinct national angle/stake beyond the baseline
+  2 = same specific event, and this item's local detail is mostly color/reaction, not new information
+  1 = same underlying event as the baseline, no additional information or angle at all
 
 TODAY'S GLOBAL NEWS BASELINE (what readers already know):
 {baseline_text}
@@ -566,14 +663,16 @@ YOUR TASK:
 Review the front-page stories below from {len(stories)} publications worldwide. (Wire-service-sourced and cross-source-duplicated stories have already been removed from this list.)
 Rank as many stories as genuinely qualify — up to {SELECTION_BUFFER} — most important first, using ALL of these criteria:
 
-1. UNIQUE — Not already covered in the global baseline above, and not a story already covered in the recent history above
+1. UNIQUE — Weight saturation_score heavily here: a 4 or 5 is exactly what this criterion wants. A 1 or 2 means the baseline already reported this same event; also check the baseline text yourself since the pre-computed score can miss things, and cross-reference the recent history above the same way.
 2. LOCAL CONNECTION — Favor higher localization_score. A 4 or 5 should generally outrank a 2 unless the 2 is dramatically more nationally significant. A high score alone isn't sufficient on its own — the story still needs to clear the other criteria too — but a low score (2) should be treated as a real strike against a story, on par with a criterion failure, not a minor tiebreaker.
 3. NATIONALLY SIGNIFICANT — front page = editors deemed it the day's most important story
 4. GLOBALLY RELEVANT — has implications beyond its own borders, or reveals something meaningful about that country/region the world should know
 5. VARIED — no two stories from the same country in the top ranks; aim for geographic spread across regions
 6. SUBSTANTIVE — politics, economics, security, environment, justice, social upheaval. Not sports or celebrity unless it has genuine geopolitical/social weight.
 
-TIE-BREAK RULE: When LOCAL CONNECTION and GLOBALLY RELEVANT conflict — i.e., a story is relevant mainly BECAUSE it's a huge global event with only a score of 2 for this particular source — LOCAL CONNECTION WINS. A story already dominating US front pages, told from a source with no distinctive stake in it, should rank low here regardless of its objective world importance; that's the entire premise of this newsletter. A high-scoring (4-5) multi-country story — e.g. a bilateral trade dispute where this country is the direct, named target — is a different case and should be judged on its merits, not suppressed.
+TIE-BREAK RULE (LOCAL CONNECTION vs. GLOBAL RELEVANCE): When LOCAL CONNECTION and GLOBALLY RELEVANT conflict — i.e., a story is relevant mainly BECAUSE it's a huge global event with only a score of 2 for this particular source — LOCAL CONNECTION WINS. A story already dominating US front pages, told from a source with no distinctive stake in it, should rank low here regardless of its objective world importance; that's the entire premise of this newsletter. A high-scoring (4-5) multi-country story — e.g. a bilateral trade dispute where this country is the direct, named target — is a different case and should be judged on its merits, not suppressed.
+
+TIE-BREAK RULE (SATURATION vs. LOCAL CONNECTION): A high localization_score does NOT automatically rescue a low saturation_score. "This country's own president visited its own disaster" can score 5 on localization while still being the identical event the world already knows about via the baseline (saturation 1-2) — local color alone (who visited, which tactics were used) isn't a distinct angle if it doesn't add real information beyond the baseline. The Brazil-tariffs case is the test for the other direction: localization 4, saturation may be low too since the tariffs are globally reported — but the story survives because it has a genuinely distinct, named stake (Brazil is the direct target), not because of local color. Ask: does this outlet's version give the reader real information the baseline doesn't already provide? If the honest answer is "no, just a different narrator," rank it low regardless of how high either individual score is.
 
 ALSO: If a state media organ's front page leads with something unusual or telling about that government's current priorities or anxieties, that itself IS the story — rank it accordingly.
 
@@ -613,6 +712,52 @@ Stories to evaluate:
 def _looks_like_refusal(text: str) -> bool:
     t = (text or "").lower()
     return any(marker in t for marker in REFUSAL_MARKERS)
+
+
+# Matches a dollar figure, percentage, or a number with a magnitude word
+# (billion/million/trillion) — deliberately NOT bare small integers or plain
+# years, which are common and rarely the kind of confabulated "impressive
+# statistic" the 2026-07-28 SCMP incident produced (a fabricated "$11
+# billion in H1 2024 cross-border biotech deals" grafted onto an unrelated
+# HKU succession story). This is a blunt, numbers-only net — it won't catch
+# a fabricated claim that has no figure in it — but it's cheap and it
+# directly targets the failure mode actually observed.
+_FIGURE_RE = re.compile(
+    r"\$?\d[\d,]*(?:\.\d+)?\s?(?:billion|million|trillion|percent|%)?",
+    re.I,
+)
+
+
+def _extract_figures(text: str) -> set:
+    """Pull out normalized numeric 'claims' worth grounding-checking:
+    dollar amounts, percentages, and numbers carrying a magnitude word.
+    Bare 2-3 digit numbers with no magnitude/currency/percent marker are
+    ignored — those are far more often incidental (a count of towns, a
+    year) than the kind of invented statistic this check targets."""
+    out = set()
+    for m in _FIGURE_RE.finditer(text or ""):
+        raw = m.group(0)
+        norm = re.sub(r"[,\s]", "", raw).lower()
+        has_marker = any(w in norm for w in ("billion", "million", "trillion", "%", "percent")) or "$" in norm
+        digits = re.sub(r"(billion|million|trillion|percent|%|\$)", "", norm)
+        if not digits:
+            continue
+        if has_marker or len(digits) >= 4:
+            out.add(norm)
+    return out
+
+
+def _has_ungrounded_figures(brief_text: str, why_it_matters: str, grounding_source: str) -> set:
+    """Return any numeric claims in the written brief that don't appear
+    anywhere in what the model was actually given (headline + deckline +
+    fetched article text / lede). A non-empty result means the model most
+    likely introduced a statistic from its own training data rather than
+    the story it was asked to write about."""
+    claimed = _extract_figures(brief_text) | _extract_figures(why_it_matters)
+    if not claimed:
+        return set()
+    grounded = _extract_figures(grounding_source)
+    return claimed - grounded
 
 
 def _write_briefs(ranked_stories: list[ScrapedStory], target: int) -> list[dict]:
@@ -655,6 +800,23 @@ def _write_briefs(ranked_stories: list[ScrapedStory], target: int) -> list[dict]
             logger.info(f"  Skipped {s.publication}: refusal-pattern detected in brief text — treating as failure")
             continue
 
+        # Grounding check (added 2026-07-29, see v6 docstring note): catches
+        # the SCMP-style case where the model grafts an unrelated, invented
+        # statistic onto an otherwise-real story. Checked against everything
+        # the model actually saw — headline, deckline, and fetched article
+        # text/lede — not just the article text alone, so a real figure
+        # that only appears in the headline/deckline isn't a false positive.
+        grounding_source = f"{s.headline} {s.deckline} {article_text or s.lede}"
+        ungrounded = _has_ungrounded_figures(
+            brief.get("brief", ""), brief.get("why_it_matters", ""), grounding_source
+        )
+        if ungrounded:
+            logger.warning(
+                f"  Skipped {s.publication}: brief contains figure(s) not present in "
+                f"source material ({sorted(ungrounded)}) — likely fabrication, trying next candidate"
+            )
+            continue
+
         results.append(brief)
         logger.info(f"  Brief written: [{s.country}] {s.headline[:60]}")
 
@@ -681,9 +843,11 @@ STORY SOURCE:
 If the information above is too thin, vague, or fragmentary to write a factual, comprehensible brief for a reader with zero context — for example, it only names a decree/policy/case number with no explanation of what it actually does, or it's just a publication's self-description — return ONLY this JSON and nothing else:
 {{"insufficient": true}}
 
+Do NOT introduce facts, statistics, examples, or background context that are not present in the STORY SOURCE above — even true, well-known facts about the broader topic. If the source material doesn't fully explain why this matters beyond its own borders, write a more general — but still accurate — why-it-matters line rather than reaching for an outside statistic to make it sound more significant. A thin but honest brief is correct; a fluent one padded with an invented figure is not.
+
 Otherwise, WRITE:
 1. A BRIEF (3 sentences max): What happened. Key facts. Who's involved and what's at stake. Be specific and direct — this is a briefing, not a feature. No fluff, no hedging.
-2. A WHY IT MATTERS line (1 sentence): Who beyond {s.country}'s borders should care about this and why. Be concrete — name the geopolitical, economic, or humanitarian stakes.
+2. A WHY IT MATTERS line (1 sentence): Who beyond {s.country}'s borders should care about this and why. Be concrete — name the geopolitical, economic, or humanitarian stakes, but only using what's actually supported by the source material above.
 
 TONE: Authoritative. Clear. Like a senior foreign correspondent's one-paragraph cable. No "in a significant development" or "according to reports." Just the news.
 
