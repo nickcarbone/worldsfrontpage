@@ -1,35 +1,5 @@
 [
   {
-    "date": "2026-07-25",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Pakistan exploring another bid to mend US-Iran fences ‘with China’s blessing’"
-  },
-  {
-    "date": "2026-07-25",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Rich countries harvest 20,000 Nigerian health workers"
-  },
-  {
-    "date": "2026-07-25",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Cabinet reshuffle: The chancellor's deceptive smile"
-  },
-  {
-    "date": "2026-07-25",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Flávio Bolsonaro tries to sidestep isolation and wave of bad news to reinvigorate voters at convention"
-  },
-  {
-    "date": "2026-07-25",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Forest fires: the fire in Gironde is now the most devastating of the last 50 years in France"
-  },
-  {
     "date": "2026-07-26",
     "country": "France",
     "publication": "Le Figaro",
@@ -166,5 +136,29 @@
     "country": "Cuba",
     "publication": "Granma",
     "headline": "Gustavo Petro arrived in Cuba"
+  },
+  {
+    "date": "2026-08-02",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Illness from Betting Affects Companies with Absences, Indebted Employees and Advance Payment Requests"
+  },
+  {
+    "date": "2026-08-02",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Forest Fires and Heat: What One Can Read in the Smoke Signals"
+  },
+  {
+    "date": "2026-08-02",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Presidency rebukes Catholic bishops after Onaiyekan’s outburst"
+  },
+  {
+    "date": "2026-08-02",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Who Wants Border Controls and Who Doesn't: Europe Divides"
   }
 ]
