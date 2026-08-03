@@ -1,41 +1,5 @@
 [
   {
-    "date": "2026-07-26",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "LIVE - Fires: \"The situation remains highly unfavorable,\" declares Laurent Nuñez, 4,150 firefighters mobilized in Gironde, Landes and Var"
-  },
-  {
-    "date": "2026-07-26",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Settlers set fire to two mosques in Tulkarm and Nablus and scrawl racist slogans"
-  },
-  {
-    "date": "2026-07-26",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Economy slows down, and government counterattacks with pre-election stimulus measures"
-  },
-  {
-    "date": "2026-07-26",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "The data of danger. Cases of gender violence grow and 300 complaints are filed daily in Buenos Aires"
-  },
-  {
-    "date": "2026-07-26",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "\"I hope that society becomes a place where Miho can jump around without being glared at by those around her\"... 10 years after the Yamayuri Garden incident, victim's brother shares written testimony"
-  },
-  {
-    "date": "2026-07-26",
-    "country": "France",
-    "publication": "Le Monde",
-    "headline": "How a military plane was fitted with a temporary tank to fight wildfires in France"
-  },
-  {
     "date": "2026-07-27",
     "country": "Italy",
     "publication": "Corriere della Sera",
@@ -160,5 +124,29 @@
     "country": "Italy",
     "publication": "Corriere della Sera",
     "headline": "Who Wants Border Controls and Who Doesn't: Europe Divides"
+  },
+  {
+    "date": "2026-08-03",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Eskom loses assets fight as Ramaphosa backs split"
+  },
+  {
+    "date": "2026-08-03",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Embedded with troops\" Twin brothers called up for \"Hanguang\" exercise! Brothers use their expertise with confidence, declare: We're ready"
+  },
+  {
+    "date": "2026-08-03",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Qatar pushes for freedom of navigation in Strait of Hormuz"
+  },
+  {
+    "date": "2026-08-03",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "Video: Spectacular images of the moment the Pârjoaia rock is destroyed to increase the Danube flow toward Cernavodă"
   }
 ]
