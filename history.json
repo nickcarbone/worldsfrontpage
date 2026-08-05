@@ -1,47 +1,5 @@
 [
   {
-    "date": "2026-07-28",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Taylor embroiled in donation claims as ICAC inquiry airs secret messages"
-  },
-  {
-    "date": "2026-07-28",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Alberta to start allowing some privately paid medical tests this week"
-  },
-  {
-    "date": "2026-07-28",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Coalition partners PPP, PML-N spar after first phase of AJK elections as political temperatures rise"
-  },
-  {
-    "date": "2026-07-28",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "R670k hotel bill for senior official"
-  },
-  {
-    "date": "2026-07-28",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Evacuation lifted due to fires in eight towns in Madrid and five in Ávila"
-  },
-  {
-    "date": "2026-07-28",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "University of Hong Kong says global search will be launched for successor of Xiang Zhang who announced he would leave post in 2028."
-  },
-  {
-    "date": "2026-07-28",
-    "country": "France",
-    "publication": "Le Monde",
-    "headline": "Macron, in Bordeaux, calls for unity 'to win the battle' against wildfire"
-  },
-  {
     "date": "2026-08-01",
     "country": "Italy",
     "publication": "Corriere della Sera",
@@ -112,5 +70,41 @@
     "country": "Brazil",
     "publication": "Folha de S.Paulo",
     "headline": "Railway strike partially halts lines 11-coral and 12-sapphire and totally line 13-jade in SP"
+  },
+  {
+    "date": "2026-08-05",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "Refunds are on the way for Canadian exporters owed roughly $10 billion from Trump's illegal tariffs"
+  },
+  {
+    "date": "2026-08-05",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Understand the unprecedented crisis between Brazil and the U.S. that culminated in the ambassador's visa revocation"
+  },
+  {
+    "date": "2026-08-05",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Cause of \"Aeon Mall Kumamoto\" explosion may be leaking liquefied petroleum gas... METI requests inspection of gas supply equipment at large facilities nationwide"
+  },
+  {
+    "date": "2026-08-05",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "The Danube crisis is only just beginning: \"The phenomenon could become recurring, it cannot be estimated when the flow will return to normal\""
+  },
+  {
+    "date": "2026-08-05",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "PML-N, PPP headed for one seat each in delayed AJK constituencies"
+  },
+  {
+    "date": "2026-08-05",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Amir, Trump discuss de-escalation efforts and US-Iran dialogue"
   }
 ]
