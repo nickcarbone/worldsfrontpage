@@ -149,12 +149,47 @@ candidate path already used for insufficient-information and refusal-text
 cases). This is a blunt instrument -- it won't catch a fabricated claim
 with no numbers in it -- but the specific failure observed was numeric,
 and it's cheap grounding for exactly that pattern.
+
+v7 rewrite (2026-08-01) — two consecutive single-story editions. The
+supply side was healthy (40 front-page matches against a floor of 15);
+the losses were all downstream, and all of the same kind: a stage lacking
+the evidence to judge well, judging anyway, and dropping terminally.
+40 candidates -> 14 screened -> 7 selected -> 1 published.
+
+  - PREFETCH BEFORE SCREEN: the sufficiency screen rejected 22 of 40 real
+    front-page stories (Reforma on sargassum, Folha/O Globo on the Lula
+    inquiry, Corriere on Meloni's EU letter, SMH on a fatal hospital
+    equipment fault) because it read 300 chars of homepage teaser. Article
+    text was being fetched one stage LATER. Now fetched in parallel for all
+    candidates, before the screen, and cached on the story.
+  - SUFFICIENCY NARROWED TO BOILERPLATE: "enough information to brief on"
+    is a depth-of-evidence judgment that belongs at brief-writing, where
+    the full text and the front-page image are both available. Asking it
+    twice with a terminal drop on either was double jeopardy. The screen
+    now only rejects things that aren't stories: section labels, promos,
+    cookie notices, legal pages.
+  - REPAIR BEFORE DROPPING: an insufficient verdict now retries against the
+    front-page image (retained by frontpage_selector rather than discarded)
+    before abandoning the candidate.
+  - FIGURES FLAGGED, NOT DROPPED: the numeric grounding guard validated
+    against whatever grounding text survived the fetch, so a fetch failure
+    became a fabrication accusation. It killed El Mundo's Ceuta lead over
+    "50,000" — a figure corroborated elsewhere in the same day's corpus.
+    Ungrounded figures now ride along as `flagged_figures` and surface as a
+    deletable review marker in the Substack draft.
+  - ENFORCED FLOOR + BACKFILL LADDER: MIN_STORIES was never enforced; it
+    only logged. FLOOR_STORIES = 6 now triggers a tiered backfill over
+    pools that were previously discarded. Wire exclusion, the localization
+    score-1 hard exclude, and one-story-per-country are never relaxed at
+    any tier.
 """
 
 import os
 import re
 import json
+import base64
 import logging
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from anthropic import Anthropic
 from scraper import ScrapedStory, fetch_article_text, detect_wire_service
 from sources import STATUS_LABELS  # noqa: F401 — kept for callers that label by source_id
@@ -167,8 +202,30 @@ MODEL = "claude-haiku-4-5-20251001"       # translation, sufficiency screening, 
 SELECTION_MODEL = "claude-sonnet-5"       # selection only — the hardest reasoning task here
 
 MAX_STORIES = 15          # target number of briefs to actually write
-MIN_STORIES = 8           # soft guidance only, logged if missed — NOT enforced, see docstring
+FLOOR_STORIES = 6         # ENFORCED minimum — below this, the backfill ladder runs.
+                          # Replaces the old MIN_STORIES = 8, which was never
+                          # enforced anywhere; it only produced a log line while
+                          # the run shipped whatever it happened to have.
 SELECTION_BUFFER = 25     # ranked candidates returned by selection, walked by brief-writing
+
+# If the backfill ladder exhausts every tier and STILL can't reach
+# FLOOR_STORIES, publish what we have rather than aborting. An aborted run
+# means no edition at all, which is strictly worse for subscribers than a
+# short one. Flip to True only if you'd rather skip a day than run thin.
+ABORT_BELOW_FLOOR = False
+
+# Article text is now fetched for EVERY candidate before screening, not just
+# for the handful of finalists at brief-writing time. Rationale (2026-08-01):
+# the sufficiency screen was rejecting 22 of 40 real front-page stories
+# because it was judging headline + 300 chars of deckline + 300 chars of
+# lede — effectively testing whether the scraper got a clean grab, not
+# whether a story exists. The evidence that resolves the question was being
+# fetched one stage LATER, at brief-writing. This inverts that order.
+# Cost: ~40 plain HTTP fetches (no API cost) and ~15k extra Haiku input
+# tokens across the screen calls — roughly 1.5 cents a run.
+PREFETCH_WORKERS = 8
+SCREEN_ARTICLE_CHARS = 1200   # per-story article excerpt included in the screen prompt
+SCREEN_BATCH_SIZE = 10        # stories per screening call — see _screen_stories
 
 CLUSTER_SIMILARITY_THRESHOLD = 0.5   # Jaccard word-overlap to count as "same story"
 CLUSTER_SIZE_CUTOFF = 4              # cluster this size or larger gets dropped entirely
@@ -179,6 +236,16 @@ _STOPWORDS = {
     "the", "a", "an", "of", "to", "in", "on", "for", "and", "or", "with",
     "at", "by", "from", "is", "as", "after", "over", "amid", "into", "its",
     "it", "his", "her", "their", "this", "that", "will", "has", "have",
+}
+
+# Media types accepted by the vision path in _write_single_brief, mirroring
+# frontpage_selector's own map — the bytes and content_type are cached on the
+# ScrapedStory by apply_frontpage_selection.
+_IMAGE_MEDIA_TYPES = {
+    "image/jpeg": "image/jpeg",
+    "image/jpg": "image/jpeg",
+    "image/png": "image/png",
+    "image/webp": "image/webp",
 }
 
 REFUSAL_MARKERS = [
@@ -202,6 +269,40 @@ def _extract_text(resp) -> str:
         if getattr(block, "type", None) == "text":
             return block.text.strip()
     raise ValueError(f"No text block found in response content: {resp.content!r}")
+
+
+def _prefetch_article_text(stories: list[ScrapedStory]) -> None:
+    """
+    Fetch article body text for every candidate in parallel and cache it on
+    the story as `.article_text`, so both the screen and (later) brief-
+    writing judge the same real evidence instead of a truncated homepage
+    teaser. Sequential fetching was fine at ~7 finalists; at ~40 candidates,
+    with 20s timeouts and a reliable crop of 403s and dead hosts, it is not.
+
+    Failures are cached as "" — a fetch failure is a fact about the fetch,
+    NOT an editorial verdict, and nothing downstream may treat it as one.
+    """
+    targets = [s for s in stories if s.article_url]
+    if not targets:
+        return
+
+    def _one(s: ScrapedStory):
+        try:
+            return s, fetch_article_text(s.article_url)
+        except Exception as e:
+            logger.info(f"  Article prefetch failed for {s.publication}: {e}")
+            return s, ""
+
+    got = 0
+    with ThreadPoolExecutor(max_workers=PREFETCH_WORKERS) as pool:
+        for fut in as_completed([pool.submit(_one, s) for s in targets]):
+            s, text = fut.result()
+            s.article_text = text
+            if text:
+                got += 1
+
+    logger.info(f"Article prefetch: {got}/{len(targets)} candidates returned usable body text "
+                f"({len(targets) - got} paywalled, blocked, or empty — these are NOT dropped)")
 
 
 def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory],
@@ -254,10 +355,26 @@ def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory],
     if not valid:
         raise ValueError("All stories were dropped as syndicated/duplicated — aborting.")
 
-    # ── Sufficiency + localization + saturation screen ──────────────────────
-    valid = _screen_stories(valid, baseline_text)
+    # ── Article prefetch, BEFORE screening ──────────────────────────────────
+    # Order matters here and it used to be wrong. See _prefetch_article_text.
+    _prefetch_article_text(valid)
+
+    # ── Boilerplate + localization + saturation screen ──────────────────────
+    valid, screen_rejects = _screen_stories(valid, baseline_text)
     if not valid:
-        raise ValueError("No stories survived the sufficiency/localization screen — aborting.")
+        # Caught in smoke testing: if the screen rejects everything, the old
+        # code raised here — even though the rejects are now a usable backfill
+        # pool and brief-writing does its own, better-evidenced sufficiency
+        # check. A screen that rejects 100% is far more likely to be
+        # misfiring than to be right, so promote the rejects rather than
+        # aborting the run on its say-so.
+        if screen_rejects:
+            logger.warning(f"Screen kept 0 of {len(screen_rejects)} stories — that is more "
+                           f"likely a screen malfunction than a genuinely empty news day. "
+                           f"Promoting all rejects and letting brief-writing judge them.")
+            valid, screen_rejects = screen_rejects, []
+        else:
+            raise ValueError("No stories survived the boilerplate/localization screen — aborting.")
 
     ranked = _select_stories(valid, baseline_text, history_text)
     if not ranked:
@@ -266,10 +383,63 @@ def curate(stories: list[ScrapedStory], baselines: list[ScrapedStory],
 
     logger.info(f"Writing briefs from a ranked buffer of {len(ranked)} candidates (target {MAX_STORIES})...")
     briefed = _write_briefs(ranked, target=MAX_STORIES)
-    logger.info(f"Briefs written: {len(briefed)} (target {MAX_STORIES}, usual guidance floor {MIN_STORIES})")
-    if len(briefed) < MIN_STORIES:
-        logger.info(f"Below the usual {MIN_STORIES}-story guidance today — "
-                    f"publishing {len(briefed)} rather than padding with weak stories.")
+    logger.info(f"Briefs written: {len(briefed)} (target {MAX_STORIES}, enforced floor {FLOOR_STORIES})")
+
+    # ── Backfill ladder ─────────────────────────────────────────────────────
+    # Only runs when the edition is genuinely short. Each tier is a strictly
+    # weaker pool than the last, so a good day never touches this and a bad
+    # day degrades in a known order rather than silently shipping one story.
+    #
+    # What is NEVER relaxed, at any tier: wire-service exclusion, the
+    # localization score-1 hard exclude, and one-story-per-country. Those
+    # three are the newsletter's premise, not tuning parameters.
+    if len(briefed) < FLOOR_STORIES:
+        used_ids = {b["source_id"] for b in briefed}
+        used_countries = {b["country"] for b in briefed}
+        # Identity, not dataclass equality: ScrapedStory is a plain @dataclass,
+        # so `s in ranked` would do a full field-by-field compare including
+        # candidate lists and cached image bytes.
+        ranked_ids = {id(s) for s in ranked}
+
+        tiers = [
+            ("screened but not selected",
+             [s for s in valid if s.source_id not in used_ids
+              and id(s) not in ranked_ids]),
+            ("screen-rejected (boilerplate call re-tested against full article text)",
+             [s for s in screen_rejects if s.source_id not in used_ids]),
+        ]
+
+        for label, pool in tiers:
+            if len(briefed) >= FLOOR_STORIES:
+                break
+            pool = [s for s in pool if s.country not in used_countries]
+            if not pool:
+                continue
+            logger.info(f"Below floor ({len(briefed)}/{FLOOR_STORIES}) — backfilling from "
+                        f"tier '{label}' ({len(pool)} candidates available)")
+            extra = _write_briefs(
+                pool,
+                target=FLOOR_STORIES - len(briefed),
+                allow_thin=True,
+            )
+            for b in extra:
+                if b["country"] in used_countries:
+                    continue
+                briefed.append(b)
+                used_countries.add(b["country"])
+            logger.info(f"  Tier '{label}' contributed {len(extra)} brief(s)")
+
+    if len(briefed) < FLOOR_STORIES:
+        msg = (f"Backfill exhausted every tier and reached only {len(briefed)} "
+               f"of {FLOOR_STORIES} stories.")
+        if ABORT_BELOW_FLOOR:
+            raise ValueError(msg + " ABORT_BELOW_FLOOR is set — aborting.")
+        logger.warning(msg + " Publishing short rather than skipping the day.")
+
+    flagged = sum(1 for b in briefed if b.get("flagged_figures"))
+    if flagged:
+        logger.warning(f"{flagged} brief(s) carry unverified numeric figures — "
+                       f"REVIEW THESE IN THE DRAFT before publishing.")
 
     return briefed
 
@@ -451,11 +621,34 @@ Items to translate:
 LOCALIZATION_HARD_EXCLUDE_SCORE = 1
 
 
-def _screen_stories(stories: list[ScrapedStory], baseline_text: str = "") -> list[ScrapedStory]:
+def _screen_stories(stories: list[ScrapedStory],
+                    baseline_text: str = "") -> tuple[list[ScrapedStory], list[ScrapedStory]]:
     """
-    Batched pre-selection screen producing three judgments per story:
-      - sufficient: is there enough concrete information (a real,
-        explainable event/decision/development) for a factual brief?
+    Pre-selection screen producing three judgments per story. Returns
+    (kept, rejected) — rejected is no longer discarded, it becomes a
+    backfill tier, because this screen has a demonstrated false-positive
+    problem and a rejection here should not be terminal.
+
+    2026-08-01 rewrite, after the screen dropped 22 of 40 stories in one
+    run — among them Reforma on a 27-fold sargassum influx, Folha and O
+    Globo on a second federal police inquiry into Lula's son, Corriere on
+    Meloni's 22-leader letter to the EU, and the SMH on a fatal hospital
+    equipment fault. Those are not thin stories; the screen simply could
+    not see them, because it was reading 300 characters of homepage
+    teaser. Two changes address that:
+
+      - It now reads fetched article text (see _prefetch_article_text).
+      - SUFFICIENT has been narrowed from "is there enough information to
+        brief on" to "is this a news story at all." The former is a
+        judgment about evidence depth that properly belongs at brief-
+        writing, where the full text and the front-page image are both in
+        hand; asking it twice, with a terminal drop on either, was
+        double jeopardy. This stage now only catches things that are not
+        stories: section labels, subscription prompts, cookie banners,
+        contest promos, legal pages.
+
+    The three judgments:
+      - sufficient: is this an actual news story rather than site furniture?
       - localization_score (1-5): how directly does this story concern the
         SOURCE'S OWN country (sources.py's assigned country — which
         correctly credits an exile outlet like Meduza for Russia, its
@@ -479,6 +672,59 @@ def _screen_stories(stories: list[ScrapedStory], baseline_text: str = "") -> lis
     excluded here — see the comment at its assignment above for why —
     it passes through as a ranking signal for _select_stories.
     """
+    # Batched into chunks rather than one 40-story call. Same token cost,
+    # marginally more latency, materially better attention per story — a
+    # single call judging 40 items across ~60k characters judges each one
+    # worse than four calls judging ten. Each chunk fails open independently,
+    # so one malformed response no longer bypasses the screen for the whole
+    # run (which the previous single-call structure did silently).
+    kept: list[ScrapedStory] = []
+    rejected: list[ScrapedStory] = []
+    dropped_insufficient: list[ScrapedStory] = []
+    dropped_foreign: list[ScrapedStory] = []
+
+    for start in range(0, len(stories), SCREEN_BATCH_SIZE):
+        chunk = stories[start:start + SCREEN_BATCH_SIZE]
+        k, ins, foreign = _screen_batch(chunk, baseline_text)
+        kept.extend(k)
+        dropped_insufficient.extend(ins)
+        dropped_foreign.extend(foreign)
+
+    # Boilerplate rejects become a backfill tier; localization score-1
+    # rejects do NOT — "no connection to the source's own country" is a
+    # structural disqualifier, not a marginal call, and re-admitting those
+    # would reintroduce exactly the foreign-desk copy this newsletter exists
+    # to avoid. A thin day is not a reason to publish a French paper's
+    # report on Ukraine.
+    rejected = list(dropped_insufficient)
+
+    dist = {}
+    for s in kept:
+        dist[s.localization_score] = dist.get(s.localization_score, 0) + 1
+    logger.info(f"Localization distribution (kept): { {k: dist[k] for k in sorted(dist)} }")
+    sat_dist = {}
+    for s in kept:
+        sat_dist[s.saturation_score] = sat_dist.get(s.saturation_score, 0) + 1
+    logger.info(f"Saturation distribution (kept, 1=already known/5=fresh): "
+                f"{ {k: sat_dist[k] for k in sorted(sat_dist)} }")
+    for s in sorted(kept, key=lambda x: (x.localization_score, x.saturation_score)):
+        logger.info(f"  loc={s.localization_score} sat={s.saturation_score} "
+                    f"[{s.country}] {s.publication}: {s.headline[:70]}")
+    if dropped_insufficient:
+        logger.info(f"Boilerplate screen rejected {len(dropped_insufficient)} non-story items "
+                    f"(retained as backfill tier 2): {[s.publication for s in dropped_insufficient]}")
+    if dropped_foreign:
+        logger.info(f"Localization screen dropped {len(dropped_foreign)} stories with zero "
+                    f"connection to their source's own country (NOT retained): "
+                    f"{[s.publication for s in dropped_foreign]}")
+
+    return kept, rejected
+
+
+def _screen_batch(stories: list[ScrapedStory], baseline_text: str):
+    """Screen one chunk. Returns (kept, insufficient, foreign). Fails open
+    on any error — an unparseable response must not silently delete a
+    tenth of the day's candidates."""
     items = []
     for i, s in enumerate(stories):
         items.append({
@@ -487,18 +733,24 @@ def _screen_stories(stories: list[ScrapedStory], baseline_text: str = "") -> lis
             "headline": s.headline,
             "deckline": s.deckline[:300],
             "lede": s.lede[:300],
+            "article_text": (getattr(s, "article_text", "") or "")[:SCREEN_ARTICLE_CHARS],
         })
 
     baseline_block = baseline_text or "(no baseline available today)"
 
     prompt = f"""You are screening candidate news items for a daily international briefing aimed at readers with zero prior context on any of these stories.
 
+Each item includes an "article_text" field containing the opening paragraphs of the actual article where they could be retrieved. This field is EMPTY for many items — the outlet was paywalled, blocked the fetch, or returned nothing. An empty article_text tells you NOTHING about whether the story is real or worth covering; judge those items on their headline, deckline and lede exactly as you would if the field weren't there. Never mark an item down for having no article text.
+
 TODAY'S GLOBAL NEWS BASELINE (wire/broadcast headlines — what readers already know from mainstream global coverage):
 {baseline_block}
 
 For each item, provide three judgments:
 
-1. SUFFICIENT: Is there enough concrete information to write a factual 3-sentence brief — a real, explainable event, decision, or development? Mark false for anything too vague, fragmentary, or self-referential (e.g. a bare policy/decree number with no explanation of what it does, or a publication promoting its own newsletter).
+1. SUFFICIENT: Is this item AN ACTUAL NEWS STORY, as opposed to website furniture that the scraper picked up by mistake?
+   Mark FALSE only for things that are not stories at all: section headings ("Sports", "Opinion"), subscription or paywall prompts, cookie/privacy notices, legal/imprint pages, newsletter self-promotion, reader contests, "download our app" promos, error pages, or a bare navigational label.
+   Mark TRUE for any real reported event, decision, development, investigation, court ruling, policy change, disaster, or announcement — EVEN IF the information provided here is brief, partial, or lacks background. Thin sourcing is NOT a reason to mark false. A one-line report of a real event is still a real story, and a later stage decides whether there is enough material to brief on it.
+   When genuinely unsure, mark TRUE.
 
 2. LOCALIZATION_SCORE (1-5): How directly does this story concern or affect THIS ITEM'S OWN COUNTRY (the "country" field given for each item) — not just the world in general?
    5 = The story is fundamentally about this country's own people, government, institutions, or internal affairs.
@@ -538,6 +790,8 @@ Items:
             if v is None:
                 # No verdict returned for this index — fail open rather
                 # than silently dropping a story the model just didn't rank.
+                s.localization_score = getattr(s, "localization_score", 3)
+                s.saturation_score = getattr(s, "saturation_score", 3)
                 kept.append(s)
                 continue
             if not v.get("sufficient", True):
@@ -562,33 +816,13 @@ Items:
             # explicit tie-break rule rather than filtered here.
             s.saturation_score = v.get("saturation_score", 3)
             kept.append(s)
-        # Full per-story score visibility. Without this the screen only
-        # reports what it DROPPED, so a rubric that rates a French wildfire
-        # as a 3 for a Norwegian paper looks identical in the logs to one
-        # working correctly.
-        dist = {}
-        for s in kept:
-            dist[s.localization_score] = dist.get(s.localization_score, 0) + 1
-        logger.info(f"Localization distribution (kept): "
-                    f"{ {k: dist[k] for k in sorted(dist)} }")
-        sat_dist = {}
-        for s in kept:
-            sat_dist[s.saturation_score] = sat_dist.get(s.saturation_score, 0) + 1
-        logger.info(f"Saturation distribution (kept, 1=already known/5=fresh): "
-                    f"{ {k: sat_dist[k] for k in sorted(sat_dist)} }")
-        for s in sorted(kept, key=lambda x: (x.localization_score, x.saturation_score)):
-            logger.info(f"  loc={s.localization_score} sat={s.saturation_score} "
-                        f"[{s.country}] {s.publication}: {s.headline[:70]}")
-        if dropped_insufficient:
-            logger.info(f"Sufficiency screen dropped {len(dropped_insufficient)} thin/promo stories: "
-                        f"{[s.publication for s in dropped_insufficient]}")
-        if dropped_foreign:
-            logger.info(f"Localization screen dropped {len(dropped_foreign)} stories with zero "
-                        f"connection to their source's own country: {[s.publication for s in dropped_foreign]}")
-        return kept
+        return kept, dropped_insufficient, dropped_foreign
     except Exception as e:
-        logger.warning(f"Screening failed: {e} — skipping screen, passing all through unscored")
-        return stories
+        logger.warning(f"Screening batch failed: {e} — passing this batch through unscored")
+        for s in stories:
+            s.localization_score = getattr(s, "localization_score", 3)
+            s.saturation_score = getattr(s, "saturation_score", 3)
+        return stories, [], []
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -760,62 +994,86 @@ def _has_ungrounded_figures(brief_text: str, why_it_matters: str, grounding_sour
     return claimed - grounded
 
 
-def _write_briefs(ranked_stories: list[ScrapedStory], target: int) -> list[dict]:
+def _write_briefs(ranked_stories: list[ScrapedStory], target: int,
+                  allow_thin: bool = False) -> list[dict]:
     """
     Walk the ranked candidate buffer writing briefs, stopping once `target`
-    good briefs are written or the buffer is exhausted. Skips (rather than
-    publishes a degraded fallback for) anything that turns out wire-sourced,
-    insufficient, or a model refusal on closer inspection — the buffer means
-    there's always a next candidate to try instead of a dead slot.
+    good briefs are written or the buffer is exhausted.
+
+    2026-08-01: this stage was terminating six of seven finalists in a
+    single run. Three changes, all of the same shape — repair before
+    dropping:
+
+      - Article text is no longer fetched here; it was already fetched in
+        parallel before screening and cached on the story. No double fetch.
+      - An "insufficient information" verdict now triggers a RETRY grounded
+        on the front-page image itself (already in memory from the vision
+        selection step) before the candidate is abandoned. Print front
+        pages carry the opening paragraphs the web fetch often can't reach
+        past a paywall or a 403.
+      - Ungrounded numeric figures no longer kill a brief. They are
+        recorded on the story dict as `flagged_figures` and surfaced in the
+        draft for human review. The guard was validating against whatever
+        grounding text happened to survive the fetch, so a fetch failure
+        was being converted into a fabrication accusation — it killed El
+        Mundo's Ceuta lead over "50,000", a figure corroborated elsewhere
+        in the same day's corpus.
+
+    `allow_thin` is set by the backfill ladder: it tells the brief prompt
+    that a short, flat, purely descriptive brief is an acceptable result
+    rather than something to refuse over.
     """
     results = []
     for s in ranked_stories:
         if len(results) >= target:
             break
 
-        article_text = ""
-        if s.article_url:
-            try:
-                article_text = fetch_article_text(s.article_url)
-            except Exception as e:
-                logger.info(f"  Article fetch failed for {s.publication}: {e}")
+        article_text = getattr(s, "article_text", "") or ""
 
         # Wire-service pass 3: full article text, right before writing.
         # Dateline attribution frequently only appears in the body, not the
-        # homepage teaser checked in curate()'s earlier passes.
+        # homepage teaser checked in curate()'s earlier passes. This one
+        # still drops — wire copy is never publishable here at any tier.
         if detect_wire_service(s.headline, s.deckline, article_text):
             logger.info(f"  Skipped {s.publication}: wire-service attribution found in fetched article text")
             continue
 
         try:
-            brief = _write_single_brief(s, article_text)
+            brief = _write_single_brief(s, article_text, allow_thin=allow_thin)
         except Exception as e:
             logger.warning(f"  Brief failed for {s.publication}: {e} — skipping, trying next candidate")
             continue
 
+        # Retry on the front page itself before giving up. Only possible for
+        # sources that came through front-page vision selection; homepage-tier
+        # and backfill candidates have no image and fall straight through.
+        if brief is None and getattr(s, "frontpage_image_bytes", None):
+            logger.info(f"  {s.publication}: thin web text — retrying grounded on the front-page image")
+            try:
+                brief = _write_single_brief(s, article_text, allow_thin=True, use_image=True)
+            except Exception as e:
+                logger.warning(f"  Front-page retry failed for {s.publication}: {e}")
+
         if brief is None:
-            logger.info(f"  Skipped {s.publication}: model flagged insufficient information")
+            logger.info(f"  Skipped {s.publication}: insufficient information even from the front page")
             continue
         if _looks_like_refusal(brief.get("brief", "")) or _looks_like_refusal(brief.get("why_it_matters", "")):
             logger.info(f"  Skipped {s.publication}: refusal-pattern detected in brief text — treating as failure")
             continue
 
-        # Grounding check (added 2026-07-29, see v6 docstring note): catches
-        # the SCMP-style case where the model grafts an unrelated, invented
-        # statistic onto an otherwise-real story. Checked against everything
-        # the model actually saw — headline, deckline, and fetched article
-        # text/lede — not just the article text alone, so a real figure
-        # that only appears in the headline/deckline isn't a false positive.
+        # Grounding check: FLAG, DO NOT DROP (changed 2026-08-01). Checked
+        # against everything the model actually saw — headline, deckline,
+        # and fetched article text/lede.
         grounding_source = f"{s.headline} {s.deckline} {article_text or s.lede}"
         ungrounded = _has_ungrounded_figures(
             brief.get("brief", ""), brief.get("why_it_matters", ""), grounding_source
         )
         if ungrounded:
+            brief["flagged_figures"] = sorted(ungrounded)
             logger.warning(
-                f"  Skipped {s.publication}: brief contains figure(s) not present in "
-                f"source material ({sorted(ungrounded)}) — likely fabrication, trying next candidate"
+                f"  FLAGGED {s.publication}: brief contains figure(s) not found in the "
+                f"fetched source text ({sorted(ungrounded)}) — published for review, VERIFY BEFORE SENDING"
             )
-            continue
 
         results.append(brief)
         logger.info(f"  Brief written: [{s.country}] {s.headline[:60]}")
@@ -823,14 +1081,31 @@ def _write_briefs(ranked_stories: list[ScrapedStory], target: int) -> list[dict]
     return results
 
 
-def _write_single_brief(s: ScrapedStory, article_text: str = "") -> dict | None:
+def _write_single_brief(s: ScrapedStory, article_text: str = "",
+                        allow_thin: bool = False, use_image: bool = False) -> dict | None:
     """Write a 3-sentence brief + why-it-matters for a single story, or
-    return None if the model determines there isn't enough real information
-    to work with. Uses fetched article text for grounding when available,
-    falling back to the scraper's lede paragraph otherwise.
+    return None if there genuinely isn't enough real information.
+
+    `use_image` attaches the front-page image captured during vision
+    selection, so a story whose web text was paywalled or 403'd can still
+    be briefed from what's actually printed on the page.
+    `allow_thin` tells the model a short descriptive brief is a success
+    state — used by the image retry and by the backfill ladder, where two
+    accurate flat sentences beat an empty slot.
     Note: the Substack-facing status label (state organ / exile / etc.) is
     resolved in publisher.py from sources.py by source_id — not here."""
     context_block = article_text if article_text else s.lede
+
+    if allow_thin:
+        thin_clause = """If the information is thin, WRITE THE BRIEF ANYWAY, shorter. Two plain factual sentences stating only what is actually reported — with no background, no analysis, and no explanation of significance — is a CORRECT and acceptable result. Only return the insufficient marker if you cannot state even one concrete fact about a real event. Do not pad, do not speculate, do not supply context from your own knowledge to make it feel complete."""
+    else:
+        thin_clause = """If the information above is too thin, vague, or fragmentary to write a factual, comprehensible brief for a reader with zero context — for example, it only names a decree/policy/case number with no explanation of what it actually does, or it's just a publication's self-description — return ONLY this JSON and nothing else:
+{"insufficient": true}"""
+
+    image_clause = ""
+    if use_image:
+        image_clause = """
+An image of this publication's actual printed front page is attached. The web text above was incomplete or unavailable. Read the front page and use what is printed there — the headline, subheads, and any visible opening paragraphs of the relevant story — as your source material. Report only what you can actually read on the page; if the printed text is too small or cut off to read reliably, do not guess at it."""
 
     prompt = f"""You are writing for "World's Front Page," a daily newsletter for smart, globally curious American readers who want to know what's front-page news in other countries — stories they probably haven't seen yet.
 
@@ -839,9 +1114,8 @@ STORY SOURCE:
 - Headline: {s.headline}
 - Deckline/summary: {s.deckline}
 - Additional context (fetched article text when available): {context_block}
-
-If the information above is too thin, vague, or fragmentary to write a factual, comprehensible brief for a reader with zero context — for example, it only names a decree/policy/case number with no explanation of what it actually does, or it's just a publication's self-description — return ONLY this JSON and nothing else:
-{{"insufficient": true}}
+{image_clause}
+{thin_clause}
 
 Do NOT introduce facts, statistics, examples, or background context that are not present in the STORY SOURCE above — even true, well-known facts about the broader topic. If the source material doesn't fully explain why this matters beyond its own borders, write a more general — but still accurate — why-it-matters line rather than reaching for an outside statistic to make it sound more significant. A thin but honest brief is correct; a fluent one padded with an invented figure is not.
 
@@ -857,10 +1131,27 @@ Return ONLY this JSON, nothing else:
   "why_it_matters": "..."
 }}"""
 
+    if use_image:
+        media_type = _IMAGE_MEDIA_TYPES.get(
+            getattr(s, "frontpage_content_type", ""), "image/jpeg"
+        )
+        b64 = base64.standard_b64encode(s.frontpage_image_bytes).decode("ascii")
+        content = [
+            {"type": "image", "source": {"type": "base64", "media_type": media_type, "data": b64}},
+            {"type": "text", "text": prompt},
+        ]
+        # The image path needs a vision-capable model; MODEL (Haiku) is,
+        # but front-page print is small and dense, so this one call goes to
+        # the same model the front-page selector already trusts to read it.
+        model = SELECTION_MODEL
+    else:
+        content = prompt
+        model = MODEL
+
     resp = client.messages.create(
-        model=MODEL,
-        max_tokens=400,
-        messages=[{"role": "user", "content": prompt}],
+        model=model,
+        max_tokens=1000,
+        messages=[{"role": "user", "content": content}],
     )
 
     raw = _extract_text(resp)
@@ -879,4 +1170,6 @@ Return ONLY this JSON, nothing else:
         "original_headline": s.headline,
         "brief": result.get("brief", ""),
         "why_it_matters": result.get("why_it_matters", ""),
+        "grounded_on": "frontpage_image" if use_image else ("article_text" if article_text else "lede"),
+        "flagged_figures": [],
     }

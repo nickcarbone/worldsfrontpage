@@ -299,6 +299,17 @@ class ScrapedStory:
     localization_score: int = 3   # 1-5, set by curator._screen_stories(); default
                                    # is a neutral middle value used only if
                                    # screening fails and stories pass through unscored
+    saturation_score: int = 3     # 1-5, set by curator._screen_stories(). Was
+                                   # previously assigned as an ad-hoc attribute with no
+                                   # dataclass default, so any story the screen didn't
+                                   # return a verdict for raised AttributeError in the
+                                   # distribution logger — caught by the outer handler,
+                                   # which silently bypassed the whole screen.
+    article_text: str = ""        # cached by curator._prefetch_article_text(); "" means
+                                   # the fetch failed or was blocked, NOT that the story
+                                   # is thin — nothing downstream may treat it as a verdict
+    frontpage_image_bytes: bytes = b""   # cached by frontpage_selector so brief-writing can
+    frontpage_content_type: str = ""     # re-read the printed page when web text is blocked
     scrape_error: Optional[str] = None
     candidates: list = field(default_factory=list)  # list[Candidate], primary first
 

@@ -162,6 +162,12 @@ def apply_frontpage_selection(
         story.headline = matched.headline
         story.deckline = matched.deckline
         story.article_url = matched.article_url or story.article_url
+        # Retain the page image (2026-08-01). It was fetched, used once, and
+        # discarded; curator._write_briefs now re-reads it as a grounding
+        # source when a story's web text is paywalled or blocked, which is
+        # both cheaper and more on-premise than scraping harder.
+        story.frontpage_image_bytes = fp_result.image_bytes
+        story.frontpage_content_type = fp_result.content_type
         survivors.append(story)
 
         elements = vision_result.get("elements", []) or []

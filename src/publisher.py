@@ -57,7 +57,7 @@ import logging
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 import requests
-from sources import SOURCES, STATUS_LABELS, BASELINE_SOURCES, get_sources
+from sources import SOURCES, STATUS_LABELS, BASELINE_SOURCES
 
 logger = logging.getLogger(__name__)
 
@@ -108,45 +108,27 @@ COUNTRY_FLAGS = {
 # Build source status lookup
 SOURCE_STATUS = {s["id"]: s["status"] for s in SOURCES}
 
+# Numeric figures the curator couldn't ground in the fetched source text are
+# no longer dropped (they were killing correctly-sourced stories); they are
+# surfaced as a deletable marker in the Substack DRAFT, which is where the
+# review actually happens. Set False to keep the flag in the logs and
+# pending_post.json only. The marker must be deleted before publishing —
+# it is written in the draft body, not a comment.
+FLAG_FIGURES_IN_DRAFT = True
+
 
 def _source_stats() -> dict:
     """
     Compute current monitoring stats directly from sources.py so the
     newsletter's self-description never goes stale as the source list
-    grows.
-
-    total/countries/icij count ALL sources (including the baseline-only
-    ones — 10 as of 2026-07-28's baseline rewrite — since those are
-    genuinely scraped/monitored each run, just excluded from story
-    selection). That's accurate for "monitors" language.
-
-    Fixed 2026-07-29: the footer's NEXT sentence ("Stories are selected
-    for national significance...") was pairing that same 172/133 total
-    with selection language, implying all 172 were eligible for a slot.
-    They aren't — the 10 baseline sources (5 as of the original build,
-    5 more added 2026-07-28: BBC, Al Jazeera, France 24, CBC, NPR) exist
-    purely to calibrate global saturation and get_sources() excludes them
-    from anything publishable. publishable/publishable_countries are the
-    correct numbers for that sentence; total/countries stay correct for
-    the "monitors" sentence, which doesn't claim a selection pool.
+    grows. Counts ALL sources (including the 5 baseline-only ones,
+    since those are genuinely scraped/monitored each run, just excluded
+    from story selection).
     """
     total = len(SOURCES)
     countries = len({s["country"] for s in SOURCES})
     icij = sum(1 for s in SOURCES if s.get("icij"))
-
-    publishable_list = get_sources()
-    publishable = len(publishable_list)
-    publishable_countries = len({s["country"] for s in publishable_list})
-    publishable_icij = sum(1 for s in publishable_list if s.get("icij"))
-
-    return {
-        "total": total,
-        "countries": countries,
-        "icij": icij,
-        "publishable": publishable,
-        "publishable_countries": publishable_countries,
-        "publishable_icij": publishable_icij,
-    }
+    return {"total": total, "countries": countries, "icij": icij}
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -231,9 +213,10 @@ def _build_content_doc(stories: list[dict], stats: dict, story_count: int) -> li
     """
     content = [
         _para_node([_text_node(
-            f"Today we monitored front pages from {stats['total']} publications across "
-            f"{stats['countries']} countries. Here are the {story_count} stories that made "
-            f"the front page somewhere in the world and probably didn't make yours.",
+            f"Today we monitored {stats['total']} publications across "
+            f"{stats['countries']} countries. Here "
+            f"{'is the 1 story' if story_count == 1 else f'are the {story_count} stories'} "
+            f"that made the front page somewhere in the world and probably didn't make yours.",
             marks=[{"type": "em"}],
         )]),
         _HR_NODE,
@@ -253,6 +236,15 @@ def _build_content_doc(stories: list[dict], stats: dict, story_count: int) -> li
         if status_label:
             content.append(_para_node([_text_node(status_label, marks=[{"type": "em"}])]))
 
+        if story.get("flagged_figures") and FLAG_FIGURES_IN_DRAFT:
+            content.append(_para_node([_text_node(
+                f"[REVIEW BEFORE PUBLISHING — unverified figure(s): "
+                f"{', '.join(story['flagged_figures'])}. These do not appear in the "
+                f"fetched source text. Verify against the original article, then DELETE "
+                f"this line.]",
+                marks=[{"type": "strong"}],
+            )]))
+
         if story.get("brief"):
             content.append(_para_node([_text_node(story["brief"])]))
 
@@ -271,9 +263,7 @@ def _build_content_doc(stories: list[dict], stats: dict, story_count: int) -> li
 
     content.append(_para_node([_text_node(
         f"World's Front Page monitors {stats['total']} publications across "
-        f"{stats['countries']} countries daily, {stats['publishable']} of them eligible "
-        f"for selection (the rest are wire/broadcast sources used only to calibrate "
-        f"global coverage), including {stats['publishable_icij']} ICIJ media partners. "
+        f"{stats['countries']} countries daily, including {stats['icij']} ICIJ media partners. "
         f"Stories are selected for national significance and global underreporting. "
         f"State-affiliated sources are labeled. All stories translated to English.",
         marks=[{"type": "em"}],
@@ -300,9 +290,10 @@ def build_post(stories: list[dict], date: datetime = None) -> dict:
     story_count = len(stories)
     stats = _source_stats()
     html_parts = [
-        f'<p><em>Today we monitored front pages from {stats["total"]} publications across '
-        f'{stats["countries"]} countries. Here are the {story_count} stories that made the '
-        f'front page somewhere in the world and probably didn\'t make yours.</em></p>',
+        f'<p><em>Today we monitored {stats["total"]} publications across '
+        f'{stats["countries"]} countries. Here '
+        f'{"is the 1 story" if story_count == 1 else f"are the {story_count} stories"} '
+        f'that made the front page somewhere in the world and probably didn\'t make yours.</em></p>',
         '<hr/>',
     ]
 
@@ -316,6 +307,13 @@ def build_post(stories: list[dict], date: datetime = None) -> dict:
 
         if status_label:
             block += f'<p><small>{status_label}</small></p>\n'
+
+        if story.get("flagged_figures"):
+            block += (
+                f'<p style="background:#ffe8e8;padding:6px;border-left:4px solid #c00">'
+                f'<strong>REVIEW — unverified figure(s):</strong> '
+                f'{", ".join(story["flagged_figures"])} — not found in the fetched source text.</p>\n'
+            )
 
         block += f'<p>{story["brief"]}</p>\n'
 
@@ -337,9 +335,7 @@ def build_post(stories: list[dict], date: datetime = None) -> dict:
     # Footer
     html_parts.append(
         f'<p><em>World\'s Front Page monitors {stats["total"]} publications across '
-        f'{stats["countries"]} countries daily, {stats["publishable"]} of them eligible '
-        f'for selection (the rest are wire/broadcast sources used only to calibrate '
-        f'global coverage), including {stats["publishable_icij"]} ICIJ media partners. '
+        f'{stats["countries"]} countries daily, including {stats["icij"]} ICIJ media partners. '
         f'Stories are selected for national significance and global underreporting. '
         f'State-affiliated sources are labeled. All stories translated to English.</em></p>'
     )
