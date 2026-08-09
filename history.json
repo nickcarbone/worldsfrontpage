@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-08-01",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Ceuta, 48,500 returned to Morocco. Meloni: Schengen suspended for security reasons. Sanchez: 'Fewer irregular migrants here than in Italy'"
-  },
-  {
-    "date": "2026-08-01",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Gustavo Petro arrived in Cuba"
-  },
-  {
     "date": "2026-08-02",
     "country": "Brazil",
     "publication": "Folha de S.Paulo",
@@ -292,5 +280,95 @@
     "country": "Mexico",
     "publication": "Reforma",
     "headline": "From dairy farming to owning their own refineries"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Target of the US, Pix Breaks Political Bubbles and Leads Unprecedented Ranking"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Saudi Arabia",
+    "publication": "Arab News",
+    "headline": "UAE condemns Iran missile attack on ADNOC tanker in Strait of Hormuz"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "4T Eliminates Trusts... and Creates Its Own"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "F.A.Z. Exclusive: China's AI Hope Moonshot Wants to Expand to Germany"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Nigeria",
+    "publication": "Vanguard",
+    "headline": "Six days to Osun election: 18 ‘killed’ as fears of more violence mount"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Why Israel and Lebanon Are in No Hurry to Implement Their Fragile Deal"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "Cayetano threatened PRA to stop probe into Taguig reclamation – Lacson"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "A New Law Was Supposed to Force Clothing Producers Into Circularity. But It Didn't Make Things More Sustainable"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Fires Without Culprits"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Cuba Counts on the Accompaniment and Permanent Solidarity of Communist and Workers' Parties"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "State Security Collapse in Ceuta Leaves Worst Legacy: Border Protection Failures and Mistrust in Morocco"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Martyr and Dozens Injured in Gaza and West Bank From Occupation and Settler Attacks"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "‘Spermageddon’: The male fertility crisis we need to talk about"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "White Dolphin Continues to Weaken! Estimated to Become Light Typhoon by Afternoon; Northern Coastal Low-lying Areas Watch for Heavy Waves and Flooding"
+  },
+  {
+    "date": "2026-08-09",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Bodyguard of Former Minister Luis Cordero Suffers Robbery Attempt in Vitacura"
   }
 ]
