@@ -1,29 +1,5 @@
 [
   {
-    "date": "2026-08-03",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Eskom loses assets fight as Ramaphosa backs split"
-  },
-  {
-    "date": "2026-08-03",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Embedded with troops\" Twin brothers called up for \"Hanguang\" exercise! Brothers use their expertise with confidence, declare: We're ready"
-  },
-  {
-    "date": "2026-08-03",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar pushes for freedom of navigation in Strait of Hormuz"
-  },
-  {
-    "date": "2026-08-03",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "Video: Spectacular images of the moment the Pârjoaia rock is destroyed to increase the Danube flow toward Cernavodă"
-  },
-  {
     "date": "2026-08-04",
     "country": "Canada",
     "publication": "The Globe and Mail",
@@ -436,5 +412,95 @@
     "country": "Japan",
     "publication": "Yomiuri Shimbun",
     "headline": "The origin of peace is \"a heart that understands human suffering\"... words of the now-deceased \"narrator\" cited in Nagasaki's Peace Declaration"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Nigeria",
+    "publication": "Vanguard",
+    "headline": "Why we planned  coup against Tinubu —Col Ma’aji"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Shin Bet Chief Urges Israel to Hold 1,700 Palestinian Bodies as Bargaining Chips"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Turkey",
+    "publication": "Hürriyet",
+    "headline": "#TURKEY WITHOUT TERROR: Passed Parliament with 467 votes"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Army alerts open widest rift for Sánchez in his China bet"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Poland",
+    "publication": "Gazeta Wyborcza",
+    "headline": "\"A Hitch\": Will Lubomirski heirs keep Ukrainian collection artworks in Poland?"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "Lobbyist admits he ordered dirt file on Liberal minister, ICAC inquiry hears"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Zimbabwean businessman Wicknell Chivayo enjoys unusual access to President Ruto?"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Man arrested after bomb threat targeting U.S. consulate in Halifax, police say"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Drought reaches critical level in France"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "This trend is more worthy of attention than Unitree Robotics going public: Global Times editorial"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Dozens of settlers storm Al-Aqsa Mosque amid tightened restrictions on worshippers"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Those Lavitola messages to Ranucci: 'In two years you'll be prime minister.' The judge: the journalist seduced with flattery | The fixer arrested for the attack"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "Cernavodă power plant enters shutdown procedures after Danube level drops dramatically. Additionally, flow fell below 1,400 cubic meters at country's entry point."
+  },
+  {
+    "date": "2026-08-11",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "Over 400 people stranded in ports due to enhanced habagat"
+  },
+  {
+    "date": "2026-08-11",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "80% of plans to fix apartheid geography are off track"
   }
 ]
