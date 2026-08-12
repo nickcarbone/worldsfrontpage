@@ -1,17 +1,5 @@
 [
   {
-    "date": "2026-08-04",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Carney looks to influential outsiders to head Canada’s embassy in Beijing, sources say"
-  },
-  {
-    "date": "2026-08-04",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Railway strike partially halts lines 11-coral and 12-sapphire and totally line 13-jade in SP"
-  },
-  {
     "date": "2026-08-05",
     "country": "Canada",
     "publication": "National Post",
@@ -502,5 +490,95 @@
     "country": "South Africa",
     "publication": "Business Day",
     "headline": "80% of plans to fix apartheid geography are off track"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Inside the plot to topple Luxon - and how it spectacularly unravelled"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "UN warnings of 'de facto' annexation of West Bank amid record surge in settlements and settler violence"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Poland",
+    "publication": "Gazeta Wyborcza",
+    "headline": "From cemetery hideaway to airport. Polish connection in Leipzig attack"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Sick, confused and without care: 62,500 clients live out of sight of mental health services"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "‘Beyond depressing’: GNU gets the blame as youth joblessness spirals"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Daniel Kinahan faces criminal charges following extradition from UAE"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Former President Boric makes self-criticism on his first cabinet: \"I would do it in a more balanced way\""
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "With eye on election, Lula draws closer to Alcolumbre and Motta to approve agenda before first round"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Popular Force to chair Constitution in Senate: Which parties will lead the other commissions?"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Broad-based MPs fire back at Gachagua over his four-year Ruto scorecard"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "The money trail. U.S. Justice downloads phone of former AFA executive and analyzes his commercial transactions"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "Former Customs chiefs have mansion in U.S."
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Germany",
+    "publication": "Süddeutsche Zeitung",
+    "headline": "The Left: On the new success of a party – and its dilemma"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "Spanish govt's support for SAIC EV plant to advance local electrification agenda: Chinese experts"
+  },
+  {
+    "date": "2026-08-12",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Han angrily lashes out after resigning as party leader! Fu Kunhsi appears today calling for unity"
   }
 ]
