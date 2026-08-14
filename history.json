@@ -1,53 +1,5 @@
 [
   {
-    "date": "2026-08-05",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Refunds are on the way for Canadian exporters owed roughly $10 billion from Trump's illegal tariffs"
-  },
-  {
-    "date": "2026-08-05",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Understand the unprecedented crisis between Brazil and the U.S. that culminated in the ambassador's visa revocation"
-  },
-  {
-    "date": "2026-08-05",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Cause of \"Aeon Mall Kumamoto\" explosion may be leaking liquefied petroleum gas... METI requests inspection of gas supply equipment at large facilities nationwide"
-  },
-  {
-    "date": "2026-08-05",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "The Danube crisis is only just beginning: \"The phenomenon could become recurring, it cannot be estimated when the flow will return to normal\""
-  },
-  {
-    "date": "2026-08-05",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "PML-N, PPP headed for one seat each in delayed AJK constituencies"
-  },
-  {
-    "date": "2026-08-05",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Amir, Trump discuss de-escalation efforts and US-Iran dialogue"
-  },
-  {
-    "date": "2026-08-06",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "Explosive Drone: Aircraft Was Loaded with Ammunition"
-  },
-  {
-    "date": "2026-08-06",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Rocket Launches in Texas Cause Damage in Mexico. 'You Could Fish Here with a Rowboat, Now There's Nothing Left'"
-  },
-  {
     "date": "2026-08-07",
     "country": "China",
     "publication": "Global Times",
@@ -580,5 +532,95 @@
     "country": "Taiwan",
     "publication": "Liberty Times",
     "headline": "Han angrily lashes out after resigning as party leader! Fu Kunhsi appears today calling for unity"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Germany",
+    "publication": "Süddeutsche Zeitung",
+    "headline": "Ten reasons for an AfD ban proceeding. Now."
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Nigeria",
+    "publication": "ThisDay",
+    "headline": "AFC Leads $2.5bn Dangote Refinery Equity Raise as Plant Targets 1.4m bpd Capacity"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Without negotiation channels, reciprocity against Trump is a political decision, analysts say"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Marikana’s long wait for justice"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "The Lessons of Lebanon and Ukraine: Why the IDF Wants 100,000 Drones a Year"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "If Trump imposes 50 per cent tariffs, should Canada hit back? Trade analysts disagree"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Mild acceleration. Inflation broke its downward streak and reached 2.1% in July"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Ankara's moves on the Mediterranean chessboard"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "\"Linear precipitation bands\" occurred three times, Chiba receives nation's first \"Level 5 Heavy Rain Special Warning\", 6 dead and 1 in cardiac arrest... continued rainfall alert"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "\"The Russians are testing everywhere\": Concern grows within European military leadership over an uninhibited threat from the Kremlin"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "\"A partial victory\" and \"does not alter what is substantive\": Reactions to Constitutional Court ruling on Reconstruction"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Armengol spends over four million on the earpieces that Sánchez granted to independence movements"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "US, Iran play ‘claim game’ over Hormuz"
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Prosecutors now want to hear from Ranucci. Lavitola: \"I don't rule out that Sigfrido understood after the bomb\""
+  },
+  {
+    "date": "2026-08-14",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Under siege pressure.. Qasra village faces settler encroachment and military control over homes"
   }
 ]
