@@ -1,89 +1,5 @@
 [
   {
-    "date": "2026-08-07",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "'US-style substitution' risks becoming 'self-made trap' as trade barriers raise costs for labs, manufacturers and consumers: Chinese experts"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Ex-Likud Lawmakers Launch Party in Bid to Woo Right-wingers Opposed to Netanyahu"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Widespread destruction and dozens of arrests following occupation withdrawal from Qalandia camp"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "‘Survival mode’: IDC warns SA’s growth engine is collapsing"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Nigeria",
-    "publication": "ThisDay",
-    "headline": "In Deft Move, Tinubu Directs EFCC to Unfreeze Osun Account"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Banks see credit deterioration and signal tightening amid surge in defaults"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar, Saudi Arabia sign nuclear safety MoU"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "'American Tzu Chi Youth' appears; 1.06 billion BNT vaccine scam details revealed"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Government avoids necessary endorsement for Felipe VI to fulfill his 'commitment' to visit Ceuta"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "4 wind turbines, 18 years of dispute: why Switzerland is not making progress on wind power"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Pakistan working with partners to defuse Hormuz stand-off: FO"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Hanson feuds with media, concedes using party funds for luxury hotel"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "President Kast arrives in Colombia to participate in Abelardo de la Espriella's inauguration ceremony"
-  },
-  {
-    "date": "2026-08-07",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Fidel, the Book Fair and Cuba's publishing legacy"
-  },
-  {
     "date": "2026-08-08",
     "country": "Canada",
     "publication": "The Globe and Mail",
@@ -622,5 +538,83 @@
     "country": "Palestinian Territories",
     "publication": "Al-Quds",
     "headline": "Under siege pressure.. Qasra village faces settler encroachment and military control over homes"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Trump turns his guns on Latin America"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "US strips visa from 'Andy'; claims it's 'Hitlerian'"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Nigeria",
+    "publication": "ThisDay",
+    "headline": "Two-Horse Race: Adeleke, Oyebamiji in Fierce Battle for Osun Governorship"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Israel, clash over settlers. The five Italians evacuated: \"They gave us 3 minutes to leave\""
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Stalled for 350 days! Legislative Yuan collectively cuts 4.8 billion from fiscal year 115 budget; all special expenses for 20 agencies completely eliminated"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Staggered closure due to gas price and unrelated to blackout: the keys to Almaraz's extension"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Two deaths on highway near Heesch in the wake of a traffic jam caused by farmer protest"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "US plans crippling sanctions on Iran"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Luxon's leadership win was a reprieve not a victory"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Standard Bank’s South African operations drive profit growth"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Fidel's legacy will not be surpassed by the hatred of opportunists in the U.S. Government"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Evacuations in North Rhine-Westphalia: The fire images affect everyone"
+  },
+  {
+    "date": "2026-08-15",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Crime in Villa Devoto. How the femicide unfolded: a light on, 40 wounds and the girl who ran in desperation"
   }
 ]
