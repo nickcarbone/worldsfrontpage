@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-08-08",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Ottawa weighs concessions on alcohol, autos in return for lower U.S. tariffs, sources say"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "War in Ukraine: How Russia's frozen billions could still be put to use"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Lebanon, Israel Agree on Countries That Could Verify Hezbollah Disarmament"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Hit to the wallet. Why inflation accelerated sharply in Buenos Aires in July and how it will impact the Indec figure"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "DCI Amin names police suspects in Dr Victoria Mutiso killing"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Govt's legal team to meet Presidency officials amid efforts to end deadlock over judges’ appointments"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "‘Maleta boys’ recantation shows pattern manufactured evidence of previous admin, says  lawyer"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "Bar Association broadly backs new offence for persistent child sexual abuse"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Most of Ireland’s big targets on housing, infrastructure and families are stuff of fiction"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Women in politics face 'a struggle within a struggle'"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Betssy Chávez in Mexico: The story behind the decision to grant her safe passage"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Saudi Arabia",
-    "publication": "Arab News",
-    "headline": "Saudi minister: Makkah defense agreement with Turkiye, Pakistan not a ‘military axis or sectarian bloc’"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Sánchez and Meloni drag Europe into a historic split with mutual travel checks from Spain and Italy in their clash over the Ceuta crisis"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Díaz-Canel attends opening of International Meeting of Communist and Workers' Parties"
-  },
-  {
-    "date": "2026-08-08",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "From dairy farming to owning their own refineries"
-  },
-  {
     "date": "2026-08-09",
     "country": "Brazil",
     "publication": "O Globo",
@@ -616,5 +526,59 @@
     "country": "Argentina",
     "publication": "La Nación",
     "headline": "Crime in Villa Devoto. How the femicide unfolded: a light on, 40 wounds and the girl who ran in desperation"
+  },
+  {
+    "date": "2026-08-16",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "PP and Vox already win in 38 provinces and dilute Sánchez's bloc to rule in only eight"
+  },
+  {
+    "date": "2026-08-16",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Defense Officials: Order to Hand West Bank Powers From IDF to Police Unfeasible"
+  },
+  {
+    "date": "2026-08-16",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Inside the early battle against the ferocious Bald Range wildfire"
+  },
+  {
+    "date": "2026-08-16",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "\"They don't want the younger one, they want the older one,\" says AMLO's brother about cancellation of Andy's visa; \"it's a political matter,\" he says"
+  },
+  {
+    "date": "2026-08-16",
+    "country": "Nigeria",
+    "publication": "Vanguard",
+    "headline": "Updated: INEC declares Adeleke winner of Osun governorship election"
+  },
+  {
+    "date": "2026-08-16",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "PNP vows to hunt down attackers in ambush on BARMM chief Macacua"
+  },
+  {
+    "date": "2026-08-16",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Death toll from Chiba heavy rain rises to 10... Man using portable generator in blackout home dies of carbon monoxide poisoning"
+  },
+  {
+    "date": "2026-08-16",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Feared by two-thirds of Brazilians, armed robbery leads security insecurity ranking; see survey"
+  },
+  {
+    "date": "2026-08-16",
+    "country": "Turkey",
+    "publication": "Hürriyet",
+    "headline": "#TOURISM: Tired of visas, Far East rushes to vacation"
   }
 ]
