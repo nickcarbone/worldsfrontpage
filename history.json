@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-08-09",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Target of the US, Pix Breaks Political Bubbles and Leads Unprecedented Ranking"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Saudi Arabia",
-    "publication": "Arab News",
-    "headline": "UAE condemns Iran missile attack on ADNOC tanker in Strait of Hormuz"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "4T Eliminates Trusts... and Creates Its Own"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "F.A.Z. Exclusive: China's AI Hope Moonshot Wants to Expand to Germany"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Nigeria",
-    "publication": "Vanguard",
-    "headline": "Six days to Osun election: 18 ‘killed’ as fears of more violence mount"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Why Israel and Lebanon Are in No Hurry to Implement Their Fragile Deal"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "Cayetano threatened PRA to stop probe into Taguig reclamation – Lacson"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "A New Law Was Supposed to Force Clothing Producers Into Circularity. But It Didn't Make Things More Sustainable"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Fires Without Culprits"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Cuba Counts on the Accompaniment and Permanent Solidarity of Communist and Workers' Parties"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "State Security Collapse in Ceuta Leaves Worst Legacy: Border Protection Failures and Mistrust in Morocco"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Martyr and Dozens Injured in Gaza and West Bank From Occupation and Settler Attacks"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "‘Spermageddon’: The male fertility crisis we need to talk about"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "White Dolphin Continues to Weaken! Estimated to Become Light Typhoon by Afternoon; Northern Coastal Low-lying Areas Watch for Heavy Waves and Flooding"
-  },
-  {
-    "date": "2026-08-09",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Bodyguard of Former Minister Luis Cordero Suffers Robbery Attempt in Vitacura"
-  },
-  {
     "date": "2026-08-10",
     "country": "Argentina",
     "publication": "La Nación",
@@ -580,5 +490,95 @@
     "country": "Turkey",
     "publication": "Hürriyet",
     "headline": "#TOURISM: Tired of visas, Far East rushes to vacation"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Saudi Arabia",
+    "publication": "Arab News",
+    "headline": "Joint Defense Agreement: A new era of regional security and cooperation"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Business default reaches record in country, with 9.1 million CNPJs blacklisted"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "\"The three Argentinas\". Industry leads loss of formal private employment under Milei and report published by Techint warns of its \"extreme fragility\""
+  },
+  {
+    "date": "2026-08-17",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Reserve Bank probes DA finance chief Burke’s firm over R4bn transfers"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "A paralyzed Congress with fewer laws than ever while Sánchez sets record for decrees"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Troubling hacking of French tax data highlights vulnerabilities in administration"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "How Linda Mwananchi outmaneuvered armed youths in Homa Bay"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "One Nation flip-flops on migration policy after visa numbers question"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "'It feels like we stepped into a trap': Buyers count cost of property slump"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "IDF Declines to Enforce Order Barring Settlers From Besieged Palestinian Land"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Turkey",
+    "publication": "Hürriyet",
+    "headline": "#AUTOMOTIVE: Made in EU exit: 'Europe loses if Turkey is out'"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Merz and the CDU: \"I really believed that we needed someone like Mr. Merz\""
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Poland",
+    "publication": "Gazeta Wyborcza",
+    "headline": "\"You will never return to your apartment\". Polish woman handcuffed in front of her home in Chicago by ICE agents"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Constitutional reform draft: UDI conditions support while opposition intensifies criticism"
+  },
+  {
+    "date": "2026-08-17",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "HE Prime Minister and Minister of Foreign Affairs Sheikh Mohammed bin Abdulrahman bin Jassim al-Thani yesterday held telephone conversations with his Saudi, Jordanian, and Syrian counterparts, urging "
   }
 ]
