@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-08-10",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "After the collapse of the land law. Governors take a stand in the Senate, halt gas cuts and set the agenda for Milei"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "Defense attempts to sow doubt: In the Pierin Vincenz case, the appeal trial against the former top banker is underway"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Army reports warn of security risk to China's factory in Ferrol: \"It is a threat\""
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Middle class tightens belt, and compact property sales skyrocket"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Dadgostar does not shy away from new elections if S rejects V in government"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Nigeria",
-    "publication": "ThisDay",
-    "headline": "Nigeria Revenue Service: Economy Out of the Woods After Difficult Adjustments"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Tarbela Dam attains maximum storage level"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "Dagupan City under state of calamity due to floods"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Elizabeth was Redeemer’s first state ward. This is why she escaped"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Fidel: legacy and future, a dialogue from Havana"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Preventive detention for three of those detained in botched assault on Cordero's escort"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Cryptocurrencies, amid unequal regulation and controversies in Latin America"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar, Oman explore broader co-operation"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Hanlight 42: Requisitioning civilian flatbeds to transport tanks and armored vehicles, Huadun cross-area reinforcement to Yilan doubles speed"
-  },
-  {
-    "date": "2026-08-10",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "The origin of peace is \"a heart that understands human suffering\"... words of the now-deceased \"narrator\" cited in Nagasaki's Peace Declaration"
-  },
-  {
     "date": "2026-08-11",
     "country": "Nigeria",
     "publication": "Vanguard",
@@ -580,5 +490,95 @@
     "country": "Qatar",
     "publication": "Gulf Times",
     "headline": "HE Prime Minister and Minister of Foreign Affairs Sheikh Mohammed bin Abdulrahman bin Jassim al-Thani yesterday held telephone conversations with his Saudi, Jordanian, and Syrian counterparts, urging "
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Canada",
+    "publication": "Le Devoir",
+    "headline": "Churchill Falls agreement"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Retail crisis leads networks to restructure R$ 68 billion in debt"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Crime diversifies; takes over 50 legitimate businesses in 9 states"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "From differentiated penitentiary regimes to new state of exception: The 8 modifications of the security reform"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Mónica García breaks institutional balance with Ceuta while Government pitches tents because it won't be able to return all migrants"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Migration: Voluntary departure, otherwise deportation"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Sadc unity is vital, says Ramaphosa, as protesters demand deportations"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Nigeria",
+    "publication": "ThisDay",
+    "headline": "Inflation Moderates to 15.43% Despite Surge in Food Prices"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Overwhelmed by heat and repeated droughts, how farmers are trying to adapt to survive"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "China plans to increase domestic oil, gas supplies to 440m tons of oil equivalent in total, and pave 20,000 km more pipelines by 2030"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Fu says lacking executive power in absent negotiations; Lai Shih-bao: if you have guts, don't review"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "$300,000 hit: Peak buyer house flippers badly burned by property market crash"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Aftermath: Torched cars a day after goons targeted Sifuna-led Linda Mwananchi rally"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "$3bn state capital fuels Qatar's tech ecosystem rise"
+  },
+  {
+    "date": "2026-08-18",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "How intense drizzle left south Lima districts flooded and on the brink of collapse?"
   }
 ]
