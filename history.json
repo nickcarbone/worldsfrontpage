@@ -1,185 +1,5 @@
 [
   {
-    "date": "2026-08-11",
-    "country": "Nigeria",
-    "publication": "Vanguard",
-    "headline": "Why we planned  coup against Tinubu —Col Ma’aji"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Shin Bet Chief Urges Israel to Hold 1,700 Palestinian Bodies as Bargaining Chips"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Turkey",
-    "publication": "Hürriyet",
-    "headline": "#TURKEY WITHOUT TERROR: Passed Parliament with 467 votes"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Army alerts open widest rift for Sánchez in his China bet"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Poland",
-    "publication": "Gazeta Wyborcza",
-    "headline": "\"A Hitch\": Will Lubomirski heirs keep Ukrainian collection artworks in Poland?"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Lobbyist admits he ordered dirt file on Liberal minister, ICAC inquiry hears"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Zimbabwean businessman Wicknell Chivayo enjoys unusual access to President Ruto?"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Man arrested after bomb threat targeting U.S. consulate in Halifax, police say"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Drought reaches critical level in France"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "This trend is more worthy of attention than Unitree Robotics going public: Global Times editorial"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Dozens of settlers storm Al-Aqsa Mosque amid tightened restrictions on worshippers"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Those Lavitola messages to Ranucci: 'In two years you'll be prime minister.' The judge: the journalist seduced with flattery | The fixer arrested for the attack"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "Cernavodă power plant enters shutdown procedures after Danube level drops dramatically. Additionally, flow fell below 1,400 cubic meters at country's entry point."
-  },
-  {
-    "date": "2026-08-11",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "Over 400 people stranded in ports due to enhanced habagat"
-  },
-  {
-    "date": "2026-08-11",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "80% of plans to fix apartheid geography are off track"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "Inside the plot to topple Luxon - and how it spectacularly unravelled"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "UN warnings of 'de facto' annexation of West Bank amid record surge in settlements and settler violence"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Poland",
-    "publication": "Gazeta Wyborcza",
-    "headline": "From cemetery hideaway to airport. Polish connection in Leipzig attack"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Sick, confused and without care: 62,500 clients live out of sight of mental health services"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "‘Beyond depressing’: GNU gets the blame as youth joblessness spirals"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Daniel Kinahan faces criminal charges following extradition from UAE"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Former President Boric makes self-criticism on his first cabinet: \"I would do it in a more balanced way\""
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "With eye on election, Lula draws closer to Alcolumbre and Motta to approve agenda before first round"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Popular Force to chair Constitution in Senate: Which parties will lead the other commissions?"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Broad-based MPs fire back at Gachagua over his four-year Ruto scorecard"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "The money trail. U.S. Justice downloads phone of former AFA executive and analyzes his commercial transactions"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "Former Customs chiefs have mansion in U.S."
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "The Left: On the new success of a party – and its dilemma"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "Spanish govt's support for SAIC EV plant to advance local electrification agenda: Chinese experts"
-  },
-  {
-    "date": "2026-08-12",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Han angrily lashes out after resigning as party leader! Fu Kunhsi appears today calling for unity"
-  },
-  {
     "date": "2026-08-14",
     "country": "Germany",
     "publication": "Süddeutsche Zeitung",
@@ -580,5 +400,95 @@
     "country": "Peru",
     "publication": "El Comercio",
     "headline": "How intense drizzle left south Lima districts flooded and on the brink of collapse?"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "The drone war!: Border Patrol and cartels clash at the border"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Govt files review plea against SC ruling to move Imran to Shifa International Hospital, terms it 'discriminatory'"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Roberta Luchsinger, friend of Lulinha, said she was speaking on behalf of the president's son, according to the Federal Police"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "NIH reverses Trump-era ban on South African research funding"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "2027 poll: N571bn campaign spending limit for presidential, gov candidates"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Who are Gaël Mocaër and Sebastian Perez Pezzani, the two French filmmakers arrested and detained in Togo?"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Feijóo's 'enough' against Morocco's 'blackmail' marks his government plan"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Indonesia",
+    "publication": "Kompas",
+    "headline": "2 Desa di Ende Masih Terisolasi Pascagempa NTT, Pengiriman Bantuan Bergantung Kapal"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "'Iran can strike Europe,' alert over U.S. bases | Trump: economic war against Tehran"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Finance Ministry foresees new diesel price hikes if international conditions persist: 'We need to complete $250'"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "IDF Bars Anti-occupation Activist From Closed Zone as Settlers Roam Around Qusra"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Complete collection of Fidel Castro Ruz's Selected Works available for download"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Escalation with 'gray zones' from Ankara"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "From the stage to the shop floor: China's embodied AI shines at WRC 2026"
+  },
+  {
+    "date": "2026-08-20",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "For attempted femicide. Bolivian prosecutor requested 180 days of 'preventive detention' for Fernando Cerimedo"
   }
 ]
