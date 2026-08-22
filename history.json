@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-08-14",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "Ten reasons for an AfD ban proceeding. Now."
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Nigeria",
-    "publication": "ThisDay",
-    "headline": "AFC Leads $2.5bn Dangote Refinery Equity Raise as Plant Targets 1.4m bpd Capacity"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Without negotiation channels, reciprocity against Trump is a political decision, analysts say"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Marikana’s long wait for justice"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "The Lessons of Lebanon and Ukraine: Why the IDF Wants 100,000 Drones a Year"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "If Trump imposes 50 per cent tariffs, should Canada hit back? Trade analysts disagree"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Mild acceleration. Inflation broke its downward streak and reached 2.1% in July"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Ankara's moves on the Mediterranean chessboard"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "\"Linear precipitation bands\" occurred three times, Chiba receives nation's first \"Level 5 Heavy Rain Special Warning\", 6 dead and 1 in cardiac arrest... continued rainfall alert"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "\"The Russians are testing everywhere\": Concern grows within European military leadership over an uninhibited threat from the Kremlin"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "\"A partial victory\" and \"does not alter what is substantive\": Reactions to Constitutional Court ruling on Reconstruction"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Armengol spends over four million on the earpieces that Sánchez granted to independence movements"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "US, Iran play ‘claim game’ over Hormuz"
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Prosecutors now want to hear from Ranucci. Lavitola: \"I don't rule out that Sigfrido understood after the bomb\""
-  },
-  {
-    "date": "2026-08-14",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Under siege pressure.. Qasra village faces settler encroachment and military control over homes"
-  },
-  {
     "date": "2026-08-15",
     "country": "Brazil",
     "publication": "Folha de S.Paulo",
@@ -580,5 +490,95 @@
     "country": "Chile",
     "publication": "El Mercurio",
     "headline": "Student from Instituto Nacional arrested after threatening armed attack: Sent warnings to principal"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Ottawa fires back after rejecting U.S. trade deal"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Switzerland",
+    "publication": "Neue Zürcher Zeitung",
+    "headline": "No half measures on security: Switzerland must seriously want to defend itself – and now"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Search for Martens: Putin's attack on Western press freedom"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Minister says Imran taken back to Adiala jail after visit to Pims, declared 'medically fit' by doctors"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Nigeria",
+    "publication": "ThisDay",
+    "headline": "ICPC Uncovers Another Fake Agency, Tinubu Orders Arrest, Suspension of 3 Perm Secs"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Transnet seeks private partners for neglected branch rail lines"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Turbulence due to Moscow in the Greek Church"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Assessment pressuring Lula, Flávio struggling to reach rival: understand the signals from Datafolha poll"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "In Rosario, Milei denied that default rates are high and said that 'Argentina's numbers are similar to those of the United States'"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "How Jean-Luc Mélenchon seeks to take control of ecology ahead of the presidential election"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "With 4-hour delay, hearing of former Marine Fernando Farías begins; judge rules it will be closed"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Government fails in complete deportation of migrants despite flattering Morocco: 6,500 still wandering uncontrolled"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Elected board members may have cheated in election, council CEO concedes"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Israel Will Investigate Hind Rajab's Killing; Her Mother Wants More"
+  },
+  {
+    "date": "2026-08-22",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "European condemnation of 'E 1' settlement project and injuries in brutal settler attack in Mughayyir"
   }
 ]
