@@ -78,6 +78,13 @@ jobs:
   # runner's actual auto-assigned labels (no custom label was set at
   # registration; add one later via config.sh if you ever run more than
   # one self-hosted runner and need to target a specific machine).
+  #
+  # AUTO-PUBLISH (2026-08-23): this job now goes all the way live and emails
+  # subscribers — not just "create a draft for manual review" like before.
+  # SUBSTACK_AUTO_PUBLISH / SUBSTACK_SEND_EMAIL are set explicitly here
+  # (rather than left to publish_to_substack.py's own defaults) so this
+  # behavior is visible without reading the Python. Flip either to 'false'
+  # to step back toward the old manual-review flow.
   publish:
     needs: build
     if: needs.build.outputs.dry_run != 'true'
@@ -85,6 +92,13 @@ jobs:
     timeout-minutes: 10
     env:
       PYTHONPATH: ${{ github.workspace }}/src
+      SUBSTACK_AUTO_PUBLISH: 'true'
+      SUBSTACK_SEND_EMAIL: 'true'
+      # Post-publish review email (notify.py) — requires a Gmail App
+      # Password (not the real account password) stored as a repo secret.
+      # See notify.py's docstring for how to generate one. If unset, the
+      # pipeline still runs fine; you just won't get the review email.
+      GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
