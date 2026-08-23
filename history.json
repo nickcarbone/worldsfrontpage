@@ -1,83 +1,5 @@
 [
   {
-    "date": "2026-08-15",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Trump turns his guns on Latin America"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "US strips visa from 'Andy'; claims it's 'Hitlerian'"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Nigeria",
-    "publication": "ThisDay",
-    "headline": "Two-Horse Race: Adeleke, Oyebamiji in Fierce Battle for Osun Governorship"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Israel, clash over settlers. The five Italians evacuated: \"They gave us 3 minutes to leave\""
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Stalled for 350 days! Legislative Yuan collectively cuts 4.8 billion from fiscal year 115 budget; all special expenses for 20 agencies completely eliminated"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Staggered closure due to gas price and unrelated to blackout: the keys to Almaraz's extension"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Two deaths on highway near Heesch in the wake of a traffic jam caused by farmer protest"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "US plans crippling sanctions on Iran"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "Luxon's leadership win was a reprieve not a victory"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Standard Bank’s South African operations drive profit growth"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Fidel's legacy will not be surpassed by the hatred of opportunists in the U.S. Government"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Evacuations in North Rhine-Westphalia: The fire images affect everyone"
-  },
-  {
-    "date": "2026-08-15",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Crime in Villa Devoto. How the femicide unfolded: a light on, 40 wounds and the girl who ran in desperation"
-  },
-  {
     "date": "2026-08-16",
     "country": "Spain",
     "publication": "El Mundo",
@@ -580,5 +502,95 @@
     "country": "Palestinian Territories",
     "publication": "Al-Quds",
     "headline": "European condemnation of 'E 1' settlement project and injuries in brutal settler attack in Mughayyir"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Pakistan Army deployment in Rawalpindi okayed for 6 months to respond to 'any unforeseen situation'"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Disturbances recorded at Haiti's Embassy: Dozens of migrants forcibly enter the premises"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Political pact should be the president-elect's first step to avoid fiscal crisis, experts point out"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Indonesia",
+    "publication": "Kompas",
+    "headline": "Prabowo Yakin Kebakaran Hutan Kalimantan Dapat Segera Terkendali"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Tainan explosion affects 40 households; grim conditions inside disaster homes revealed"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Germany Live Blog: Bavaria's BSW chief: Simply unthinkable to help the AfD to power"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "2027 Presidential race: Jean-Luc Mélenchon expected at LFI summer universities, end of suspense for Raphaël Glucksmann"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "The Pope at the Rimini Meeting: \"Unmask unjust powers at the roots of poverty.\" And on migrants: \"Before borders, there are people\""
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "And the trade war winner is: Canadian whisky"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Israel Says It Warned Syria Before Striking Airbase Over Turkish Military Threat"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "China's top anti-graft body vows higher standards, more concrete measures to advance its work"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "‘Fake agency’ boss fights back with appointment letter"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Sweden",
+    "publication": "Dagens Nyheter",
+    "headline": "The school incident in Fagersta"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Martyr and wounded in Israeli strike targeting a house in Deir al-Balah, central Gaza Strip"
+  },
+  {
+    "date": "2026-08-23",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Rocha requests leave from Sinaloa governorship again; assures that the nation and the 4T are above all else"
   }
 ]
