@@ -18,6 +18,25 @@ docstring for why) — that means it has to run on a self-hosted runner, while
 scraping/curating has no such constraint and should stay on GitHub's free,
 disposable runners. Splitting the run in two lets each half live on the
 infrastructure suited to it.
+
+--publish auto-publishes as of 2026-08-23 (see publish_to_substack.py's v3
+note): the edition goes live and emails subscribers immediately after the
+draft is created, with no human review step. This was an explicit editorial
+decision, made with the tradeoff spelled out: curator.py's fabrication guard
+still flags unverified figures, but flagged stories now publish anyway — the
+flag's only remaining purpose is the warning logged below, for after-the-fact
+review, not for gating anything before send. Set SUBSTACK_AUTO_PUBLISH=false
+(env var, see publish_to_substack.py) to go back to draft-only at any time.
+
+A successful publish also triggers a best-effort email (see notify.py) with
+the full edition text and any flagged figures, so a human still reads every
+edition — just after it's live instead of before.
+
+NOTE: the plain `python main.py` full-run path below (no --build/--publish)
+still calls publisher.post_draft() — the older cookie/requests-based poster,
+draft-only, never wired up to auto-publish. In production this path isn't
+used; daily.yml always runs the --build / --publish split. If you ever run
+a full run this way expecting auto-publish, you won't get it.
 """
 
 from __future__ import annotations  # lets `str | None` etc. run on Python < 3.10
@@ -146,6 +165,30 @@ def _scrape_curate_build():
     return post, curated, run_date
 
 
+def _log_flagged_figures(curated: list) -> None:
+    """
+    Surface the fabrication guard's flagged_figures before publishing.
+    Editorial decision (2026-08-23): flagged stories publish anyway under
+    auto-publish, so this log line — not a human reviewing the draft — is
+    now the only place this information exists. Kept as its own function
+    so it's easy to find and easy to change back into a gate later.
+    """
+    flagged = [
+        (s.get("country"), s.get("publication"), s.get("flagged_figures"))
+        for s in curated if s.get("flagged_figures")
+    ]
+    if not flagged:
+        return
+    noun = "story" if len(flagged) == 1 else "stories"
+    logger.warning(
+        f"{len(flagged)} {noun} in this edition carry unverified numeric figures. "
+        "Auto-publish is on, so they are going out WITHOUT human review — this log "
+        "entry is the only record. Worth a periodic skim if the count creeps up:"
+    )
+    for country, pub, figs in flagged:
+        logger.warning(f"    {country} — {pub}: {', '.join(figs)}")
+
+
 def _run_publish_only(pending_path: str):
     """--publish mode: load a previously-built edition and post it via the
     browser-session publisher. Only meant to run on the self-hosted runner."""
@@ -162,15 +205,37 @@ def _run_publish_only(pending_path: str):
     curated = data["stories"]
     run_date = datetime.fromisoformat(data["run_date"])
 
+    _log_flagged_figures(curated)
+
     logger.info(f"Publish-only mode: posting pending edition ({post['title']}) to Substack...")
-    success = post_draft_via_browser(post)
-    if success:
-        update_history(curated, run_date)
-        logger.info("✓ Draft posted to Substack. Ready for your review.")
-    else:
+    result = post_draft_via_browser(post)
+
+    if not result["success"]:
         logger.error(
-            "✗ Substack post failed — check logs. The assembled edition is "
-            f"still at {pending_path} for manual recovery."
+            f"✗ Draft creation failed ({result.get('error', 'unknown error')}) — check logs. "
+            f"The assembled edition is still at {pending_path} for manual recovery."
+        )
+        sys.exit(1)
+
+    if result["published"]:
+        update_history(curated, run_date)
+        logger.info(f"✓ Draft {result['draft_id']} created and PUBLISHED to Substack — live now.")
+
+        # Best-effort review email — see notify.py's docstring for why this
+        # exists. Never allowed to affect the pipeline's exit status: the
+        # edition is already live and history already updated above.
+        from notify import send_publish_notification
+        send_publish_notification(post, curated, result["draft_id"], run_date)
+    else:
+        # The draft was created but the publish call didn't complete. Treated
+        # as a hard failure (non-zero exit -> daily.yml opens an issue)
+        # rather than the old "success, wait for manual publish" outcome —
+        # an unpublished draft sitting unnoticed is exactly the failure mode
+        # auto-publish exists to eliminate, so it shouldn't look like success.
+        logger.error(
+            f"✗ Draft {result['draft_id']} was created but did NOT publish "
+            f"({result.get('error', 'unknown error')}). It will not reach readers unless "
+            "published manually from the Substack dashboard. History was NOT updated."
         )
         sys.exit(1)
 
@@ -214,6 +279,9 @@ def main(dry_run: bool = False, build_only: bool = False, publish_path: str | No
                 print(f"  WHY IT MATTERS: {story['why_it_matters']}")
         print("="*60 + "\n")
     else:
+        # NOTE: this branch still uses the old draft-only cookie poster — see
+        # module docstring. Not the production path (daily.yml never calls
+        # main.py without --build/--publish), so it doesn't auto-publish.
         logger.info("Posting draft to Substack...")
         success = post_draft(post)
         if success:
