@@ -1,0 +1,164 @@
+name: World's Front Page — Daily Pipeline
+
+on:
+  schedule:
+    # 4:00 AM ET = 08:00 UTC during Eastern Daylight Time (roughly Mar–Nov).
+    # Switch to '0 9 * * *' when US clocks fall back to Eastern Standard Time
+    # in November — GitHub Actions cron does not adjust for DST automatically.
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run without posting to Substack'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['true', 'false']
+
+permissions:
+  contents: write   # commit history.json (7-day coverage memory) back to the repo
+  issues: write     # open an issue when the pipeline fails
+
+jobs:
+  # Scrape, curate, and assemble. No Cloudflare exposure here — front-page
+  # sites don't care about the runner's IP — so this stays on GitHub's free,
+  # disposable runners exactly as before.
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      dry_run: ${{ github.event.inputs.dry_run }}
+    env:
+      PYTHONPATH: ${{ github.workspace }}/src
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Scrape, curate, and assemble
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
+            python main.py --dry-run
+          else
+            python main.py --build
+          fi
+
+      - name: Upload pending post for publish job
+        if: github.event.inputs.dry_run != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pending-post
+          path: logs/pending_post.json
+          retention-days: 1
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-logs-${{ github.run_id }}
+          path: logs/
+          retention-days: 14
+
+  # Posts the assembled edition using a real, already-authenticated Chromium
+  # session — see publish_to_substack.py. Must run from this self-hosted
+  # runner (residential IP + genuine browser fingerprint); GitHub-hosted
+  # runners get blocked by Cloudflare regardless of cookie validity
+  # (confirmed 2026-07-13). Targets [self-hosted, macOS, ARM64] — the
+  # runner's actual auto-assigned labels (no custom label was set at
+  # registration; add one later via config.sh if you ever run more than
+  # one self-hosted runner and need to target a specific machine).
+  #
+  # AUTO-PUBLISH (2026-08-23): this job now goes all the way live and emails
+  # subscribers — not just "create a draft for manual review" like before.
+  # SUBSTACK_AUTO_PUBLISH / SUBSTACK_SEND_EMAIL are set explicitly here
+  # (rather than left to publish_to_substack.py's own defaults) so this
+  # behavior is visible without reading the Python. Flip either to 'false'
+  # to step back toward the old manual-review flow.
+  publish:
+    needs: build
+    if: needs.build.outputs.dry_run != 'true'
+    runs-on: [self-hosted, macOS, ARM64]
+    timeout-minutes: 10
+    env:
+      PYTHONPATH: ${{ github.workspace }}/src
+      SUBSTACK_AUTO_PUBLISH: 'true'
+      SUBSTACK_SEND_EMAIL: 'true'
+      # Post-publish review email (notify.py) — requires a Gmail App
+      # Password (not the real account password) stored as a repo secret.
+      # See notify.py's docstring for how to generate one. If unset, the
+      # pipeline still runs fine; you just won't get the review email.
+      GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install -r requirements.txt
+          python3 -m playwright install chromium
+
+      - name: Download pending post
+        uses: actions/download-artifact@v4
+        with:
+          name: pending-post
+          path: logs/
+
+      - name: Post to Substack via browser session
+        run: |
+          python3 main.py --publish logs/pending_post.json
+
+      # history.json is the curator's 7-day "recently covered" memory.
+      # Only updated here, after a real successful post — main.py --publish
+      # only calls update_history() on success.
+      - name: Persist coverage history
+        if: success()
+        run: |
+          git config user.name "wfp-pipeline"
+          git config user.email "actions@users.noreply.github.com"
+          git pull --rebase --autostash origin ${{ github.ref_name }}
+          git add history.json
+          git diff --cached --quiet || (git commit -m "chore: coverage history $(date -u +%F)" && git push)
+
+  # Separate job so a build-only failure and a publish-only failure both
+  # reliably reach this step (a job-level `if: failure()` on build or
+  # publish alone would miss failures in the other job).
+  notify-failure:
+    needs: [build, publish]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open issue on failure
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const date = new Date().toISOString().slice(0, 10);
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Pipeline failure — ${date}`,
+              body: [
+                `The daily World's Front Page pipeline failed on ${date}.`,
+                ``,
+                `**Run:** ${runUrl}`,
+                ``,
+                `Check which job failed: `,
+                `- **build** (GitHub-hosted): scraping/curation issue — see the pipeline-logs artifact.`,
+                `- **publish** (self-hosted Mac): the machine may be offline, or the saved Substack session `,
+                `  may be stale — re-run \`capture_substack_session.py\` on that machine if so.`,
+                ``,
+                `If build succeeded, the assembled edition is in the \`pending-post\` artifact and recoverable manually.`,
+              ].join('\n'),
+              labels: ['pipeline-failure'],
+            });
