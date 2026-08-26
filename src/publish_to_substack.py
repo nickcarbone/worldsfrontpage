@@ -57,6 +57,8 @@ raw response against a real, disposable-to-you test post before trusting
 this in production.
 """
 
+from __future__ import annotations  # lets `bool | None` etc. run on Python < 3.10
+
 import os
 import json
 import logging
