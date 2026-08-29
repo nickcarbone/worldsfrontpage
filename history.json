@@ -1,329 +1,5 @@
 [
   {
-    "date": "2026-08-16",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "PP and Vox already win in 38 provinces and dilute Sánchez's bloc to rule in only eight"
-  },
-  {
-    "date": "2026-08-16",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Defense Officials: Order to Hand West Bank Powers From IDF to Police Unfeasible"
-  },
-  {
-    "date": "2026-08-16",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Inside the early battle against the ferocious Bald Range wildfire"
-  },
-  {
-    "date": "2026-08-16",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "\"They don't want the younger one, they want the older one,\" says AMLO's brother about cancellation of Andy's visa; \"it's a political matter,\" he says"
-  },
-  {
-    "date": "2026-08-16",
-    "country": "Nigeria",
-    "publication": "Vanguard",
-    "headline": "Updated: INEC declares Adeleke winner of Osun governorship election"
-  },
-  {
-    "date": "2026-08-16",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "PNP vows to hunt down attackers in ambush on BARMM chief Macacua"
-  },
-  {
-    "date": "2026-08-16",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Death toll from Chiba heavy rain rises to 10... Man using portable generator in blackout home dies of carbon monoxide poisoning"
-  },
-  {
-    "date": "2026-08-16",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Feared by two-thirds of Brazilians, armed robbery leads security insecurity ranking; see survey"
-  },
-  {
-    "date": "2026-08-16",
-    "country": "Turkey",
-    "publication": "Hürriyet",
-    "headline": "#TOURISM: Tired of visas, Far East rushes to vacation"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Saudi Arabia",
-    "publication": "Arab News",
-    "headline": "Joint Defense Agreement: A new era of regional security and cooperation"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Business default reaches record in country, with 9.1 million CNPJs blacklisted"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "\"The three Argentinas\". Industry leads loss of formal private employment under Milei and report published by Techint warns of its \"extreme fragility\""
-  },
-  {
-    "date": "2026-08-17",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Reserve Bank probes DA finance chief Burke’s firm over R4bn transfers"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "A paralyzed Congress with fewer laws than ever while Sánchez sets record for decrees"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Troubling hacking of French tax data highlights vulnerabilities in administration"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "How Linda Mwananchi outmaneuvered armed youths in Homa Bay"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "One Nation flip-flops on migration policy after visa numbers question"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "'It feels like we stepped into a trap': Buyers count cost of property slump"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "IDF Declines to Enforce Order Barring Settlers From Besieged Palestinian Land"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Turkey",
-    "publication": "Hürriyet",
-    "headline": "#AUTOMOTIVE: Made in EU exit: 'Europe loses if Turkey is out'"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Merz and the CDU: \"I really believed that we needed someone like Mr. Merz\""
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Poland",
-    "publication": "Gazeta Wyborcza",
-    "headline": "\"You will never return to your apartment\". Polish woman handcuffed in front of her home in Chicago by ICE agents"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Constitutional reform draft: UDI conditions support while opposition intensifies criticism"
-  },
-  {
-    "date": "2026-08-17",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "HE Prime Minister and Minister of Foreign Affairs Sheikh Mohammed bin Abdulrahman bin Jassim al-Thani yesterday held telephone conversations with his Saudi, Jordanian, and Syrian counterparts, urging "
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Canada",
-    "publication": "Le Devoir",
-    "headline": "Churchill Falls agreement"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Retail crisis leads networks to restructure R$ 68 billion in debt"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Crime diversifies; takes over 50 legitimate businesses in 9 states"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "From differentiated penitentiary regimes to new state of exception: The 8 modifications of the security reform"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Mónica García breaks institutional balance with Ceuta while Government pitches tents because it won't be able to return all migrants"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Migration: Voluntary departure, otherwise deportation"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Sadc unity is vital, says Ramaphosa, as protesters demand deportations"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Nigeria",
-    "publication": "ThisDay",
-    "headline": "Inflation Moderates to 15.43% Despite Surge in Food Prices"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Overwhelmed by heat and repeated droughts, how farmers are trying to adapt to survive"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "China plans to increase domestic oil, gas supplies to 440m tons of oil equivalent in total, and pave 20,000 km more pipelines by 2030"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Fu says lacking executive power in absent negotiations; Lai Shih-bao: if you have guts, don't review"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "$300,000 hit: Peak buyer house flippers badly burned by property market crash"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Aftermath: Torched cars a day after goons targeted Sifuna-led Linda Mwananchi rally"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "$3bn state capital fuels Qatar's tech ecosystem rise"
-  },
-  {
-    "date": "2026-08-18",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "How intense drizzle left south Lima districts flooded and on the brink of collapse?"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "The drone war!: Border Patrol and cartels clash at the border"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Govt files review plea against SC ruling to move Imran to Shifa International Hospital, terms it 'discriminatory'"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Roberta Luchsinger, friend of Lulinha, said she was speaking on behalf of the president's son, according to the Federal Police"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "NIH reverses Trump-era ban on South African research funding"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "2027 poll: N571bn campaign spending limit for presidential, gov candidates"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Who are Gaël Mocaër and Sebastian Perez Pezzani, the two French filmmakers arrested and detained in Togo?"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Feijóo's 'enough' against Morocco's 'blackmail' marks his government plan"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Indonesia",
-    "publication": "Kompas",
-    "headline": "2 Desa di Ende Masih Terisolasi Pascagempa NTT, Pengiriman Bantuan Bergantung Kapal"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "'Iran can strike Europe,' alert over U.S. bases | Trump: economic war against Tehran"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Finance Ministry foresees new diesel price hikes if international conditions persist: 'We need to complete $250'"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "IDF Bars Anti-occupation Activist From Closed Zone as Settlers Roam Around Qusra"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Complete collection of Fidel Castro Ruz's Selected Works available for download"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Escalation with 'gray zones' from Ankara"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "From the stage to the shop floor: China's embodied AI shines at WRC 2026"
-  },
-  {
-    "date": "2026-08-20",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "For attempted femicide. Bolivian prosecutor requested 180 days of 'preventive detention' for Fernando Cerimedo"
-  },
-  {
     "date": "2026-08-21",
     "country": "Brazil",
     "publication": "Folha de S.Paulo",
@@ -592,5 +268,89 @@
     "country": "Mexico",
     "publication": "El Universal",
     "headline": "Rocha requests leave from Sinaloa governorship again; assures that the nation and the 4T are above all else"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Ben-Gvir announces end of three-day deadline and threatens Gaza with displacement and assassinations"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "LitioMX, without project nor lithium, but with payroll; has spent over 40 million pesos on salaries"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Qatar calls upon Iran to reopen Hormuz"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Pakistan treads carefully as US tightens Iran sanctions"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Selected works of Xi Jinping on culture published"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "The CGT and CTA abandoned the meeting. Salary Council: unions reject increase proposed by business chambers"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "5.3 billion euros for housing, energy and transport"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Euphoria over oil sounds premature and electoral"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Electricity and gas companies go to Constitutional Court: The arguments for the offensive over reconnection"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Sugar sector feels the squeeze"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "2027 Presidential election: In Tourcoing, Édouard Philippe expected at the turning point by Gérald Darmanin"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Nigeria",
+    "publication": "Vanguard",
+    "headline": "2027: Atiku can say anything to deceive politically gullible – Presidency"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Canada",
+    "publication": "Le Devoir",
+    "headline": "Quebec Elections 2026"
+  },
+  {
+    "date": "2026-08-28",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Cuban education prepares a school year with greater in-person attendance and differentiated responses"
   }
 ]
