@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-08-21",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Lulinha had 'community of economic interests' with lobbyist who negotiated contract in Lula's government, says Federal Police"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar, Egypt sign 4 deals to cement ties"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "The Netherlands joins countries that will send migrants back to Italy | Meloni: evaluate case by case"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Nigeria",
-    "publication": "Vanguard",
-    "headline": "Christians killings: Why US won’t remove Nigeria’s CPC tag —Congressman Moore"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "MK Party takes aim at ANC stronghold"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "The first 'transfer operation' falls short and sparks a bureaucratic odyssey"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Ankara's threats and Athens' response"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Godoy: Farías is headed to El Altiplano; there are arrest warrants in 6 states for fuel theft, he says"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Miami executives, Ecuadorian intelligence chief killed in Samburu chopper crash"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Gaza bids farewell to 50 martyrs recovered by rescue teams from under the rubble of destroyed homes"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "Chinese court accepts Evergrande liquidation 1 day after founder’s sentence"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Eternal prominence for Cuban women"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Sophie Adenot will perform another spacewalk on Tuesday to complete her mission"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Exclusive Brethren spokesman objects to being asked questions"
-  },
-  {
-    "date": "2026-08-21",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Student from Instituto Nacional arrested after threatening armed attack: Sent warnings to principal"
-  },
-  {
     "date": "2026-08-22",
     "country": "Canada",
     "publication": "The Globe and Mail",
@@ -352,5 +262,95 @@
     "country": "Cuba",
     "publication": "Granma",
     "headline": "Cuban education prepares a school year with greater in-person attendance and differentiated responses"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Report, Ranucci is out. His outburst: 'On the new hosts a mediocre choice. They proposed sending me to Cairo, do they want me to end up like Regeni?'"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Xi chairs CPC leadership meeting on Gyirong County mudslide rescue efforts"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Arrested in Bolivia. Cerimedo declared monthly income of US$1 million and admitted advising politicians from several countries"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "55% of Spanish people want to militarize the border of Ceuta"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Multi-Year Macroeconomic Framework: MEF expects private investment to grow 10.5%"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Ñuble reaches 11% and seven others are in double digits: Unemployment, region by region"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Flávio refuses to account for 'Dark Horse', tries to tie Master to Lula and says he will respect the ballot"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "They oversee activation of defense structures in Marianao"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Heat waves, fires, droughts: the account of an infernal summer in France"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "Economists have some ideas about how to Trump-proof the economy"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "They are not opening bank accounts, they are not receiving pensions"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Tren Maya operates in the red; losses skyrocket"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "6 months into war, Iran still open to diplomacy"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "President Ruto unveils new police uniforms in service rebrand"
+  },
+  {
+    "date": "2026-08-29",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Labour pledges $21m for Māori-led trades training"
   }
 ]
