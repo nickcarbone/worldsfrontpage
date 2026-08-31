@@ -1,185 +1,5 @@
 [
   {
-    "date": "2026-08-22",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Ottawa fires back after rejecting U.S. trade deal"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "No half measures on security: Switzerland must seriously want to defend itself – and now"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Search for Martens: Putin's attack on Western press freedom"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Minister says Imran taken back to Adiala jail after visit to Pims, declared 'medically fit' by doctors"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Nigeria",
-    "publication": "ThisDay",
-    "headline": "ICPC Uncovers Another Fake Agency, Tinubu Orders Arrest, Suspension of 3 Perm Secs"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Transnet seeks private partners for neglected branch rail lines"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Turbulence due to Moscow in the Greek Church"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Assessment pressuring Lula, Flávio struggling to reach rival: understand the signals from Datafolha poll"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "In Rosario, Milei denied that default rates are high and said that 'Argentina's numbers are similar to those of the United States'"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "How Jean-Luc Mélenchon seeks to take control of ecology ahead of the presidential election"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "With 4-hour delay, hearing of former Marine Fernando Farías begins; judge rules it will be closed"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Government fails in complete deportation of migrants despite flattering Morocco: 6,500 still wandering uncontrolled"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "Elected board members may have cheated in election, council CEO concedes"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Israel Will Investigate Hind Rajab's Killing; Her Mother Wants More"
-  },
-  {
-    "date": "2026-08-22",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "European condemnation of 'E 1' settlement project and injuries in brutal settler attack in Mughayyir"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Pakistan Army deployment in Rawalpindi okayed for 6 months to respond to 'any unforeseen situation'"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Disturbances recorded at Haiti's Embassy: Dozens of migrants forcibly enter the premises"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Political pact should be the president-elect's first step to avoid fiscal crisis, experts point out"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Indonesia",
-    "publication": "Kompas",
-    "headline": "Prabowo Yakin Kebakaran Hutan Kalimantan Dapat Segera Terkendali"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Tainan explosion affects 40 households; grim conditions inside disaster homes revealed"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Germany Live Blog: Bavaria's BSW chief: Simply unthinkable to help the AfD to power"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "2027 Presidential race: Jean-Luc Mélenchon expected at LFI summer universities, end of suspense for Raphaël Glucksmann"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "The Pope at the Rimini Meeting: \"Unmask unjust powers at the roots of poverty.\" And on migrants: \"Before borders, there are people\""
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "And the trade war winner is: Canadian whisky"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Israel Says It Warned Syria Before Striking Airbase Over Turkish Military Threat"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "China's top anti-graft body vows higher standards, more concrete measures to advance its work"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "‘Fake agency’ boss fights back with appointment letter"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "The school incident in Fagersta"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Martyr and wounded in Israeli strike targeting a house in Deir al-Balah, central Gaza Strip"
-  },
-  {
-    "date": "2026-08-23",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Rocha requests leave from Sinaloa governorship again; assures that the nation and the 4T are above all else"
-  },
-  {
     "date": "2026-08-28",
     "country": "Palestinian Territories",
     "publication": "Al-Quds",
@@ -418,5 +238,95 @@
     "country": "Japan",
     "publication": "Yomiuri Shimbun",
     "headline": "Nepal mudslide: death toll expands to 633, nearly 3,000 missing... Search efforts struggle despite \"72-hour\" window passing"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Tripartite agreement to be called ‘Makkah Defence Alliance’, with first secretary general from Pakistan: Turkish FM Fidan"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Head of Argentine Navy acknowledges Chilean sovereignty over Strait of Magellan: 'It belongs to Chile'"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "After Settlers Expelled Palestinians, Top Court Asks: Who Does the IDF Protect?"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Businessmen make donations to parties instead of directly to candidates and hide electoral connection"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Petrol pump pain: SA pays R56bn more for fuel after oil shock"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "2027: INEC list rekindles APC’s post-primary crisis"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Linda Mwananchi movement pitch tent in Meru, disrupted by police tear gas"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "The Ceuta disaster sinks Sánchez and his allies, who are already losing 2.2 million voters"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Glucksmann, Faure, Royal... Who are the participants in the PS and Place Publique primary?"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Canada",
+    "publication": "Le Devoir",
+    "headline": "Quebec Elections 2026"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "NSW hiker first Australian declared dead in Nepal flood disaster"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Fukui heavy rains, cleanup intensifies under scorching sun... Heat stroke alerts across prefecture: 'Will suspend if physically exhausted'"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Indonesia",
+    "publication": "Kompas",
+    "headline": "Menhan Sebut Penanganan Karhutla Tergantung Rakyat: Kita Harus Gotong Royong"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Two martyrs and wounded in series of Israeli violations of ceasefire agreement in Gaza Strip"
+  },
+  {
+    "date": "2026-08-31",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Nepal-Tibet floods: rescuers race to reach 900 people believed trapped in hydropower tunnels"
   }
 ]
