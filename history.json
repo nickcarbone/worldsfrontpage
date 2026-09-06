@@ -1,245 +1,5 @@
 [
   {
-    "date": "2026-08-28",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Ben-Gvir announces end of three-day deadline and threatens Gaza with displacement and assassinations"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "LitioMX, without project nor lithium, but with payroll; has spent over 40 million pesos on salaries"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar calls upon Iran to reopen Hormuz"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Pakistan treads carefully as US tightens Iran sanctions"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Selected works of Xi Jinping on culture published"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "The CGT and CTA abandoned the meeting. Salary Council: unions reject increase proposed by business chambers"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "5.3 billion euros for housing, energy and transport"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Euphoria over oil sounds premature and electoral"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Electricity and gas companies go to Constitutional Court: The arguments for the offensive over reconnection"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Sugar sector feels the squeeze"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "2027 Presidential election: In Tourcoing, Édouard Philippe expected at the turning point by Gérald Darmanin"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Nigeria",
-    "publication": "Vanguard",
-    "headline": "2027: Atiku can say anything to deceive politically gullible – Presidency"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Canada",
-    "publication": "Le Devoir",
-    "headline": "Quebec Elections 2026"
-  },
-  {
-    "date": "2026-08-28",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Cuban education prepares a school year with greater in-person attendance and differentiated responses"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Report, Ranucci is out. His outburst: 'On the new hosts a mediocre choice. They proposed sending me to Cairo, do they want me to end up like Regeni?'"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Xi chairs CPC leadership meeting on Gyirong County mudslide rescue efforts"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Arrested in Bolivia. Cerimedo declared monthly income of US$1 million and admitted advising politicians from several countries"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "55% of Spanish people want to militarize the border of Ceuta"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Multi-Year Macroeconomic Framework: MEF expects private investment to grow 10.5%"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Ñuble reaches 11% and seven others are in double digits: Unemployment, region by region"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Flávio refuses to account for 'Dark Horse', tries to tie Master to Lula and says he will respect the ballot"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "They oversee activation of defense structures in Marianao"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Heat waves, fires, droughts: the account of an infernal summer in France"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Economists have some ideas about how to Trump-proof the economy"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "They are not opening bank accounts, they are not receiving pensions"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Tren Maya operates in the red; losses skyrocket"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "6 months into war, Iran still open to diplomacy"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "President Ruto unveils new police uniforms in service rebrand"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "Labour pledges $21m for Māori-led trades training"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Surge in student violence brings Canadian teachers to a breaking point"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Maya Train operates in the red; losses skyrocket"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Controversial plans: Open letter against Klingbeil's climate fund plans"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Inquiry findings will provide clarity on circumstances of Pims fire, says health minister"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Double block on energy \"tourists\""
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "Footage from Gyirong Port in Tibet shows how Huang Peng tried to guide civilians to safety moments before the crossing was destroyed."
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Ten killed in Gaza within 48 hours due to occupation breaches of ceasefire agreement"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Inside story: Why ICPC labelled SGF project office fake"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "All affected residents, tourists evacuated following mudslide in China's Xizang"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Jones was famously loud, opinionated and powerful. One comment sparked his professional unravelling"
-  },
-  {
-    "date": "2026-08-29",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Nepal mudslide: death toll expands to 633, nearly 3,000 missing... Search efforts struggle despite \"72-hour\" window passing"
-  },
-  {
     "date": "2026-08-31",
     "country": "Pakistan",
     "publication": "Dawn",
@@ -670,5 +430,95 @@
     "country": "Cuba",
     "publication": "Granma",
     "headline": "That University Classrooms Have Opened Their Doors Is Expression of a Nation That Does Not Surrender"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Threats, intimidation:  INEC, police vow crackdown on politicians"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Last-minute Party Shuffles: Right-wing Merger Breaks as Eisenkot Fills Out Slate"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Whistleblowers lift lid on Transnet procurement"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "Sara Duterte faces impeachment, criminal case, but ‘no double jeopardy’"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Gachagua opens door for Sifuna-Mt Kenya alliance in 2027"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Diplomatic note with message about the 12 miles"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Germany",
+    "publication": "Der Spiegel",
+    "headline": "After attack on Leipzig Airport: Federal government plans expansion of drone defense"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "Majority of Canadians now see U.S. as an enemy, and Trump is the reason: poll"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Cartels penetrate border with drug tunnels"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Number of funds that can hide money owner, as in Master case, explodes in country"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Delegation of powers: These are the key times and votes for the request being decided in Congress"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "China moves to create phone-free classrooms, help minors navigate digital age"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Hitachi develops new radio wave technology... to understand shape and movement of ground objects from satellites; applications in disaster response envisioned"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Su Tsiao-hui's campaign headquarters established with supporters braving the rain; Lai Ching-te, Tsai Ing-wen and other DPP heavyweights show up to campaign"
+  },
+  {
+    "date": "2026-09-06",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "A third of Ceuta's residents have considered leaving since the start of the crisis"
   }
 ]
