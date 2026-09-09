@@ -1,185 +1,5 @@
 [
   {
-    "date": "2026-08-31",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Tripartite agreement to be called ‘Makkah Defence Alliance’, with first secretary general from Pakistan: Turkish FM Fidan"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Head of Argentine Navy acknowledges Chilean sovereignty over Strait of Magellan: 'It belongs to Chile'"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "After Settlers Expelled Palestinians, Top Court Asks: Who Does the IDF Protect?"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Businessmen make donations to parties instead of directly to candidates and hide electoral connection"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Petrol pump pain: SA pays R56bn more for fuel after oil shock"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "2027: INEC list rekindles APC’s post-primary crisis"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Linda Mwananchi movement pitch tent in Meru, disrupted by police tear gas"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "The Ceuta disaster sinks Sánchez and his allies, who are already losing 2.2 million voters"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Glucksmann, Faure, Royal... Who are the participants in the PS and Place Publique primary?"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Canada",
-    "publication": "Le Devoir",
-    "headline": "Quebec Elections 2026"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "NSW hiker first Australian declared dead in Nepal flood disaster"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Fukui heavy rains, cleanup intensifies under scorching sun... Heat stroke alerts across prefecture: 'Will suspend if physically exhausted'"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Indonesia",
-    "publication": "Kompas",
-    "headline": "Menhan Sebut Penanganan Karhutla Tergantung Rakyat: Kita Harus Gotong Royong"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Two martyrs and wounded in series of Israeli violations of ceasefire agreement in Gaza Strip"
-  },
-  {
-    "date": "2026-08-31",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Nepal-Tibet floods: rescuers race to reach 900 people believed trapped in hydropower tunnels"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "U.S. Treasury secretary taunts Canadian navy's lack of firepower: 'Two submarines from the Edmonton mall'"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Public funds moved from LG account into crypto wallets – EFCC"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Editorial: The killing fields of Westbury"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "British warship and ‘sub hunter’ helicopter deployed for EU meeting in Wicklow"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Mammoth agreement with Israel"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Alejandro Betancourt, accused in Spain of money laundering and tax fraud, Trump's man for Venezuelan oil"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Massacre and kidnapping in Trujillo: who were the companions in the damaged pickup truck?"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "CFE restores energy to Peninsula; accuses 'vandalism'"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Toffoli's decision against Renan Santos stirs fear of witch hunt in elections"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Charles Perrottet says he lied to Jean Nassif as developer pulls out of ICAC appearance"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Prime Minister Jetten is 'satisfied with the result, but with the knowledge that this is not the end'"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Xi expects stronger foundation, brighter future for China-Russia ties"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Coexistence law focuses on parent chats and opens debate on freedom of expression"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "2.6 Million Students Go Back to School as Israel Lags in Math, Science"
-  },
-  {
-    "date": "2026-09-01",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "One suspect arrested, his motive still unclear – and \"sense of security is suffering,\" as Aarau's city president says"
-  },
-  {
     "date": "2026-09-02",
     "country": "Brazil",
     "publication": "O Globo",
@@ -610,5 +430,89 @@
     "country": "China",
     "publication": "Global Times",
     "headline": "What will 'home robots of the future' look like? Less human intervention, smarter machines: Chinese firms redefine 'smart' at IFA"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Dino orders Andrei Rodrigues to return to head of Federal Police after Mendonça removed him"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "Moscow intensifies hybrid warfare in Romania. SRI thwarted a sabotage operation on Tuesday, but it is not unique."
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Obi, Alia lock horns over blocked Benue visit"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Qatar, China discuss regional security"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Germany",
+    "publication": "Süddeutsche Zeitung",
+    "headline": "How Friedrich Merz settles accounts with Alice Weidel"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "China's foreign trade expands 17.6% in Jan-Aug"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "Why ministerial pay will never be a settled question in Singapore"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Are Israel's War Tactics Taken From Iran's Playbook?"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "PNP beefs up deployment for BARMM polls to over 9,800 cops"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Exceptional contribution, transmission, apprenticeship... Sébastien Lecornu reveals his budget choices in a letter to business leaders"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "Jesse Kline: The Carney Liberals are interfering in Israel's election"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Dodgy Stats SA data casts doubt on vaccination crisis figures"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Israeli entity faces diplomatic collapse... Islamic-Christian movements welcome European steps supporting two-state solution and imposing sanctions on Israel"
+  },
+  {
+    "date": "2026-09-09",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Current urgencies demand doing many things in parallel"
   }
 ]
