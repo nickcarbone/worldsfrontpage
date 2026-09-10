@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-02",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "'Can you hold back?': messages show Vorcaro turning to Moraes to skirt investigation"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "U.S. Treasury Secretary Bessent names Japan directly: \"reflation policy should stop\"... appears to demand review of fiscal expansion and interest rate hikes"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "Putin denies guilt – and attacks Merz"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Marlaska demands explanations from police director after learning from press about report accusing Morocco of Ceuta assault"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Successive shocks in the bond market"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "\"There's always a chance\". Foreign Minister Quirno's statement on the Falkland Islands sovereignty dispute"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "2027 campaigns: Police, Abdulsalami panel move to curb rising tension"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Eskom’s clock is ticking to fix Medupi or risk early loan repayment"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Caleb Amisi to Orengo: You’re free to contest the presidency under any political formation"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Pajala's economy in free fall – she demands mining tax"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "Experts concerned about military filter on FDI"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Xi calls for SCO to strive for higher quality development, promote better global governance"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "This hot summer shows: because glaciers are disappearing, we must build more dams"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Amir meets ExxonMobil chairman"
-  },
-  {
-    "date": "2026-09-02",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "'Jhonsson Pulpo' captured in Bolivia: how the alleged leader of Los Pulpos fell"
-  },
-  {
     "date": "2026-09-03",
     "country": "Germany",
     "publication": "Süddeutsche Zeitung",
@@ -514,5 +424,95 @@
     "country": "Cuba",
     "publication": "Granma",
     "headline": "Current urgencies demand doing many things in parallel"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Netanyahu Got an Explicit Warning Before Oct. 7. He Didn't Brief Security Chiefs"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Sharp diplomatic escalation: Israel closes British consulate in Jerusalem and bars officials in response to settlement sanctions"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Nigeria",
+    "publication": "Vanguard",
+    "headline": "Another dark day for democracy — Kwankwaso condemns attack on Obi’s convoy"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Poland",
+    "publication": "Gazeta Wyborcza",
+    "headline": "Wielowieyska: In the Zondacrypto case, it was none other than Cenckiewicz who stabbed the right in the back"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "PM Shehbaz to highlight Pakistan's efforts to end US-Iran war at UN General Assembly"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Saudi Arabia",
+    "publication": "Arab News",
+    "headline": "Hormuz shipping traffic in single digits, data shows"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "07:37 a.m. Keiko Fujimori meets this morning with Marco Rubio, U.S. Secretary of State"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Germany",
+    "publication": "Süddeutsche Zeitung",
+    "headline": "Friedrich Merz: A chancellor in survival mode"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Moraes cancels scheduled statement following Fachin's measures on Vorcaro messages and fake news inquiry"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "From open arms to closed doors: Questions over Ruto’s anti-foreigners"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Prospectus for Carney’s summit highlights more than 160 projects open for investment"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "3% tax on sales would apply even with losses"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "SA bets on body cameras for a more accountable police force"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "From the world's key buyer of services to an emerging seller: 'China services' meet the world at CIFTIS 2026"
+  },
+  {
+    "date": "2026-09-10",
+    "country": "Hong Kong",
+    "publication": "South China Morning Post",
+    "headline": "Hong Kong’s first leader Tung Chee-hwa to be honoured with state funeral"
   }
 ]
