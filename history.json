@@ -1,77 +1,5 @@
 [
   {
-    "date": "2026-09-03",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "Exclusive: Drones from Leipzig: Suspects Identified"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Birmex Director Purchased 2 Apartments in Cash for 22 Million Pesos; Additionally, He Has at Least 19 International Trips"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Ontario university student implicated in U.S. spying investigation"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "How the cost of medical aid could be cut by up to 30%"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "2027 poll: INEC fears AI-powered disinformation"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "More than 4 in 5 young mainland Chinese investors turn to offshore assets: study"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "From Reasons for Cury's Growth to Lula vs. Flávio Tensions: See Quaest Numbers"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Two Intelligence Reports Warned Robles and Marlaska of a \"Massive Entry\""
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "Overcrowded Public Pools, Overpriced Apartments, More Expats – Is Zurich at Its Limit?"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "\"Summer\" Until October"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Act for Nutrition conference: Experts call for food, nutritional security to be recognised as fundamental rights amid malnutrition crisis"
-  },
-  {
-    "date": "2026-09-03",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Occupation Demolishes House in Bethlehem and Settlers Burn Vehicles in Nablus Amid Widespread Arrest Campaign"
-  },
-  {
     "date": "2026-09-04",
     "country": "Argentina",
     "publication": "La Nación",
@@ -514,5 +442,95 @@
     "country": "Hong Kong",
     "publication": "South China Morning Post",
     "headline": "Hong Kong’s first leader Tung Chee-hwa to be honoured with state funeral"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Operation Swarm captures 111 narco-politicians; 14 mayors have been prosecuted"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Operation with Dino's approval targets Bolsonaro film and Mario Frias amid STF crisis"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Social discontent. Caputo and fine engineering to reactivate without money"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Germany",
+    "publication": "Süddeutsche Zeitung",
+    "headline": "War in Ukraine: Putin's gas crisis cost the German government 50 billion euros"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "From Bishkek to New Delhi, Xi advocates Global South cooperation"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "The ANC politics of money"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "IG’s police filming warning sparks outrage"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Peru joins coalition led by U.S. against transnational organized crime"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Canada",
+    "publication": "Le Devoir",
+    "headline": "Quebec Elections 2026"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Politicians trying to influence funding of high-cost drugs is a ‘concern’, Minister says"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "UN hails late HH the Father Amir as champion of peace"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "The key document the Government does not show: two 'taps' on Moroccan agents warned of 'massive entry' three days before"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "The Prosecutor's Office opens an investigation into the final days of Denise Cosco, daughter of Lea Garofalo: companion questioned, cell phone examination"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Georgiadis in 'K': Ban on advertising and special committee for wellness centers"
+  },
+  {
+    "date": "2026-09-11",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Death of the out-of-zone ballot? Find out which schools are accepting students in 2027"
   }
 ]
