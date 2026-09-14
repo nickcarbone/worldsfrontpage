@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-04",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "\"Fundamental for Geopolitical Projection.\" Milei Announced the Creation of a Naval Base in Tierra del Fuego"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Trump signs two-year Agoa deal — nowhere near SA’s 15-year target"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Ottawa issues comprehensive climate report that reflects country’s physical transformation"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "Morena Halts IEPS Increase"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Security forces kill 32 terrorists during operations in KP, Balochistan: ISPR"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Indonesia",
-    "publication": "Kompas",
-    "headline": "Kabut Asap Capai Level Bahaya, Raja Malaysia Tetapkan Status Darurat di Serian Sarawak"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "PF Report Used by Moraes Against Mendonça Lists Insinuations and Information 'Without Probative Value'"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Ruto: I told Tata Chemicals to go, all their money was going to India"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Investigation Into Military Personnel in Vannacci's Party: \"Active Service Uniforms Cannot Be Worn\" | Soldier-Unionists and Slogans for FnV: \"No to Traitors\""
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Hanson, Coalition ready to fight Labor’s plan to tame social media feeds"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Property Registry: Traps in Property Changes"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Executive Announces S/2.489 Billion to Address El Niño Phenomenon in 2027 Public Budget Project"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Nearly One-Fifth of Young People Postpone or Skip Doctor Visits After Consulting AI"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Israel's Water Crisis Eases, but Algae Bloom Still Threatens Desalination"
-  },
-  {
-    "date": "2026-09-04",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "That University Classrooms Have Opened Their Doors Is Expression of a Nation That Does Not Surrender"
-  },
-  {
     "date": "2026-09-06",
     "country": "Nigeria",
     "publication": "The Punch",
@@ -532,5 +442,95 @@
     "country": "New Zealand",
     "publication": "NZ Herald",
     "headline": "Death of the out-of-zone ballot? Find out which schools are accepting students in 2027"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Is Carney a closer? The Canada Investment Summit will be the ultimate test"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Ireland’s failure premium: All the property schemes do one thing. It’s not help buyers"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "The IND Must Work Faster: Decide on an Asylum Request Within One Day, Otherwise Go to the Knot-Cutting Team"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Prime Minister Takashige Finalizes Appointment of Hideki Murai, Former Deputy Chief Cabinet Secretary, as LDP Diet Affairs Committee Chair... Adjustment Also Underway for Diet Member Toshiharu Furukaw"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Opposition leaders raise concerns over Hassan Omar remarks of deceased casting votes in 2027"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Terrorists plot attacks on Osun worship centres, markets"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "\"I Don't Want to Cause Any Problem, But...\" From the Falklands to Northern Ireland: Trump Opens Another Controversy with the United Kingdom"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Saudi Arabia",
+    "publication": "Arab News",
+    "headline": "The British sanctions and Israel’s response"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Defense Remains the Top Priority"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "PISA Results: Failure Also Lies with Parents"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Sweden",
+    "publication": "Dagens Nyheter",
+    "headline": "Record Number of Small Parties Registered for Election – Only One Has a Chance of Getting In"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Fachin Removes Mendonça from Case Against Moraes and Halts Investigations into Master and INSS"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Alberto Núñez Feijóo: \"Morocco's Aggression Continues and Ceuta Will Be Sánchez's Epitaph\""
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "PNP vows impartiality, peaceful conduct of historic BARMM polls"
+  },
+  {
+    "date": "2026-09-13",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "What Happened in Pitrufquén? Details and Accounts of the Fire and Home Where 16 People Died"
   }
 ]
