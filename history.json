@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-06",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Threats, intimidation:  INEC, police vow crackdown on politicians"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Last-minute Party Shuffles: Right-wing Merger Breaks as Eisenkot Fills Out Slate"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Whistleblowers lift lid on Transnet procurement"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "Sara Duterte faces impeachment, criminal case, but ‘no double jeopardy’"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Gachagua opens door for Sifuna-Mt Kenya alliance in 2027"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Diplomatic note with message about the 12 miles"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Germany",
-    "publication": "Der Spiegel",
-    "headline": "After attack on Leipzig Airport: Federal government plans expansion of drone defense"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Majority of Canadians now see U.S. as an enemy, and Trump is the reason: poll"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Cartels penetrate border with drug tunnels"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Number of funds that can hide money owner, as in Master case, explodes in country"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Delegation of powers: These are the key times and votes for the request being decided in Congress"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "China moves to create phone-free classrooms, help minors navigate digital age"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Hitachi develops new radio wave technology... to understand shape and movement of ground objects from satellites; applications in disaster response envisioned"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Su Tsiao-hui's campaign headquarters established with supporters braving the rain; Lai Ching-te, Tsai Ing-wen and other DPP heavyweights show up to campaign"
-  },
-  {
-    "date": "2026-09-06",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "A third of Ceuta's residents have considered leaving since the start of the crisis"
-  },
-  {
     "date": "2026-09-07",
     "country": "Spain",
     "publication": "El Mundo",
@@ -532,5 +442,95 @@
     "country": "Chile",
     "publication": "El Mercurio",
     "headline": "What Happened in Pitrufquén? Details and Accounts of the Fire and Home Where 16 People Died"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Session on Supreme Court crisis has uncertain procedures, artillery mounted between justices and risk of obstruction"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Government ultimatum: Milei and Karina will only make an electoral agreement with governors who order votes against PASO"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Cuba's voice from the BRICS"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Dangote refinery IPO rush overwhelms two investment sites"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Houthis Seize Additional Red Sea Islands, Tightening Grip on Key Shipping Route"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "LDP and Innovation Party to realize first \"cabinet cooperation,\" adjusting for Innovation Party's Nakatsukasa Hiroki to enter cabinet... expected to be appointed as Minister for Special Missions at Ca"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Under the guise of \"defenders,\" parties circumvent electoral laws"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Constitutional Court President: \"You cannot formalize at the cost of the environment\""
+  },
+  {
+    "date": "2026-09-14",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "SA’s refinery collapse cost R76bn in extra fuel imports"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Nicolas Baverez: \"Debt, work, school, immigration... How to straighten France after the bankruptcy of the Macron years\""
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Pakistan to continue efforts for 'defusing' regional tensions, PM tells Saudi crown prince"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Hong Kong",
+    "publication": "South China Morning Post",
+    "headline": "Hong Kong to sweeten school merger deals, offer housing measures to lift births"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Sweden",
+    "publication": "Dagens Nyheter",
+    "headline": "Likely that Andersson's leadership holds"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Auckland’s City Rail Link: 25,000 more train passengers on first weekday"
+  },
+  {
+    "date": "2026-09-14",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "Nassif attacks enemies, defends developments from Beirut bedroom"
   }
 ]
