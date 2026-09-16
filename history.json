@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-07",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "National High Court investigates fictitious 15-million-euro contract linked to PSOE financing"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "08:54hs Óscar Arriola resigns as PNP chief: senators and ministers speak out about announcement"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Molotov cocktails attack Carabineros station and Fire Department barracks in Huechuraba"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "With bare quorum. Opposition sustains session in Chamber of Deputies to discuss delinquency and disability emergency"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Court orders Infonavit director's assets be kept confidential; even his salary is restricted"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "SOURCES Luca Niculescu, Nicușor Dan's option for prime minister position. PSD open to supporting it"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Kushner and Witkoff: agreements with Hamas for disarmament in Gaza and coordination with occupation over final objectives"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "26 states lean on FAAC as wage bills outstrip IGR"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Bedi Investments breaks silence over police uniform tender, dismisses Sh2.8 billion claim"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Alerts in millions of mobiles – some did not receive the message"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "High interest rates cause companies' financial expenses to jump 12% in second quarter, to R$ 99 billion"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "A Personal Security of Homeland or Death, We Shall Overcome!"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "OTT prices in line of fire: Icasa takes aim at Netflix and WhatsApp"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "India",
-    "publication": "The Hindu",
-    "headline": "Delhi building collapse: 6 pulled out alive from rubble; building owner nabbed from Rajasthan"
-  },
-  {
-    "date": "2026-09-07",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "What will 'home robots of the future' look like? Less human intervention, smarter machines: Chinese firms redefine 'smart' at IFA"
-  },
-  {
     "date": "2026-09-09",
     "country": "Brazil",
     "publication": "O Globo",
@@ -532,5 +442,95 @@
     "country": "Australia",
     "publication": "Sydney Morning Herald",
     "headline": "Nassif attacks enemies, defends developments from Beirut bedroom"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Poland",
+    "publication": "Gazeta Wyborcza",
+    "headline": "FBI dismantled network of Russian agents that planned assassinations and sabotage acts in the US and Europe"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "The alarm from Germany, the lightning takeoff: how two Italian fighter jets destroyed a drone over Lithuania in 20 minutes. On board was an explosive device"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Drone over Lithuania: War also hits NATO members"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Lula tries to distance himself from Moraes and Supreme Court, and Flávio Bolsonaro seeks to stamp crisis on government"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Ben-Gvir Left Hundreds of Millions to Fight Crime in Arab Communities Unspent"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Sánchez's aides point to him for the first time after his management in Ceuta: \"The PP wins the narrative on us\""
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Switzerland",
+    "publication": "Neue Zürcher Zeitung",
+    "headline": "Parliament examined the circumstances of the fighter jet deal twice – and many questions remain unanswered"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Left primary: Five candidates officially in the running after the suspension of Philippe Brun, accused of violence"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "\"Copper recession\": The production decline that worries the Treasury and challenges Chile's recovery"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Entered Congress: 2027 Budget: forecasts a dollar at $1,847, inflation of 18% and growth of 4%"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Cuba is not alone in its struggle against the U.S. Government's genocide"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Admiral Ojeda's assets and fortune with double protection; his whereabouts, a mystery"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Four thousand overcrowded in prisons"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Harmony: 46 mine deaths in five years spark safety questions"
+  },
+  {
+    "date": "2026-09-16",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "SALN form gap over business interests flagged in VP Duterte trial"
   }
 ]
