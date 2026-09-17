@@ -1,89 +1,5 @@
 [
   {
-    "date": "2026-09-09",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Dino orders Andrei Rodrigues to return to head of Federal Police after Mendonça removed him"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "Moscow intensifies hybrid warfare in Romania. SRI thwarted a sabotage operation on Tuesday, but it is not unique."
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Obi, Alia lock horns over blocked Benue visit"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar, China discuss regional security"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "How Friedrich Merz settles accounts with Alice Weidel"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "China's foreign trade expands 17.6% in Jan-Aug"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "Why ministerial pay will never be a settled question in Singapore"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Are Israel's War Tactics Taken From Iran's Playbook?"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "PNP beefs up deployment for BARMM polls to over 9,800 cops"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Exceptional contribution, transmission, apprenticeship... Sébastien Lecornu reveals his budget choices in a letter to business leaders"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Jesse Kline: The Carney Liberals are interfering in Israel's election"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Dodgy Stats SA data casts doubt on vaccination crisis figures"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Israeli entity faces diplomatic collapse... Islamic-Christian movements welcome European steps supporting two-state solution and imposing sanctions on Israel"
-  },
-  {
-    "date": "2026-09-09",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Current urgencies demand doing many things in parallel"
-  },
-  {
     "date": "2026-09-10",
     "country": "Israel",
     "publication": "Haaretz",
@@ -532,5 +448,95 @@
     "country": "Philippines",
     "publication": "Philippine Daily Inquirer",
     "headline": "SALN form gap over business interests flagged in VP Duterte trial"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Second Takaichi cabinet inaugurated \"Cabinet of determination, challenge, and implementation\"… major cabinet members continue, 10 new appointments made"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "China opens major river-to-sea canal, creating trade shortcut to Southeast Asia"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Fallout imminent as SA vows not to surrender to US on policy"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "CDU in Northeast: \"If this continues, the party is finished\""
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Ministers' revolt against Cármen Lúcia exposes STF degradation"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Government's choice: vehicle tax abolished for small and medium cars and motorcycles. \"It will be structural\" | Regions: risks to revenue"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Peru entered the Americas Shield without treaty or binding obligations, says foreign minister"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Xie Dianlin implicated in vote-buying overnight detention hearing; father Xie Xinlong remanded in custody"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "Freight train rates to rise 140%"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Tension. Cross accusations in Government over changes in Disability emergency included in Budget"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Sweden",
+    "publication": "Dagens Nyheter",
+    "headline": "\"The people have voted in a new direction\""
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "Tony Burke faced a nearly impossible balancing act. He just about threaded the needle"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Govt reduces petrol price by Rs3.13, increases HSD by Rs3.74"
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "UN Office for Disaster Risk Reduction is \"shoulder to shoulder with Cuba\""
+  },
+  {
+    "date": "2026-09-17",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Qatar backs diplomacy for lasting peace"
   }
 ]
