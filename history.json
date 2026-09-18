@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-10",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Netanyahu Got an Explicit Warning Before Oct. 7. He Didn't Brief Security Chiefs"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Sharp diplomatic escalation: Israel closes British consulate in Jerusalem and bars officials in response to settlement sanctions"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Nigeria",
-    "publication": "Vanguard",
-    "headline": "Another dark day for democracy — Kwankwaso condemns attack on Obi’s convoy"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Poland",
-    "publication": "Gazeta Wyborcza",
-    "headline": "Wielowieyska: In the Zondacrypto case, it was none other than Cenckiewicz who stabbed the right in the back"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "PM Shehbaz to highlight Pakistan's efforts to end US-Iran war at UN General Assembly"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Saudi Arabia",
-    "publication": "Arab News",
-    "headline": "Hormuz shipping traffic in single digits, data shows"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "07:37 a.m. Keiko Fujimori meets this morning with Marco Rubio, U.S. Secretary of State"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "Friedrich Merz: A chancellor in survival mode"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Moraes cancels scheduled statement following Fachin's measures on Vorcaro messages and fake news inquiry"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "From open arms to closed doors: Questions over Ruto’s anti-foreigners"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Prospectus for Carney’s summit highlights more than 160 projects open for investment"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "3% tax on sales would apply even with losses"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "SA bets on body cameras for a more accountable police force"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "From the world's key buyer of services to an emerging seller: 'China services' meet the world at CIFTIS 2026"
-  },
-  {
-    "date": "2026-09-10",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "Hong Kong’s first leader Tung Chee-hwa to be honoured with state funeral"
-  },
-  {
     "date": "2026-09-11",
     "country": "Mexico",
     "publication": "El Universal",
@@ -538,5 +448,95 @@
     "country": "Qatar",
     "publication": "Gulf Times",
     "headline": "Qatar backs diplomacy for lasting peace"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Attack on Saudi air base at Ta'if, Italian Eurofighter struck. Crosetto: 'No injuries'"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "Military personnel detained; their patrol vehicles burned"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Government discussed three scenarios for Bolsa Família and opted for broader adjustment on eve of election"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Malvinas. Official bill sets prison sentences for 'disinformation campaigns' and alarms activate in Congress"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "European Parliament points to Sánchez as responsible in the 'invasion' of Ceuta and proposes sanctions against Morocco"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Mambilla power: Nigeria wins $3.38bn battle, 1,500MW project gets lifeline"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "French minister wants Ireland to share its technology tax billions"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Lawyers' body announces boycott of court proceedings in Islamabad on Saturday to protest Imaan, Hadi's rearrest"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Saudi Arabia",
+    "publication": "Arab News",
+    "headline": "‘Our commitment to Saudi security is unconditional’: Pakistan military spokesman"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "Hualong One nuclear power unit goes commercial in Hainan, can support China's computing power"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Ruto: Uhuru is lowering dignity of the office of the former president"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Nine lives snuffed as fears escalate"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Navy separates director, teacher and trainer from Naval Academy while investigating alleged sexual assault"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Margarita Papandreou died"
+  },
+  {
+    "date": "2026-09-18",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Reconstruction Minister Hosono to meet with Fukushima Governor this evening: 'I feel the nation's responsibility very heavily'...Second Takaichi cabinet reform takes full swing"
   }
 ]
