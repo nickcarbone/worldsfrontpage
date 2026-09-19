@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-11",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Operation Swarm captures 111 narco-politicians; 14 mayors have been prosecuted"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Operation with Dino's approval targets Bolsonaro film and Mario Frias amid STF crisis"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Social discontent. Caputo and fine engineering to reactivate without money"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "War in Ukraine: Putin's gas crisis cost the German government 50 billion euros"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "From Bishkek to New Delhi, Xi advocates Global South cooperation"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "The ANC politics of money"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "IG’s police filming warning sparks outrage"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Peru joins coalition led by U.S. against transnational organized crime"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Canada",
-    "publication": "Le Devoir",
-    "headline": "Quebec Elections 2026"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Politicians trying to influence funding of high-cost drugs is a ‘concern’, Minister says"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "UN hails late HH the Father Amir as champion of peace"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "The key document the Government does not show: two 'taps' on Moroccan agents warned of 'massive entry' three days before"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "The Prosecutor's Office opens an investigation into the final days of Denise Cosco, daughter of Lea Garofalo: companion questioned, cell phone examination"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Georgiadis in 'K': Ban on advertising and special committee for wellness centers"
-  },
-  {
-    "date": "2026-09-11",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "Death of the out-of-zone ballot? Find out which schools are accepting students in 2027"
-  },
-  {
     "date": "2026-09-13",
     "country": "Canada",
     "publication": "The Globe and Mail",
@@ -538,5 +448,95 @@
     "country": "Japan",
     "publication": "Yomiuri Shimbun",
     "headline": "Reconstruction Minister Hosono to meet with Fukushima Governor this evening: 'I feel the nation's responsibility very heavily'...Second Takaichi cabinet reform takes full swing"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Xi stresses sustained efforts to expand, strengthen advanced manufacturing"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "RN ambiguities, market pressure… After his budget announcements, Sébastien Lecornu faces political and financial puzzle"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "New Labor Code and its complementary regulations published in Official Gazette"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Police discrimination? 'White Dutch have no idea what we experience'"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Ministers seek more help with third-level fees and return of energy credits in budget"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Mondi and Sappi set for relief as Tau orders tariff review"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Million-dollar income, houses and cars reported by Farías brothers; Ojeda and his nephews open their asset declarations"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Conversations extracted from Vorcaro's cell phone show Gonet and former banker on cigar night"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Budget. Government willing to introduce changes in disability section after short circuits"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "3 martyrs and injuries in ongoing Israeli breaches of ceasefire agreement in Gaza"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "Angara proposes inter-agency task force after Cotabato school shooting"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Nigeria",
+    "publication": "Vanguard",
+    "headline": "Miners’ deaths: Adeyanju rejects panel payment, vows to expose cover-up"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Kohat Police Lines attack: 8 terrorists killed as overnight clearance operation concludes"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Hsieh Tien-lin bribery allegations without consideration? Changhua prosecutors counter: Each person bribed over 1,000 yuan"
+  },
+  {
+    "date": "2026-09-19",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Yomiuri opinion poll evaluates cabinet reshuffle and LDP personnel changes, government and ruling party relieved… New cabinet fully underway with Hosono reconstruction minister visiting Fukushima"
   }
 ]
