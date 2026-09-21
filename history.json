@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-13",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Is Carney a closer? The Canada Investment Summit will be the ultimate test"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Ireland’s failure premium: All the property schemes do one thing. It’s not help buyers"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "The IND Must Work Faster: Decide on an Asylum Request Within One Day, Otherwise Go to the Knot-Cutting Team"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Prime Minister Takashige Finalizes Appointment of Hideki Murai, Former Deputy Chief Cabinet Secretary, as LDP Diet Affairs Committee Chair... Adjustment Also Underway for Diet Member Toshiharu Furukaw"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Opposition leaders raise concerns over Hassan Omar remarks of deceased casting votes in 2027"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Terrorists plot attacks on Osun worship centres, markets"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "\"I Don't Want to Cause Any Problem, But...\" From the Falklands to Northern Ireland: Trump Opens Another Controversy with the United Kingdom"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Saudi Arabia",
-    "publication": "Arab News",
-    "headline": "The British sanctions and Israel’s response"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Defense Remains the Top Priority"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "PISA Results: Failure Also Lies with Parents"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Record Number of Small Parties Registered for Election – Only One Has a Chance of Getting In"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Fachin Removes Mendonça from Case Against Moraes and Halts Investigations into Master and INSS"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Alberto Núñez Feijóo: \"Morocco's Aggression Continues and Ceuta Will Be Sánchez's Epitaph\""
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "PNP vows impartiality, peaceful conduct of historic BARMM polls"
-  },
-  {
-    "date": "2026-09-13",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "What Happened in Pitrufquén? Details and Accounts of the Fire and Home Where 16 People Died"
-  },
-  {
     "date": "2026-09-14",
     "country": "Brazil",
     "publication": "Folha de S.Paulo",
@@ -538,5 +448,89 @@
     "country": "Japan",
     "publication": "Yomiuri Shimbun",
     "headline": "Yomiuri opinion poll evaluates cabinet reshuffle and LDP personnel changes, government and ruling party relieved… New cabinet fully underway with Hosono reconstruction minister visiting Fukushima"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Probes into Toronto’s shooter-for-hire network thwarted by impenetrable phone, police source says"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "After Aleema, Imran’s sisters Uzma and Noreen also detained in Lahore under MPO for 30 days"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Analysis. Scenes of disorder, fear and confusion in the ruling party"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "López Aliaga leads Bruce by 10 percentage points two weeks before Lima elections"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "As October 7 Approaches, Israel Remains DividedAs October 7 Approaches, Israel Remains Divided Over Accountability and Failure"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Sweden",
+    "publication": "Dagens Nyheter",
+    "headline": "Right-wing accounts have abandoned SD"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "Minutes from PSD meeting: \"We won't vote for him! Let him find a majority\". Firea calls Mureșan a \"chameleon politician\""
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "Albanese takes climate warning to New York, but fossil fuel experts test credibility"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Of 67,000 detained for high-impact crimes during the administration, only 37,000 end up in prison"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Ekurhuleni murders expose GBVF gaps"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "More state, less market: Nationalization, debt, taxation: What Berlin's Left plans"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Ranking calculation reveals which states deliver more services to the population with less money"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Migration crisis in Ceuta"
+  },
+  {
+    "date": "2026-09-21",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "NCRPO says Martial Law anniv, anti-corruption rallies peaceful"
   }
 ]
