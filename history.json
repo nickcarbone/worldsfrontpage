@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-14",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Session on Supreme Court crisis has uncertain procedures, artillery mounted between justices and risk of obstruction"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Government ultimatum: Milei and Karina will only make an electoral agreement with governors who order votes against PASO"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Cuba's voice from the BRICS"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Dangote refinery IPO rush overwhelms two investment sites"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Houthis Seize Additional Red Sea Islands, Tightening Grip on Key Shipping Route"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "LDP and Innovation Party to realize first \"cabinet cooperation,\" adjusting for Innovation Party's Nakatsukasa Hiroki to enter cabinet... expected to be appointed as Minister for Special Missions at Ca"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Under the guise of \"defenders,\" parties circumvent electoral laws"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Constitutional Court President: \"You cannot formalize at the cost of the environment\""
-  },
-  {
-    "date": "2026-09-14",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "SA’s refinery collapse cost R76bn in extra fuel imports"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Nicolas Baverez: \"Debt, work, school, immigration... How to straighten France after the bankruptcy of the Macron years\""
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Pakistan to continue efforts for 'defusing' regional tensions, PM tells Saudi crown prince"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "Hong Kong to sweeten school merger deals, offer housing measures to lift births"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Likely that Andersson's leadership holds"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "Auckland’s City Rail Link: 25,000 more train passengers on first weekday"
-  },
-  {
-    "date": "2026-09-14",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Nassif attacks enemies, defends developments from Beirut bedroom"
-  },
-  {
     "date": "2026-09-16",
     "country": "Poland",
     "publication": "Gazeta Wyborcza",
@@ -532,5 +442,95 @@
     "country": "Philippines",
     "publication": "Philippine Daily Inquirer",
     "headline": "NCRPO says Martial Law anniv, anti-corruption rallies peaceful"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Moraes declares himself unable to act in case"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "INAI's disappearance opens door to asset concealment: SNA; \"it no longer holds up to reserve information for security reasons\""
+  },
+  {
+    "date": "2026-09-22",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "Xi's upcoming state visit to US draws broad expectations for greater strategic stability, dialogue and cooperation"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "The Government tells the jury that \"doing justice\" is declaring Begoña Gómez \"not guilty\""
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "Why DIICOT prosecutors requested the arrest of Călin Georgescu: \"It is necessary to avert a state of danger to public order\""
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "QIA, J.P. Morgan seal $20bn strategic partnership"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Adorni's explanation. Black bitcoins, hidden sales and the decision to live as if money \"did not exist\""
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "After Typhoon No. 25's heavy rain overnight...7 dead and 5 missing in Chiba and Kanagawa prefectures, large-scale flooding in city areas of Sakura"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Christy Kinahan senior faces no cartel-related criminal charges"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Christian Grollmus after sentencing those responsible for attack: \"Condemning them meant we could contribute to peace\""
+  },
+  {
+    "date": "2026-09-22",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "SA tightens screws on steel imports to shield local producers"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Concern in Brussels over fuel adequacy and prices – Emergency Council on the agenda"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Iran shows willingness to return to negotiating table"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Promising, that Rijnenburg neighborhood with its thousands of new homes. But you have to come by a tram for which there is no money"
+  },
+  {
+    "date": "2026-09-22",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Latest Taipei mayor poll! Chiang Wan-an support at 41.7%, Shen Po-yang at 40.5% with difference of only 1.2 percentage points"
   }
 ]
