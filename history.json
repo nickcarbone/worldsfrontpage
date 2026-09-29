@@ -1,89 +1,5 @@
 [
   {
-    "date": "2026-09-21",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Probes into Toronto’s shooter-for-hire network thwarted by impenetrable phone, police source says"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "After Aleema, Imran’s sisters Uzma and Noreen also detained in Lahore under MPO for 30 days"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Analysis. Scenes of disorder, fear and confusion in the ruling party"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "López Aliaga leads Bruce by 10 percentage points two weeks before Lima elections"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "As October 7 Approaches, Israel Remains DividedAs October 7 Approaches, Israel Remains Divided Over Accountability and Failure"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Right-wing accounts have abandoned SD"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "Minutes from PSD meeting: \"We won't vote for him! Let him find a majority\". Firea calls Mureșan a \"chameleon politician\""
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Albanese takes climate warning to New York, but fossil fuel experts test credibility"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Of 67,000 detained for high-impact crimes during the administration, only 37,000 end up in prison"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Ekurhuleni murders expose GBVF gaps"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "More state, less market: Nationalization, debt, taxation: What Berlin's Left plans"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Ranking calculation reveals which states deliver more services to the population with less money"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Migration crisis in Ceuta"
-  },
-  {
-    "date": "2026-09-21",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "NCRPO says Martial Law anniv, anti-corruption rallies peaceful"
-  },
-  {
     "date": "2026-09-22",
     "country": "Brazil",
     "publication": "Folha de S.Paulo",
@@ -436,5 +352,95 @@
     "country": "Pakistan",
     "publication": "Dawn",
     "headline": "Iran stands firm on Hormuz plan after US rejection"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Regeni, the wall of omertà falls: three Egyptian intelligence agents guilty of kidnapping. The verdict that reveals the regime's schemes and what happens now"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Sibiya accuses Madlanga task team of orchestrating arrest"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Predictamen recommends not approving and filing the Government's request for special powers"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Netanyahu Preps His Doomsday Weapon – in Abu Dhabi"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Smotrich's war.... Rushing to settle, undermining hopes for an independent state"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Nigeria",
+    "publication": "ThisDay",
+    "headline": "Plateau Group Denies Militia Links, Backs DSS Security Operations"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Arrau says that 'the best path' for security reform is being evaluated and rules out that withdrawal is a failure"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Warning to the United Kingdom. The Government will request international arbitration to prevent oil exploitation in the Malvinas"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Switzerland",
+    "publication": "Neue Zürcher Zeitung",
+    "headline": "EU debate: 4,000 francs per person – the Council of States discusses wage protection and wants an immigration levy"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "LIVE - Blockade of high schools: Mélenchon encourages mobilization 'against police brutality,' 300,000 demonstrators in public service according to CGT"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Elections and Falsehoods: Media calls on public institutions to uphold transparency, credibility"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Finance minister kicks off talks with visiting IMF mission"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Sweden",
+    "publication": "Dagens Nyheter",
+    "headline": "S-leader's demand on C and V: 'Start erasing red lines'"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Orange Order makes formal complaint against Michelle O’Neill and Mary Lou McDonald"
+  },
+  {
+    "date": "2026-09-29",
+    "country": "Canada",
+    "publication": "Le Devoir",
+    "headline": "Quebec Elections 2026"
   }
 ]
