@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-22",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Moraes declares himself unable to act in case"
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "INAI's disappearance opens door to asset concealment: SNA; \"it no longer holds up to reserve information for security reasons\""
-  },
-  {
-    "date": "2026-09-22",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "Xi's upcoming state visit to US draws broad expectations for greater strategic stability, dialogue and cooperation"
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "The Government tells the jury that \"doing justice\" is declaring Begoña Gómez \"not guilty\""
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "Why DIICOT prosecutors requested the arrest of Călin Georgescu: \"It is necessary to avert a state of danger to public order\""
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "QIA, J.P. Morgan seal $20bn strategic partnership"
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Adorni's explanation. Black bitcoins, hidden sales and the decision to live as if money \"did not exist\""
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "After Typhoon No. 25's heavy rain overnight...7 dead and 5 missing in Chiba and Kanagawa prefectures, large-scale flooding in city areas of Sakura"
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Christy Kinahan senior faces no cartel-related criminal charges"
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Christian Grollmus after sentencing those responsible for attack: \"Condemning them meant we could contribute to peace\""
-  },
-  {
-    "date": "2026-09-22",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "SA tightens screws on steel imports to shield local producers"
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Concern in Brussels over fuel adequacy and prices – Emergency Council on the agenda"
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Iran shows willingness to return to negotiating table"
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Promising, that Rijnenburg neighborhood with its thousands of new homes. But you have to come by a tram for which there is no money"
-  },
-  {
-    "date": "2026-09-22",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Latest Taipei mayor poll! Chiang Wan-an support at 41.7%, Shen Po-yang at 40.5% with difference of only 1.2 percentage points"
-  },
-  {
     "date": "2026-09-26",
     "country": "Mexico",
     "publication": "El Universal",
@@ -442,5 +352,95 @@
     "country": "Canada",
     "publication": "Le Devoir",
     "headline": "Quebec Elections 2026"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "IT IS OFFICIAL: Mureșan Government falls with 182 votes. Grindeanu: 'We are ready to take on Romania's recovery.' PNL and USR prepare for early elections. UDMR wants technocrat government"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Surprising turn. Supreme Court ruling removes limits on land sales to foreigners"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Kast will withdraw security reform and senators will introduce new bill on Monday"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "The decree the Government has not published in the Official Gazette requires landlords to pay 12 months to tenants if they do not renew the contract"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "BTP-Bund spread at 100 points, what is happening? What does it mean for Italy (and for Germany)"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "The U.S. aggressive policy against Cuba can only be sustained by force and intimidation"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Flávio tries to contain worst crisis since 'Dark horse,' and Lula's phrase provides ammunition"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "'Green Kid' comes out ahead with the 4T"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Norway",
+    "publication": "Aftenposten",
+    "headline": "Epstein hearing in Parliament: – No justification for using the word 'bad culture'"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Deal to resolve Drumcree standoff is ‘tantalisingly close’, says NI secretary after talks over march"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Sweden",
+    "publication": "Dagens Nyheter",
+    "headline": "Direct.L criticizes S: Shows weak leadership"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Dangote oil refinery launch at Lamu port"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "‘What we’ve done is not enough’: Ramaphosa’s new plan to fight GBV disaster"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Constitutional Commission resumes debate on preliminary report that rejects granting powers to the Government"
+  },
+  {
+    "date": "2026-09-30",
+    "country": "France",
+    "publication": "Le Monde",
+    "headline": "French civil servants take to the streets ahead of key budget meeting"
   }
 ]
