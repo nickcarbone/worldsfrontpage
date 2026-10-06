@@ -1,269 +1,5 @@
 [
   {
-    "date": "2026-09-26",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "El Chapo and El Mayo wanted to retire, reveals Lucero Sánchez known as 'La Chapodiputada'"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Rockbridge, conservative group of U.S. vice president, began installation in Brazil"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Plus Ultra diverted four million dollars to a bank in Venezuela after receiving Spanish Government bailout"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Israeli escalation in the West Bank: arrests in Tulkarm and tight siege on Bethlehem villages"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Makkah alliance military chiefs vow to ‘immediately’ translate commitments into effective military cooperation: ISPR"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Putin's Hybrid War: Russian attacks target German fighting spirit"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Sex workers scramble as anti–HIV jab runs out"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "In Switzerland, fuel is twice as expensive as in the USA or Japan – this is politically intentional"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Price cap on fuel: how does Eni freeze prices? What will other companies do? | From Monday 1.99 euros for gasoline and 2.19 for diesel"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Paddy McKillen jnr built a hospitality empire – now the man with €270 in the bank owes €27.7m"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "12 jurors decided. Trial for Martín Aramburú ends: why sentences were 26 and 19 years and not life imprisonment"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Pezeshkian, PM hold talks in NY"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Prime Minister Takaichi has 20-minute phone call with Trump... Seeks to understand President Xi's 'ally' remarks, shares recognition on China"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "A heat wave in spring, followed by very dry and hot weather. These were two seasons that 'should give everyone a stomachache'"
-  },
-  {
-    "date": "2026-09-26",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Unlocking the R36bn rural cannabis sector: state seeks to formalise growers"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "‘Right now, it’s fine’: Trump brushes off summit talk on Taiwan"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Reports on Netanyahu's Oct. 7 Responsibility Are Central to Israel's Election"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Court investigates hundreds of messages from Delcy with Aldama negotiating million-dollar oil operations in the PSOE financing case"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "AHMSA lives through 35 years of controversy"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Government's discourse loses effectiveness amid mounting negative indicators; Milei voters demand greater proximity to their concerns; the social backdrop revealed by rising poverty"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Amendments become the centrist bloc's main weapon in campaign and transform mayors into electoral operatives"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "López Aliaga expands his lead over Bruce to 12 points one week before Lima elections"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Xi, Peng Liyuan visit U.S. National Archives with Trump and his wife"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Fresh court battles brew over primaries"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Malala: Gachagua-Sifuna ticket only duo capable of unseating Ruto in 2027"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Buckingham Village was supposed to reinvigorate Dublin’s inner city. By 2022, it was its worst slum"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "The fat years are over: Now Zurich's nonchalant fiscal policy takes its revenge"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Poor man with nothing but money"
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Norway",
-    "publication": "Aftenposten",
-    "headline": "They talked about 'meeting a child's feelings' on NRK. Then the comment section went up in flames."
-  },
-  {
-    "date": "2026-09-27",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Turin, the account of the horror party. Drugs for days, the fight, Colapietro's corpse cut to pieces: 'He stole 50 euros from me, I don't know how I killed him'"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Israel Freezes Aliyah for Two Jews Over Activism Protecting Palestinians"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Nigeria",
-    "publication": "Vanguard",
-    "headline": "Electoral Act: S’Court ruling unsettles PDP, opposition candidates"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Lula narrows gap with Flávio Bolsonaro in the Southeast; see numbers by region"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "VideoLIVE TEXT Mureșan Government tested in Parliament: Burduja, Miruță, Drulă rejected. Tánczos Barna and Nazare, favorable opinion. Scandal at Drulă's hearing"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "Clear no to even more money for teachers: Now politics should provide real relief in classrooms – without blinders and taboos"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "No Numsa NEC meeting in 18 months — leaders demand meeting about Jim"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "Tax, anime and bull****: What stood out at National, Labour's campaign launches"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Does this cabinet really solve Schiphol's problems, or will it get stuck at the court again?"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Drumcree: Where are we now and what happens next?"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Aldama, Delcy and PSOE money"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "Pair of Chinese giant pandas receive warm welcome after arriving in the US"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "With Ben Gvir's participation... hundreds of settlers storm Al-Aqsa on third day of 'Throne Feast'"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "Spate of rogue AI hacking points to lack of tech oversight, outdated defences: Experts"
-  },
-  {
-    "date": "2026-09-28",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Iran stands firm on Hormuz plan after US rejection"
-  },
-  {
     "date": "2026-09-29",
     "country": "Italy",
     "publication": "Corriere della Sera",
@@ -712,5 +448,95 @@
     "country": "China",
     "publication": "People's Daily",
     "headline": "90 years on, Long March stories resonate across generations and borders"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Mexico cancels crude oil shipments to Cuba due to U.S. sanctions; aims to avoid Trump tariffs"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Female Chinese spy arrested in U.S. for surveilling President Lai's son; China's Foreign Ministry responds for first time"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Kassio wants to judge Bolsonaro's release after runoff and considers freeing ex-president with injunction"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "Călin Georgescu brought to DIICOT. Cristela delivers forceful statement upon leaving hearings: \"We were subjected to brutal and unacceptable intervention\""
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Occupation soldiers take 'selfies' with corpse of Palestinian martyr after executing 3 youths in Hebron"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Ondo air crash: NAF plane vanished from radar shortly after take-off"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "S’pore mulls energy cluster on Tekong; including third LNG terminal and electricity import facilities"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "All inheritance tax free thresholds rise in the budget but no other reforms"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "ATM calls for fuel price overhaul, says R6 a litre could be cut"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Maturities, deficit and leeway: What lies behind the high debt the Government seeks in the Budget"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "The Coalition has done its homework on migration. But that may not matter"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "After hours of negotiations, second round of govt-opposition talks ends in a 'deadlock'"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "The scar that time does not erase"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Norway",
+    "publication": "Aftenposten",
+    "headline": "NRK: Suspect in Halden murders to undergo full judicial observation"
+  },
+  {
+    "date": "2026-10-06",
+    "country": "Switzerland",
+    "publication": "Neue Zürcher Zeitung",
+    "headline": "The Federal Council wants to force cantons to teach early French. But they won't stand for it"
   }
 ]
