@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-09-29",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Regeni, the wall of omertà falls: three Egyptian intelligence agents guilty of kidnapping. The verdict that reveals the regime's schemes and what happens now"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Sibiya accuses Madlanga task team of orchestrating arrest"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Predictamen recommends not approving and filing the Government's request for special powers"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Netanyahu Preps His Doomsday Weapon – in Abu Dhabi"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Smotrich's war.... Rushing to settle, undermining hopes for an independent state"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Nigeria",
-    "publication": "ThisDay",
-    "headline": "Plateau Group Denies Militia Links, Backs DSS Security Operations"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Arrau says that 'the best path' for security reform is being evaluated and rules out that withdrawal is a failure"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Warning to the United Kingdom. The Government will request international arbitration to prevent oil exploitation in the Malvinas"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "EU debate: 4,000 francs per person – the Council of States discusses wage protection and wants an immigration levy"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "LIVE - Blockade of high schools: Mélenchon encourages mobilization 'against police brutality,' 300,000 demonstrators in public service according to CGT"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Elections and Falsehoods: Media calls on public institutions to uphold transparency, credibility"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Finance minister kicks off talks with visiting IMF mission"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "S-leader's demand on C and V: 'Start erasing red lines'"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Orange Order makes formal complaint against Michelle O’Neill and Mary Lou McDonald"
-  },
-  {
-    "date": "2026-09-29",
-    "country": "Canada",
-    "publication": "Le Devoir",
-    "headline": "Quebec Elections 2026"
-  },
-  {
     "date": "2026-09-30",
     "country": "Romania",
     "publication": "Adevărul",
@@ -538,5 +448,95 @@
     "country": "Switzerland",
     "publication": "Neue Zürcher Zeitung",
     "headline": "The Federal Council wants to force cantons to teach early French. But they won't stand for it"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Puigdemont: the return"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "UN chief hails Pakistan's 'pivotal role' in US-Iran conflict, calls for 'return to diplomacy'"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Gasoline and diesel, price cap drops. Meloni: 'Ready to cut excise taxes'. And asks EU for more flexibility on inflation, 'it costs us billions'"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Indonesia",
+    "publication": "Kompas",
+    "headline": "Gugatan Ijazah Gibran Ditolak MK, Bawaslu Solo Tegaskan Verifikasi Dokumen Kewenangan KPU"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Flávio says he wants to amend the Constitution to reform the Judiciary and lower the age of criminal responsibility"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Price inflation persists despite measures"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "The 'Tank' arrested, protector of Amílcar"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "‘Firefighting’ rate hikes vital to avert runaway inflation, says Bank"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Military air crashes: 10 incidents in five years trigger calls for reforms"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "How difficult is the handover of the submarine Hai Kun? Military experts analyze this way"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "High schools, fuel, agricultural crisis, 'financial situation': Sébastien Lecornu will speak Wednesday evening during an address"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "CS Aden Duale: There's no Ebola outbreak in Kenya"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Hong Kong",
+    "publication": "South China Morning Post",
+    "headline": "24 luxury houses at One Stanley sold amid probe into alleged construction defects"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Arrau and new security reform: 'If we want cross-party support, it has to have less intensity'"
+  },
+  {
+    "date": "2026-10-07",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Chamber of Deputies grants government powers in security and El Niño phenomenon"
   }
 ]
