@@ -1,185 +1,5 @@
 [
   {
-    "date": "2026-10-02",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Ottawa designates West Coast pipeline a project of national interest"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "\"Have you killed for money?\": The \"initiation\" of Primeiro Comando da Capital for recruitment"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "King calls it 'distressing and confronting': the Orange-Nassaus were convinced of the legitimacy of slavery and colonies, but had limited influence"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "First round of talks between govt, opposition end as PTI’s Oct 4 protest looms over federal capital"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "On his most important day, Bullrich split the screen with Milei"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Understand the sequence of decisions that culminated in cancellation of debate that would have aired on Globo"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Constitutional Commission approves granting powers to Executive on citizen security and El Niño"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "After the mammoth debate in the Council of States, Europe supporters step on the gas"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Reserve Bank’s MPC finally back at full strength"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Workers begin three-day warning strike"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Why lecturers and university staff are on strike again"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Baja California and Sonora contracted firms sanctioned for money laundering; U.S. links companies to Sinaloa Cartel"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "‘Literally unbelievable’: Ministers get ‘a kicking’ from Chambers’s team as budget talks near end"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Netanyahu's Flydubai Problem: What Did He Know About the Attack, and When?"
-  },
-  {
-    "date": "2026-10-02",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Official report: 2,051 Israeli attacks against Palestinians and their property during September"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "How France could fall into the spiral of a financial crisis"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Sánchez fuels elections amid his final failure and no one stops him in the PSOE: \"There will not be a better moment\""
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Social situation. Milei's labor reform does not yet seduce job creators"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Brazil holds election amid institutional degradation, evaluates co-author of work addressing democracy"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Govt, opposition begin second round of talks ahead of PTI's Islamabad march"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "NYSC kidnap: Police locate abductors’ camp, delay raid over IEDs"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Increasing number of foreign-born recruits joining Defence Forces"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "JP congressmen strengthen ties with guild linked to Movadef"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Norway",
-    "publication": "Aftenposten",
-    "headline": "Quran school with overnight stays: – It was gruesome"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "The extortionists along Moloto Road"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Government says it is committed to \"expediting\" investigations into medical licenses: \"They exist in all public services\""
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "With Captain Sol detained, noose tightens around criminal network \"Los Primos,\" dedicated to fuel theft; this is the organizational chart"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Turkey",
-    "publication": "Hürriyet",
-    "headline": "#REFEREES FILE: MHK President Ferhat Gündoğdu arrested"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar, Japan widen strategic partnership"
-  },
-  {
-    "date": "2026-10-03",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "90 years on, Long March stories resonate across generations and borders"
-  },
-  {
     "date": "2026-10-06",
     "country": "Mexico",
     "publication": "El Universal",
@@ -448,5 +268,89 @@
     "country": "Poland",
     "publication": "Gazeta Wyborcza",
     "headline": "\"By some miracle I grabbed him by the hands, not knowing there were knives there\". School principal on how he subdued knife attacker"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Emergency, governor's rule imposed in KP as president approves cabinet decision"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Israel's AG Tells Prison Chief to Stop Ben-Gvir From Using Prisons for Campaign"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Libra Case: U.S. Government sees no evidence of a crime"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "ConCourt’s asylum seeker unintended consequences"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "Block after block of death and despair. This is Vancouver's Downtown Eastside, where all hope is now lost"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Birmex acquires 2.5 million COVID vaccines for 31 billion pesos; immunization delivery to continue until 2030"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Public sector strike may be difficult to avert at this stage, Minister admits"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Occupation forces storm Qalqilya as settlers escalate attacks against olive pickers in the West Bank"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Alvarado calls on SD to 'show the same' performance in security projects as with Boric"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Cuba denounces 'silent genocide' of U.S. blockade at International PT Seminar in Mexico (+ Video)"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "The rise of red flags that despise Sánchez, Podemos and the Broad Front"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "How the incident between Iber Maraví and Minister Walter Astudillo unfolded"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "Nigeria",
+    "publication": "Vanguard",
+    "headline": "2027: Full list of governorship candidates released by INEC"
+  },
+  {
+    "date": "2026-10-11",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Farmers across China busy with autumn harvest, sowing"
   }
 ]
