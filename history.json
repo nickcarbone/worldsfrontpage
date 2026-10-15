@@ -1,185 +1,5 @@
 [
   {
-    "date": "2026-10-06",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Mexico cancels crude oil shipments to Cuba due to U.S. sanctions; aims to avoid Trump tariffs"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Female Chinese spy arrested in U.S. for surveilling President Lai's son; China's Foreign Ministry responds for first time"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Kassio wants to judge Bolsonaro's release after runoff and considers freeing ex-president with injunction"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "Călin Georgescu brought to DIICOT. Cristela delivers forceful statement upon leaving hearings: \"We were subjected to brutal and unacceptable intervention\""
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Occupation soldiers take 'selfies' with corpse of Palestinian martyr after executing 3 youths in Hebron"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Ondo air crash: NAF plane vanished from radar shortly after take-off"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "S’pore mulls energy cluster on Tekong; including third LNG terminal and electricity import facilities"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "All inheritance tax free thresholds rise in the budget but no other reforms"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "ATM calls for fuel price overhaul, says R6 a litre could be cut"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Maturities, deficit and leeway: What lies behind the high debt the Government seeks in the Budget"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "The Coalition has done its homework on migration. But that may not matter"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "After hours of negotiations, second round of govt-opposition talks ends in a 'deadlock'"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "The scar that time does not erase"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Norway",
-    "publication": "Aftenposten",
-    "headline": "NRK: Suspect in Halden murders to undergo full judicial observation"
-  },
-  {
-    "date": "2026-10-06",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "The Federal Council wants to force cantons to teach early French. But they won't stand for it"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Puigdemont: the return"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "UN chief hails Pakistan's 'pivotal role' in US-Iran conflict, calls for 'return to diplomacy'"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Gasoline and diesel, price cap drops. Meloni: 'Ready to cut excise taxes'. And asks EU for more flexibility on inflation, 'it costs us billions'"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Indonesia",
-    "publication": "Kompas",
-    "headline": "Gugatan Ijazah Gibran Ditolak MK, Bawaslu Solo Tegaskan Verifikasi Dokumen Kewenangan KPU"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Flávio says he wants to amend the Constitution to reform the Judiciary and lower the age of criminal responsibility"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Price inflation persists despite measures"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "The 'Tank' arrested, protector of Amílcar"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "‘Firefighting’ rate hikes vital to avert runaway inflation, says Bank"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Military air crashes: 10 incidents in five years trigger calls for reforms"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "How difficult is the handover of the submarine Hai Kun? Military experts analyze this way"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "High schools, fuel, agricultural crisis, 'financial situation': Sébastien Lecornu will speak Wednesday evening during an address"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "CS Aden Duale: There's no Ebola outbreak in Kenya"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "24 luxury houses at One Stanley sold amid probe into alleged construction defects"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Arrau and new security reform: 'If we want cross-party support, it has to have less intensity'"
-  },
-  {
-    "date": "2026-10-07",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Chamber of Deputies grants government powers in security and El Niño phenomenon"
-  },
-  {
     "date": "2026-10-09",
     "country": "Israel",
     "publication": "Haaretz",
@@ -532,5 +352,95 @@
     "country": "New Zealand",
     "publication": "NZ Herald",
     "headline": "Student asked friend ‘what counts as grooming?’ after teacher kissed her"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "Donna Kennedy-Glans: The more important ballot questions in Alberta are the ones no one's talking about"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Government: 60% voted in IMSS consultation; workers: \"no won\""
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "Crime paralyzes eastern Morelos"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "With end of 6x1, Lula advances electoral agenda in Congress, and opposition attempts to counter with reduction of criminal age of responsibility"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "From Lula's 'historic achievement' to damage control for Flávio: understand how end of 6x1 work schedule could affect election"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "About-face. LLA restores limits on land sales to contain its allies and deactivate opposition session"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "El Niño strikes: Spring storms threaten to crack economy further"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Cuba denounces U.S. Government pressure on UN members"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "What are the points included in the Senate's preliminary report?"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Union leader warns of ‘long and difficult dispute’ if breakthrough on pay not made"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "France",
+    "publication": "Le Monde",
+    "headline": "Timetables top list of French high schoolers' grievances to government"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Pensions: what the presidential election candidates propose"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Germany",
+    "publication": "Süddeutsche Zeitung",
+    "headline": "Human Factor: How the government fights itself"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "'Communication with Starlink network restored for Ukrainian drones', Kyiv resumes attacks on Russian oil refineries"
+  },
+  {
+    "date": "2026-10-15",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "\"The first of the brown ones\": internal emails reveal that the PSOE man at Tragsa directed 'patronage' after Jésica"
   }
 ]
