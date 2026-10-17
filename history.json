@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-10-09",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Thousands Are Held in Israeli Torture Camps. This Is What Happens Inside"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Escalating settler terrorism in West Bank: 19 attacks target olive pickers in a single day"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "FG’s 30-day petrol discount sparks opposition backlash"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "China, EU ramp up engagement as trade chiefs meet in Beijing"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Medical equipment ‘monopoly’: GE, Siemens and Philips face SA tribunal"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "JR East Japan: 2.06 million personal information records leaked through unauthorized access... 'Ekinet' and 'Adult's Holiday Club'"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Alberta First Nation taking Ottawa to court over move to fast-track Pacific Link pipeline"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Left primary: voting platform suffers cyberattack at its opening"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "The Government will announce pension increase on the last day of the electoral campaign"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Mitsotakis' brake on 25%"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Naval School case enters decisive phase with clarification hearing called for today"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Prosecutor's office will investigate origin and possible liability for mudslide in Las Condes"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "Hotel owners in Quintana Roo lose 6 billion pesos"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Was the fire in the UFPE building criminal? See what is known"
-  },
-  {
-    "date": "2026-10-09",
-    "country": "Poland",
-    "publication": "Gazeta Wyborcza",
-    "headline": "\"By some miracle I grabbed him by the hands, not knowing there were knives there\". School principal on how he subdued knife attacker"
-  },
-  {
     "date": "2026-10-11",
     "country": "Pakistan",
     "publication": "Dawn",
@@ -442,5 +352,95 @@
     "country": "Spain",
     "publication": "El Mundo",
     "headline": "\"The first of the brown ones\": internal emails reveal that the PSOE man at Tragsa directed 'patronage' after Jésica"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "'The water is coming strong.' The flooding looms and the exodus of animals and residents on the Litoral enters its most critical hour"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "Singapore haze: PSI in ‘unhealthy’ range across the island; PM2.5 in ‘high’ band in most regions"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Cosatu numbers do not add up"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Alert issued over possible foot-and-mouth disease case in Mexican livestock; awaiting results to resume exports"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "The IDF Failures That Led to Soldier's Death and Drove His Family Out of Israel"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "An invitation to Chile and the relaunch of bilateral dialogue: Details of Kast's historic visit to Bolivia"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Left-wing unity fails in almost all of Spain: Frente Amplio and Podemos only reach agreement in five of 52 districts"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Arrests, property damage, missed classes: the damning toll of a month of blockades and vandalism during the high school student movement"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Xi stresses prioritizing ecological conservation, pursuing green development"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Qatar, Lebanon solidify ties amid regional turmoil"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Flávio Bolsonaro denies Eduardo as foreign minister and states that 'it is not on the radar' to appoint Jair"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Blue and White strongly push free health insurance for elderly; Su Qiao-hui: should discuss with Executive Yuan considering funding sources"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Zelensky presses his European friends to his chest. 'If Ukraine falls, twenty million Ukrainians will come to Europe'"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Retailers on Dublin’s O’Connell Street hit with legal notices under revamp plan"
+  },
+  {
+    "date": "2026-10-17",
+    "country": "Switzerland",
+    "publication": "Neue Zürcher Zeitung",
+    "headline": "The bashing of the super-wealthy leads astray: Europe does not have too many billionaires, but too few—and still the wrong ones"
   }
 ]
