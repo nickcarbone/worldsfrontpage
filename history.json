@@ -1,179 +1,5 @@
 [
   {
-    "date": "2026-10-11",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Emergency, governor's rule imposed in KP as president approves cabinet decision"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Israel's AG Tells Prison Chief to Stop Ben-Gvir From Using Prisons for Campaign"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Libra Case: U.S. Government sees no evidence of a crime"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "ConCourt’s asylum seeker unintended consequences"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Block after block of death and despair. This is Vancouver's Downtown Eastside, where all hope is now lost"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Birmex acquires 2.5 million COVID vaccines for 31 billion pesos; immunization delivery to continue until 2030"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Public sector strike may be difficult to avert at this stage, Minister admits"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Occupation forces storm Qalqilya as settlers escalate attacks against olive pickers in the West Bank"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Alvarado calls on SD to 'show the same' performance in security projects as with Boric"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Cuba denounces 'silent genocide' of U.S. blockade at International PT Seminar in Mexico (+ Video)"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "The rise of red flags that despise Sánchez, Podemos and the Broad Front"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "How the incident between Iber Maraví and Minister Walter Astudillo unfolded"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "Nigeria",
-    "publication": "Vanguard",
-    "headline": "2027: Full list of governorship candidates released by INEC"
-  },
-  {
-    "date": "2026-10-11",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Farmers across China busy with autumn harvest, sowing"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Belleville synagogue shooter did not have gun licence, source says"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Kassio censored Janones' channel without document showing fake news, and Flávio did not attach evidence of accusation"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "DPM Dar defends emergency and governor's rule in KP, says measures not politically motivated"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "IDF Testimonies: After Oct. 7, Even Lowest-Level Target Justified Civilian Death"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "The left remains knocked out: PSOE and Sumar repeat at minimums with record Vox at PP's expense"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Nigeria’s debt interest soars 124% above revenue"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Unions reject effort to avert Wednesday’s public sector strike"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "ConCourt’s asylum seeker unintended consequences"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "\"Within two weeks [the powers ruling] should be under debate in the Senate plenary\""
-  },
-  {
-    "date": "2026-10-12",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "LIVE - 2027 Presidential election: Hollande congratulates Glucksmann after his victory in left-wing primary"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Inside Raila's mausoleum: The story of family, tradition and a political legacy that shaped Kenya"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "U.S. exposes fentanyl that AMLO denied"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Cuba launches celebration campaign for 68th anniversary of the Revolution"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "The red-green majority in Zurich believes it can develop the city under a glass dome. Instead of cosmopolitan flair, there is narrow-mindedness"
-  },
-  {
-    "date": "2026-10-12",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Hand grenades are going off again at the troubled Viktoria Square. Is criminality alone to blame for the area's decline? Or also those who declare their apartments empty while renting them to migrants"
-  },
-  {
     "date": "2026-10-13",
     "country": "Nigeria",
     "publication": "The Punch",
@@ -532,5 +358,95 @@
     "country": "Cuba",
     "publication": "Granma",
     "headline": "Cuba Denounces Provocation by the United States Government and Campaign of Pressure (+ Video)"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "Romania has a new Government. The cabinet led by Luca Niculescu received Parliament's vote of confidence, ending a period of political crisis that began in May following the fall of the government led"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Lula government prepared documents to adjust Bolsa Família value on eve of announcement and under secrecy"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "CIA agents case unites Sheinbaum and Maru Campos"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Opposition and U.S. complaints: Government postpones treatment of Malvinas bill in Deputies while negotiating changes"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Subsidy: No regrets, won’t return to Egypt — Tinubu"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "187 military camps closing down"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "China's value-added industrial output rises 5.3% in first three quarters"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Hong Kong",
+    "publication": "South China Morning Post",
+    "headline": "The Apec event in Hong Kong is a precursor to the leaders’ summit scheduled for Shenzhen on November 18 and 19."
+  },
+  {
+    "date": "2026-10-20",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Running on fumes: Ramaphosa hints at petrol price relief"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Two charged in relation to fatal Waterford arson attack remanded in custody"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Norway",
+    "publication": "Aftenposten",
+    "headline": "At least ten killed in Russian attacks as Zelenskyj arrived in Norway"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "PP and Vox remain 6 seats short of total Senate control after left-wing front"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Delegated powers: what modifications were incorporated and how did the debate develop?"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "PHC issues notices in petitions challenging governor’s rule, emergency in KP; hearing adjourned till Nov 10"
+  },
+  {
+    "date": "2026-10-20",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Former Opportunity insiders allege 'nasty', 'toxic' and 'tribal' party culture"
   }
 ]
