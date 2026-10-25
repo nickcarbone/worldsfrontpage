@@ -1,185 +1,5 @@
 [
   {
-    "date": "2026-10-15",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Donna Kennedy-Glans: The more important ballot questions in Alberta are the ones no one's talking about"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Government: 60% voted in IMSS consultation; workers: \"no won\""
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "Crime paralyzes eastern Morelos"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "With end of 6x1, Lula advances electoral agenda in Congress, and opposition attempts to counter with reduction of criminal age of responsibility"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "From Lula's 'historic achievement' to damage control for Flávio: understand how end of 6x1 work schedule could affect election"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "About-face. LLA restores limits on land sales to contain its allies and deactivate opposition session"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "El Niño strikes: Spring storms threaten to crack economy further"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Cuba denounces U.S. Government pressure on UN members"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "What are the points included in the Senate's preliminary report?"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Union leader warns of ‘long and difficult dispute’ if breakthrough on pay not made"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "France",
-    "publication": "Le Monde",
-    "headline": "Timetables top list of French high schoolers' grievances to government"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Pensions: what the presidential election candidates propose"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "Human Factor: How the government fights itself"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "'Communication with Starlink network restored for Ukrainian drones', Kyiv resumes attacks on Russian oil refineries"
-  },
-  {
-    "date": "2026-10-15",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "\"The first of the brown ones\": internal emails reveal that the PSOE man at Tragsa directed 'patronage' after Jésica"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "'The water is coming strong.' The flooding looms and the exodus of animals and residents on the Litoral enters its most critical hour"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "Singapore haze: PSI in ‘unhealthy’ range across the island; PM2.5 in ‘high’ band in most regions"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Cosatu numbers do not add up"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Alert issued over possible foot-and-mouth disease case in Mexican livestock; awaiting results to resume exports"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "The IDF Failures That Led to Soldier's Death and Drove His Family Out of Israel"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "An invitation to Chile and the relaunch of bilateral dialogue: Details of Kast's historic visit to Bolivia"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Left-wing unity fails in almost all of Spain: Frente Amplio and Podemos only reach agreement in five of 52 districts"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "Arrests, property damage, missed classes: the damning toll of a month of blockades and vandalism during the high school student movement"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Xi stresses prioritizing ecological conservation, pursuing green development"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar, Lebanon solidify ties amid regional turmoil"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Flávio Bolsonaro denies Eduardo as foreign minister and states that 'it is not on the radar' to appoint Jair"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Blue and White strongly push free health insurance for elderly; Su Qiao-hui: should discuss with Executive Yuan considering funding sources"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Zelensky presses his European friends to his chest. 'If Ukraine falls, twenty million Ukrainians will come to Europe'"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Retailers on Dublin’s O’Connell Street hit with legal notices under revamp plan"
-  },
-  {
-    "date": "2026-10-17",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "The bashing of the super-wealthy leads astray: Europe does not have too many billionaires, but too few—and still the wrong ones"
-  },
-  {
     "date": "2026-10-18",
     "country": "Brazil",
     "publication": "Folha de S.Paulo",
@@ -448,5 +268,95 @@
     "country": "Peru",
     "publication": "El Comercio",
     "headline": "Heavy rains in Piura: COEN reports, floods in the city and all the news"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "S’pore expects all parties to honour commitments, says PM Wong after Indonesia cuts gas exports"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Bank of Israel Against Netanyahu: Crypto Cannot Be Used to Circumvent Sanctions"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "France",
+    "publication": "Le Monde",
+    "headline": "After deadly attack in Trappes, which Macron called 'racist,' questions remain over suspected gunman's motives"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "\"Burn at the stake.\" Widespread rejection over Milei's new attack on journalists over $LIBRA case"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Taddei wavers seven months before the election; calls for her resignation and she says… 'I'm not leaving'"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "R30 million to make Sassa CEO look good"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Justice system sets limits on AI use to prevent it from replacing decisions"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "More than 130,000 degree-qualified jobs could be wiped out by AI"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Occupation displaces hundreds of families from Hebron and Netanyahu threatens wide-scale operation in the West Bank"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "2027: Pantami, Adebutu, Gwarzo’s fates uncertain"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Why Ruto-Moi pact failed"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Only 2.7% of at-risk population received both doses of dengue vaccine"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "In this rural Alberta district, a slim majority back separation despite provincial result"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Long March heritage along Chishui River fuels tourism in China's Guizhou"
+  },
+  {
+    "date": "2026-10-25",
+    "country": "Hong Kong",
+    "publication": "South China Morning Post",
+    "headline": "‘Really terrified’: how a blood test could spare cancer patients an agonising wait"
   }
 ]
