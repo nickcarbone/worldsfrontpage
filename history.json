@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-10-18",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Lula's Electoral Package Reaches R$ 290 Billion and Puts Pressure on Public Debt"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Portillo: Three Dead and Body Recovery Still Pending Due to Lack of Equipment and Risk of Another Avalanche"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "The Foreign Ministry's Blockade of 'Grandchildren Law' Data Will Lead to Massive Vote Challenges After Elections"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Violent Clashes in Piazza Duomo in Milan, Charges Also in the Galleria"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "The Alberta voters who want leverage – but not independence"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "China threatens to bar more PH officials if envoy gets expelled"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "EFCC promises probe as YouTuber exposes Abuja fraud syndicates"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Rwanda’s F1 breakthrough: A blueprint for African ambition and a challenge to SA"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Sharifs invoke security fears to defend KP move"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Indonesia",
-    "publication": "Kompas",
-    "headline": "Lahan Bekas Karhutla di Dharmasraya Ditanami Sawit, Garis Polisi dan Plang Larangan Dipasang"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "‘Nasty political games’: Steele-John claims rumours were weaponised, denies taking leave"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "IDF Ignored Distress Calls Before Settlers' Attack on European Diplomats"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "Alert raised as holiday crowds overwhelm Hong Kong’s revamped Huanggang crossing"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "PSI forecast to be between 101 and 190 on Oct 19, says NEA"
-  },
-  {
-    "date": "2026-10-18",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Cuba Denounces Provocation by the United States Government and Campaign of Pressure (+ Video)"
-  },
-  {
     "date": "2026-10-20",
     "country": "Romania",
     "publication": "Adevărul",
@@ -358,5 +268,95 @@
     "country": "Hong Kong",
     "publication": "South China Morning Post",
     "headline": "‘Really terrified’: how a blood test could spare cancer patients an agonising wait"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Doerkson vows to prioritize B.C.’s finances, work toward West Coast pipeline as next premier"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "Government Secretary leaves amid water crisis"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Agency attached to the PCM hired project led by person sentenced in Los Temerarios del Crimen case"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Toxic taps expose Tshwane’s deadly water failures"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Sweden",
+    "publication": "Dagens Nyheter",
+    "headline": "Organizations warn against the gender identity clinic in Gothenburg"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Gloves that the blockade prevents from being produced"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Lula Effect: Brazil's stock exchange suspended operations after collapse and blow reaches Chilean stocks"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "General elections 29-N"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "S’pore to tap diverse energy sources, explore new tech, to weather resource nationalism: Tan See Leng"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Nigeria Ebola-free after patient’s evacuation to Switzerland — WHO"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "PM attends opening of World Investment Forum"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Germany",
+    "publication": "Süddeutsche Zeitung",
+    "headline": "SZ PlusSteinmeier in China: A journey into a \"very decisive time\""
+  },
+  {
+    "date": "2026-10-26",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "The 10 battleground seats to watch this election"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Commentary: Raising the bar for CPC's self-governance"
+  },
+  {
+    "date": "2026-10-26",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Dublin City Council outbid in sale of Martello tower in Sandymount"
   }
 ]
