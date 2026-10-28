@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-10-20",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "Romania has a new Government. The cabinet led by Luca Niculescu received Parliament's vote of confidence, ending a period of political crisis that began in May following the fall of the government led"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Lula government prepared documents to adjust Bolsa Família value on eve of announcement and under secrecy"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "CIA agents case unites Sheinbaum and Maru Campos"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Opposition and U.S. complaints: Government postpones treatment of Malvinas bill in Deputies while negotiating changes"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Subsidy: No regrets, won’t return to Egypt — Tinubu"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "187 military camps closing down"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "China's value-added industrial output rises 5.3% in first three quarters"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "The Apec event in Hong Kong is a precursor to the leaders’ summit scheduled for Shenzhen on November 18 and 19."
-  },
-  {
-    "date": "2026-10-20",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Running on fumes: Ramaphosa hints at petrol price relief"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Two charged in relation to fatal Waterford arson attack remanded in custody"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Norway",
-    "publication": "Aftenposten",
-    "headline": "At least ten killed in Russian attacks as Zelenskyj arrived in Norway"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "PP and Vox remain 6 seats short of total Senate control after left-wing front"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Delegated powers: what modifications were incorporated and how did the debate develop?"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "PHC issues notices in petitions challenging governor’s rule, emergency in KP; hearing adjourned till Nov 10"
-  },
-  {
-    "date": "2026-10-20",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "Former Opportunity insiders allege 'nasty', 'toxic' and 'tribal' party culture"
-  },
-  {
     "date": "2026-10-21",
     "country": "Saudi Arabia",
     "publication": "Arab News",
@@ -448,5 +358,95 @@
     "country": "Philippines",
     "publication": "Philippine Daily Inquirer",
     "headline": "Dizon vows to prioritize overhauling LTO as he returns to DOTr"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Switzerland",
+    "publication": "Neue Zürcher Zeitung",
+    "headline": "Arms chief Urs Loher on F-35 fixed-price debacle: \"To claim in hindsight that it was all crystal clear: that simply isn't true\""
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Taddei Clan wove network across 13 states to win contracts; 5 close officials involved"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "China, EU key forces in upholding multilateral trade system; Chinese commerce minister urges joint efforts in solving EU problems"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "Russia applies salami-slicing tactics. How is SRI responding?"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Defense Minister Koizumi conveys strengthening of \"denial capability\" to U.S. Defense Secretary Hagel... \"Even if invasion of our country occurs, we will not let them achieve their objective\""
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Government criticizes opposition offensive over OGUC before Constitutional Court: \"It will delay recovery\""
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Flight opens space for right wing to break free from Bolsonarism"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Liberty Breaking News] Shen Boyang leads polls, but favorability trails by 13%! Taipei's melee reveals \"true wild card\"!"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "TUC rejects FG’s proposed N70,000 transport allowance, demands salary increase"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Minister Shinno denies that MAPE Law is \"an amplified Reinfo\""
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "Govt to propose changes to haze law in Parliament; firms linked to fires must provide access to info"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "This is why investors now prefer Morocco to South Africa"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Abu Shahada: Arab lists prevented Netanyahu's return to power and strengthened their political force"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Camilo, from Yaguajay and from Cuba"
+  },
+  {
+    "date": "2026-10-28",
+    "country": "Saudi Arabia",
+    "publication": "Arab News",
+    "headline": "Saudi-led coalition intercepts Houthi missile fired towards Taif"
   }
 ]
