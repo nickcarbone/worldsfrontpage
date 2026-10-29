@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-10-21",
-    "country": "Saudi Arabia",
-    "publication": "Arab News",
-    "headline": "Houthi missile strikes Aden airport as attacks reported in Al-Mukalla"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Tough poker in the Eastern Mediterranean"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Leaked emails: The AfD attempts to limit the damage"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Eisenkot Rules Out Joining Netanyahu-Led Government, Even Under Rotation Deal"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "The arm-wrestling over police powers for the military, then the Quirinal's halt. Crosetto: disappointed and concerned"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "HH the Amir, Macron deepen bonds on historic visit"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "China establishes National Data Group in Xiong'an; new central SOE to develop data resources, support AI growth"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Objective: suspend the disqualification. A British communications agency made international efforts in defense of Cristina Kirchner"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Ruto: Kenyans earning Sh32,333 per month or less will not pay PAYE"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "COA flags P397M ‘duplicate,’ ‘overlapping’ AICS payments"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Import of agricultural machinery increases 144%, driven by China and India, and suffocates industry"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Makkah alliance binds partners to decade-long pact"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Network's torpedo charged for several of the violence wave's roughest acts"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Norway",
-    "publication": "Aftenposten",
-    "headline": "Zelenskyj thanks Norway after meetings in Oslo: Norway is among the countries doing the most for us"
-  },
-  {
-    "date": "2026-10-21",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Heavy rains in Piura: COEN reports, floods in the city and all the news"
-  },
-  {
     "date": "2026-10-25",
     "country": "Singapore",
     "publication": "The Straits Times",
@@ -448,5 +358,95 @@
     "country": "Saudi Arabia",
     "publication": "Arab News",
     "headline": "Saudi-led coalition intercepts Houthi missile fired towards Taif"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Jewish community in Canada facing unprecedented threats, security officials warn"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Flávio's Escape Leaves Political Vacuum and Accelerates Maneuvering by Allies Eyeing 2030"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "SA could be greylisted again as municipalities collapse, warns BLSA"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "China firmly opposes U.S. blacklisting of Chinese firms: commerce ministry"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Did Likud's Scare Campaign Against Arab Voters Lead to a Shin Bet Probe?"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Candidate Asset Declaration Personal Data Leaked; Central Election Commission Chair Yu Ying-lung Apologizes With Bow"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "Cost of INE Credential Contract Inflated"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Kast Points to Employment as \"the Nation's Greatest Pain\" and Says Plans Have Not Been Sufficient"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Qatar, Russia to broaden partnership"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Negligence and Mobilization in the Turkish-Libyan Matter"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Hong Kong",
+    "publication": "South China Morning Post",
+    "headline": "Bid-rigging in renovation projects to be criminalised under law against triads"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Fazl accuses govt of 'misusing' Constitution when imposing emergency, governor's rule in KP"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Nigeria",
+    "publication": "ThisDay",
+    "headline": "Tinubu To Critical Political Opponents Over Govt’s New Borrowing Plans: Investments’ll Expand Opportunities For Future Generations"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Liberty Recycling: Frozen bank accounts, suspicious transactions and seized luxury goods"
+  },
+  {
+    "date": "2026-10-29",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Budget: Lower Taxes for the Middle Class, 100 Euros for Newborns, Healthcare Voucher for the Elderly | All the Measures: Flat Tax, Employment, Rent, Energy"
   }
 ]
