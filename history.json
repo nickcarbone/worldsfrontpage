@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-10-25",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "S’pore expects all parties to honour commitments, says PM Wong after Indonesia cuts gas exports"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Bank of Israel Against Netanyahu: Crypto Cannot Be Used to Circumvent Sanctions"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "France",
-    "publication": "Le Monde",
-    "headline": "After deadly attack in Trappes, which Macron called 'racist,' questions remain over suspected gunman's motives"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "\"Burn at the stake.\" Widespread rejection over Milei's new attack on journalists over $LIBRA case"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Taddei wavers seven months before the election; calls for her resignation and she says… 'I'm not leaving'"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "R30 million to make Sassa CEO look good"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Justice system sets limits on AI use to prevent it from replacing decisions"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "More than 130,000 degree-qualified jobs could be wiped out by AI"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Occupation displaces hundreds of families from Hebron and Netanyahu threatens wide-scale operation in the West Bank"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "2027: Pantami, Adebutu, Gwarzo’s fates uncertain"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Why Ruto-Moi pact failed"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Only 2.7% of at-risk population received both doses of dengue vaccine"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "In this rural Alberta district, a slim majority back separation despite provincial result"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Long March heritage along Chishui River fuels tourism in China's Guizhou"
-  },
-  {
-    "date": "2026-10-25",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "‘Really terrified’: how a blood test could spare cancer patients an agonising wait"
-  },
-  {
     "date": "2026-10-26",
     "country": "Canada",
     "publication": "The Globe and Mail",
@@ -538,5 +448,95 @@
     "country": "Pakistan",
     "publication": "Dawn",
     "headline": "PPP delegation calls on Senate opposition leader, urges participation in proposed committee on electoral reforms"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Shin Bet Chief Sought to Delay Election Results Amid Netanyahu 'Steal' Campaign"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "PSOE loses 450,000 votes and falls below 100 seats in first poll after Urda tragedy"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Poland",
+    "publication": "Gazeta Wyborcza",
+    "headline": "How to get rid of Tusk. The right plays out crisis around the Tribunal"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Lara Resende's proposal to limit Selic rattles market; Durigan denies government discussion"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Taddei Clan also spent 123 million pesos in judicial election; benefited companies in purchase of electoral material"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "ANC and DA centralise coalition talks ahead of local elections"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Government expresses \"surprise\" at high number of opposition amendments to Budget, but says it does not fear \"dialogue\""
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "FG vows crackdown on inflated public contracts"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Switzerland",
+    "publication": "Neue Zürcher Zeitung",
+    "headline": "The riots were announced, yet there were barely any arrests in Zurich. The Halloween tactics of the far-left succeeded"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Riots on Saturday: Looting with open face"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "Apprenticeships, not internships, will boost fresh grad employment"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Fighting for their political lives: The careers on the line this election"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Shen Boyang: If I find cold voters to vote, I will win"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "El Niño 2026: Tumbes River flow continues to rise and exceeds red alert"
+  },
+  {
+    "date": "2026-11-02",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "In Cuba health is a central social achievement and does not admit neglect"
   }
 ]
