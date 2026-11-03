@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-10-26",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Doerkson vows to prioritize B.C.’s finances, work toward West Coast pipeline as next premier"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "Government Secretary leaves amid water crisis"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Agency attached to the PCM hired project led by person sentenced in Los Temerarios del Crimen case"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Toxic taps expose Tshwane’s deadly water failures"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Organizations warn against the gender identity clinic in Gothenburg"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Gloves that the blockade prevents from being produced"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Lula Effect: Brazil's stock exchange suspended operations after collapse and blow reaches Chilean stocks"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "General elections 29-N"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "S’pore to tap diverse energy sources, explore new tech, to weather resource nationalism: Tan See Leng"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "Nigeria Ebola-free after patient’s evacuation to Switzerland — WHO"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "PM attends opening of World Investment Forum"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "SZ PlusSteinmeier in China: A journey into a \"very decisive time\""
-  },
-  {
-    "date": "2026-10-26",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "The 10 battleground seats to watch this election"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Commentary: Raising the bar for CPC's self-governance"
-  },
-  {
-    "date": "2026-10-26",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Dublin City Council outbid in sale of Martello tower in Sandymount"
-  },
-  {
     "date": "2026-10-27",
     "country": "Cuba",
     "publication": "Granma",
@@ -538,5 +448,95 @@
     "country": "Cuba",
     "publication": "Granma",
     "headline": "In Cuba health is a central social achievement and does not admit neglect"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Poland",
+    "publication": "Gazeta Wyborcza",
+    "headline": "\"Doomsday Tuesday\". Budget for Constitutional Court approved. Nawrocki warns Tusk. Gazeta Wyborcza journalist attacked near Constitutional Court"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "PM steps up diplomacy to secure freedom of maritime navigation"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Federal President: Merz makes it too easy for his critics"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Morena deputies handed out wallets worth 63 million pesos; evoke Monex case"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Public sector workers prepare for second strike after rejecting pay offer worth 7.75%"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Govt assures public of meeting winter gas demand, hints at 'good news' for fuel prices"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "The RBA doesn’t see the economy cracking. But many Australians can hear very alarming noises"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "FG tightens payroll checks as salaries gulp N1.96tn"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Díaz-Canel: The socialist state enterprise has the historic opportunity to demonstrate that it can be agile, efficient and competitive"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Piura remains vulnerable to El Niño: only 5 of 22 interventions at critical points have been completed"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Frei and opposition \"tsunami\" of budget amendments: \"It's just to annoy\""
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Puente understands demands for him to resign following the Urda tragedy but remains as minister"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Xi stresses improving protection, coordination to make Yellow River more beautiful"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Seven-Eleven \"7NOW\" suffers unauthorized access at outsourced partner... approximately 169,151 customer records leaked"
+  },
+  {
+    "date": "2026-11-03",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "KeyHealth must fully fund child’s costly rare disease drug"
   }
 ]
