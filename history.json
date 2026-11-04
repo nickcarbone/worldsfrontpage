@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-10-27",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "At the UN, Cuba's Truth"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Indonesia",
-    "publication": "Kompas",
-    "headline": "Paradoks Kebijakan Sawit, Krisis Ekologis, dan Darurat Karhutla"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "UN Warnings of 'Ethnic Cleansing' and 'Genocide' Carried Out by Occupation in Hebron and West Bank"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Moody’s is impressed — will SA get an upgrade within a year?"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "China urges India to implement border consensus, safeguard peace and tranquility: FM"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "RCMP probe potential fraud, money laundering in Alberta health care procurement controversy"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "INE Comptroller Hid Investigation into Taddei Clan; Detected Supplier Deposits and Omitted Patrimony"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "FG, Labour resume talks on wage, fuel price crisis"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "The inquiry into the Chief of Defence Force – who knew and when did they know it?"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "With Fonteles in Consideration for Finance Ministry, Northeastern Leftists and Young People Gain Ground with Lula"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Are the Demonstrations the Result of Broad Pan-European Discontent? The Differences Between Countries Are Greater Than the Similarities"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "LIVE - High School Students' Anger: 'It Doesn't Add Up,' Say Teacher Unions After Meeting with Édouard Geffray"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "'Village-Style': 'I'll Go to Dubai, America, France'—The Conversation That Came Under Authorities' Scrutiny"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Vučić's Defeat: Serbia Begins a Democratic Experiment"
-  },
-  {
-    "date": "2026-10-27",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "Dizon vows to prioritize overhauling LTO as he returns to DOTr"
-  },
-  {
     "date": "2026-10-28",
     "country": "Switzerland",
     "publication": "Neue Zürcher Zeitung",
@@ -538,5 +448,95 @@
     "country": "South Africa",
     "publication": "Business Day",
     "headline": "KeyHealth must fully fund child’s costly rare disease drug"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Indonesia",
+    "publication": "Kompas",
+    "headline": "Istana: Penyadapan Listyo Sigit terhadap Presiden Prabowo Masuk Kategori Makar"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "John Ivison: ‘Red flags all over’ Carney government’s buy-in of AI company Cohere"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Drug trafficking recruitment fuels war in Sinaloa; recruiting in 4 states"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Photos | Feminist movement returns to the streets: Reactions and criticism over reactivation following Boric government"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Ebola curbs shut Saudi, Kuwait doors on 350 Kenyans"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "China's daily AI token use surges to 140 trillion: Wuzhen blue book"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Agoa fallout exposes ANC-DA foreign policy rift"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Sánchez delegates to Cuerpo the management of Transportation following Puente's resignation: 'His resignation helps restore confidence in political dignity'"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Private security patrolling Dublin would not have additional capacity to arrest people"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Liberty Times News] Protesting too much? MAC voices support for 'person involved in spy case' Zhang Junzhe, escape details revealed"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Commission: Messages to Ankara regarding Turkish-Libyan memorandum, casus belli and cables"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Discontent at VVD and D66 over Bontenbal's statements, will the coalition preserve unity in tax plan debate?"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "Campaign kickoff: ADC keeps venue secret after rift with Sokoto govt"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "Groups seek transfer of 55,000 excess Move It riders to other platforms"
+  },
+  {
+    "date": "2026-11-04",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Student anger: 37 National Education personnel injured in 48 hours, announces Édouard Geffray"
   }
 ]
