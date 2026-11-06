@@ -1,185 +1,5 @@
 [
   {
-    "date": "2026-10-28",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "Arms chief Urs Loher on F-35 fixed-price debacle: \"To claim in hindsight that it was all crystal clear: that simply isn't true\""
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Taddei Clan wove network across 13 states to win contracts; 5 close officials involved"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "China, EU key forces in upholding multilateral trade system; Chinese commerce minister urges joint efforts in solving EU problems"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "Russia applies salami-slicing tactics. How is SRI responding?"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Defense Minister Koizumi conveys strengthening of \"denial capability\" to U.S. Defense Secretary Hagel... \"Even if invasion of our country occurs, we will not let them achieve their objective\""
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Government criticizes opposition offensive over OGUC before Constitutional Court: \"It will delay recovery\""
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Flight opens space for right wing to break free from Bolsonarism"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Liberty Breaking News] Shen Boyang leads polls, but favorability trails by 13%! Taipei's melee reveals \"true wild card\"!"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "TUC rejects FG’s proposed N70,000 transport allowance, demands salary increase"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Minister Shinno denies that MAPE Law is \"an amplified Reinfo\""
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "Govt to propose changes to haze law in Parliament; firms linked to fires must provide access to info"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "This is why investors now prefer Morocco to South Africa"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Abu Shahada: Arab lists prevented Netanyahu's return to power and strengthened their political force"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Camilo, from Yaguajay and from Cuba"
-  },
-  {
-    "date": "2026-10-28",
-    "country": "Saudi Arabia",
-    "publication": "Arab News",
-    "headline": "Saudi-led coalition intercepts Houthi missile fired towards Taif"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Jewish community in Canada facing unprecedented threats, security officials warn"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Flávio's Escape Leaves Political Vacuum and Accelerates Maneuvering by Allies Eyeing 2030"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "SA could be greylisted again as municipalities collapse, warns BLSA"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "China firmly opposes U.S. blacklisting of Chinese firms: commerce ministry"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Did Likud's Scare Campaign Against Arab Voters Lead to a Shin Bet Probe?"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Candidate Asset Declaration Personal Data Leaked; Central Election Commission Chair Yu Ying-lung Apologizes With Bow"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "Cost of INE Credential Contract Inflated"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Kast Points to Employment as \"the Nation's Greatest Pain\" and Says Plans Have Not Been Sufficient"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar, Russia to broaden partnership"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Negligence and Mobilization in the Turkish-Libyan Matter"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "Bid-rigging in renovation projects to be criminalised under law against triads"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Fazl accuses govt of 'misusing' Constitution when imposing emergency, governor's rule in KP"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Nigeria",
-    "publication": "ThisDay",
-    "headline": "Tinubu To Critical Political Opponents Over Govt’s New Borrowing Plans: Investments’ll Expand Opportunities For Future Generations"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Liberty Recycling: Frozen bank accounts, suspicious transactions and seized luxury goods"
-  },
-  {
-    "date": "2026-10-29",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Budget: Lower Taxes for the Middle Class, 100 Euros for Newborns, Healthcare Voucher for the Elderly | All the Measures: Flat Tax, Employment, Rent, Energy"
-  },
-  {
     "date": "2026-10-30",
     "country": "China",
     "publication": "People's Daily",
@@ -538,5 +358,83 @@
     "country": "France",
     "publication": "Le Figaro",
     "headline": "Student anger: 37 National Education personnel injured in 48 hours, announces Édouard Geffray"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Ottawa bets spending boost will deliver future economic gains"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Male victims of sexual violence rarely file reports due to 'negative' police attitude. 'Too much emotion is not masculine, too little is not victimized'"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "FG blames gas shortage as power outages hit five states"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "All Arab-Majority Parties Endorse Eisenkot to Form Government"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "Judge traffics in Mexico; U.S. seeks and captures him!"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Japan",
+    "publication": "Yomiuri Shimbun",
+    "headline": "Government considers 'blocking,' urgent due to secondary damage from leaks... Communications operators also voice support for 'systematic organization'"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "A 'European Act VI': seven countries mobilized against the cost of living prepare coordinated demonstrations at the end of November"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "In peace, wartime structures must be an active part of economic and social dynamics"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Taiwan",
+    "publication": "Liberty Times",
+    "headline": "Legislative Yuan passes third reading to raise elderly farmer pension to 15,000 yuan, retroactive to July 1 this year"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Saudi Arabia",
+    "publication": "Arab News",
+    "headline": "Coalition forces intercept Houthi ballistic missiles targeting Najran"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "NAVTEX issued for the Abeille Marengo – Cable investigation begins"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Aer Lingus says pilot ‘acted impeccably’ on flight diverted by bomb threat amid France investigation"
+  },
+  {
+    "date": "2026-11-06",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Super buyer China opens door to shared prosperity at import expo"
   }
 ]
