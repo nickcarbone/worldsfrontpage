@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-10-30",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "CPC plenum concludes, adopting resolution on persevering with full, rigorous Party self-governance"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "What happened to the helicopter that crashed in Bosnia: rotor failure, anomalous spin. Meloni pays tribute to fallen soldiers"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Eisenkot Says Netanyahu Leading Influence Campaign to Undermine Election Results"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Can Europe keep up with the drone revolution in military aviation?"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Rebasing shows SA’s economy is 5.3% bigger than we thought"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Personal information of 37,800 people including passport numbers leaks from ANA; Muji may have disclosed 27.26 million records including information of former members"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Occupation forces prepare to demolish homes of martyrs in Hebron and continue attacks on West Bank cities"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Keiko Fujimori tours CECOT and meets with Nayib Bukele: what measures will she seek to implement in Peruvian prisons?"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Adif allowed extension of old LZB system for savings of 37 million euros"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Tarcísio comes under fire from Flávio's allies upon admitting candidacy"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "2027: INEC rejects Adebutu, Gwarzo, confirms Pantami"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "\"Come what may!\": Dual-minister Mas supports the firing of eight executives at Codelco for overproduction"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "4T wants to tie down INEGI further with Government"
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "The dispute shakes SD: \"It was thoughtless\""
-  },
-  {
-    "date": "2026-10-30",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "PPP delegation calls on Senate opposition leader, urges participation in proposed committee on electoral reforms"
-  },
-  {
     "date": "2026-11-02",
     "country": "Israel",
     "publication": "Haaretz",
@@ -436,5 +346,83 @@
     "country": "China",
     "publication": "People's Daily",
     "headline": "Super buyer China opens door to shared prosperity at import expo"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "They reject evaluation; block justice and streets"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Drug trafficker whose sentence was reduced by Justice reoffended six months later"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Steinmeier succession: Aigner doesn't annoy"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Sweden",
+    "publication": "Dagens Nyheter",
+    "headline": "Tomas Ramberg: SD's well-timed chess move benefits the Centre Party"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Cable in murky waters: The NAVTEX from Athens, the counter-NAVTEX and the backstory with Paris"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Nigeria",
+    "publication": "ThisDay",
+    "headline": "Tinubu, Shettima Fire Salvos at Obi, Atiku, Take 2027 Re-election Battle to South-south"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "‘Absolute garbage’: Hanson dismisses allegations of Rinehart influence"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Adif locked down its million-dollar bonus plan after the Urda tragedy hours before its president resigned"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "State will ‘go after’ those responsible for bomb threats, Taoiseach says"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "May all the cohesion and strength with which a defense zone functions benefit the community"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Amir receive phone call from US President"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "China, Gabon elevate ties to community with shared future for new era"
+  },
+  {
+    "date": "2026-11-07",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Who is Jeanette Alonzo, number 2 on Lima's Popular Renewal list"
   }
 ]
