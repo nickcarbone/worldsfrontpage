@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-11-02",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Shin Bet Chief Sought to Delay Election Results Amid Netanyahu 'Steal' Campaign"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "PSOE loses 450,000 votes and falls below 100 seats in first poll after Urda tragedy"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Poland",
-    "publication": "Gazeta Wyborcza",
-    "headline": "How to get rid of Tusk. The right plays out crisis around the Tribunal"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Lara Resende's proposal to limit Selic rattles market; Durigan denies government discussion"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Taddei Clan also spent 123 million pesos in judicial election; benefited companies in purchase of electoral material"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "ANC and DA centralise coalition talks ahead of local elections"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Government expresses \"surprise\" at high number of opposition amendments to Budget, but says it does not fear \"dialogue\""
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "FG vows crackdown on inflated public contracts"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "The riots were announced, yet there were barely any arrests in Zurich. The Halloween tactics of the far-left succeeded"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Riots on Saturday: Looting with open face"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "Apprenticeships, not internships, will boost fresh grad employment"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "New Zealand",
-    "publication": "NZ Herald",
-    "headline": "Fighting for their political lives: The careers on the line this election"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Shen Boyang: If I find cold voters to vote, I will win"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "El Niño 2026: Tumbes River flow continues to rise and exceeds red alert"
-  },
-  {
-    "date": "2026-11-02",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "In Cuba health is a central social achievement and does not admit neglect"
-  },
-  {
     "date": "2026-11-03",
     "country": "Poland",
     "publication": "Gazeta Wyborcza",
@@ -502,5 +412,95 @@
     "country": "Netherlands",
     "publication": "NRC",
     "headline": "The world will warm beyond one and a half degrees. Will it ever be possible to bring the temperature back down?"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Wapda says no threat to Tarbela Dam's integrity, critical structures after rock collapse at project site"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Romania",
+    "publication": "Adevărul",
+    "headline": "The Neptune Deep dilemma, a gift for Russia"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Hong Kong",
+    "publication": "South China Morning Post",
+    "headline": "Hong Kong slashes costs for Northern Metropolis rail link by 28% to HK$86.2b"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Feijóo promises to replace minimum living income with an \"activation income\" that will be withdrawn from those who reject jobs without \"justified cause\""
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "Business groups criticize truckers' strike and warn over exports"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "‘Breakthrough’ at public sector pay talks but planning for Thursday’s strike continues"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Merz sets 'fire' to the European budget over Ukraine"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "France",
+    "publication": "Le Monde",
+    "headline": "For Ukraine, the risk of war fatigue in Europe looms"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Poland",
+    "publication": "Gazeta Wyborcza",
+    "headline": "Fool, first of all, verify. Reflections after TV Republika's discrediting"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "A Law to promote the knowledge economy"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "South Africa",
+    "publication": "Business Day",
+    "headline": "Shoprite taps Investec to power its push into banking"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Lifting of secrecy on fake news inquiry should generate wave of lawsuits against STF decisions"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "Secret of 400,000 Russian deaths in Ukraine revealed by hackers: possible help from foreign services"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Without Wong as leader, Opportunity was doomed. She will be a formidable negotiator"
+  },
+  {
+    "date": "2026-11-10",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Klaas Knot explains in Frankfurt the European Central Bank's latest interest rate decision: unrealistic it is not"
   }
 ]
