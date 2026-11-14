@@ -1,83 +1,5 @@
 [
   {
-    "date": "2026-11-06",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Ottawa bets spending boost will deliver future economic gains"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Male victims of sexual violence rarely file reports due to 'negative' police attitude. 'Too much emotion is not masculine, too little is not victimized'"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "FG blames gas shortage as power outages hit five states"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "All Arab-Majority Parties Endorse Eisenkot to Form Government"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "Judge traffics in Mexico; U.S. seeks and captures him!"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Japan",
-    "publication": "Yomiuri Shimbun",
-    "headline": "Government considers 'blocking,' urgent due to secondary damage from leaks... Communications operators also voice support for 'systematic organization'"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "France",
-    "publication": "Le Figaro",
-    "headline": "A 'European Act VI': seven countries mobilized against the cost of living prepare coordinated demonstrations at the end of November"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "In peace, wartime structures must be an active part of economic and social dynamics"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Legislative Yuan passes third reading to raise elderly farmer pension to 15,000 yuan, retroactive to July 1 this year"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Saudi Arabia",
-    "publication": "Arab News",
-    "headline": "Coalition forces intercept Houthi ballistic missiles targeting Najran"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "NAVTEX issued for the Abeille Marengo – Cable investigation begins"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Aer Lingus says pilot ‘acted impeccably’ on flight diverted by bomb threat amid France investigation"
-  },
-  {
-    "date": "2026-11-06",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Super buyer China opens door to shared prosperity at import expo"
-  },
-  {
     "date": "2026-11-07",
     "country": "Mexico",
     "publication": "Reforma",
@@ -502,5 +424,95 @@
     "country": "Cuba",
     "publication": "Granma",
     "headline": "Raúl congratulates Border Brigade on its 65th anniversary"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Cuba will face any attempt at aggression"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "China",
+    "publication": "People's Daily",
+    "headline": "Xi stresses persevering with full, rigorous Party self-governance in state-owned enterprises"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Sánchez favored the reactivation of the corrupt scheme in the PSOE"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "France",
+    "publication": "Le Monde",
+    "headline": "Breaking point draws nearer in French high schools that remain disrupted"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "74 terrorists killed in targeted actions: ISPR"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Switzerland",
+    "publication": "Neue Zürcher Zeitung",
+    "headline": "The NDB director warns: 'Numerous Russian spies are active in Switzerland'"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "5,000 homicides go missing; undercount reaches 17%"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "Three dead, eight missing as wall collapses in Riverside, Nairobi"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Portugal",
+    "publication": "Público",
+    "headline": "Real estate agencies of politicians make contracts with the State and receive public subsidies"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "Malaysia’s BN and ally PN declare victory in Melaka state polls in a blow to PM Anwar"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "Surveilled, scared and broke: How Emily’s ex is ruining her life through the Family Court"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Norway",
+    "publication": "Aftenposten",
+    "headline": "They are supposed to protect us. But have used passwords like 'snuppa' and 'kobboy12'."
+  },
+  {
+    "date": "2026-11-14",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Horse trading as coalition talks kick into gear"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "Exclusive poll: Canada's First Nations divided over the value of land acknowledgements"
+  },
+  {
+    "date": "2026-11-14",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Qatar, Turkiye deepen strategic ties"
   }
 ]
