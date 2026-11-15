@@ -1,83 +1,5 @@
 [
   {
-    "date": "2026-11-07",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "They reject evaluation; block justice and streets"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Drug trafficker whose sentence was reduced by Justice reoffended six months later"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Germany",
-    "publication": "Frankfurter Allgemeine",
-    "headline": "Steinmeier succession: Aigner doesn't annoy"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Tomas Ramberg: SD's well-timed chess move benefits the Centre Party"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Cable in murky waters: The NAVTEX from Athens, the counter-NAVTEX and the backstory with Paris"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Nigeria",
-    "publication": "ThisDay",
-    "headline": "Tinubu, Shettima Fire Salvos at Obi, Atiku, Take 2027 Re-election Battle to South-south"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "‘Absolute garbage’: Hanson dismisses allegations of Rinehart influence"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Adif locked down its million-dollar bonus plan after the Urda tragedy hours before its president resigned"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "State will ‘go after’ those responsible for bomb threats, Taoiseach says"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "May all the cohesion and strength with which a defense zone functions benefit the community"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Amir receive phone call from US President"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "China, Gabon elevate ties to community with shared future for new era"
-  },
-  {
-    "date": "2026-11-07",
-    "country": "Peru",
-    "publication": "El Comercio",
-    "headline": "Who is Jeanette Alonzo, number 2 on Lima's Popular Renewal list"
-  },
-  {
     "date": "2026-11-09",
     "country": "Brazil",
     "publication": "Folha de S.Paulo",
@@ -514,5 +436,95 @@
     "country": "Qatar",
     "publication": "Gulf Times",
     "headline": "Qatar, Turkiye deepen strategic ties"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "Master takes Central Bank to highest number of liquidations since 2002"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "France",
+    "publication": "Le Monde",
+    "headline": "French social unrest: Between concessions and tough talk, PM Lecornu struggles to end crisis"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Cartels set up cyber surveillance on U.S. border; guide migrants with drones and by phone"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Portugal",
+    "publication": "Público",
+    "headline": "Bank of Portugal hides opinions on conduct of administrators"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Electoral reform. Government accelerates debate to suspend primary elections without knowing if it has votes secured"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Open conflict in cabinet: VVD wants to renegotiate over content and composition"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "J.P. Morgan President: \"Kast seemed brilliant to me, a gentleman and I believe his policies hit the mark\""
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "ASEAN must deepen integration to navigate uncertain world: PM Wong"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Philippines",
+    "publication": "Philippine Daily Inquirer",
+    "headline": "Marcos faces balancing act at Apec summit in China"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Hong Kong",
+    "publication": "South China Morning Post",
+    "headline": "Ambassador invites Washington to join Beijing-led Waico alliance as Xi, Trump and Putin prepare for three-way talks on summit sidelines."
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Eisenkot Calls Netanyahu's Unity Plea a 'Bluff'"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "2027: Atiku, Makinde near alliance deal"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "\"He has betrayed all of us\": why these 12 staunch Sánchez voters will turn their backs on him on 29-N"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "Exclusive poll: Canada's First Nations divided over the value of land acknowledgements"
+  },
+  {
+    "date": "2026-11-15",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Those arrested for the fire referred to prosecutor"
   }
 ]
