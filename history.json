@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-11-12",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "BB president says bank is facing worst crisis in history in agribusiness; shares fall 9%"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "ANC barely hangs on as DA and ActionSA make gains in final IEC results"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Ghost students: How Kenyan turned US education aid into Sh25bn scam"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "2027: Court judgment worsens Atiku’s troubles"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "Imran’s sisters Uzma, Noreen released from jail after extended detention orders withdrawn, says lawyer"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Poland",
-    "publication": "Gazeta Wyborcza",
-    "headline": "Psychiatrist working in the USA: After the attack in Krakow, we saw many healthy behaviors in Polish society"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Bomb alert again today, government: 'Threatening emails sent to 3,778 schools, 77 evacuations carried out. Instructions to prefects worked'"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "The deal between CDA, D66 and Pro and Volt is bad for 'frustrated' entrepreneurs, according to the VVD"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Landsmanas ordered to be investigated, but his business expands; given contract for cleaning and pest control in prisons"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "Berlin's Left party: Why this party triggers half of Germany"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Romania",
-    "publication": "Adevărul",
-    "headline": "What Romanians no longer buy because of prices. Products they have begun to give up and how we organize our budget to make our salary last from one month to the next"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "Battle for your wealth: S’pore banks step up fight to woo affluent clients"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "HH the Amir joins world leaders at COP31 summit"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Sweden",
-    "publication": "Dagens Nyheter",
-    "headline": "Alarm: Abuse within Young Swedes"
-  },
-  {
-    "date": "2026-11-12",
-    "country": "Portugal",
-    "publication": "Público",
-    "headline": "Economists criticize scope of measures, experts praise focus on prevention"
-  },
-  {
     "date": "2026-11-13",
     "country": "Germany",
     "publication": "Süddeutsche Zeitung",
@@ -718,5 +628,95 @@
     "country": "Ireland",
     "publication": "Irish Times",
     "headline": "Seán Rooney inquest: Soldier was ‘angry’ with officer after vehicles became separated"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Canada",
+    "publication": "The Globe and Mail",
+    "headline": "Tumbler Ridge shooter used ChatGPT to help alter guns, report alleges"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Germany",
+    "publication": "Der Spiegel",
+    "headline": "How the AfD wants to destroy the CDU"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Fachin gave new guidance to PF to assess relevance of citations to STF ministers, document says"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "Hearings on Mape Law and Reinfo converted into platform for Castillist propaganda"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "France",
+    "publication": "Le Monde",
+    "headline": "Socialists end talks with Greens over their leader's push for an alliance with Mélenchon"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "ANC deals DA out of the metros"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Kostas Ach. Karamanlis called to give account for the Tempi tragedy"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Dublin home of pro-Palestinian donor Fergie Chambers raided as US extradition delayed"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Netherlands",
+    "publication": "NRC",
+    "headline": "Russia calls on Dutch embassy staff in Kyiv to leave, day after drone strike"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Bilawal wants PM Shehbaz to become first premier to complete 5-year term"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Portugal",
+    "publication": "Público",
+    "headline": "By the minute. 2027 Budget: Zero VAT and end of 10% IRS rate for landlords advance after parliamentary confirmation"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Council of State checks progress in implementation of economic and social transformations"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Chile",
+    "publication": "El Mercurio",
+    "headline": "\"A very different vision from the minister's\": Rossi's reasons for leaving Science"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "The course of the case. The Court's ruling finished dismantling Tapia and Toviggino's judicial strategy and returned everything to square one"
+  },
+  {
+    "date": "2026-11-20",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "INEC awaits appeal ruling as ADC factions clash"
   }
 ]
