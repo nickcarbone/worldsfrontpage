@@ -2,10 +2,16 @@ name: World's Front Page — Daily Pipeline
 
 on:
   schedule:
-    # 4:00 AM ET = 08:00 UTC during Eastern Daylight Time (roughly Mar–Nov).
-    # Switch to '0 9 * * *' when US clocks fall back to Eastern Standard Time
-    # in November — GitHub Actions cron does not adjust for DST automatically.
-    - cron: '0 8 * * *'
+    # 4:23 AM Eastern, year-round. The timezone key (GitHub, March 2026)
+    # makes GitHub interpret the cron in America/New_York and handle DST
+    # itself — no more switching the hour by hand in March and November.
+    #
+    # Minute 23 is deliberate: GitHub's scheduler is most overloaded at the
+    # top of the hour (:00, and to a lesser degree :15/:30/:45), which is when
+    # scheduled runs get delayed longest or dropped outright. Don't move this
+    # back to a round number.
+    - cron: '23 4 * * *'
+      timezone: 'America/New_York'
   workflow_dispatch:
     inputs:
       dry_run:
