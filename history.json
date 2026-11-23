@@ -1,185 +1,5 @@
 [
   {
-    "date": "2026-11-13",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "What awaits citizens with the 560-billion-euro budget"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Spectacular climax of tax plan with deal on the left makes the pain for the VVD even worse – can the Jetten cabinet survive?"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Brazil",
-    "publication": "O Globo",
-    "headline": "Will companies pay more taxes with fiscal package approved by Senate?"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Sánchez's ex-driver, the solution to buying an apartment for Ábalos' girlfriend"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Broxel, the deputies' wallet, under government scrutiny; possible conflict of interest seen between company and Treasury official"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Ramaphosa ‘is going nowhere’: damaged ANC begins hard bargaining"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Netanyahu Holds Two-Hour Security Briefing With Eisenkot After Repeated Requests"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "Cost of truckers' strike agreement would be around US$900 million between 2026 and 2027"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Bomb alarms via email, here is the Interior Ministry circular. From suspicious objects to serial messages: when evacuation is triggered"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "ECP gives federal govt 2 weeks to submit formal request for cantonment board polls"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "HH the Amir, Burnham discuss regional diplomacy"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Lawyer Abshir Abdi appears at Milimani court a day after he was found in Marsabit"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Like taxing blood donors: Bank boss reveals biggest gripe"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Turkey",
-    "publication": "Hürriyet",
-    "headline": "#HEALTH: He described surgery from 321 kilometers away"
-  },
-  {
-    "date": "2026-11-13",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Raúl congratulates Border Brigade on its 65th anniversary"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "Cuba will face any attempt at aggression"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Xi stresses persevering with full, rigorous Party self-governance in state-owned enterprises"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "Sánchez favored the reactivation of the corrupt scheme in the PSOE"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "France",
-    "publication": "Le Monde",
-    "headline": "Breaking point draws nearer in French high schools that remain disrupted"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "74 terrorists killed in targeted actions: ISPR"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Switzerland",
-    "publication": "Neue Zürcher Zeitung",
-    "headline": "The NDB director warns: 'Numerous Russian spies are active in Switzerland'"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "5,000 homicides go missing; undercount reaches 17%"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Kenya",
-    "publication": "Daily Nation",
-    "headline": "Three dead, eight missing as wall collapses in Riverside, Nairobi"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Portugal",
-    "publication": "Público",
-    "headline": "Real estate agencies of politicians make contracts with the State and receive public subsidies"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "Malaysia’s BN and ally PN declare victory in Melaka state polls in a blow to PM Anwar"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Australia",
-    "publication": "Sydney Morning Herald",
-    "headline": "Surveilled, scared and broke: How Emily’s ex is ruining her life through the Family Court"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Norway",
-    "publication": "Aftenposten",
-    "headline": "They are supposed to protect us. But have used passwords like 'snuppa' and 'kobboy12'."
-  },
-  {
-    "date": "2026-11-14",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Horse trading as coalition talks kick into gear"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Exclusive poll: Canada's First Nations divided over the value of land acknowledgements"
-  },
-  {
-    "date": "2026-11-14",
-    "country": "Qatar",
-    "publication": "Gulf Times",
-    "headline": "Qatar, Turkiye deepen strategic ties"
-  },
-  {
     "date": "2026-11-15",
     "country": "Brazil",
     "publication": "Folha de S.Paulo",
@@ -718,5 +538,95 @@
     "country": "Nigeria",
     "publication": "The Punch",
     "headline": "INEC awaits appeal ruling as ADC factions clash"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "De Gennaro's final hours: the 2 envelopes with documents and the manuscript to \"leave his truth on record.\" Then the suicide and the race of his wife and children to the villa"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "Chinese fixer targets Australian data centres for clients’ ‘strategic’ purposes"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Mexico",
+    "publication": "Reforma",
+    "headline": "The Battle of Guasave: a night under fire"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Rio's PM has half its patrol cars out of operation and a deficit of 17,000 police officers"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Peru",
+    "publication": "El Comercio",
+    "headline": "More than 18,000 coastal birds and mammals have died in Peru so far in 2026"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "More than 5,300 land requests are now in the hands of producers"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Switzerland",
+    "publication": "Neue Zürcher Zeitung",
+    "headline": "The SVP plays power moves by the book – it knows it can afford to"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "2027: Outrage over widespread billboard attacks"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "PP and PSOE gain support and the right anchors its advantage a week before voting"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Turkey",
+    "publication": "Hürriyet",
+    "headline": "90 million lira new home"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "How water will reach the Ellinikon"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Michael Lynn – the Portuguese connection: 17 companies, multiple properties and cheques written to cash"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Eisenkot Seeks 'Marathon' Likud Coalition Talks as Bennett Rules Out Netanyahu"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "New Zealand",
+    "publication": "NZ Herald",
+    "headline": "Burglary at Tauranga port led police to stop 'rip' of 140kg of cocaine from warehouse"
+  },
+  {
+    "date": "2026-11-22",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "NP View: UBC kept kicking Steven Galloway while he was down"
   }
 ]
