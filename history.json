@@ -1,185 +1,5 @@
 [
   {
-    "date": "2026-11-15",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Master takes Central Bank to highest number of liquidations since 2002"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "France",
-    "publication": "Le Monde",
-    "headline": "French social unrest: Between concessions and tough talk, PM Lecornu struggles to end crisis"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "Cartels set up cyber surveillance on U.S. border; guide migrants with drones and by phone"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Portugal",
-    "publication": "Público",
-    "headline": "Bank of Portugal hides opinions on conduct of administrators"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Electoral reform. Government accelerates debate to suspend primary elections without knowing if it has votes secured"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "Open conflict in cabinet: VVD wants to renegotiate over content and composition"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "J.P. Morgan President: \"Kast seemed brilliant to me, a gentleman and I believe his policies hit the mark\""
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Singapore",
-    "publication": "The Straits Times",
-    "headline": "ASEAN must deepen integration to navigate uncertain world: PM Wong"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "Marcos faces balancing act at Apec summit in China"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Hong Kong",
-    "publication": "South China Morning Post",
-    "headline": "Ambassador invites Washington to join Beijing-led Waico alliance as Xi, Trump and Putin prepare for three-way talks on summit sidelines."
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Eisenkot Calls Netanyahu's Unity Plea a 'Bluff'"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "2027: Atiku, Makinde near alliance deal"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "\"He has betrayed all of us\": why these 12 staunch Sánchez voters will turn their backs on him on 29-N"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Exclusive poll: Canada's First Nations divided over the value of land acknowledgements"
-  },
-  {
-    "date": "2026-11-15",
-    "country": "Greece",
-    "publication": "Kathimerini",
-    "headline": "Those arrested for the fire referred to prosecutor"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Canada",
-    "publication": "The Globe and Mail",
-    "headline": "Death of fifth soldier highlights vulnerable state of CFB Wainwright fire victims"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "\"Arrest De Gennaro, he obstructed the investigation into the Via D'Amelio massacre\": shocking request from prosecutors for the super anti-mafia police officer. Then the judge says no"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Mexico",
-    "publication": "El Universal",
-    "headline": "INE advisors request reimbursements for 955 thousand pesos; three of them concentrate 73.7% of total resources"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Germany",
-    "publication": "Süddeutsche Zeitung",
-    "headline": "SZ Plus Before coalition committee: Merz and Söder insist on electricity tax reduction"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Spain",
-    "publication": "El Mundo",
-    "headline": "The PP demands that Marlaska provide security for Jon Echeverría following the assault he suffered in Hernani"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "The AFA's coffers. Beligoy received more than $420 million, with cash payments and invoices for \"consulting\" and \"seminars\""
-  },
-  {
-    "date": "2026-11-16",
-    "country": "China",
-    "publication": "People's Daily",
-    "headline": "Together for a bright Asia-Pacific future"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "South Africa",
-    "publication": "Mail & Guardian",
-    "headline": "Cat changes tune on Idac, Sibiya and Cele"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Lieberman, Golan Urge Eisenkot to Reject Netanyahu Unity Pleas: 'It's a Trap'"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Sectarian left delays fight against privileges when criticizing adjustment project, says Moretti"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Netherlands",
-    "publication": "NRC",
-    "headline": "The VVD negotiated with the 'leftist' Denk over tax plan and offered at least 100 million for company vans"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Cuba",
-    "publication": "Granma",
-    "headline": "In Marabana, a country (+ Photos)"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Ireland",
-    "publication": "Irish Times",
-    "headline": "Wind and rain warnings issued for eight counties"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Portugal",
-    "publication": "Público",
-    "headline": "Physical Education teachers deny inflating student grades in private education"
-  },
-  {
-    "date": "2026-11-16",
-    "country": "Chile",
-    "publication": "El Mercurio",
-    "headline": "\"Who spoke at that moment was the candidate\": Kast distances himself from criticisms he directed at Ho Chi Minh"
-  },
-  {
     "date": "2026-11-17",
     "country": "Canada",
     "publication": "National Post",
@@ -628,5 +448,95 @@
     "country": "Canada",
     "publication": "National Post",
     "headline": "NP View: UBC kept kicking Steven Galloway while he was down"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Brazil",
+    "publication": "Folha de S.Paulo",
+    "headline": "PF Report on Moraes omits dialogue with Vorcaro and wife's office contract"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "Quebec to appeal court decision reinstating oath to the King, casting doubt on legislature's return"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Singapore",
+    "publication": "The Straits Times",
+    "headline": "S’pore working with US on chip export enforcement as Megaspeed probe continues: PM Wong"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "Fazl alleges he is under ‘state siege’; JUI-F claims police personnel deployed outside his Lahore residence"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Indonesia",
+    "publication": "Kompas",
+    "headline": "Pengusaha Masuk \"Survival Mode\", Biaya Produksi Terus Meningkat"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Norway",
+    "publication": "Aftenposten",
+    "headline": "Approved climate targets - without knowing the total cost"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "South Africa",
+    "publication": "Mail & Guardian",
+    "headline": "Helen Zille fights Julius Malema’s bid to gag her over Joburg claims"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Nigeria",
+    "publication": "The Punch",
+    "headline": "2027: Campaign venue rows fuel APC-opposition tensions"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Palestinian Territories",
+    "publication": "Al-Quds",
+    "headline": "Nine martyrs in occupation raids on Gaza and announcement of epidemic alert due to meningitis"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Portugal",
+    "publication": "Público",
+    "headline": "They recently left precariousness. Now they fear a setback"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Australia",
+    "publication": "Sydney Morning Herald",
+    "headline": "The hard political truth stopping PM from throwing Chalmers overboard"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "France",
+    "publication": "Le Figaro",
+    "headline": "Fiscal rule: Emmanuel Macron faces the feasibility of one final challenge"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Cuba",
+    "publication": "Granma",
+    "headline": "Sixth National Exercise on crime prevention and confrontation, corruption, drugs, illegalities and social indiscipline began"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Ireland",
+    "publication": "Irish Times",
+    "headline": "Decision to remove Anne O’Connor from HSE post not based on any one event, says Taoiseach"
+  },
+  {
+    "date": "2026-11-24",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "'Grandchildren' vote in cardboard urns in Argentina and Venezuela with massive participation"
   }
 ]
