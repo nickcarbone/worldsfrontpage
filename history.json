@@ -1,95 +1,5 @@
 [
   {
-    "date": "2026-11-17",
-    "country": "Canada",
-    "publication": "National Post",
-    "headline": "Meta could pull WhatsApp from Canada if bill requires undermining encryption"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Mexico",
-    "publication": "Reforma",
-    "headline": "Pemex owes 388 billion pesos to banks"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Italy",
-    "publication": "Corriere della Sera",
-    "headline": "Revolut, here's why it was placed under administration: zero alerts on suspicious movements, blind audits. And those 4 million euros that \"vanished\" before confiscation"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Nigeria",
-    "publication": "The Punch",
-    "headline": "FG orders hiring freeze across federal agencies"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Brazil",
-    "publication": "Folha de S.Paulo",
-    "headline": "Decree ending 6x1 work week should include rule that increases overtime costs"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Israel",
-    "publication": "Haaretz",
-    "headline": "Israel's AG to Discuss Criminal Probe of Netanyahu-Linked Election Tip-Off"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Norway",
-    "publication": "Aftenposten",
-    "headline": "Again Trump's men messed things up in Moscow. Even the Russians are frustrated."
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Philippines",
-    "publication": "Philippine Daily Inquirer",
-    "headline": "Marcos: Asean, US adopt online scam principles, comprehensive work plan"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Palestinian Territories",
-    "publication": "Al-Quds",
-    "headline": "Escalation in West Bank: occupation army raids Nablus and demolishes houses and facilities in Hebron, Bethlehem and Salfit"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Pakistan",
-    "publication": "Dawn",
-    "headline": "8 Pakistan Bar Council members call on judiciary to take note of Imran's plea for medical treatment"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "China",
-    "publication": "Global Times",
-    "headline": "President Xi meets Asia-Pacific leaders ahead of APEC meeting；bilateral talks energize ties and lay groundwork for regional consensus: experts"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "South Africa",
-    "publication": "Business Day",
-    "headline": "Telkom’s earnings rise as group focuses on data, digital infrastructure"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Argentina",
-    "publication": "La Nación",
-    "headline": "Electoral reform: Government admits it still lacks votes in committee and debate could extend"
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Taiwan",
-    "publication": "Liberty Times",
-    "headline": "Election bulletin policy section adopts checklist; Shen Boyang: let citizens check \"did you accomplish it\""
-  },
-  {
-    "date": "2026-11-17",
-    "country": "Portugal",
-    "publication": "Público",
-    "headline": "The 723-year-old book that, for now, the State neither buys nor allows to be sold abroad"
-  },
-  {
     "date": "2026-11-18",
     "country": "Mexico",
     "publication": "El Universal",
@@ -538,5 +448,95 @@
     "country": "Spain",
     "publication": "El Mundo",
     "headline": "'Grandchildren' vote in cardboard urns in Argentina and Venezuela with massive participation"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Argentina",
+    "publication": "La Nación",
+    "headline": "Financial tension. Country risk exceeds 1100 points and the dollar breaks its nominal record"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Canada",
+    "publication": "National Post",
+    "headline": "CSIS to 'significantly' increase foreign spy presence with new $6 billion funding"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Mexico",
+    "publication": "El Universal",
+    "headline": "Nine out of every 10 women who suffer physical or sexual violence in Mexico do not report it, warns the UN; calls for justice for victims"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Spain",
+    "publication": "El Mundo",
+    "headline": "Clavijo sends an 'SOS' to Europe and calls for deployment of UME in face of 'emergency' in El Hierro: 'It is not fair that we respond alone'"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Brazil",
+    "publication": "O Globo",
+    "headline": "Moretti says he has a 'menu of measures' to cut expenses and preserve social rights"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Italy",
+    "publication": "Corriere della Sera",
+    "headline": "De Gennaro, in letters written 4 days before his suicide, accuses the Caltanissetta prosecutor: 'You reached where even the mafia had not managed to reach'"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Israel",
+    "publication": "Haaretz",
+    "headline": "Bennett Holding Secret Talks With Netanyahu Behind Eisenkot's Back"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Germany",
+    "publication": "Frankfurter Allgemeine",
+    "headline": "Debate in the Bundestag: Will the coalition still become a community of the well-intentioned?"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "China",
+    "publication": "Global Times",
+    "headline": "Chinese, Pakistani astronauts achieve first-ever 'space handshake' in China's Tiangong space station"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Pakistan",
+    "publication": "Dawn",
+    "headline": "‘A new era begins’: Pakistan’s Zeeshan Ali becomes first foreigner to board China's Tiangong space station"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Kenya",
+    "publication": "Daily Nation",
+    "headline": "President William Ruto receives visiting German President Frank-Walter Steinmeier at State House"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Greece",
+    "publication": "Kathimerini",
+    "headline": "Christmas with thousands of teacher shortages"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Nigeria",
+    "publication": "Vanguard",
+    "headline": "Delta Attack: NDC calls on US, EU to intervene, accuses APC of oppression"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Qatar",
+    "publication": "Gulf Times",
+    "headline": "Qatar, US stress importance of advancing economic partnership"
+  },
+  {
+    "date": "2026-11-25",
+    "country": "Indonesia",
+    "publication": "Kompas",
+    "headline": "Fraksi Gerindra di MPR Dukung Sugiono Jadi Wapres"
   }
 ]
